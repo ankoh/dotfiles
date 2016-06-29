@@ -98,4 +98,5 @@ highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 set showbreak=↪
 nmap <leader>l :set list!<cr>
 
+map <C-n> :NERDTreeToggle<CR>
 " }}}
