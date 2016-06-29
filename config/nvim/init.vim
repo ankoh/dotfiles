@@ -2,12 +2,12 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " utilities
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy file finder, mapped to <leader>t
+Plug 'ctrlpvim/ctrlp.vim'              " fuzzy file finder, mapped to <leader>t
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
-Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
-Plug 'vim-airline/vim-airline' " fancy statusline
-Plug 'vim-airline/vim-airline-themes' " themes for vim-airline
-Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
+Plug 'Raimondi/delimitMate'            " automatic closing of quotes, parenthesis, brackets, etc.
+Plug 'vim-airline/vim-airline'         " fancy statusline
+Plug 'vim-airline/vim-airline-themes'  " themes for vim-airline
+Plug 'tpope/vim-fugitive'              " amazing git wrapper for vim
 
 call plug#end()
 
@@ -17,6 +17,12 @@ call plug#end()
 
 set nocompatible     " not compatible with vi
 set autoread         " detect when a file is changed
+
+" Learn it the hard way
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Alternate map leader
 let mapleader = '<'
@@ -99,4 +105,8 @@ set showbreak=↪
 nmap <leader>l :set list!<cr>
 
 map <C-n> :NERDTreeToggle<CR>
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='papercolor'
 " }}}
