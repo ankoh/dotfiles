@@ -57,14 +57,14 @@ suspended_jobs() {
     if [[ $sj == "" ]]; then
         echo ""
     else
-        echo "%{$FG[20]%}✱%f"
+        echo "%{$FG[24]%}✱%f"
     fi
 }
 
 precmd() {
     vcs_info
-    print -P '\n%F{20}%~'
+    print -P '\n%F{24}%~'
 }
 
-export PROMPT='%(?.%F{20}.%F{20})❯%f '
-export RPROMPT='`git_dirty`%F{20}$vcs_info_msg_0_%f `git_arrows``suspended_jobs`'
+export PROMPT='%(?.%F{24}.%F{24})❯%f '
+export RPROMPT='`git_dirty`%F{24}$vcs_info_msg_0_%f `git_arrows``suspended_jobs`'
