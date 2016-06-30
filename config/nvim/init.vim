@@ -27,8 +27,8 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Alternate map leader
-let mapleader = '<'
-let g:mapleader = '<'
+let mapleader = ' '
+let g:mapleader = ' '
 
 set history=1000           " change history to 1000
 set textwidth=120
@@ -106,12 +106,17 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Location list
+nnoremap <leader>ln :lne<CR>
+nnoremap <leader>lp :lp<CR>
+nnoremap <leader>lc :lc<CR>
+
 " Invisible characters
 set invlist
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 set showbreak=↪
-nmap <leader>l :set list!<cr>
+nmap <leader>ic :set list!<cr>
 
 " NERDtree
 map <C-n> :NERDTreeToggle<CR>
