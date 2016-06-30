@@ -10,11 +10,11 @@ set -g renumber-windows on
 
 # unbind default prefix and set it to Ctrl+a
 unbind C-b
-set -g prefix C-a
-bind C-a send-prefix
+set -g prefix C-t
+bind C-t send-prefix
 
 # for nested tmux sessions
-bind-key a send-prefix
+bind-key t send-prefix
 
 # Activity Monitoring
 setw -g monitor-activity off
@@ -36,10 +36,6 @@ bind = select-layout tiled
 # unbind C-a
 # unbind o # this is the default key for cycling panes
 # bind ^A select-pane -t:.+
-
-# make window/pane index start with 1
-set -g base-index 1
-setw -g pane-base-index 1
 
 set-option -g set-titles on
 set-option -g set-titles-string "#T - #W"
