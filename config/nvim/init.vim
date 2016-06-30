@@ -8,6 +8,7 @@ Plug 'Raimondi/delimitMate'            " automatic closing of quotes, parenthesi
 Plug 'vim-airline/vim-airline'         " fancy statusline
 Plug 'vim-airline/vim-airline-themes'  " themes for vim-airline
 Plug 'tpope/vim-fugitive'              " amazing git wrapper for vim
+Plug 'int3/vim-extradite'              " git browser
 Plug 'lyuts/vim-rtags'                 " rtags
 
 call plug#end()
