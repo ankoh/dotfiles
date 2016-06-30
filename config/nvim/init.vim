@@ -122,9 +122,8 @@ let g:airline_theme='papercolor'
 " }}}
 
 " Fugitive
-nnoremap <C-G><C-S> :Gstatus<CR>
-nnoremap <C-G><C-R> :Gread<CR>
-nnoremap <C-G> :G
+nmap <C-G><C-S> :Gstatus<CR>
+nmap <C-G> :G
 
 " Extradite
-nnoremap <C-G><C-B> :Extradite<CR>
+nmap <C-G><C-B> :Extradite<CR>
