@@ -63,7 +63,7 @@ suspended_jobs() {
 
 precmd() {
     vcs_info
-    print -P '\n%F{24}%~'
+    print -P '\n%m: %F{24}%~'
 }
 
 export PROMPT='%(?.%F{24}.%F{24})❯%f '
