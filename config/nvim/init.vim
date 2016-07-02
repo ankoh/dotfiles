@@ -113,7 +113,7 @@ nmap <BS> <C-W>h
 " Location list
 nnoremap <leader>ln :lne<CR>
 nnoremap <leader>lp :lp<CR>
-nnoremap <leader>lc :lc<CR>
+nnoremap <leader>lc :lcl<CR>
 
 " Invisible characters
 set invlist
