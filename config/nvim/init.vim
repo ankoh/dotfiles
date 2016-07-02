@@ -106,6 +106,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Fix TMUX+NVIM C-H bug
+" https://github.com/neovim/neovim/issues/2048
+nmap <BS> <C-W>h
+
 " Location list
 nnoremap <leader>ln :lne<CR>
 nnoremap <leader>lp :lp<CR>
