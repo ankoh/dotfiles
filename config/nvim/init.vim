@@ -1,7 +1,6 @@
 " Section Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
-" utilities
 Plug 'ctrlpvim/ctrlp.vim'              " fuzzy file finder, mapped to <leader>t
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
 Plug 'Raimondi/delimitMate'            " automatic closing of quotes, parenthesis, brackets, etc.
@@ -10,6 +9,11 @@ Plug 'vim-airline/vim-airline-themes'  " themes for vim-airline
 Plug 'tpope/vim-fugitive'              " amazing git wrapper for vim
 Plug 'int3/vim-extradite'              " git browser
 Plug 'lyuts/vim-rtags'                 " rtags
+
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " autocomplete
 
 call plug#end()
 
@@ -47,6 +51,7 @@ if has('mouse')
 endif
 set clipboard=unnamed      " copy to system clipboard
 set ttyfast                " faster redrawing
+" set lazyredraw           
 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -136,3 +141,25 @@ nnoremap <C-G> :G
 
 " Extradite
 nnoremap <C-G><C-B> :Extradite<CR>
+
+" Deoplete
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_smart_case = 1
+
+
+" Section Autocomplete {{{
+
+" function! SetupDeopleteForCppWithRtags()
+"    setlocal omnifunc=RtagsCompleteFunc
+"
+"    if !exists('g:deoplete#omni#input_patterns')
+"        let g:deoplete#omni#input_patterns = {}
+"    endif
+"    let l:cpp_patterns=['[^. \t0-9]\.\w*|','[^. \t0-9]->\w*|','[a-zA-Z_]\w*::\w*']
+"    let g:deoplete#omni#input_patterns.cpp = l:cpp_patterns 
+"    set completeopt+=longest,menuone
+" endfunction
+
+" autocmd FileType cpp,c call SetupDeopleteForCppWithRtags()
+
+" }}}
