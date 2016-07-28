@@ -8,7 +8,7 @@ export REPORTTIME=10
 for config ($ZSH/**/*.zsh) source $config
 
 export EDITOR='nvim'
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$DOTFILES/bin:$PATH
 
 [ -z "$TMUX" ] && export TERM="xterm-256color"
