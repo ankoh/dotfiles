@@ -70,11 +70,8 @@ function extract() {
     fi
 }
 
-# set the background color to light
-function light() {
-    export BACKGROUND="light" && reload!
+# Generate a random password
+function rndpw() {
+   < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$1};echo;
 }
 
-function dark() {
-    export BACKGROUND="dark" && reload!
-}
