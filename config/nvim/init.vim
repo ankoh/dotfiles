@@ -128,7 +128,9 @@ set showbreak=↪
 nmap <leader>ic :set list!<cr>
 
 " NERDtree
-map <C-n> :NERDTreeToggle<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+nmap ,n :NERDTreeFind<CR>
+
 
 " Airline
 let g:airline_powerline_fonts = 1
