@@ -1,14 +1,16 @@
+#---------------------------------------------------------------------------
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
-
-# display how long all tasks over 10 seconds take
+#---------------------------------------------------------------------------
+# Display how long all tasks over 10 seconds take
 export REPORTTIME=10
-
-# source all .zsh files inside of the zsh/ directory
+#---------------------------------------------------------------------------
+# Source all .zsh files inside of the zsh/ directory
 for config ($ZSH/**/*.zsh) source $config
-
-export EDITOR='nvim'
+#---------------------------------------------------------------------------
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=$DOTFILES/bin:$PATH
-
+export PATH=$DOTFILES/sbin:$PATH
+#---------------------------------------------------------------------------
+export EDITOR='nvim'
+#---------------------------------------------------------------------------
 [ -z "$TMUX" ] && export TERM="xterm-256color"

@@ -10,10 +10,10 @@ Plug 'tpope/vim-fugitive'              " amazing git wrapper for vim
 Plug 'int3/vim-extradite'              " git browser
 Plug 'lyuts/vim-rtags'                 " rtags
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " autocomplete
+" function! DoRemote(arg)
+"  UpdateRemotePlugins
+" endfunction
+" Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " autocomplete
 
 call plug#end()
 
@@ -51,7 +51,6 @@ if has('mouse')
 endif
 set clipboard=unnamed      " copy to system clipboard
 set ttyfast                " faster redrawing
-" set lazyredraw           
 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -128,9 +127,9 @@ set showbreak=↪
 nmap <leader>ic :set list!<cr>
 
 " NERDtree
+let NERDTreeShowHidden=1
 nmap <C-n> :NERDTreeToggle<CR>
-nmap ,n :NERDTreeFind<CR>
-
+nmap <leader>n :NERDTreeFind<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
