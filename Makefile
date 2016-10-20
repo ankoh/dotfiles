@@ -5,8 +5,8 @@ SYS					:= $(shell uname)
 #---------------------------------------------------------------------------
 # Platform Makefiles
 ifeq ($(SYS),Darwin)
-include Makefile.Darwin
+include Makefile.darwin
 else
-include Makefile.Linux
+include Makefile.linux
 endif
 #---------------------------------------------------------------------------
