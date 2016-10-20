@@ -63,34 +63,17 @@ bind -r L resize-pane -R 10
 # Enable mouse support for switching panes/windows
 setw -g mouse on
 #---------------------------------------------------------------------------
-bind-key -T root PPage if-shell -F "#{alternate_on}" "send-keys PPage" "copy-mode -e; send-keys PPage"
-bind-key -t vi-copy PPage page-up
-bind-key -t vi-copy NPage page-down
-#---------------------------------------------------------------------------
-bind -T root WheelUpPane if-shell -F -t = "#{alternate_on}" "select-pane -t =; send-keys -M" "select-pane -t =; copy-mode -e; send-keys -M"
-bind -T root WheelDownPane if-shell -F -t = "#{alternate_on}" "select-pane -t =; send-keys -M" "select-pane -t =; send-keys -M"
-bind-key -t vi-copy WheelUpPane halfpage-up
-bind-key -t vi-copy WheelDownPane halfpage-down
-#---------------------------------------------------------------------------
-# Maximizing and restoring windows
-unbind Up
-bind Up new-window -d -n fullscreen \; swap-pane -s fullscreen.1 \; select-window -t fullscreen
-unbind Down
-bind Down last-window \; swap-pane -s fullscreen.1 \; kill-window -t fullscreen
-#---------------------------------------------------------------------------
 # Set vi mode for copy mode
 setw -g mode-keys vi
 # More settings to make copy-mode more vim-like
 unbind [
-bind Escape copy-mode
 unbind p
-bind p paste-buffer
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'y' copy-selection
-#---------------------------------------------------------------------------
-# Buffers to/from Mac clipboard, yay tmux book from pragprog
-bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
-bind C-v run "tmux set-buffer $(reattach-to-user-namespace pbpaste); tmux paste-buffer"
+bind v copy-mode
+bind Escape copy-mode
+bind -t vi-copy v       begin-selection
+bind -t vi-copy V       rectangle-toggle 
+bind -t vi-copy y       copy-selection
+bind -t vi-copy p       paste-buffer
 #---------------------------------------------------------------------------
 source ~/.dotfiles/tmux/theme.sh
 #---------------------------------------------------------------------------
