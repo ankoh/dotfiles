@@ -22,6 +22,7 @@ endif
 #---------------------------------------------------------------------------
 install-nvim: install-brew
 ifndef NVIM
+	brew tap homebrew/versions
 	brew install nvim/nvim/nvim
 else
 	@echo "λ  Found Neovim: ${NVIM}"
