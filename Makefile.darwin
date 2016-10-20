@@ -52,5 +52,5 @@ install-symlinks:
 	@echo "λ  Linking Tmux configuration"
 	@ln -sf ${MAKEFILE_DIR}tmux/tmux.conf.symlink ~/.tmux.conf
 #---------------------------------------------------------------------------
-install: print-environment install-nvim install-tmux install-symlinks 
+install: print-environment install-zsh install-nvim install-tmux install-symlinks 
 #---------------------------------------------------------------------------
