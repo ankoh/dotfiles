@@ -5,12 +5,17 @@ export ZSH=$DOTFILES/zsh
 # Display how long all tasks over 10 seconds take
 export REPORTTIME=10
 #---------------------------------------------------------------------------
-# Source all .zsh files inside of the zsh/ directory
-for config ($ZSH/**/*.zsh) source $config
-#---------------------------------------------------------------------------
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$DOTFILES/sbin:$PATH
 #---------------------------------------------------------------------------
 export EDITOR='nvim'
 #---------------------------------------------------------------------------
 [ -z "$TMUX" ] && export TERM="xterm-256color"
+#---------------------------------------------------------------------------
+# Source all .zsh files inside of the zsh/ directory
+for config ($ZSH/**/*.zsh) source $config
+#---------------------------------------------------------------------------
+# Source host config if existing
+if [ -f ~/.bashrc ]; then source ~/.bashrc; fi
+if [ -f ~/.bash_profile ]; then source ~/.bash_profile; fi
+#---------------------------------------------------------------------------
