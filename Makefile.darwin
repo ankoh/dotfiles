@@ -56,6 +56,8 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}config/nvim ~/.config/
 	@echo "λ  Linking Zsh configuration"
 	@ln -sf ${MAKEFILE_DIR}zsh/zshrc.symlink ~/.zshrc
+	@echo "λ  Linking Tmux configuration"
+	@ln -sf ${MAKEFILE_DIR}tmux/tmux.conf.symlink ~/.tmux.conf
 #---------------------------------------------------------------------------
 install: print-environment install-ohmyzsh install-nvim install-tmux install-symlinks 
 #---------------------------------------------------------------------------
