@@ -68,12 +68,14 @@ setw -g mode-keys vi
 # More settings to make copy-mode more vim-like
 unbind [
 unbind p
+unbind -t vi-copy Enter
 bind v copy-mode
 bind Escape copy-mode
 bind -t vi-copy v       begin-selection
 bind -t vi-copy V       rectangle-toggle 
 bind -t vi-copy y       copy-selection
-bind -t vi-copy p       paste-buffer
+bind            p       paste-buffer
 #---------------------------------------------------------------------------
 source ~/.dotfiles/tmux/theme.sh
 #---------------------------------------------------------------------------
+
