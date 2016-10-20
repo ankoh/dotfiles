@@ -1,0 +1,58 @@
+#---------------------------------------------------------------------------
+MAKEFILE_PATH := $(abspath $(lastword ${MAKEFILE_LIST}))
+MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
+#---------------------------------------------------------------------------
+BINDEPS 			:=
+BINCHECK 		:= $(foreach exec,${BINDEPS},$(if $(shell which ${exec}),,$(error "No ${exec} in PATH")))
+BREW				:= $(shell command -v brew 2> /dev/null)
+ZSH				:= $(shell command -v zsh 2> /dev/null)
+NVIM				:= $(shell command -v nvim 2> /dev/null)
+TMUX				:= $(shell command -v tmux 2> /dev/null)
+#---------------------------------------------------------------------------
+print-environment:
+	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
+	@echo "λ  MAKEFILE_DIR: ${MAKEFILE_DIR}"
+#---------------------------------------------------------------------------
+install-nvim:
+ifndef NVIM
+	sudo apt install -y software-properties-common
+	sudo add-apt-repository -y ppa:neovim-ppa/unstable
+	sudo apt update
+	sudo apt install -y neovim
+else
+	@echo "λ  Found Neovim: ${NVIM}"
+endif
+#---------------------------------------------------------------------------
+install-tmux:
+ifndef TMUX
+	sudo apt install -y tmux
+else
+	@echo "λ  Found Tmux: ${TMUX}"
+endif
+#---------------------------------------------------------------------------
+install-zsh:
+ifndef ZSH
+	sudo apt install -y zsh
+	chsh -s `which zsh`
+else
+	@echo "λ  Found Zsh: ${ZSH}"
+endif
+#---------------------------------------------------------------------------
+install-ohmyzsh: install-zsh
+ifeq ($(wildcard ~/.oh-my-zsh/.*),)
+	curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+else
+	@echo "λ  Found Oh-My-Zsh: ~/.oh-my-zsh/"
+endif
+#---------------------------------------------------------------------------
+install-symlinks:
+	@echo "λ  Linking Neovim configuration"
+	@mkdir -p ~/.config/
+	@ln -sf ${MAKEFILE_DIR}config/nvim ~/.config/
+	@echo "λ  Linking Zsh configuration"
+	@ln -sf ${MAKEFILE_DIR}zsh/zshrc.symlink ~/.zshrc
+	@echo "λ  Linking Tmux configuration"
+	@ln -sf ${MAKEFILE_DIR}tmux/tmux.conf.symlink ~/.tmux.conf
+#---------------------------------------------------------------------------
+install: print-environment install-ohmyzsh install-nvim install-tmux install-symlinks 
+#---------------------------------------------------------------------------
