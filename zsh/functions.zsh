@@ -75,3 +75,8 @@ function rndpw() {
    < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$1};echo;
 }
 
+# Docker cleanup
+function dcleanup(){
+    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+    docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+}
