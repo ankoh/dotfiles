@@ -6,14 +6,6 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 
 Plug 'Raimondi/delimitMate'            " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'vim-airline/vim-airline'         " fancy statusline
 Plug 'vim-airline/vim-airline-themes'  " themes for vim-airline
-Plug 'tpope/vim-fugitive'              " amazing git wrapper for vim
-Plug 'int3/vim-extradite'              " git browser
-Plug 'lyuts/vim-rtags'                 " rtags
-
-" function! DoRemote(arg)
-"  UpdateRemotePlugins
-" endfunction
-" Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') } " autocomplete
 
 call plug#end()
 
@@ -40,9 +32,9 @@ set textwidth=120
 " Tabs
 set expandtab              " insert tabs rather than spaces for <Tab>
 set smarttab               " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-set tabstop=3              " the visible width of tabs
-set softtabstop=3          " edit as if the tabs are 4 characters wide
-set shiftwidth=3           " number of spaces to use for indent and unindent
+set tabstop=2              " the visible width of tabs
+set softtabstop=2          " edit as if the tabs are 4 characters wide
+set shiftwidth=2           " number of spaces to use for indent and unindent
 set shiftround             " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest   " use longes match during completion
 
@@ -92,7 +84,7 @@ syntax on                  " switch syntax highlighting on
 set encoding=utf8
 set number                 " show line numbers
 
-set wrap                   "turn on line wrapping
+set wrap                   " turn on line wrapping
 set wrapmargin=8           " wrap lines when coming within n characters from side
 set linebreak              " set soft wrapping
 set showbreak=…            " show ellipsis at breaking
@@ -122,7 +114,6 @@ nnoremap <leader>lc :lcl<CR>
 " Invisible characters
 set invlist
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 set showbreak=↪
 nmap <leader>ic :set list!<cr>
 
@@ -134,33 +125,9 @@ nmap <leader>n :NERDTreeFind<CR>
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='papercolor'
-" }}}
 
 " Fugitive
 nnoremap <C-G><C-S> :Gstatus<CR>
 nnoremap <C-G> :G
-
-" Extradite
-nnoremap <C-G><C-B> :Extradite<CR>
-
-" Deoplete
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_smart_case = 1
-
-
-" Section Autocomplete {{{
-
-" function! SetupDeopleteForCppWithRtags()
-"    setlocal omnifunc=RtagsCompleteFunc
-"
-"    if !exists('g:deoplete#omni#input_patterns')
-"        let g:deoplete#omni#input_patterns = {}
-"    endif
-"    let l:cpp_patterns=['[^. \t0-9]\.\w*|','[^. \t0-9]->\w*|','[a-zA-Z_]\w*::\w*']
-"    let g:deoplete#omni#input_patterns.cpp = l:cpp_patterns 
-"    set completeopt+=longest,menuone
-" endfunction
-
-" autocmd FileType cpp,c call SetupDeopleteForCppWithRtags()
 
 " }}}
