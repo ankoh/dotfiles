@@ -1,11 +1,12 @@
 " Section Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'              " fuzzy file finder, mapped to <leader>t
+Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file finder, mapped to <leader>t
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
-Plug 'Raimondi/delimitMate'            " automatic closing of quotes, parenthesis, brackets, etc.
-Plug 'vim-airline/vim-airline'         " fancy statusline
-Plug 'vim-airline/vim-airline-themes'  " themes for vim-airline
+Plug 'Raimondi/delimitMate'             " automatic closing of quotes, parenthesis, brackets, etc.
+Plug 'vim-airline/vim-airline'          " fancy statusline
+Plug 'vim-airline/vim-airline-themes'   " themes for vim-airline
+Plug 'valloric/youcompleteme'           " autocompletion
 
 call plug#end()
 
@@ -32,9 +33,9 @@ set textwidth=120
 " Tabs
 set expandtab              " insert tabs rather than spaces for <Tab>
 set smarttab               " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-set tabstop=2              " the visible width of tabs
-set softtabstop=2          " edit as if the tabs are 4 characters wide
-set shiftwidth=2           " number of spaces to use for indent and unindent
+set tabstop=4              " the visible width of tabs
+set softtabstop=4          " edit as if the tabs are 4 characters wide
+set shiftwidth=4           " number of spaces to use for indent and unindent
 set shiftround             " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest   " use longes match during completion
 
