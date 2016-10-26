@@ -112,7 +112,7 @@ nnoremap <leader>ln :lne<CR>
 nnoremap <leader>lp :lp<CR>
 nnoremap <leader>lc :lcl<CR>
 
-" Invisible characters
+" Special haracters
 set invlist
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
