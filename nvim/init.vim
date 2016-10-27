@@ -30,8 +30,8 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Alternate map leader
-let mapleader = ' '
-let g:mapleader = ' '
+let mapleader = ','
+let g:mapleader = ','
 
 set history=1000           " change history to 1000
 set textwidth=120
@@ -118,11 +118,18 @@ nnoremap <leader>ln :lne<CR>
 nnoremap <leader>lp :lp<CR>
 nnoremap <leader>lc :lcl<CR>
 
-" Special haracters
+" Special characters
 set invlist
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 nmap <leader>ic :set list!<cr>
+
+" YCM
+nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gi :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <leader>gf :YcmCompleter GoToImprecise<CR>
 
 " NERDtree
 let NERDTreeShowHidden=1
@@ -132,9 +139,5 @@ nmap <leader>n :NERDTreeFind<CR>
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='lucius'
-
-" Fugitive
-nnoremap <C-G><C-S> :Gstatus<CR>
-nnoremap <C-G> :G
 
 " }}}
