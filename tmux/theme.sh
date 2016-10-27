@@ -1,6 +1,8 @@
 #### COLOUR
 
-tm_icon=""
+# tm_prefix="☕ "
+# tm_prefix="♨︎ "
+tm_prefix="❏"
 tm_color_active=colour39
 tm_color_inactive=colour24
 tm_color_feature=colour24
@@ -32,7 +34,7 @@ set -g window-status-format "#I #W"
 # active window title colors
 set-window-option -g window-status-current-fg $tm_color_active
 set-window-option -g window-status-current-bg default
-set-window-option -g  window-status-current-format "#[bold]#I #W"
+set-window-option -g window-status-current-format "#[bold]#I #W"
 
 # pane border
 set-option -g pane-border-fg $tm_color_inactive
@@ -53,7 +55,7 @@ tm_battery="#(~/.dotfiles/sbin/battery_indicator.sh)"
 
 tm_date="#[fg=$tm_color_inactive] %R %d %b"
 tm_host="#[fg=$tm_color_feature,bold]#h"
-tm_session_name=" #[fg=$tm_color_feature,bold]$tm_icon #S"
+tm_session_name=" #[fg=$tm_color_feature,bold]$tm_prefix #S"
 
 set -g status-left $tm_session_name' '
 set -g status-right $tm_tunes' '$tm_date' '$tm_host' '$tm_battery' '
