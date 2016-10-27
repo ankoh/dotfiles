@@ -1,18 +1,24 @@
 " Section Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file finder, mapped to <leader>t
+Plug 'valloric/youcompleteme'           " autocompletion
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
+Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file finder, mapped to <leader>t
 Plug 'Raimondi/delimitMate'             " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'vim-airline/vim-airline'          " fancy statusline
 Plug 'vim-airline/vim-airline-themes'   " themes for vim-airline
-Plug 'valloric/youcompleteme'           " autocompletion
+Plug 'flazz/vim-colorschemes'           " colorschemes
 
 call plug#end()
 
 " }}}
 
 " Section General {{{
+
+" colorscheme kate
+colorscheme lucius
+" colorscheme Tomorrow
+" colorscheme Tomorrow-Night
 
 set nocompatible     " not compatible with vi
 set autoread         " detect when a file is changed
@@ -125,7 +131,7 @@ nmap <leader>n :NERDTreeFind<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='papercolor'
+let g:airline_theme='lucius'
 
 " Fugitive
 nnoremap <C-G><C-S> :Gstatus<CR>
