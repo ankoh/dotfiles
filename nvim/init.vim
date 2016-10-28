@@ -39,10 +39,10 @@ set history=1000           " change history to 1000
 set textwidth=120
 
 " Tabs
-nnoremap th :tabfirst<CR>
-nnoremap tj :tabnext<CR>
-nnoremap tk :tabprev<CR>
-nnoremap tl :tablast<CR>
+nnoremap tj :tabfirst<CR>
+nnoremap tl :tabnext<CR>
+nnoremap th :tabprev<CR>
+nnoremap tk :tablast<CR>
 nnoremap tn :tabnew<Space>
 nnoremap tt :tabedit<Space>
 nnoremap td :tabclose<CR>
