@@ -39,7 +39,7 @@ set history=1000           " change history to 1000
 set textwidth=120
 
 " Tabs
-set expandtab              " insert tabs rather than spaces for <Tab>
+set expandtab              " insert spaces rather than tab for <Tab>
 set smarttab               " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 set tabstop=4              " the visible width of tabs
 set softtabstop=4          " edit as if the tabs are 4 characters wide
@@ -92,6 +92,7 @@ syntax on                  " switch syntax highlighting on
 
 set encoding=utf8
 set number                 " show line numbers
+set relativenumber         " show relative line numbers
 
 set wrap                   " turn on line wrapping
 set wrapmargin=8           " wrap lines when coming within n characters from side
@@ -127,19 +128,23 @@ set showbreak=↪
 nmap <leader>ic :set list!<cr>
 
 " YCM
+let g:ycm_confirm_extra_conf=0
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gi :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>gf :YcmCompleter GoToImprecise<CR>
 
+" Local Vimrc
+let g:localvimrc_ask=0
+
 " NERDtree
 let NERDTreeShowHidden=1
-nmap <C-n> :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeFind<CR>
+nmap <leader>m :NERDTreeToggle<CR>
 
 " Airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 let g:airline_theme='lucius'
 
 " }}}
