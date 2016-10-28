@@ -35,6 +35,10 @@ noremap <Right> <NOP>
 let mapleader = ','
 let g:mapleader = ','
 
+" YCM hates C-c
+" https://github.com/Valloric/YouCompleteMe/blob/master/README.md
+inoremap jk <Esc>
+
 set history=1000           " change history to 1000
 set textwidth=120
 
