@@ -9,6 +9,7 @@ Plug 'Raimondi/delimitMate'             " automatic closing of quotes, parenthes
 Plug 'vim-airline/vim-airline'          " fancy statusline
 Plug 'vim-airline/vim-airline-themes'   " themes for vim-airline
 Plug 'flazz/vim-colorschemes'           " colorschemes
+Plug 'embear/vim-localvimrc'            " local vim configurations
 
 call plug#end()
 
