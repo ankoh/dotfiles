@@ -2,6 +2,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'valloric/youcompleteme'           " autocompletion
+Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm gen
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
 Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file finder, mapped to <leader>t
 Plug 'Raimondi/delimitMate'             " automatic closing of quotes, parenthesis, brackets, etc.
