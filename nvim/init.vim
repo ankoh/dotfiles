@@ -125,7 +125,7 @@ nnoremap <leader>lc :lcl<CR>
 set invlist
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
-nmap <leader>ic :set list!<cr>
+nnoremap <leader>ic :set list!<CR>
 
 " YCM
 let g:ycm_confirm_extra_conf=0
@@ -140,8 +140,8 @@ let g:localvimrc_ask=0
 
 " NERDtree
 let NERDTreeShowHidden=1
-nmap <leader>n :NERDTreeFind<CR>
-nmap <leader>m :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeFind<CR>
+nnoremap <leader>m :NERDTreeToggle<CR>
 
 " Airline
 let g:airline_powerline_fonts=1
