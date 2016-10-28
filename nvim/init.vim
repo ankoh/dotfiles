@@ -38,15 +38,6 @@ let g:mapleader = ','
 set history=1000           " change history to 1000
 set textwidth=120
 
-" Tabs
-nnoremap tj :tabfirst<CR>
-nnoremap tl :tabnext<CR>
-nnoremap th :tabprev<CR>
-nnoremap tk :tablast<CR>
-nnoremap tn :tabnew<Space>
-nnoremap tt :tabedit<Space>
-nnoremap td :tabclose<CR>
-
 " <Tab>
 set expandtab              " insert spaces rather than tab for <Tab>
 set smarttab               " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
@@ -120,6 +111,15 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Tabs
+nnoremap tj :tabfirst<CR>
+nnoremap tl :tabnext<CR>
+nnoremap th :tabprev<CR>
+nnoremap tk :tablast<CR>
+nnoremap tn :tabnew<Space>
+nnoremap tt :tabedit<Space>
+nnoremap td :tabclose<CR>
 
 " Fix TMUX+NVIM C-H bug
 " https://github.com/neovim/neovim/issues/2048
