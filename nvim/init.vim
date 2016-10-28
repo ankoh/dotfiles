@@ -138,6 +138,9 @@ nnoremap <leader>ic :set list!<CR>
 
 " YCM
 let g:ycm_confirm_extra_conf=0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gi :YcmCompleter GoToDefinition<CR>
