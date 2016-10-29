@@ -46,7 +46,7 @@ endif
 install-symlinks:
 	@echo "λ  Linking Neovim configuration"
 	@mkdir -p ~/.config/
-	@rm -f ${MAKEFILE_DIR}nvim
+	@sh -c "[ ! -L ${MAKEFILE_DIR}nvim ] || rm ${MAKEFILE_DIR}nvim;"
 	@ln -sf ${MAKEFILE_DIR}nvim ~/.config/
 	@echo "λ  Linking Zsh configuration"
 	@ln -sf ${MAKEFILE_DIR}zsh/zshrc.symlink ~/.zshrc
