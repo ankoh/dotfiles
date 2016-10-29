@@ -75,12 +75,7 @@ set nofoldenable           " don't fold by default
 set foldlevel=1            " 1 fold opened by default
 
 set so=7                   " keep 7 lines in front of the cursors - when moving vertical
-set wildmenu               " enhanced command line completion
-set hidden                 " current buffer can be put into background
-set showcmd                " show incomplete commands
-set wildmode=list:longest  " complete files like a shell
 set scrolloff=3            " lines of text around cursor
-set shell=$SHELL
 set cmdheight=1            " command bar height
 
 set title                  " set terminal title
@@ -144,9 +139,10 @@ set showbreak=↪
 nnoremap <leader>ic :set list!<CR>
 
 " YCM
-let g:ycm_confirm_extra_conf=0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf=0 " silently use .ycm_extra_conf.py
+let g:ycm_min_num_of_chars_for_completion=99 " only use semantic completion
+let g:ycm_autoclose_preview_window_after_completion=1 " hide the preview window
+let g:ycm_autoclose_preview_window_after_insertion=1 " hide the preview window
 
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
