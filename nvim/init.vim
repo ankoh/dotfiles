@@ -29,10 +29,10 @@ set nocompatible     " not compatible with vi
 set autoread         " detect when a file is changed
 
 " Learn it the hard way
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 
 " Alternate map leader
 let mapleader = ','
@@ -52,7 +52,6 @@ set tabstop=4              " the visible width of tabs
 set softtabstop=4          " edit as if the tabs are 4 characters wide
 set shiftwidth=4           " number of spaces to use for indent and unindent
 set shiftround             " round indent to a multiple of 'shiftwidth'
-set completeopt+=longest   " use longes match during completion
 
 if has('mouse')
     set mouse=a            " mouse support (e.g. copy selected without mouse)
@@ -140,6 +139,7 @@ nnoremap <leader>ic :set list!<CR>
 
 " YCM
 let g:ycm_confirm_extra_conf=0 " silently use .ycm_extra_conf.py
+let g:ycm_auto_trigger=0 " disable auto trigger
 let g:ycm_autoclose_preview_window_after_completion=1 " hide the preview window
 let g:ycm_autoclose_preview_window_after_insertion=1 " hide the preview window
 
