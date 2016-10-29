@@ -140,7 +140,6 @@ nnoremap <leader>ic :set list!<CR>
 
 " YCM
 let g:ycm_confirm_extra_conf=0 " silently use .ycm_extra_conf.py
-let g:ycm_min_num_of_chars_for_completion=99 " only use semantic completion
 let g:ycm_autoclose_preview_window_after_completion=1 " hide the preview window
 let g:ycm_autoclose_preview_window_after_insertion=1 " hide the preview window
 
