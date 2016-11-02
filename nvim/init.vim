@@ -20,10 +20,6 @@ call plug#end()
 
 " Section General {{{
 
-" locales
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
 " colorscheme kate
 colorscheme lucius
 " colorscheme Tomorrow
