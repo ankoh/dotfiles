@@ -1,7 +1,7 @@
-.DEFAULT_GOAL 		:= all
+.DEFAULT_GOAL := all
 #---------------------------------------------------------------------------
 # Environment
-SYS					:= $(shell uname)
+SYS := $(shell uname)
 #---------------------------------------------------------------------------
 # Platform Makefiles
 ifeq ($(SYS),Darwin)
