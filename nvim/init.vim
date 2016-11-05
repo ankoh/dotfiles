@@ -1,13 +1,9 @@
-" Section Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'embear/vim-localvimrc'            " local vim configurations
-
 Plug 'valloric/youcompleteme'           " autocompletion
 Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm gen
-
 Plug 'Raimondi/delimitMate'             " automatic closing of quotes, parenthesis, brackets, etc.
-
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
 Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file finder, mapped to <leader>t
 Plug 'vim-airline/vim-airline'          " fancy statusline
@@ -15,10 +11,6 @@ Plug 'vim-airline/vim-airline-themes'   " themes for vim-airline
 Plug 'flazz/vim-colorschemes'           " colorschemes
 
 call plug#end()
-
-" }}}
-
-" Section General {{{
 
 " colorscheme kate
 colorscheme lucius
@@ -64,10 +56,6 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 set laststatus=2           " show the satus line all the time
 
-" }}}
-
-" Section User Interface {{{
-
 set foldmethod=syntax      " fold based on indent
 set foldnestmax=10         " deepest fold is 10 levels
 set nofoldenable           " don't fold by default
@@ -102,10 +90,6 @@ set showbreak=…            " show ellipsis at breaking
 
 set autoindent             " automatically set indent of new line
 set smartindent
-
-" }}}
-
-" Section Mappings {{{
 
 " Window switching
 nnoremap <C-J> <C-W><C-J>
@@ -160,5 +144,3 @@ nnoremap <leader>m :NERDTreeToggle<CR>
 " Airline
 let g:airline_powerline_fonts=1
 let g:airline_theme='lucius'
-
-" }}}
