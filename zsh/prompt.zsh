@@ -1,6 +1,6 @@
 # Load vcs_info
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git # You can add hg too if needed: `git hg`
+zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' use-simple true
 zstyle ':vcs_info:git*' max-exports 2
 zstyle ':vcs_info:git*' formats ' %b' 'x%R'

@@ -1,16 +1,15 @@
-# reload zsh config
+# Reload zsh config
 alias reload!='source ~/.zshrc'
 
-# Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
-else # OS X `ls`
+else
     colorflag="-G"
 fi
 
 alias vim="nvim"
 
-# Filesystem aliases
+# Filesystem
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....="cd ../../.."
@@ -24,8 +23,8 @@ alias rmf="rm -rf"
 
 # Helpers
 alias grep='grep --color=auto'
-alias df='df -h'     # disk free, in Gigabytes, not bytes
-alias du='du -h -c'  # calculate disk usage for a folder
+alias df='df -h'
+alias du='du -h -c'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -53,6 +52,14 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
+# http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 10'"
+
+# Tmux
+alias ta='tmux attach'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tns='tmux new-session -s'
+alias tsrc='tmux source'
+alias tide='tmux split-window -v -p 25 -t 0;tmux split-window -h -p 50 -t 1;tmux select-pane -t 0'

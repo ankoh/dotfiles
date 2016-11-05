@@ -10,7 +10,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-# history
+# History
 setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 setopt HIST_REDUCE_BLANKS

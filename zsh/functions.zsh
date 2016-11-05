@@ -1,8 +1,4 @@
-####################
-# functions
-####################
-
-# print available colors and their numbers
+# Rrint available colors and their numbers
 function colours() {
     for i in {0..255}; do
         printf "\x1b[38;5;${i}m colour${i}"
@@ -19,22 +15,24 @@ function md() {
     mkdir -p "$@" && cd "$@"
 }
 
+
+# History
 function hist() {
     history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }
 
-# find shorthand
+# Find shorthand
 function f() {
     find . -name "$1"
 }
 
-# take this repo and copy it to somewhere else minus the .git stuff.
+# Take this repo and copy it to somewhere else minus the .git stuff.
 function gitexport(){
     mkdir -p "$1"
     git archive master | tar -x -C "$1"
 }
 
-# get gzipped size
+# Get gzipped size
 function gz() {
     echo "orig size    (bytes): "
     cat "$1" | wc -c
@@ -72,14 +70,16 @@ function extract() {
 
 # Generate a random password
 function rndpw() {
-   < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$1};echo;
+    date +%s | sha256sum | base64 | head -c ${1:-30} ; echo
 }
 
-# Docker
+# Docker cleanup
 function docker-cleanup() {
    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
    docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
 }
+
+# Docker reset
 function docker-reset() {
    docker rm -vf $(docker ps -a -q) 2>/dev/null
    docker rmi -f $(docker images -q) 2>/dev/null
