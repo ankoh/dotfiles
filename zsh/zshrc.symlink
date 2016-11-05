@@ -2,7 +2,9 @@
 setopt nonomatch
 #---------------------------------------------------------------------------
 # Default locales
-export LC_ALL=C
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 #---------------------------------------------------------------------------
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
@@ -11,7 +13,7 @@ export ZSH=$DOTFILES/zsh
 export REPORTTIME=10
 #---------------------------------------------------------------------------
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=$DOTFILES/sbin:$PATH
+export PATH=$DOTFILES/bin:$PATH
 #---------------------------------------------------------------------------
 export EDITOR='nvim'
 #---------------------------------------------------------------------------

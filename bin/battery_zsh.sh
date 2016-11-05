@@ -1,7 +1,6 @@
 #!/bin/bash
-# modified from http://ficate.com/blog/2012/10/15/battery-life-in-the-land-of-tmux/
 
-HEART=' ●'
+DOT='● '
 
 if [[ `uname` == 'Linux' ]]; then
   current_charge=$(cat /proc/acpi/battery/BAT1/state | grep 'remaining capacity' | awk '{print $3}')
@@ -17,10 +16,10 @@ if [[ $charged_slots -gt 3 ]]; then
   charged_slots=3
 fi
 
-echo -n '#[fg=colour24]'
-for i in `seq 1 $charged_slots`; do echo -n "$HEART"; done
+echo -n '%F{24}'
+for i in `seq 1 $charged_slots`; do echo -n "$DOT"; done
 
 if [[ $charged_slots -lt 3 ]]; then
-  echo -n '#[fg=colour254]'
-  for i in `seq 1 $(echo "3-$charged_slots" | bc)`; do echo -n "$HEART"; done
+  echo -n '%F{254}'
+  for i in `seq 1 $(echo "3-$charged_slots" | bc)`; do echo -n "$DOT"; done
 fi

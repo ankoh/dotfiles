@@ -51,7 +51,7 @@ set-option -g display-panes-colour $tm_color_inactive
 # clock
 set-window-option -g clock-mode-colour $tm_color_active
 
-tm_battery="#(~/.dotfiles/sbin/battery_indicator.sh)"
+tm_battery="#(~/.dotfiles/bin/battery_tm.sh)"
 
 tm_date="#[fg=$tm_color_inactive] %R %d %b"
 tm_host="#[fg=$tm_color_feature,bold]#h"
