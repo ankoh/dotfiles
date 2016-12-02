@@ -9,6 +9,10 @@ export LANG=en_US.UTF-8
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
 #---------------------------------------------------------------------------
+# Wow, I hate the javascript world
+export NPM_CONIFG_PREFIX=~/.npm_global
+export PATH=~/.npm-global/bin:$PATH
+#---------------------------------------------------------------------------
 # Display how long all tasks over 10 seconds take
 export REPORTTIME=10
 #---------------------------------------------------------------------------
