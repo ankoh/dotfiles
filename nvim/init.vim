@@ -138,7 +138,8 @@ nnoremap <leader>gf :YcmCompleter GoToImprecise<CR>
 let g:localvimrc_ask=0
 
 " NERDtree
-let NERDTreeShowHidden=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeWinSize = 40 
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 
