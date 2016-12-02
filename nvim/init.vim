@@ -9,6 +9,7 @@ Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file finder, mapped to <leader>t
 Plug 'vim-airline/vim-airline'          " fancy statusline
 Plug 'vim-airline/vim-airline-themes'   " themes for vim-airline
 Plug 'flazz/vim-colorschemes'           " colorschemes
+Plug 'leafgarland/typescript-vim'       " typescript
 
 call plug#end()
 
