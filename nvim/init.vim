@@ -6,6 +6,7 @@ Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm gen
 Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
 Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder, mapped to <leader>t
+Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'vim-airline/vim-airline-themes'       " themes for vim-airline
 Plug 'flazz/vim-colorschemes'               " colorschemes
