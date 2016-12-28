@@ -11,6 +11,9 @@ print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
 	@echo "λ  MAKEFILE_DIR: ${MAKEFILE_DIR}"
 #---------------------------------------------------------------------------
+create-npm-root:
+	@mkdir -p ~/.npm_global
+#---------------------------------------------------------------------------
 install-nvim:
 ifndef NVIM
 	sudo apt install -y software-properties-common
@@ -53,5 +56,5 @@ install-symlinks:
 	@echo "λ  Linking Tmux configuration"
 	@ln -sf ${MAKEFILE_DIR}tmux/tmux.conf.symlink ~/.tmux.conf
 #---------------------------------------------------------------------------
-install: print-environment install-zsh install-nvim install-tmux install-symlinks 
+install: print-environment install-zsh install-nvim install-tmux install-symlinks create-npm-root
 #---------------------------------------------------------------------------

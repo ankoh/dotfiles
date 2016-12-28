@@ -1,14 +1,18 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'embear/vim-localvimrc'            " local vim configurations
-Plug 'valloric/youcompleteme'           " autocompletion
+Plug 'embear/vim-localvimrc'                " local vim configurations
+Plug 'valloric/youcompleteme'               " autocompletion
 Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm gen
-Plug 'Raimondi/delimitMate'             " automatic closing of quotes, parenthesis, brackets, etc.
+Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
-Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file finder, mapped to <leader>t
-Plug 'vim-airline/vim-airline'          " fancy statusline
-Plug 'vim-airline/vim-airline-themes'   " themes for vim-airline
-Plug 'flazz/vim-colorschemes'           " colorschemes
+Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder, mapped to <leader>t
+Plug 'vim-airline/vim-airline'              " fancy statusline
+Plug 'vim-airline/vim-airline-themes'       " themes for vim-airline
+Plug 'flazz/vim-colorschemes'               " colorschemes
+Plug 'leafgarland/typescript-vim'           " typescript syntax
+Plug 'quramy/tsuquyomi'                     " typescript completion
+Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
+
 
 call plug#end()
 
@@ -133,11 +137,18 @@ nnoremap <leader>gi :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>gf :YcmCompleter GoToImprecise<CR>
 
+" YCM Typescript
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
 " Local Vimrc
 let g:localvimrc_ask=0
 
 " NERDtree
-let NERDTreeShowHidden=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeWinSize = 40 
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 

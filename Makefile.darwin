@@ -11,6 +11,9 @@ print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
 	@echo "λ  MAKEFILE_DIR: ${MAKEFILE_DIR}"
 #---------------------------------------------------------------------------
+create-npm-root:
+	@mkdir -p ~/.npm_global
+#---------------------------------------------------------------------------
 install-brew:
 ifndef BREW
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -57,5 +60,5 @@ install-symlinks:
 	@grep -q -F `which zsh` /etc/shells || echo `which zsh` | sudo tee -a /etc/shells > /dev/null
 	@chsh -s `which zsh`
 #---------------------------------------------------------------------------
-install: print-environment install-zsh install-nvim install-tmux install-symlinks 
+install: print-environment install-zsh install-nvim install-tmux install-symlinks create-npm-root
 #---------------------------------------------------------------------------
