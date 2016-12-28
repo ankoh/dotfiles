@@ -48,7 +48,7 @@ set shiftround             " round indent to a multiple of 'shiftwidth'
 if has('mouse')
     set mouse=a            " mouse support (e.g. copy selected without mouse)
 endif
-set clipboard=unnamed      " copy to system clipboard
+set clipboard+=unnamedplus " copy to system clipboard
 set ttyfast                " faster redrawing
 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
