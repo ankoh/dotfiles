@@ -89,10 +89,3 @@ function docker-reset() {
 function find-fat-things() {
     du -ahx / | sort -rh | head -100
 }
-
-# Slim fat
-# E.g.:
-# find $CONFLUENCE_INSTALL/logs -name 'catalina.*.log' -mtime +1w -print0 | xargs -0 rm -f
-function slim-fat-things() {
-    find $1 -name $2 -mtime $3 -print0 | xargs -0 rm -f
-}
