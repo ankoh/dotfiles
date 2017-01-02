@@ -126,6 +126,10 @@ set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 nnoremap <leader>ic :set list!<CR>
 
+" Terminal
+tnoremap <Esc> <C-\><C-n>
+tnoremap jk <C-\><C-n>
+
 " YCM
 let g:ycm_confirm_extra_conf=0 " silently use .ycm_extra_conf.py
 let g:ycm_auto_trigger=0 " disable auto trigger
