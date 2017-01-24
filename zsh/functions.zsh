@@ -89,3 +89,8 @@ function docker-reset() {
 function find-fat-things() {
     du -ahx / | sort -rh | head -100
 }
+
+# Dump clang record layouts
+function dump-record-layout() {
+    clang++ -std=c++14 -Xclang -fdump-record-layouts $1
+}
