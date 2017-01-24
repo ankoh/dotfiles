@@ -40,7 +40,7 @@ let g:mapleader = ','
 inoremap jk <Esc>
 
 set history=1000           " change history to 1000
-set textwidth=120
+set textwidth=0
 
 " <Tab>
 set expandtab              " insert spaces rather than tab for <Tab>
@@ -88,9 +88,7 @@ set encoding=utf8
 set number                 " show line numbers
 set relativenumber         " show relative line numbers
 
-set wrap                   " turn on line wrapping
-set wrapmargin=8           " wrap lines when coming within n characters from side
-set linebreak              " set soft wrapping
+set nowrap                 " turn off line wrapping
 set showbreak=…            " show ellipsis at breaking
 
 set autoindent             " automatically set indent of new line
