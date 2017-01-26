@@ -6,6 +6,7 @@ BREW := $(shell command -v brew 2> /dev/null)
 ZSH := $(shell command -v zsh 2> /dev/null)
 NVIM := $(shell command -v nvim 2> /dev/null)
 TMUX := $(shell command -v tmux 2> /dev/null)
+CTAGS := $(shell command -v ctags 2> /dev/null)
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
@@ -46,6 +47,13 @@ else
 	@echo "λ  Found Zsh: ${ZSH}"
 endif
 #---------------------------------------------------------------------------
+install-ctags:
+ifndef CTAGS
+	sudo apt install -y exubertant-ctags
+else
+	@echo "λ  Found Ctags: ${CTAGS}"
+endif
+#---------------------------------------------------------------------------
 install-symlinks:
 	@echo "λ  Linking Neovim configuration"
 	@mkdir -p ~/.config/
@@ -56,5 +64,5 @@ install-symlinks:
 	@echo "λ  Linking Tmux configuration"
 	@ln -sf ${MAKEFILE_DIR}tmux/tmux.conf.symlink ~/.tmux.conf
 #---------------------------------------------------------------------------
-install: print-environment install-zsh install-nvim install-tmux install-symlinks create-npm-root
+install: print-environment install-zsh install-nvim install-ctags install-tmux install-symlinks create-npm-root
 #---------------------------------------------------------------------------
