@@ -49,7 +49,7 @@ endif
 #---------------------------------------------------------------------------
 install-ctags:
 ifndef CTAGS
-	sudo apt install -y exubertant-ctags
+	sudo apt install -y exuberant-ctags
 else
 	@echo "λ  Found Ctags: ${CTAGS}"
 endif
