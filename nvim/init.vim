@@ -9,7 +9,8 @@ Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder, mapped to <lead
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'vim-airline/vim-airline-themes'       " themes for vim-airline
-Plug 'flazz/vim-colorschemes'               " colorschemes
+" Plug 'flazz/vim-colorschemes'             " colorschemes
+Plug 'crusoexia/vim-monokai'                " monokai
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'quramy/tsuquyomi'                     " typescript completion
 Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
