@@ -91,7 +91,7 @@ set encoding=utf8
 set number                 " show line numbers
 set relativenumber         " show relative line numbers
 
-set nowrap                 " turn off line wrapping
+set wrap                   " turn on line wrapping
 set showbreak=…            " show ellipsis at breaking
 
 set autoindent             " automatically set indent of new line
