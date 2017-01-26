@@ -30,7 +30,7 @@ else
 	@echo "λ  Found Neovim: ${NVIM}"
 endif
 	@echo "λ  Required: https://github.com/ryanoasis/nerd-fonts"
-	@echo "λ  Recommended: White terminal theme with BG RGB(238,238,238)"
+	@echo "λ  Recommended: Black terminal theme with BG RGB(48,48,48)"
 #---------------------------------------------------------------------------
 install-tmux: install-brew
 ifndef TMUX

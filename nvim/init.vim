@@ -17,8 +17,9 @@ Plug 'lervag/vimtex'                        " latex support
 
 call plug#end()
 
+colorscheme monokai
 " colorscheme kate
-colorscheme lucius
+" colorscheme lucius
 " colorscheme Tomorrow
 " colorscheme Tomorrow-Night
 
