@@ -24,9 +24,9 @@ precmd() {
     cmd_git="$(print -P "%F{241}$(git_dirty)%f$vcs_info_msg_0_")"
     cmd_pwd="$(print -P "%{%F{241}%}%~")"
     if [ $(git rev-parse --is-inside-work-tree &>/dev/null && echo 1) ]; then
-        print -P "\n%K{235}${cmd_host}: [${cmd_git}] ${cmd_pwd} "
+        print -P "\n%K{234}${cmd_host}: [${cmd_git}] ${cmd_pwd} "
     else
-        print -P "\n%K{235}${cmd_host}: ${cmd_pwd} "
+        print -P "\n%K{234}${cmd_host}: ${cmd_pwd} "
     fi
 }
 
