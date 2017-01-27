@@ -86,6 +86,7 @@ set showmatch              " show matching braces
 set mat=2                  " how many tenths of a second to blink
 
 syntax on                  " switch syntax highlighting on
+set synmaxcol=256          " limit syntax highlighting to 256 chars"
 
 set encoding=utf8
 set number                 " show line numbers
