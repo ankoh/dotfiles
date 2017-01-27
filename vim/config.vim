@@ -98,14 +98,13 @@ set autoindent             " automatically set indent of new line
 set smartindent
 
 " Window operations
-" Let's try to get the original keys into our muscle memory
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
 nnoremap <leader>w <C-W>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
-" Fast scrolling
+" Fast scrolling if ctrl key is not mapped correctly
 nnoremap <leader>f <C-F>
 nnoremap <leader>b <C-B>
 
@@ -166,8 +165,8 @@ let g:NERDTreeWinSize = 40
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 
-" Tagbar
-nnoremap <leader>t :TagbarToggle<CR>
+" CTag Tagbar
+nnoremap <leader>ct :TagbarToggle<CR>
 
 " Airline
 let g:airline_powerline_fonts=1
