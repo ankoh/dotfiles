@@ -55,9 +55,7 @@ if has('mouse')
     set mouse=a            " mouse support (e.g. copy selected without mouse)
 endif
 set clipboard+=unnamedplus " copy to system clipboard
-
 set ttyfast                " faster redrawing
-set lazyredraw             " draw lazy
 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
