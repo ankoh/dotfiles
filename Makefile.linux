@@ -56,9 +56,14 @@ endif
 #---------------------------------------------------------------------------
 install-symlinks:
 	@echo "λ  Linking Neovim configuration"
-	@mkdir -p ~/.config/
-	@sh -c "[ ! -L ${MAKEFILE_DIR}nvim ] || rm ${MAKEFILE_DIR}nvim;"
-	@ln -sf ${MAKEFILE_DIR}nvim ~/.config/
+	@sh -c "[ ! -L ~/.config/nvim ] || rm ~/.config/nvim;"
+	@sh -c "[ ! -L ~/.vim ] || rm ~/.vim;"
+	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
+	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
+	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
+	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
+	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
+	@ln -sf ${MAKEFILE_DIR}vim/gui.vim ~/.gvimrc
 	@echo "λ  Linking Zsh configuration"
 	@ln -sf ${MAKEFILE_DIR}zsh/zshrc.symlink ~/.zshrc
 	@echo "λ  Linking Tmux configuration"

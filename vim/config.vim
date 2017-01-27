@@ -97,25 +97,26 @@ set showbreak=…            " show ellipsis at breaking
 set autoindent             " automatically set indent of new line
 set smartindent
 
-" Window switching
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Window operations
+" Let's try to get the original keys into our muscle memory
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
+nnoremap <leader>w <C-W>
 
-" Window splitting
-nnoremap ,s <C-W>s
-nnoremap ,v <C-W>v
-nnoremap ,w <C-W>w
+" Fast scrolling
+nnoremap <leader>f <C-F>
+nnoremap <leader>b <C-B>
 
 " Tabs
-nnoremap tj :tabfirst<CR>
-nnoremap tl :tabnext<CR>
-nnoremap th :tabprev<CR>
-nnoremap tk :tablast<CR>
-nnoremap tn :tabnew<Space>
-nnoremap tt :tabedit<Space>
-nnoremap td :tabclose<CR>
+nnoremap <leader>tj :tabfirst<CR>
+nnoremap <leader>tl :tabnext<CR>
+nnoremap <leader>th :tabprev<CR>
+nnoremap <leader>tk :tablast<CR>
+nnoremap <leader>tn :tabnew<Space>
+nnoremap <leader>tt :tabedit<Space>
+nnoremap <leader>td :tabclose<CR>
 
 " Fix TMUX+NVIM C-H bug
 " https://github.com/neovim/neovim/issues/2048
@@ -133,14 +134,16 @@ set showbreak=↪
 nnoremap <leader>ic :set list!<CR>
 
 " Terminal
-tnoremap <Esc> <C-\><C-n>
-tnoremap jk <C-\><C-n>
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap jk <C-\><C-n>
+endif
 
 " YCM
-let g:ycm_confirm_extra_conf=0 " silently use .ycm_extra_conf.py
-let g:ycm_auto_trigger=0 " disable auto trigger
-let g:ycm_autoclose_preview_window_after_completion=1 " hide the preview window
-let g:ycm_autoclose_preview_window_after_insertion=1 " hide the preview window
+let g:ycm_confirm_extra_conf=0                          " silently use .ycm_extra_conf.py
+let g:ycm_auto_trigger=0                                " disable auto trigger
+let g:ycm_autoclose_preview_window_after_completion=1   " hide the preview window
+let g:ycm_autoclose_preview_window_after_insertion=1    " hide the preview window
 
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
