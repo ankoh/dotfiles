@@ -44,6 +44,9 @@ endif
 install-zsh: install-brew
 ifndef ZSH
 	brew install zsh
+	@echo "λ  Setting Zsh shell"
+	@grep -q -F `which zsh` /etc/shells || echo `which zsh` | sudo tee -a /etc/shells > /dev/null
+	@chsh -s `which zsh`
 else
 	@echo "λ  Found Zsh: ${ZSH}"
 endif
@@ -70,9 +73,8 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}zsh/zshrc.symlink ~/.zshrc
 	@echo "λ  Linking Tmux configuration"
 	@ln -sf ${MAKEFILE_DIR}tmux/tmux.conf.symlink ~/.tmux.conf
-	@echo "λ  Setting Zsh shell"
-	@grep -q -F `which zsh` /etc/shells || echo `which zsh` | sudo tee -a /etc/shells > /dev/null
-	@chsh -s `which zsh`
+	@echo "λ  Linking Tig configuration"
+	@ln -sf ${MAKEFILE_DIR}tig/tigrc.symlink ~/.tigrc
 #---------------------------------------------------------------------------
 install: print-environment install-zsh install-nvim install-ctags install-tmux install-symlinks create-npm-root
 #---------------------------------------------------------------------------
