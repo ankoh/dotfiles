@@ -137,7 +137,6 @@ nnoremap <leader>ic :set list!<CR>
 " Terminal
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
-    tnoremap jk <C-\><C-n>
 endif
 
 " YCM
