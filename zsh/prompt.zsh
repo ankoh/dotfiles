@@ -31,4 +31,4 @@ precmd() {
 }
 
 # Prompt
-export PROMPT='%F{241}■%f '
+export PROMPT='%F{241}>%f '
