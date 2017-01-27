@@ -104,9 +104,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Window splitting
-nnoremap ,s <C-W>s
-nnoremap ,v <C-W>v
-nnoremap ,w <C-W>w
+nnoremap ,w <C-W>
 
 " Tabs
 nnoremap tj :tabfirst<CR>
