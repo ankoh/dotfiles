@@ -3,8 +3,8 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' use-simple true
 zstyle ':vcs_info:git*' max-exports 2
-zstyle ':vcs_info:git*' formats ' %b' 'x%R'
-zstyle ':vcs_info:git*' actionformats ' %b|%a' 'x%R'
+zstyle ':vcs_info:git*' formats '%b' 'x%R'
+zstyle ':vcs_info:git*' actionformats '%b|%a' 'x%R'
 
 # Git dirty indicator
 git_dirty() {
@@ -20,15 +20,15 @@ git_dirty() {
 # Line on top of prompt
 precmd() {
     vcs_info
-    cmd_host="$(print -P "%f%m")"
-    cmd_git="$(print -P "%F{59}$(git_dirty)%f$vcs_info_msg_0_")"
-    cmd_pwd="$(print -P "%{%F{59}%}%~")"
+    cmd_host="$(print -P "%m")"
+    cmd_git="$(print -P "$vcs_info_msg_0_ $(git_dirty)")"
+    cmd_pwd="$(print -P "%~")"
     if [ $(git rev-parse --is-inside-work-tree &>/dev/null && echo 1) ]; then
-        print -P "\n${cmd_host}: [${cmd_git}] ${cmd_pwd} "
+        print -P "\n${cmd_host} %F{239}[%f${cmd_pwd}%F{239}]%f %F{239}[%f${cmd_git}%F{239}]%f"
     else
-        print -P "\n${cmd_host}: ${cmd_pwd} "
+        print -P "\n${cmd_host} %F{239}[%f${cmd_pwd}%F{239}]%f"
     fi
 }
 
 # Prompt
-export PROMPT='%F{59}>%f '
+export PROMPT='%F{239}>%f '
