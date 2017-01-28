@@ -56,10 +56,10 @@ endif
 #---------------------------------------------------------------------------
 install-symlinks:
 	@echo "λ  Linking VIM configuration"
-	@sh -c "[ ! -L ~/.config/nvim ] || rm ~/.config/nvim;"
-	@sh -c "[ ! -L ~/.vim ] || rm ~/.vim;"
-	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
-	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
+	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
+	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
+	@sh -c "[ ! -L ~/.vimrc ] || rm -r ~/.vimrc;"
+	@sh -c "[ ! -L ~/.gvimrc ] || rm -r ~/.gvimrc;"
 	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
