@@ -21,14 +21,14 @@ git_dirty() {
 precmd() {
     vcs_info
     cmd_host="$(print -P "%f%m")"
-    cmd_git="$(print -P "%F{241}$(git_dirty)%f$vcs_info_msg_0_")"
-    cmd_pwd="$(print -P "%{%F{241}%}%~")"
+    cmd_git="$(print -P "%F{59}$(git_dirty)%f$vcs_info_msg_0_")"
+    cmd_pwd="$(print -P "%{%F{59}%}%~")"
     if [ $(git rev-parse --is-inside-work-tree &>/dev/null && echo 1) ]; then
-        print -P "\n%K{234}${cmd_host}: [${cmd_git}] ${cmd_pwd} "
+        print -P "\n${cmd_host}: [${cmd_git}] ${cmd_pwd} "
     else
-        print -P "\n%K{234}${cmd_host}: ${cmd_pwd} "
+        print -P "\n${cmd_host}: ${cmd_pwd} "
     fi
 }
 
 # Prompt
-export PROMPT='%F{241}>%f '
+export PROMPT='%F{59}>%f '
