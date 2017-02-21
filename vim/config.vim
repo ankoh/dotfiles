@@ -9,22 +9,12 @@ Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder, mapped to <lead
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
-Plug 'vim-airline/vim-airline-themes'       " themes for vim-airline
-Plug 'crusoexia/vim-monokai'                " monokai
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'quramy/tsuquyomi'                     " typescript completion
 Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
+Plug 'rakr/vim-one'                         " one theme
 
 call plug#end()
-
-colorscheme monokai
-" colorscheme kate
-" colorscheme lucius
-" colorscheme Tomorrow
-" colorscheme Tomorrow-Night
-
-set nocompatible     " not compatible with vi
-set autoread         " detect when a file is changed
 
 " Learn it the hard way
 " noremap <Up> <NOP>
@@ -74,6 +64,9 @@ set scrolloff=3            " lines of text around cursor
 set cmdheight=1            " command bar height
 
 set title                  " set terminal title
+
+set nocompatible            " not compatible with vi
+set autoread                " detect when a file is changed
 
 " Searching
 set ignorecase             " case insensitive searching
@@ -171,4 +164,8 @@ nnoremap <leader>ct :TagbarToggle<CR>
 
 " Airline
 let g:airline_powerline_fonts=1
-let g:airline_theme='zenburn'
+
+" Theme
+colorscheme lucius
+set background=light
+let g:airline_theme='lucius'
