@@ -56,6 +56,7 @@ endif
 #---------------------------------------------------------------------------
 install-symlinks:
 	@echo "λ  Linking VIM configuration"
+	@sh -c "mkdir -p ~/.config;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm -r ~/.vimrc;"
