@@ -123,8 +123,9 @@ nnoremap <leader>lc :lcl<CR>
 
 " Special characters
 set invlist
-set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
+" set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
+" set showbreak=↪
 nnoremap <leader>ic :set list!<CR>
 
 " Terminal
