@@ -5,7 +5,8 @@ Plug 'valloric/youcompleteme'               " autocompletion
 Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm gen
 Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
-Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder, mapped to <leader>t
+Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
+Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
@@ -55,6 +56,8 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 set laststatus=2           " show the satus line all the time
 
+set hidden                 " buffers vs tabs
+
 set foldmethod=syntax      " fold based on indent
 set foldnestmax=10         " deepest fold is 10 levels
 set nofoldenable           " don't fold by default
@@ -66,8 +69,8 @@ set cmdheight=1            " command bar height
 
 set title                  " set terminal title
 
-set nocompatible            " not compatible with vi
-set autoread                " detect when a file is changed
+set nocompatible           " not compatible with vi
+set autoread               " detect when a file is changed
 
 " Searching
 set ignorecase             " case insensitive searching
@@ -99,10 +102,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" Fast scrolling if ctrl key is not mapped correctly
-nnoremap <leader>f <C-F>
-nnoremap <leader>b <C-B>
 
 " Tabs
 nnoremap <leader>tj :tabfirst<CR>
@@ -153,13 +152,18 @@ endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " Local Vimrc
-let g:localvimrc_ask=0
+let g:localvimrc_ask = 0
 
 " NERDtree
-let g:NERDTreeShowHidden=1
+let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 40 
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
+
+" Buffergator
+let g:buffergator_suppress_keymaps = 1
+let g:buffergator_autoexpand_on_split = 0
+nnoremap <leader>b :BuffergatorToggle<CR>
 
 " CTag Tagbar
 nnoremap <leader>ct :TagbarToggle<CR>
