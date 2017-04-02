@@ -1,7 +1,7 @@
 " Use Nerdfont for GUI
 " Clone https://github.com/ryanoasis/nerd-fonts
 " ./install.sh SourceCodePro
-set guifont=DejaVuSansMonoForPowerline\ Nerd\ Font\ 13
+set guifont=DejaVuSansMonoForPowerline\ Nerd\ Font\ 14
 
 " Remove left and right scrollbars
 set guioptions-=L
