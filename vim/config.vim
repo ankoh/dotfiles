@@ -73,6 +73,8 @@ set title                  " set terminal title
 set nocompatible           " not compatible with vi
 set autoread               " detect when a file is changed
 
+set colorcolumn=121        " line width
+
 " Searching
 set ignorecase             " case insensitive searching
 set smartcase              " case-sensitive if expresson contains a capital letter
@@ -141,8 +143,8 @@ let g:ycm_autoclose_preview_window_after_completion=1   " hide the preview windo
 let g:ycm_autoclose_preview_window_after_insertion=1    " hide the preview window
 
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
-nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gi :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gdec :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gdef :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>gf :YcmCompleter GoToImprecise<CR>
 
