@@ -69,11 +69,6 @@ function extract() {
     fi
 }
 
-# Generate a random password
-function rndpw() {
-    date +%s | sha256sum | base64 | head -c ${1:-30} ; echo
-}
-
 # Docker cleanup
 function docker-cleanup() {
    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
