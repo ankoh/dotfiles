@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'embear/vim-localvimrc'                " local vim configurations
 Plug 'valloric/youcompleteme'               " autocompletion
@@ -127,6 +127,8 @@ let g:ycm_confirm_extra_conf=0                          " silently use .ycm_extr
 let g:ycm_auto_trigger=0                                " disable auto trigger
 let g:ycm_autoclose_preview_window_after_completion=1   " hide the preview window
 let g:ycm_autoclose_preview_window_after_insertion=1    " hide the preview window
+
+let g:ycm_global_ycm_extra_conf='~/.vim/config/.ycm_extra_conf.py' " Default .ycm_extra_conf.py
 
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gdec :YcmCompleter GoToDeclaration<CR>
