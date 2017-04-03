@@ -5,15 +5,11 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 BREW := $(shell command -v brew 2> /dev/null)
 ZSH := $(shell command -v zsh 2> /dev/null)
 NVIM := $(shell command -v nvim 2> /dev/null)
-TMUX := $(shell command -v tmux 2> /dev/null)
 CTAGS := $(shell command -v ctags 2> /dev/null)
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
 	@echo "λ  MAKEFILE_DIR: ${MAKEFILE_DIR}"
-#---------------------------------------------------------------------------
-create-npm-root:
-	@mkdir -p ~/.npm_global
 #---------------------------------------------------------------------------
 install-brew:
 ifndef BREW
@@ -33,14 +29,6 @@ endif
 	@echo "λ  Required: https://github.com/ryanoasis/nerd-fonts"
 	@echo "λ  Recommended: Black terminal theme with BG RGB(48,48,48)"
 #---------------------------------------------------------------------------
-install-tmux: install-brew
-ifndef TMUX
-	brew install tmux
-	brew install reattach-to-user-namespace
-else
-	@echo "λ  Found Tmux: ${TMUX}"
-endif
-#---------------------------------------------------------------------------
 install-zsh: install-brew
 ifndef ZSH
 	brew install zsh
@@ -58,9 +46,6 @@ else
 	@echo "λ  Found Ctags: ${CTAGS}"
 endif
 #---------------------------------------------------------------------------
-install-symlinks:
-	@echo "λ  Linking VIM configuration"
-	@sh -c "mkdir -p ~/.config;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm -r ~/.vimrc;"
@@ -71,10 +56,8 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}vim/gui.vim ~/.gvimrc
 	@echo "λ  Linking Zsh configuration"
 	@ln -sf ${MAKEFILE_DIR}zsh/zshrc.symlink ~/.zshrc
-	@echo "λ  Linking Tmux configuration"
-	@ln -sf ${MAKEFILE_DIR}tmux/tmux.conf.symlink ~/.tmux.conf
 	@echo "λ  Linking Tig configuration"
 	@ln -sf ${MAKEFILE_DIR}tig/tigrc.symlink ~/.tigrc
 #---------------------------------------------------------------------------
-install: print-environment install-zsh install-nvim install-ctags install-tmux install-symlinks create-npm-root
+install: print-environment install-zsh install-nvim install-ctags install-symlinks
 #---------------------------------------------------------------------------
