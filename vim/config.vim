@@ -14,6 +14,7 @@ Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'quramy/tsuquyomi'                     " typescript completion
 Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
 Plug 'rakr/vim-one'                         " one theme
+Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 
 call plug#end()
 
@@ -172,6 +173,6 @@ nnoremap <leader>ct :TagbarToggle<CR>
 let g:airline_powerline_fonts=1
 
 " Theme
-colorscheme lucius
+colorscheme editplus
 set background=light
 let g:airline_theme='lucius'
