@@ -80,10 +80,10 @@ set showbreak=…            " show ellipsis at breaking
 set autoindent             " automatically set indent of new line
 set smartindent
 
-" Find visually selected text
+" Find (mark) visually selected text
 " Credits: http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
 " Replacement with: %s//<your-replacement-string>
-vnoremap <c-f> y<ESC>/<c-r>"<CR>
+vnoremap <C-M> y<ESC>/<C-R>"<CR>
 
 " Window operations
 nnoremap <leader>w <C-W>
