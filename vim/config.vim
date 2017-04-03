@@ -34,70 +34,55 @@ inoremap jk <Esc>
 
 set history=1000           " change history to 1000
 set textwidth=0
-
-" <Tab>
 set expandtab              " insert spaces rather than tab for <Tab>
 set smarttab               " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 set tabstop=4              " the visible width of tabs
 set softtabstop=4          " edit as if the tabs are 4 characters wide
 set shiftwidth=4           " number of spaces to use for indent and unindent
 set shiftround             " round indent to a multiple of 'shiftwidth'
-
 set mouse=c                " disable the mouse in vim to prevent clicks
 " if has('mouse')
 "    set mouse=a            " mouse support (e.g. copy selected without mouse)
 " endif
 set clipboard+=unnamedplus " copy to system clipboard
-
 set ttyfast                " faster redrawing
 set lazyredraw             " draw lazy
-
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
 set laststatus=2           " show the satus line all the time
-
 set hidden                 " buffers vs tabs
-
 set foldmethod=syntax      " fold based on indent
 set foldnestmax=10         " deepest fold is 10 levels
 set nofoldenable           " don't fold by default
 set foldlevel=1            " 1 fold opened by default
-
 set so=7                   " keep 7 lines in front of the cursors - when moving vertical
 set scrolloff=3            " lines of text around cursor
 set cmdheight=1            " command bar height
-
 set title                  " set terminal title
-
 set nocompatible           " not compatible with vi
 set autoread               " detect when a file is changed
-
 set colorcolumn=121        " line width
-
-" Searching
 set ignorecase             " case insensitive searching
 set smartcase              " case-sensitive if expresson contains a capital letter
 set hlsearch
 set incsearch              " set incremental search, like modern browsers
 set magic                  " Set magic on, for regex
-
 set showmatch              " show matching braces
 set mat=2                  " how many tenths of a second to blink
-
 syntax on                  " switch syntax highlighting on
 set synmaxcol=256          " limit syntax highlighting to 256 chars"
-
 set encoding=utf8
 set number                 " show line numbers
 set cursorline             " highlight cursor line
 " set relativenumber         " show relative line numbers (DEADLY performance-wise)
-
 set wrap                   " turn on line wrapping
 set showbreak=…            " show ellipsis at breaking
-
 set autoindent             " automatically set indent of new line
 set smartindent
+
+" Search and replace selected text
+" Credits: http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " Window operations
 nnoremap <leader>w <C-W>
