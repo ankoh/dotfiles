@@ -46,6 +46,7 @@ else
 	@echo "λ  Found Ctags: ${CTAGS}"
 endif
 #---------------------------------------------------------------------------
+install-symlinks:
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm -r ~/.vimrc;"
@@ -58,6 +59,15 @@ endif
 	@ln -sf ${MAKEFILE_DIR}zsh/zshrc.symlink ~/.zshrc
 	@echo "λ  Linking Tig configuration"
 	@ln -sf ${MAKEFILE_DIR}tig/tigrc.symlink ~/.tigrc
+#---------------------------------------------------------------------------
+repair:
+	@echo "λ  Removing Symlinks"
+	@sh -c "[ -L ~/.config/nvim ] || rm ~/.config/nvim;"
+	@sh -c "[ -L ~/.vim ] || rm ~/.vim;"
+	@sh -c "[ -L ~/.vimrc ] || rm ~/.vimrc;"
+	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
+	@sh -c "[ -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
+	@sh -c "[ -L ~/.tigrc ] || rm ~/.tigrc;"
 #---------------------------------------------------------------------------
 install: print-environment install-zsh install-nvim install-ctags install-symlinks
 #---------------------------------------------------------------------------
