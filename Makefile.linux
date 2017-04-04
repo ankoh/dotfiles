@@ -63,6 +63,10 @@ repair:
 	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
 	@sh -c "[ -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@sh -c "[ -L ~/.tigrc ] || rm ~/.tigrc;"
+	@echo "λ  Restoring default vim"
+	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
+	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
+	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
 install: print-environment install-zsh install-nvim install-ctags install-symlinks
 #---------------------------------------------------------------------------
