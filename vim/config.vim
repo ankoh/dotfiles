@@ -2,19 +2,21 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'embear/vim-localvimrc'                " local vim configurations
 Plug 'valloric/youcompleteme'               " autocompletion
-Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm gen
+Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
 Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'Xuyuanp/nerdtree-git-plugin'          " git status in NERDTree
+Plug 'ryanoasis/vim-devicons'               " devicons in NERDTREE
 Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
+Plug 'godlygeek/csapprox'                   " approximate gvim plugin
+
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'quramy/tsuquyomi'                     " typescript completion
 Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
-Plug 'rakr/vim-one'                         " one theme
-Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 
 call plug#end()
 
@@ -66,7 +68,7 @@ set ignorecase             " case insensitive searching
 set smartcase              " case-sensitive if expresson contains a capital letter
 set hlsearch
 set incsearch              " set incremental search, like modern browsers
-set magic                  " Set magic on, for regex
+set magic                  " set magic on, for regex
 set showmatch              " show matching braces
 set mat=2                  " how many tenths of a second to blink
 syntax on                  " switch syntax highlighting on
