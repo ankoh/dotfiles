@@ -14,9 +14,10 @@ Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 
-Plug 'leafgarland/typescript-vim'           " typescript syntax
-Plug 'quramy/tsuquyomi'                     " typescript completion
-Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
+" Typescript
+" Plug 'leafgarland/typescript-vim'           " typescript syntax
+" Plug 'quramy/tsuquyomi'                     " typescript completion
+" Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
 
 call plug#end()
 
