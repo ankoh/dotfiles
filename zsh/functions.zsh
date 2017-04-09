@@ -101,10 +101,10 @@ clean-kernels () {
     # Gather
     local to_keep=$(dpkg -l | egrep ${kernel_pkg} | egrep "${current_kernel}|${meta_pkg}" | awk '{print $2}')
     local to_remove=$(dpkg -l | egrep ${kernel_pkg} | egrep -v "${current_kernel}|${meta_pkg}" | awk '{print $2}')
-    printf "KEEP:\n%s\n\nREMOVE:\n%s" "${to_keep}" "${to_remove}"
+    printf "KEEP:\n%s\n\nREMOVE:\n%s\n" "${to_keep}" "${to_remove}"
 
     # Ask if sane
-    printf "\n\nAre you sure? ([yY]|[nN])\n"
+    printf "\nAre you sure? ([yY]|[nN])\n"
     read sane
     if [[ ! ${sane} =~ ^[Yy]$ ]]; then
         return 1;
