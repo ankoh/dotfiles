@@ -94,13 +94,13 @@ function dump-record-layout() {
 # Clean old kernels
 clean-kernels () {
     # Patterns
-    local current_kernel=$(uname -r|sed 's/-*[a-z]//g'|sed 's/-386//g')
+    local current_kernel="$(uname -r|sed 's/-*[a-z]//g'|sed 's/-386//g')"
     local kernel_pkg="linux-(image|headers|ubuntu-modules|restricted-modules)"
     local meta_pkg="${kernel_pkg}-(generic|i386|server|common|rt|xen|ec2)"
 
     # Gather
-    local to_keep=$(dpkg -l | egrep ${kernel_pkg} | egrep "${current_kernel}|${meta_pkg}" | awk '{print $2}')
-    local to_remove=$(dpkg -l | egrep ${kernel_pkg} | egrep -v "${current_kernel}|${meta_pkg}" | awk '{print $2}')
+    local to_keep="$(dpkg -l | egrep ${kernel_pkg} | egrep "${current_kernel}|${meta_pkg}" | awk '{print $2}')"
+    local to_remove="$(dpkg -l | egrep ${kernel_pkg} | egrep -v "${current_kernel}|${meta_pkg}" | awk '{print $2}')"
     printf "KEEP:\n%s\n\nREMOVE:\n%s\n" "${to_keep}" "${to_remove}"
 
     # Ask if sane
@@ -111,5 +111,5 @@ clean-kernels () {
     fi
 
     # Purge kernels
-    sudo apt-get purge $(echo ${to_remove})
+    sudo apt-get purge "$(echo ${to_remove})"
 }
