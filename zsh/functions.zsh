@@ -111,5 +111,5 @@ clean-kernels () {
     fi
 
     # Purge kernels
-    sudo apt-get purge "$(echo ${to_remove})"
+    sudo apt-get purge $(echo ${to_remove})
 }
