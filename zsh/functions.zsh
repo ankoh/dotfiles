@@ -113,3 +113,18 @@ clean-kernels () {
     # Purge kernels
     sudo apt-get purge $(echo ${to_remove})
 }
+
+# Find llvm component
+llvm-component() {
+    if [ -z "$1" ]; then
+        printf "Usage: llvm-component <symbol>\n"
+        return 1;
+    fi
+    for lib in $(llvm-config --libfiles); do
+        printf "-- ${lib}\n"
+        local symbols=$(nm -gC ${lib} | grep "$1" | grep -v " U ")
+        if [ ! -z "${symbols}" ]; then
+            printf "${symbols}\n"
+        fi
+    done
+}
