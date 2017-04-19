@@ -18,17 +18,6 @@ else
 	@echo "λ  Found Homebrew: ${BREW}"
 endif
 #---------------------------------------------------------------------------
-install-nvim: install-brew
-ifndef NVIM
-	brew install python python3
-	brew install neovim/neovim/neovim
-	pip3 install neovim
-else
-	@echo "λ  Found Neovim: ${NVIM}"
-endif
-	@echo "λ  Required: https://github.com/ryanoasis/nerd-fonts"
-	@echo "λ  Recommended: Black terminal theme with BG RGB(48,48,48)"
-#---------------------------------------------------------------------------
 install-zsh: install-brew
 ifndef ZSH
 	brew install zsh
@@ -73,5 +62,5 @@ repair:
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: print-environment install-zsh install-nvim install-ctags install-symlinks
+install: print-environment install-zsh install-ctags install-symlinks
 #---------------------------------------------------------------------------
