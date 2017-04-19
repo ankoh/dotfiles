@@ -7,6 +7,9 @@ set guifont=DejaVuSansMonoForPowerline\ Nerd\ Font\ 14
 set guioptions-=L
 set guioptions-=R
 
+" Remove toolbar
+set guioptions-=T
+
 " Default size
 set lines=40
 set columns=120
