@@ -1,13 +1,11 @@
 #---------------------------------------------------------------------------
-setopt nonomatch
-#---------------------------------------------------------------------------
 # Default locales
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 #---------------------------------------------------------------------------
 export DOTFILES=$HOME/.dotfiles
-export ZSH=$DOTFILES/zsh
+export BASHCONF=$DOTFILES/bash
 #---------------------------------------------------------------------------
 # Wow, I hate the javascript world
 export NPM_CONIFG_PREFIX=~/.npm_global
@@ -22,12 +20,6 @@ export PATH=$HOME/bin:$PATH
 #---------------------------------------------------------------------------
 export EDITOR='vim'
 #---------------------------------------------------------------------------
-[ -z "$TMUX" ] && export TERM="xterm-256color"
-#---------------------------------------------------------------------------
-# Source all .zsh files inside of the zsh/ directory
-for config ($ZSH/**/*.zsh) source $config
-#---------------------------------------------------------------------------
-# Source host config if existing
-if [ -f ~/.bashrc ]; then source ~/.bashrc; fi
-if [ -f ~/.bash_profile ]; then source ~/.bash_profile; fi
+# Source all .bash files inside of the bash/ directory
+for f in $BASHCONF/*.sh; do source $f; done
 #---------------------------------------------------------------------------

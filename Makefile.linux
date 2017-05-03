@@ -3,21 +3,12 @@ MAKEFILE_PATH := $(abspath $(lastword ${MAKEFILE_LIST}))
 MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
-ZSH := $(shell command -v zsh 2> /dev/null)
 NVIM := $(shell command -v nvim 2> /dev/null)
 CTAGS := $(shell command -v ctags 2> /dev/null)
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
 	@echo "λ  MAKEFILE_DIR: ${MAKEFILE_DIR}"
-#---------------------------------------------------------------------------
-install-zsh:
-ifndef ZSH
-	sudo apt install -y zsh
-	chsh -s `which zsh`
-else
-	@echo "λ  Found Zsh: ${ZSH}"
-endif
 #---------------------------------------------------------------------------
 install-ctags:
 ifndef CTAGS
@@ -27,18 +18,16 @@ else
 endif
 #---------------------------------------------------------------------------
 install-symlinks:
-	@echo "λ  Linking VIM configuration"
-	@sh -c "mkdir -p ~/.config;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm -r ~/.vimrc;"
 	@sh -c "[ ! -L ~/.gvimrc ] || rm -r ~/.gvimrc;"
+	@sh -c "rm ~/.bashrc;"
 	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
 	@ln -sf ${MAKEFILE_DIR}vim/gui.vim ~/.gvimrc
-	@echo "λ  Linking Zsh configuration"
-	@ln -sf ${MAKEFILE_DIR}zsh/zshrc.symlink ~/.zshrc
+	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
 	@echo "λ  Linking Tig configuration"
 	@ln -sf ${MAKEFILE_DIR}tig/tigrc.symlink ~/.tigrc
 #---------------------------------------------------------------------------
@@ -50,10 +39,11 @@ repair:
 	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
 	@sh -c "[ -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@sh -c "[ -L ~/.tigrc ] || rm ~/.tigrc;"
+	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
 	@echo "λ  Restoring default vim"
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: print-environment install-zsh install-ctags install-symlinks
+install: print-environment install-ctags install-symlinks
 #---------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 # Reload zsh config
-alias reload!='source ~/.zshrc'
+alias reload!='source ~/.bashrc'
 
 if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
