@@ -47,7 +47,6 @@ set mouse=c                " disable the mouse in vim to prevent clicks
 " if has('mouse')
 "    set mouse=a            " mouse support (e.g. copy selected without mouse)
 " endif
-set clipboard+=unnamedplus " copy to system clipboard
 set ttyfast                " faster redrawing
 set lazyredraw             " draw lazy
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -164,8 +163,14 @@ nnoremap <leader>ct :TagbarToggle<CR>
 
 " Airline
 let g:airline_powerline_fonts=1
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0             " Do not check for whitespaces
+let g:airline#extensions#tagbar#enabled = 1                 " Enable Tagbar integration
+let g:airline_theme='lucius'
+let g:airline_powerline_fonts = 1
+set fillchars+=stl:\ ,stlnc:\ 
 
 " Theme
 colorscheme editplus
 set background=light
-let g:airline_theme='lucius'
