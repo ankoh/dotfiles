@@ -22,7 +22,7 @@ install-symlinks:
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm -r ~/.vimrc;"
 	@sh -c "[ ! -L ~/.gvimrc ] || rm -r ~/.gvimrc;"
-	@sh -c "rm ~/.bashrc;"
+	@sh -c "[ ! -L ~/.bashrc ] || rm -r ~/.bashrc;"
 	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
