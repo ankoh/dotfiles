@@ -1,2 +1,2 @@
 # Prompt
-export PS1="\h [\w]\n> "
+export PS1="\n\h [\w]\n> "
