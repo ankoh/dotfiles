@@ -13,6 +13,7 @@ Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
+Plug 'jalvesaq/nvim-r'                      " r support
 
 " Typescript
 " Plug 'leafgarland/typescript-vim'           " typescript syntax
