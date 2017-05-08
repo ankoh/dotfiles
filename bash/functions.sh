@@ -115,7 +115,7 @@ clean-kernels () {
 }
 
 # Find llvm component
-llvm-component() {
+llvm-grep() {
     if [ -z "$1" ] || [ -z "$2" ]; then
         printf "Usage: llvm-component <version> <symbol>\n"
         return 1;
