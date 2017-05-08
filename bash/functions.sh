@@ -116,15 +116,18 @@ clean-kernels () {
 
 # Find llvm component
 llvm-component() {
-    if [ -z "$1" ]; then
-        printf "Usage: llvm-component <symbol>\n"
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        printf "Usage: llvm-component <version> <symbol>\n"
         return 1;
     fi
-    for lib in $(llvm-config --libfiles); do
-        printf "-- ${lib}\n"
-        local symbols=$(nm -gC ${lib} | grep "$1" | grep -v " U ")
+    for lib in $(llvm-config-$1 --libfiles); do
+        printf "[ RUNNING ] %s" "${lib}"
+        local symbols=$(nm -gC ${lib} | grep "$2" | grep -v " U ")
         if [ ! -z "${symbols}" ]; then
+            printf "\r[  SYMBOL ] %s\n" "${lib}"
             printf "${symbols}\n"
+        else 
+            printf "\r[   EMPTY ] %s\n" "${lib}"
         fi
     done
 }

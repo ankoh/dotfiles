@@ -17,6 +17,7 @@ export REPORTTIME=10
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$DOTFILES/bin:$PATH
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 #---------------------------------------------------------------------------
 export EDITOR='vim'
 #---------------------------------------------------------------------------
