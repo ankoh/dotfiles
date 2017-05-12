@@ -92,7 +92,7 @@ function dump-record-layout() {
 }
 
 # Clean old kernels
-clean-kernels () {
+function clean-kernels () {
     # Patterns
     local current_kernel="$(uname -r|sed 's/-*[a-z]//g'|sed 's/-386//g')"
     local kernel_pkg="linux-(image|headers|ubuntu-modules|restricted-modules)"
@@ -115,7 +115,7 @@ clean-kernels () {
 }
 
 # Find llvm component
-llvm-grep() {
+function llvm-grep() {
     if [ -z "$1" ] || [ -z "$2" ]; then
         printf "Usage: llvm-component <version> <symbol>\n"
         return 1;
@@ -130,4 +130,15 @@ llvm-grep() {
             printf "\r[   EMPTY ] %s\n" "${lib}"
         fi
     done
+}
+
+# Recompile hyper
+function rchyper() {
+    local debug=0;
+    local cpus=`getconf _NPROCESSORS_ONLN`
+    if [ ! -z "$1" ]; then
+        debug=1
+    fi
+    cd ../dbcore && make -j${cpus} \
+        && cd ../hyper && make -j${cpus}
 }
