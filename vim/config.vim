@@ -163,10 +163,10 @@ nnoremap <leader>b :BuffergatorToggle<CR>
 nnoremap <leader>ct :TagbarToggle<CR>
 
 " Airline
-let g:airline_powerline_fonts=1
 set laststatus=2
+let g:airline_powerline_fonts=1
 let g:airline_theme='lucius'
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
 
 " R nvim
