@@ -22,5 +22,8 @@ export PATH=$HOME/.local/bin:$PATH
 export EDITOR='vim'
 #---------------------------------------------------------------------------
 # Source all .bash files inside of the bash/ directory
-for f in $BASHCONF/*.sh; do source $f; done
+source $BASHCONF/config.sh
+source $BASHCONF/aliases.sh
+source $BASHCONF/functions.sh
+source $BASHCONF/prompt.sh
 #---------------------------------------------------------------------------
