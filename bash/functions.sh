@@ -137,8 +137,10 @@ function rchyper() {
     local debug=0;
     local cpus=`getconf _NPROCESSORS_ONLN`
     if [ ! -z "$1" ]; then
-        debug=1
+        cd ../dbcore && DEBUG=1 make -j${cpus} \
+            && cd ../hyper && DEBUG=1 make -j${cpus}
+    else
+        cd ../dbcore && make -j${cpus} \
+            && cd ../hyper && make -j${cpus}
     fi
-    cd ../dbcore && make -j${cpus} \
-        && cd ../hyper && make -j${cpus}
 }
