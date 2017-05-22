@@ -1,29 +1,8 @@
-#---------------------------------------------------------------------------
-# Default locales
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-#---------------------------------------------------------------------------
+# Dotfiles
 export DOTFILES=$HOME/.dotfiles
 export BASHCONF=$DOTFILES/bash
-#---------------------------------------------------------------------------
-# Wow, I hate the javascript world
-export NPM_CONIFG_PREFIX=~/.npm_global
-export PATH=~/.npm-global/bin:$PATH
-#---------------------------------------------------------------------------
-# Display how long all tasks over 10 seconds take
-export REPORTTIME=10
-#---------------------------------------------------------------------------
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=$DOTFILES/bin:$PATH
-export PATH=$HOME/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-#---------------------------------------------------------------------------
-export EDITOR='vim'
-#---------------------------------------------------------------------------
-# Source all .bash files inside of the bash/ directory
+
+# Source all configurations
 source $BASHCONF/config.sh
 source $BASHCONF/aliases.sh
 source $BASHCONF/functions.sh
-source $BASHCONF/prompt.sh
-#---------------------------------------------------------------------------

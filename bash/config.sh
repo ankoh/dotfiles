@@ -1,5 +1,33 @@
-HISTFILE=~/.bash_history
-HISTSIZE=10000
-SAVEHIST=10000
+# Language
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
-PS1="\h [\w]\n> "
+# Settings
+export HISTFILE=~/.bash_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+export REPORTTIME=10
+export EDITOR='vim'
+
+# Prompt
+export PS1="\n\h [\w]\n$ "
+
+# Paths
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$DOTFILES/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.npm-global/bin:$PATH
+
+export LIBRARY_PATH=$HOME/.local/lib:$LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+
+# CMAKE paths
+export CMAKE_INCLUDE_PATH=$HOME/.local/include:$CMAKE_INCLUDE_PATH
+export CMAKE_LIBRARY_PATH=$HOME/.local/lib:$CMAKE_LIBRARY_PATH
+export CMAKE_PREFIX_PATH=$HOME/.local:$CMAKE_PREFIX_PATH
+export CMAKE_INSTALL_PREFIX=$HOME/.local:$CMAKE_INSTALL_PREFIX
+
+# :(
+export NPM_CONIFG_PREFIX=$HOME/.npm_global

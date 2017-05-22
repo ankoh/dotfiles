@@ -18,6 +18,8 @@ else
 endif
 #---------------------------------------------------------------------------
 install-symlinks:
+	@mkdir -p ~/.config
+	@mkdir -p ~/.local
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm -r ~/.vimrc;"
@@ -33,6 +35,8 @@ install-symlinks:
 #---------------------------------------------------------------------------
 repair:
 	@echo "λ  Removing Symlinks"
+	@mkdir -p ~/.config
+	@mkdir -p ~/.local
 	@sh -c "[ -L ~/.config/nvim ] || rm ~/.config/nvim;"
 	@sh -c "[ -L ~/.vim ] || rm ~/.vim;"
 	@sh -c "[ -L ~/.vimrc ] || rm ~/.vimrc;"
