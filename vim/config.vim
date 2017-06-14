@@ -15,6 +15,7 @@ Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'posva/vim-vue'                        " vue support
+Plug 'lervag/vimtex'                        " latex support
 
 " Typescript
 " Plug 'leafgarland/typescript-vim'           " typescript syntax
