@@ -50,6 +50,7 @@ set mouse=c                " disable the mouse in vim to prevent clicks
 " if has('mouse')
 "    set mouse=a            " mouse support (e.g. copy selected without mouse)
 " endif
+set backspace=indent,eol,start " backspace problem
 set ttyfast                " faster redrawing
 set lazyredraw             " draw lazy
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
