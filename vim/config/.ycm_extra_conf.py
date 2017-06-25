@@ -31,7 +31,8 @@ SOURCE_EXTENSIONS = [
 
 SOURCE_DIRECTORIES = [
         'src',
-        'lib'
+        'lib',
+        'test'
         ]
 
 HEADER_EXTENSIONS = [
@@ -45,7 +46,11 @@ HEADER_DIRECTORIES = [
         'include'
         ]
 
-BUILD_DIRECTORY = 'build';
+BUILD_DIRECTORIES = [
+        'Debug',
+        'Release',
+        'build'
+];
 
 def IsHeaderFile(filename):
     extension = os.path.splitext(filename)[1]
@@ -141,9 +146,15 @@ def FlagsForInclude(root):
 
 def FlagsForCompilationDatabase(root, filename):
     try:
-        # Last argument of next function is the name of the build folder for
-        # out of source projects
-        compilation_db_path = FindNearest(root, 'compile_commands.json', BUILD_DIRECTORY)
+        # Try to find build directory
+        build_dir = None
+        for build_dir_candidate in BUILD_DIRECTORIES:
+            if os.path.isdir(build_dir_candidate):
+                build_dir = build_dir_candidate
+                break
+
+        # Get compilation database
+        compilation_db_path = FindNearest(root, 'compile_commands.json', build_dir)
         compilation_db_dir = os.path.dirname(compilation_db_path)
         logging.info("Set compilation database directory to " + compilation_db_dir)
         compilation_db =  ycm_core.CompilationDatabase(compilation_db_dir)
