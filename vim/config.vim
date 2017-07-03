@@ -91,12 +91,20 @@ set smartindent
 " Replacement with: %s//<your-replacement-string>
 vnoremap <C-M> y<ESC>/<C-R>"<CR>
 
-" Window operations
-nnoremap <leader>w <C-W>
+" Window navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Window splits
+nnoremap <leader>w <C-W>
+nnoremap <leader>ws  :split<CR>
+nnoremap <leader>w+ :exe "resize " . (winheight(0) * 12/10)<CR>
+nnoremap <leader>w- :exe "resize " . (winheight(0) * 8/10)<CR>
+nnoremap <leader>wv  :vsplit<CR>
+nnoremap <leader>w< :exe "vertical resize " . (winwidth(0) * 12/10)<CR>
+nnoremap <leader>w> :exe "vertical resize " . (winwidth(0) * 8/10)<CR>
 
 " Tabs
 nnoremap <leader>tj :tabfirst<CR>
