@@ -19,11 +19,7 @@ export PATH=$DOTFILES/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.npm-global/bin:$PATH
-
-export LIBRARY_PATH=$HOME/.local/lib:$LIBRARY_PATH
-export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
-
-export GOPATH=$HOME/go
+export PATH=$HOME/.gem/bin:$PATH
 
 # CMAKE paths
 export CMAKE_INCLUDE_PATH=$HOME/.local/include:$CMAKE_INCLUDE_PATH
@@ -31,5 +27,9 @@ export CMAKE_LIBRARY_PATH=$HOME/.local/lib:$CMAKE_LIBRARY_PATH
 export CMAKE_PREFIX_PATH=$HOME/.local:$CMAKE_PREFIX_PATH
 export CMAKE_INSTALL_PREFIX=$HOME/.local:$CMAKE_INSTALL_PREFIX
 
-# :(
+# Specific paths
+export LIBRARY_PATH=$HOME/.local/lib:$LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+export GOPATH=$HOME/go
+export GEM_HOME=$HOME/.gem
 export NPM_CONIFG_PREFIX=$HOME/.npm_global
