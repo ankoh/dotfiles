@@ -1,0 +1,2 @@
+# macOS ignores bashrc
+[[ -s ~/.bashrc ]] && source ~/.bashrc
