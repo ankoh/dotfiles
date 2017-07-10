@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'embear/vim-localvimrc'                " local vim configurations
+Plug 'vim-syntastic/syntastic'              " syntastic checker
 Plug 'valloric/youcompleteme'               " autocompletion
 Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
 Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
@@ -137,6 +138,7 @@ if has('nvim')
 endif
 
 " YCM
+let g:ycm_register_as_syntastic_checker=1               " use syntastic instead of vim
 let g:ycm_confirm_extra_conf=0                          " silently use .ycm_extra_conf.py
 let g:ycm_auto_trigger=0                                " disable auto trigger
 let g:ycm_autoclose_preview_window_after_completion=1   " hide the preview window
