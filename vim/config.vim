@@ -14,6 +14,7 @@ Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
+Plug 'yggdroot/indentLine'                  " indentation levels
 Plug 'keith/swift.vim'                      " swift support
 Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'posva/vim-vue'                        " vue support
