@@ -13,14 +13,6 @@ export EDITOR='vim'
 # Prompt
 export PS1="\n\h [\w]\n$ "
 
-# Paths
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=$DOTFILES/bin:$PATH
-export PATH=$HOME/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.npm-global/bin:$PATH
-export PATH=$HOME/.gem/bin:$PATH
-
 # CMAKE paths
 export CMAKE_INCLUDE_PATH=$HOME/.local/include:$CMAKE_INCLUDE_PATH
 export CMAKE_LIBRARY_PATH=$HOME/.local/lib:$CMAKE_LIBRARY_PATH
@@ -33,3 +25,12 @@ export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export GOPATH=$HOME/go
 export GEM_HOME=$HOME/.gem
 export NPM_CONIFG_PREFIX=$HOME/.npm_global
+
+# Paths
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$DOTFILES/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
+export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
+export PATH=$GEM_HOME/bin:$PATH
