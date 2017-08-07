@@ -15,6 +15,7 @@ Plug 'tpope/vim-fugitive'                   " git support
 Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 Plug 'yggdroot/indentLine'                  " indentation levels
+Plug 'vim-utils/vim-man'                    " man pages
 Plug 'fatih/vim-go'                         " go support
 Plug 'keith/swift.vim'                      " swift support
 Plug 'jalvesaq/nvim-r'                      " r support
