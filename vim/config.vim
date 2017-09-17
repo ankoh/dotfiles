@@ -7,7 +7,6 @@ Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
 Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Xuyuanp/nerdtree-git-plugin'          " git status in NERDTree
-" Plug 'ryanoasis/vim-devicons'               " devicons in NERDTREE
 Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
