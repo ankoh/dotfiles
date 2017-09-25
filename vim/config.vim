@@ -11,7 +11,7 @@ Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
-Plug 'vim-airline/vim-airline'              " fancy statusline
+" Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 Plug 'yggdroot/indentLine'                  " indentation levels
 Plug 'vim-utils/vim-man'                    " man pages
@@ -181,10 +181,10 @@ nnoremap <leader>ct :TagbarToggle<CR>
 
 " Airline
 set laststatus=2
-let g:airline_powerline_fonts=1
-let g:airline_theme='lucius'
-let g:airline#extensions#tabline#enabled = 1
-set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
+" let g:airline_powerline_fonts=1
+" let g:airline_theme='lucius'
+" let g:airline#extensions#tabline#enabled = 1
+" set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
 
 " R nvim
 let g:R_nvim_wd = 1
