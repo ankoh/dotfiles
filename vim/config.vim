@@ -11,7 +11,6 @@ Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
-" Plug 'vim-airline/vim-airline'              " fancy statusline
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 Plug 'yggdroot/indentLine'                  " indentation levels
 Plug 'vim-utils/vim-man'                    " man pages
@@ -19,7 +18,6 @@ Plug 'fatih/vim-go'                         " go support
 Plug 'keith/swift.vim'                      " swift support
 Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'posva/vim-vue'                        " vue support
-Plug 'lervag/vimtex'                        " latex support
 
 " Typescript
 " Plug 'leafgarland/typescript-vim'           " typescript syntax
@@ -89,7 +87,8 @@ set cursorline             " highlight cursor line
 set wrap                   " turn on line wrapping
 set showbreak=…            " show ellipsis at breaking
 set autoindent             " automatically set indent of new line
-set smartindent
+set smartindent            " use smarter indentation based on file type
+set laststatus=2           " always show status bar
 
 " Find (mark) visually selected text
 " Credits: http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
@@ -178,13 +177,6 @@ nnoremap <leader>b :BuffergatorToggle<CR>
 
 " CTag Tagbar
 nnoremap <leader>ct :TagbarToggle<CR>
-
-" Airline
-set laststatus=2
-" let g:airline_powerline_fonts=1
-" let g:airline_theme='lucius'
-" let g:airline#extensions#tabline#enabled = 1
-" set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
 
 " R nvim
 let g:R_nvim_wd = 1
