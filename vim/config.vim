@@ -89,6 +89,7 @@ set showbreak=…            " show ellipsis at breaking
 set autoindent             " automatically set indent of new line
 set smartindent            " use smarter indentation based on file type
 set laststatus=2           " always show status bar
+set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
 
 " Find (mark) visually selected text
 " Credits: http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
