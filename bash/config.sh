@@ -34,3 +34,10 @@ export PATH=$HOME/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
 export PATH=$GEM_HOME/bin:$PATH
+
+# Bash completions
+include () {
+    [[ -f "$1" ]] && source "$1"
+}
+include /usr/share/bash-completion/bash_completion
+include /usr/local/etc/bash_completion
