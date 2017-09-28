@@ -151,10 +151,10 @@ let g:ycm_autoclose_preview_window_after_insertion=1    " hide the preview windo
 let g:ycm_global_ycm_extra_conf='~/.vim/config/.ycm_extra_conf.py' " Default .ycm_extra_conf.py
 
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
-nnoremap <leader>gdec :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gdef :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>g :YcmCompleter GoTo<CR>
-nnoremap <leader>gf :YcmCompleter GoToImprecise<CR>
+nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>gi :YcmCompleter GoToImprecise<CR>
 
 " YCM Typescript
 if !exists("g:ycm_semantic_triggers")
