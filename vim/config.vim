@@ -1,11 +1,10 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'embear/vim-localvimrc'                " local vim configurations
-" Plug 'vim-syntastic/syntastic'              " syntastic checker
 Plug 'valloric/youcompleteme'               " autocompletion
 Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
 Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'scrooloose/nerdtree'                  " NERD tree
 Plug 'Xuyuanp/nerdtree-git-plugin'          " git status in NERDTree
 Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
