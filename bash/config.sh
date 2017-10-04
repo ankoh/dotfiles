@@ -29,6 +29,7 @@ export NPM_CONIFG_PREFIX=$HOME/.npm_global
 # Paths
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$DOTFILES/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
