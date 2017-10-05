@@ -11,7 +11,6 @@ Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
-Plug 'yggdroot/indentLine'                  " indentation levels
 Plug 'vim-utils/vim-man'                    " man pages
 Plug 'fatih/vim-go'                         " go support
 Plug 'keith/swift.vim'                      " swift support
