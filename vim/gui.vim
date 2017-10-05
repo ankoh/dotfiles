@@ -13,3 +13,7 @@ set guioptions-=T
 " Default size
 set lines=40
 set columns=120
+
+" GVim does not need redraw speedups
+set ttyfast=0
+set lazyredraw=0
