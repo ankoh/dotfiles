@@ -24,7 +24,8 @@ export LIBRARY_PATH=$HOME/.local/lib:$LIBRARY_PATH
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export GOPATH=$HOME/go
 export GEM_HOME=$HOME/.gem
-export NPM_CONIFG_PREFIX=$HOME/.npm_global
+export NPM_PACKAGES=$HOME/.npm_packages
+export NODE_PATH=$NPM_PACKAGES/lib/node_modules:$NODE_PATH
 
 # Paths
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -33,7 +34,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$DOTFILES/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
-export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
+export PATH=$NPM_PACKAGES/bin:$PATH
 export PATH=$GEM_HOME/bin:$PATH
 
 # Bash completions

@@ -22,16 +22,18 @@ install-symlinks:
 	@mkdir -p ~/.local
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
-	@sh -c "[ ! -L ~/.vimrc ] || rm -r ~/.vimrc;"
-	@sh -c "[ ! -L ~/.gvimrc ] || rm -r ~/.gvimrc;"
-	@sh -c "[ ! -L ~/.bashrc ] || rm -r ~/.bashrc;"
-	@sh -c "[ ! -L ~/.bash_profile ] || rm -r ~/.bash_profile;"
+	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
+	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
+	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
+	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
+	@sh -c "[ ! -L ~/.npmrc ] || rm ~/.npmrc;"
 	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
 	@ln -sf ${MAKEFILE_DIR}vim/gui.vim ~/.gvimrc
 	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
+	@ln -sf ${MAKEFILE_DIR}bash/npmrc.symlink ~/.npmrc
 	@echo "λ  Linking Tig configuration"
 	@ln -sf ${MAKEFILE_DIR}tig/tigrc.symlink ~/.tigrc
 #---------------------------------------------------------------------------
@@ -47,6 +49,7 @@ repair:
 	@sh -c "[ -L ~/.tigrc ] || rm ~/.tigrc;"
 	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ -L ~/.bash_profile ] || rm -r ~/.bash_profile;"
+	@sh -c "[ -L ~/.npmrc ] || rm ~/.npmrc;"
 	@echo "λ  Restoring default vim"
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
