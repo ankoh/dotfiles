@@ -11,6 +11,7 @@ Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
+Plug 'justinmk/vim-syntax-extra'            " bison, flex, c
 Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 Plug 'vim-utils/vim-man'                    " man pages
 Plug 'fatih/vim-go'                         " go support
