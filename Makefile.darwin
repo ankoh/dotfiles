@@ -36,6 +36,7 @@ install-symlinks:
 	@sh -c "[ ! -L ~/.profile ] || rm ~/.profile;"
 	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ ! -L ~/.npmrc ] || rm ~/.npmrc;"
+	@sh -c "[ ! -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
 	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
@@ -45,6 +46,7 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}bash/profile.symlink ~/.profile
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
 	@ln -sf ${MAKEFILE_DIR}bash/npmrc.symlink ~/.npmrc
+	@ln -sf ${MAKEFILE_DIR}bash/xmodmap.symlink ~/.Xmodmap
 	@echo "λ  Linking Tig configuration"
 	@ln -sf ${MAKEFILE_DIR}tig/tigrc.symlink ~/.tigrc
 #---------------------------------------------------------------------------
@@ -60,6 +62,7 @@ repair:
 	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ -L ~/.npmrc ] || rm ~/.npmrc;"
+	@sh -c "[ -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
 	@echo "λ  Restoring default vim"
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
