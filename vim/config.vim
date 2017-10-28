@@ -17,12 +17,7 @@ Plug 'vim-utils/vim-man'                    " man pages
 Plug 'fatih/vim-go'                         " go support
 Plug 'keith/swift.vim'                      " swift support
 Plug 'jalvesaq/nvim-r'                      " r support
-Plug 'posva/vim-vue'                        " vue support
-
-" Typescript
-" Plug 'leafgarland/typescript-vim'           " typescript syntax
-" Plug 'quramy/tsuquyomi'                     " typescript completion
-" Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
+Plug 'mxw/vim-jsx'                          " jsx support
 
 call plug#end()
 
