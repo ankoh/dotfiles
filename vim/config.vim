@@ -17,7 +17,6 @@ Plug 'vim-utils/vim-man'                    " man pages
 Plug 'fatih/vim-go'                         " go support
 Plug 'keith/swift.vim'                      " swift support
 Plug 'jalvesaq/nvim-r'                      " r support
-Plug 'mxw/vim-jsx'                          " jsx support
 
 call plug#end()
 
