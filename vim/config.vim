@@ -141,6 +141,9 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
 
+" Ignore some folders in ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 " YCM
 " let g:ycm_register_as_syntastic_checker=1               " use syntastic instead of vim
 let g:ycm_confirm_extra_conf=0                          " silently use .ycm_extra_conf.py
