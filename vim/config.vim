@@ -87,6 +87,7 @@ set autoindent             " automatically set indent of new line
 set smartindent            " use smarter indentation based on file type
 set laststatus=2           " always show status bar
 set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
+set wildignore+=.so,.swp,.zip,.o,.d,.dwo,.make,.a,link.txt,depend.internal,CXX.includecache,CMakeCache.txt
 
 " Find (mark) visually selected text
 " Credits: http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
