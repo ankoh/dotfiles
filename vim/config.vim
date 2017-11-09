@@ -19,7 +19,6 @@ Plug 'keith/swift.vim'                      " swift support
 Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'quramy/tsuquyomi'                     " typescript completion
-Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
 Plug 'Chiel92/vim-autoformat'               " autoformat things
 
 call plug#end()
@@ -158,11 +157,13 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>gi :YcmCompleter GoToImprecise<CR>
 
-" YCM Typescript
+"
+"YCM Typescript
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
+autocmd BufEnter *.tsx set filetype=typescript  " tsx files
 
 " Local Vimrc
 let g:localvimrc_ask = 0
