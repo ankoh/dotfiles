@@ -20,6 +20,7 @@ Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'quramy/tsuquyomi'                     " typescript completion
 Plug 'shougo/vimproc.vim', {'do' : 'make'}  " async execution for tsuquyomi
+Plug 'Chiel92/vim-autoformat'               " autoformat things
 
 call plug#end()
 
