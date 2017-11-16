@@ -139,7 +139,7 @@ if has('nvim')
 endif
 
 " Ignore some folders in ctrlp
-let g:ctrlp_custom_ignore = '\.node_modules$\|\.DS_Store$\|\.git$'
+let g:ctrlp_custom_ignore = 'node_modules\|\DS_Store\|git$'
 
 " YCM
 " let g:ycm_register_as_syntastic_checker=1               " use syntastic instead of vim
