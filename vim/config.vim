@@ -19,6 +19,7 @@ Plug 'keith/swift.vim'                      " swift support
 Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'Chiel92/vim-autoformat'               " autoformat things
+Plug 'ankoh/vim-flatbuffers'                " flatbuffer syntax
 
 call plug#end()
 
