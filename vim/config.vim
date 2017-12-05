@@ -181,6 +181,9 @@ nnoremap <leader>ct :TagbarToggle<CR>
 " R nvim
 let g:R_nvim_wd = 1
 
+" Clang-Format
+let g:clang_format#command = 'clang-format-5.0'
+
 " Theme
 colorscheme editplus
 set background=light
