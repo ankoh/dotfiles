@@ -72,8 +72,7 @@ set smartcase              " case-sensitive if expresson contains a capital lett
 set hlsearch
 set incsearch              " set incremental search, like modern browsers
 set magic                  " set magic on, for regex
-set showmatch              " show matching braces is very laggy sometimes
-let loaded_matchparen=1    " avoid loading pi_paren plugin
+set showmatch              " show matching braces
 set mat=2                  " how many tenths of a second to blink
 syntax on                  " switch syntax highlighting on
 set synmaxcol=256          " limit syntax highlighting to 256 chars"
