@@ -20,24 +20,26 @@ endif
 install-symlinks:
 	@mkdir -p ~/.config
 	@mkdir -p ~/.local
+	@sh -c "[ ! -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
+	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
+	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
+	@sh -c "[ ! -L ~/.ctags ] || rm -r ~/.ctags;"
+	@sh -c "[ ! -L ~/.gitconfig ] || rm ~/.gitconfig;"
+	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
+	@sh -c "[ ! -L ~/.npmrc ] || rm ~/.npmrc;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
-	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
-	@sh -c "[ ! -L ~/.gitconfig ] || rm ~/.gitconfig;"
-	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
-	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
-	@sh -c "[ ! -L ~/.npmrc ] || rm ~/.npmrc;"
-	@sh -c "[ ! -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
-	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
-	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
-	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
-	@ln -sf ${MAKEFILE_DIR}vim/gui.vim ~/.gvimrc
-	@ln -sf ${MAKEFILE_DIR}bash/gitconfig.symlink ~/.gitconfig
-	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
+	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
+	@ln -sf ${MAKEFILE_DIR}bash/ctags.symlink ~/.ctags
+	@ln -sf ${MAKEFILE_DIR}bash/gitconfig.symlink ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}bash/npmrc.symlink ~/.npmrc
 	@ln -sf ${MAKEFILE_DIR}bash/xmodmap.symlink ~/.Xmodmap
+	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
+	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
+	@ln -sf ${MAKEFILE_DIR}vim/gui.vim ~/.gvimrc
+	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
 	@echo "λ  Linking Tig configuration"
 	@ln -sf ${MAKEFILE_DIR}tig/tigrc.symlink ~/.tigrc
 #---------------------------------------------------------------------------
@@ -45,17 +47,18 @@ repair:
 	@echo "λ  Removing Symlinks"
 	@mkdir -p ~/.config
 	@mkdir -p ~/.local
+	@sh -c "[ -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
+	@sh -c "[ -L ~/.bash_profile ] || rm -r ~/.bash_profile;"
+	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ -L ~/.config/nvim ] || rm ~/.config/nvim;"
+	@sh -c "[ -L ~/.ctags ] || rm ~/.ctags;"
+	@sh -c "[ -L ~/.gitconfig ] || rm ~/.gitconfig;"
+	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
+	@sh -c "[ -L ~/.npmrc ] || rm ~/.npmrc;"
+	@sh -c "[ -L ~/.tigrc ] || rm ~/.tigrc;"
+	@sh -c "[ -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@sh -c "[ -L ~/.vim ] || rm ~/.vim;"
 	@sh -c "[ -L ~/.vimrc ] || rm ~/.vimrc;"
-	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
-	@sh -c "[ -L ~/.gitconfig ] || rm ~/.gitconfig;"
-	@sh -c "[ -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
-	@sh -c "[ -L ~/.tigrc ] || rm ~/.tigrc;"
-	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
-	@sh -c "[ -L ~/.bash_profile ] || rm -r ~/.bash_profile;"
-	@sh -c "[ -L ~/.npmrc ] || rm ~/.npmrc;"
-	@sh -c "[ -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
 	@echo "λ  Restoring default vim"
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
