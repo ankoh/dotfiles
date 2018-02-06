@@ -177,6 +177,21 @@ nnoremap <leader>b :BuffergatorToggle<CR>
 " CTag Tagbar
 nnoremap <leader>ct :TagbarToggle<CR>
 
+" CTag typescript support
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+\ }
+
 " R nvim
 let g:R_nvim_wd = 1
 
