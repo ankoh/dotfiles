@@ -38,6 +38,7 @@ install-symlinks:
 	@sh -c "[ ! -L ~/.profile ] || rm ~/.profile;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
+	@sh -c "[ ! -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
 	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}bash/ctags.symlink ~/.ctags
@@ -45,6 +46,7 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}bash/npmrc.symlink ~/.npmrc
 	@ln -sf ${MAKEFILE_DIR}bash/profile.symlink ~/.profile
 	@ln -sf ${MAKEFILE_DIR}bash/xmodmap.symlink ~/.Xmodmap
+	@ln -sf ${MAKEFILE_DIR}bash/tmux.symlink ~/.tmux.conf
 	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}vim/gui.vim ~/.gvimrc
@@ -66,6 +68,7 @@ repair:
 	@sh -c "[ -L ~/.npmrc ] || rm ~/.npmrc;"
 	@sh -c "[ -L ~/.vim ] || rm ~/.vim;"
 	@sh -c "[ -L ~/.vimrc ] || rm ~/.vimrc;"
+	@sh -c "[ -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@echo "λ  Restoring default vim"
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
