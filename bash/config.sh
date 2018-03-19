@@ -23,6 +23,7 @@ export CMAKE_INSTALL_PREFIX=$HOME/.local:$CMAKE_INSTALL_PREFIX
 export LIBRARY_PATH=$HOME/.local/lib:$LIBRARY_PATH
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
 export GEM_HOME=$HOME/.gem
 export NPM_PACKAGES=$HOME/.npm_packages
 export NODE_PATH=$NPM_PACKAGES/lib/node_modules:$NODE_PATH
@@ -33,7 +34,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$DOTFILES/bin:$PATH
 export PATH=$HOME/bin:$PATH
-export PATH=$GOPATH/bin:$PATH
+export PATH=$GOBIN:$PATH
 export PATH=$NPM_PACKAGES/bin:$PATH
 export PATH=$GEM_HOME/bin:$PATH
 
