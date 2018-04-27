@@ -97,8 +97,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <C-I> 0<C-W><C-W>
-nnoremap <C-O> 1000<C-W><C-W>
 
 " Window splits
 nnoremap <leader>w <C-W>
