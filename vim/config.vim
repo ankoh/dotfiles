@@ -146,12 +146,17 @@ let g:ycm_auto_trigger=1                                " use auto trigger
 " let g:ycm_autoclose_preview_window_after_completion=1   " hide the preview window completely
 let g:ycm_autoclose_preview_window_after_insertion=1    " hide the preview window after insertion
 
-nnoremap <F5> :! set -x; test -d build && cd build && make -j16<CR>
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>gi :YcmCompleter GoToImprecise<CR>
+
+" Builds
+
+nnoremap <F4> :! set -x; test -d build && cd build && make -j16<CR>
+nnoremap <F5> :! set -x; DEBUG=1 make -j16<CR>
+nnoremap <F6> :! set -x; make -j16<CR>
 
 " YCM TSX
 if !exists('g:ycm_semantic_triggers')
