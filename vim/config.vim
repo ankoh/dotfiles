@@ -146,6 +146,7 @@ let g:ycm_auto_trigger=1                                " use auto trigger
 " let g:ycm_autoclose_preview_window_after_completion=1   " hide the preview window completely
 let g:ycm_autoclose_preview_window_after_insertion=1    " hide the preview window after insertion
 
+nnoremap <F5> :! set -x; test -d build && cd build && make<CR>
 nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
