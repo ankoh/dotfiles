@@ -153,9 +153,9 @@ nnoremap <leader>gi :YcmCompleter GoToImprecise<CR>
 
 " Builds
 
-nnoremap <F4> :! set -x; test -d build && cd build && make -j16<CR>
-nnoremap <F5> :! set -x; DEBUG=1 make -j16<CR>
-nnoremap <F6> :! set -x; make -j16<CR>
+nnoremap <F7> :! set -x; test -d build && cd build && make -j16 && test -x tester && ./tester<CR>
+nnoremap <F8> :! set -x; DEBUG=1 make -j16 && test -x bin/debug/tester && ./bin/debug/tester<CR>
+nnoremap <F9> :! set -x; make -j16 && test -x bin/tester && ./bin/tester<CR>
 
 " YCM TSX
 if !exists('g:ycm_semantic_triggers')
