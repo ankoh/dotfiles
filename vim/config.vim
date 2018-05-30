@@ -12,13 +12,14 @@ Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'justinmk/vim-syntax-extra'            " bison, flex, c
-Plug 'godlygeek/csapprox'                   " approximate gvim plugin
+" Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 Plug 'vim-utils/vim-man'                    " man pages
 Plug 'fatih/vim-go'                         " go support
 Plug 'keith/swift.vim'                      " swift support
 Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'Chiel92/vim-autoformat'               " autoformat things
+Plug 'arcticicestudio/nord-vim'             " nord theme
 
 call plug#end()
 
@@ -204,5 +205,4 @@ let g:clang_format#command = 'clang-format-5.0'
 let g:clang_format#detect_style_file = 1
 
 " Theme
-colorscheme editplus
-set background=light
+colorscheme nord
