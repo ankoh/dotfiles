@@ -210,5 +210,9 @@ let g:R_nvim_wd = 1
 let g:clang_format#command = 'clang-format-5.0'
 let g:clang_format#detect_style_file = 1
 
-" Theme
+" Nord theme
+augroup nord-overrides
+    autocmd!
+    autocmd ColorScheme nord highlight Comment ctermfg=14 guifg='#8FBCBB'
+augroup END
 colorscheme nord
