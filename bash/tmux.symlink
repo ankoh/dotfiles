@@ -8,9 +8,15 @@ set -g mouse on
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'arcticicestudio/nord-tmux'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 
 # Nord theme
 set -g @nord_tmux_no_patched_font "1"
+
+# Highlight the prefix indicator
+set -g @prefix_highlight_output_prefix ''
+set -g @prefix_highlight_output_suffix ''
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
