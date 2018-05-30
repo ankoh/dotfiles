@@ -213,6 +213,6 @@ let g:clang_format#detect_style_file = 1
 " Nord theme
 augroup nord-overrides
     autocmd!
-    autocmd ColorScheme nord highlight Comment ctermfg=14 guifg='#8FBCBB'
+    autocmd ColorScheme nord highlight Comment ctermfg=13 guifg='#EBCB8B'
 augroup END
 colorscheme nord
