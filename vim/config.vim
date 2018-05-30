@@ -6,11 +6,13 @@ Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
 Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'scrooloose/nerdtree'                  " NERD tree
+Plug 'itchyny/lightline.vim'                " status bar
 Plug 'Xuyuanp/nerdtree-git-plugin'          " git status in NERDTree
 Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
+Plug 'airblade/vim-gitgutter'               " git support
 Plug 'justinmk/vim-syntax-extra'            " bison, flex, c
 " Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 Plug 'vim-utils/vim-man'                    " man pages
@@ -167,6 +169,10 @@ autocmd BufEnter *.tsx set filetype=typescript
 
 " Local Vimrc
 let g:localvimrc_ask = 0
+
+let g:lightline = {
+    \ 'colorscheme': 'nord',
+    \  }
 
 " NERDtree
 let g:NERDTreeShowHidden = 1
