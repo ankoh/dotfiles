@@ -44,7 +44,6 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}vim/gui.vim ~/.gvimrc
 	@ln -sf ${MAKEFILE_DIR}vim/init.vim ~/.vimrc
-	@ln -sf ${MAKEFILE_DIR}tig/tigrc.symlink ~/.tigrc
 #---------------------------------------------------------------------------
 repair:
 	@echo "λ  Removing Symlinks"
