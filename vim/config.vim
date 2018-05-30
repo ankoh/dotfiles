@@ -141,7 +141,10 @@ if has('nvim')
 endif
 
 " Ignore some folders in ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|\DS_Store\|git$'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules|\.DS_Store$',
+    \ 'file': '\.exe$\|\.so$\|\.dat|\.a|\.o|\.so$'
+    \ }
 
 " YCM
 let g:ycm_confirm_extra_conf=0                          " silently use .ycm_extra_conf.py
@@ -155,7 +158,6 @@ nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>gi :YcmCompleter GoToImprecise<CR>
 
 " Builds
-
 nnoremap <F7> :! set -x; test -d build && cd build && make -j16 && test -x tester && ./tester<CR>
 nnoremap <F8> :! set -x; DEBUG=1 make -j16 && test -x bin/debug/tester && ./bin/debug/tester<CR>
 nnoremap <F9> :! set -x; make -j16 && test -x bin/tester && ./bin/tester<CR>
