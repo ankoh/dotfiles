@@ -1,6 +1,18 @@
 # Color schemes
 set -g default-terminal "screen-256color"
 
+# Vim like copy
+set-window-option -g mode-keys vi
+bind [ copy-mode
+unbind p
+bind p paste-buffer
+bind -t vi-copy v begin-selection
+bind -t vi-copy y copy-selection
+bind -t vi-copy V rectangle-toggle
+
+# Buffer
+bind Space choose-buffer
+
 # Mouse support
 set -g mouse on
 
