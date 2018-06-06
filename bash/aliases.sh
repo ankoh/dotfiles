@@ -11,6 +11,7 @@ else
     colorflag="-G"
 fi
 
+alias ll='ls -lah'
 alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -h -c'
