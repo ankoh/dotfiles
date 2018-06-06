@@ -206,7 +206,7 @@ let g:tagbar_type_typescript = {
 let g:R_nvim_wd = 1
 
 " Clang-Format
-let g:clang_format#command = 'clang-format-5.0'
+let g:clang_format#command = 'clang-format-6.0'
 let g:clang_format#detect_style_file = 1
 
 " Nord theme
