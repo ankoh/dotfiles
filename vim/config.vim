@@ -8,6 +8,7 @@ Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'scrooloose/nerdtree'                  " NERD tree
 Plug 'itchyny/lightline.vim'                " status bar
+Plug 'ap/vim-buftabline'                    " tab line
 Plug 'Xuyuanp/nerdtree-git-plugin'          " git status in NERDTree
 Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
@@ -111,14 +112,9 @@ nnoremap <leader>wv  :vsplit<CR>
 nnoremap <leader>w< :exe "vertical resize " . (winwidth(0) * 12/10)<CR>
 nnoremap <leader>w> :exe "vertical resize " . (winwidth(0) * 8/10)<CR>
 
-" Tabs
-nnoremap <leader>tj :tabfirst<CR>
-nnoremap <leader>tl :tabnext<CR>
-nnoremap <leader>th :tabprev<CR>
-nnoremap <leader>tk :tablast<CR>
-nnoremap <leader>tn :tabnew<Space>
-nnoremap <leader>tt :tabedit<Space>
-nnoremap <leader>td :tabclose<CR>
+" Buffer tab line
+nnoremap <leader>tl :bnext<CR>
+nnoremap <leader>th :bprev<CR>
 
 " Fix TMUX+NVIM C-H bug
 " https://github.com/neovim/neovim/issues/2048
