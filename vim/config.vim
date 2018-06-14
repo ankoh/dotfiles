@@ -5,7 +5,6 @@ Plug 'valloric/youcompleteme'               " autocompletion
 Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
 Plug 'lyuts/vim-rtags'                      " rtags support
 Plug 'rhysd/vim-clang-format'               " clang format
-Plug 'Raimondi/delimitMate'                 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'scrooloose/nerdtree'                  " NERD tree
 Plug 'itchyny/lightline.vim'                " status bar
 Plug 'ap/vim-buftabline'                    " tab line
@@ -16,7 +15,6 @@ Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
 Plug 'airblade/vim-gitgutter'               " git support
 Plug 'justinmk/vim-syntax-extra'            " bison, flex, c
-" Plug 'godlygeek/csapprox'                   " approximate gvim plugin
 Plug 'vim-utils/vim-man'                    " man pages
 Plug 'fatih/vim-go'                         " go support
 Plug 'keith/swift.vim'                      " swift support
@@ -91,6 +89,9 @@ set smartindent            " use smarter indentation based on file type
 set laststatus=2           " always show status bar
 set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
 set wildignore+=.so,.swp,.zip,.o,.d,.dwo,.make,.a,link.txt,depend.internal,CXX.includecache,CMakeCache.txt
+
+" Paste mode
+set pastetoggle=<F3>
 
 " Find (mark) visually selected text
 " Credits: http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
