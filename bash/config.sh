@@ -11,7 +11,7 @@ export REPORTTIME=10
 export EDITOR='vim'
 
 # Prompt
-export PS1="\n\h [\w]\n$ "
+export PS1="\h [\w]\n$ "
 
 # CMAKE paths
 export CMAKE_INCLUDE_PATH=$HOME/.local/include:$CMAKE_INCLUDE_PATH
