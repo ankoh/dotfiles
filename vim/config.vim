@@ -6,6 +6,7 @@ Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
 Plug 'lyuts/vim-rtags'                      " rtags support
 Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'scrooloose/nerdtree'                  " NERD tree
+Plug 'Raimondi/delimitMate'                 " NERD tree
 Plug 'itchyny/lightline.vim'                " status bar
 Plug 'ap/vim-buftabline'                    " tab line
 Plug 'Xuyuanp/nerdtree-git-plugin'          " git status in NERDTree
