@@ -9,6 +9,10 @@ bind-key -T copy-mode-vi V send-keys -X rectangle-toggle
 bind-key p paste-buffer
 bind-key Space choose-buffer
 
+# Window swapping
+bind-key -n C-S-Left swap-window -t -1
+bind-key -n C-S-Right swap-window -t +1
+
 # Mouse support
 set -g mouse on
 
