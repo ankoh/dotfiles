@@ -26,27 +26,31 @@ endif
 #---------------------------------------------------------------------------
 install-symlinks:
 	@mkdir -p ~/.config
+	@mkdir -p ~/.config/oni
 	@mkdir -p ~/.local
 	@sh -c "[ ! -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
 	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
+	@sh -c "[ ! -L ~/.config/oni/config.tsx ] || rm ~/.config/oni/config.tsx;"
 	@sh -c "[ ! -L ~/.ctags ] || rm -r ~/.ctags;"
 	@sh -c "[ ! -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
 	@sh -c "[ ! -L ~/.npmrc ] || rm ~/.npmrc;"
 	@sh -c "[ ! -L ~/.profile ] || rm ~/.profile;"
+	@sh -c "[ ! -L ~/.tmux ] || rm -r ~/.tmux;"
+	@sh -c "[ ! -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
-	@sh -c "[ ! -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
 	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
-	@ln -sf ${MAKEFILE_DIR}bash/ctags.symlink ~/.ctags
-	@ln -sf ${MAKEFILE_DIR}bash/gitconfig.symlink ~/.gitconfig
-	@ln -sf ${MAKEFILE_DIR}bash/npmrc.symlink ~/.npmrc
 	@ln -sf ${MAKEFILE_DIR}bash/profile.symlink ~/.profile
 	@ln -sf ${MAKEFILE_DIR}bash/xmodmap.symlink ~/.Xmodmap
-	@ln -sf ${MAKEFILE_DIR}bash/tmux.symlink ~/.tmux.conf
+	@ln -sf ${MAKEFILE_DIR}other/ctags.conf ~/.ctags
+	@ln -sf ${MAKEFILE_DIR}other/gitconfig.conf ~/.gitconfig
+	@ln -sf ${MAKEFILE_DIR}other/npmrc.conf ~/.npmrc
+	@ln -sf ${MAKEFILE_DIR}other/oni.tsx ~/.config/oni/config.tsx
+	@ln -sf ${MAKEFILE_DIR}other/tmux.conf ~/.tmux.conf
 	@ln -sf ${MAKEFILE_DIR}tmux ~/.tmux
 	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
@@ -61,6 +65,7 @@ repair:
 	@sh -c "[ -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ -L ~/.config/nvim ] || rm ~/.config/nvim;"
+	@sh -c "[ -L ~/.config/oni/config.tsx ] || rm ~/.config/oni/config.tsx;"
 	@sh -c "[ -L ~/.ctags ] || rm ~/.ctags;"
 	@sh -c "[ -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
