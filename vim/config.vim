@@ -23,6 +23,8 @@ Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'Chiel92/vim-autoformat'               " autoformat things
 Plug 'arcticicestudio/nord-vim'             " nord theme
+Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
+Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
 
 call plug#end()
 
