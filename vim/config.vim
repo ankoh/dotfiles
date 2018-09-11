@@ -158,6 +158,9 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>gi :YcmCompleter GoToImprecise<CR>
 
+" Spellchecking
+autocmd BufRead, BufNewFile *.tex setlocal spell
+
 " Builds
 nnoremap <F7> :! set -x; test -d build && cd build && make -j16 && test -x tester && ./tester<CR>
 nnoremap <F8> :! set -x; DEBUG=1 make -j16 && test -x bin/debug/tester && ./bin/debug/tester<CR>
