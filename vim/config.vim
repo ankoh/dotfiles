@@ -92,6 +92,7 @@ set smartindent            " use smarter indentation based on file type
 set laststatus=2           " always show status bar
 set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
 set wildignore+=.so,.swp,.zip,.o,.d,.dwo,.make,.a,link.txt,depend.internal,CXX.includecache,CMakeCache.txt
+set clipboard=unnamed      " use system clipboard
 
 " Paste mode
 set pastetoggle=<F3>
