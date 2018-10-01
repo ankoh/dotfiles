@@ -35,7 +35,6 @@ install-symlinks:
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
 	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
-	@ln -sf ${MAKEFILE_DIR}bash/profile.symlink ~/.profile
 	@ln -sf ${MAKEFILE_DIR}bash/xmodmap.symlink ~/.Xmodmap
 	@ln -sf ${MAKEFILE_DIR}other/ctags.conf ~/.ctags
 	@ln -sf ${MAKEFILE_DIR}other/gitconfig.conf ~/.gitconfig
