@@ -10,7 +10,6 @@ Plug 'Raimondi/delimitMate'                 " NERD tree
 Plug 'itchyny/lightline.vim'                " status bar
 Plug 'ap/vim-buftabline'                    " tab line
 Plug 'Xuyuanp/nerdtree-git-plugin'          " git status in NERDTree
-Plug 'ctrlpvim/ctrlp.vim'                   " fuzzy file finder
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'majutsushi/tagbar'                    " tagbar
 Plug 'tpope/vim-fugitive'                   " git support
@@ -25,6 +24,10 @@ Plug 'Chiel92/vim-autoformat'               " autoformat things
 Plug 'arcticicestudio/nord-vim'             " nord theme
 Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
 Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
+
+" TEST: FZF instead of CTRLP
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -141,12 +144,6 @@ nnoremap <leader>ic :set list!<CR>
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
-
-" Ignore some folders in ctrlp
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules|\.DS_Store$',
-    \ 'file': '\.exe$\|\.so$\|\.dat|\.a|\.o|\.so$'
-    \ }
 
 " YCM
 let g:ycm_confirm_extra_conf=0                          " silently use .ycm_extra_conf.py

@@ -37,6 +37,11 @@ export PATH=$HOME/bin:$PATH
 export PATH=$GOBIN:$PATH
 export PATH=$NPM_PACKAGES/bin:$PATH
 export PATH=$GEM_HOME/bin:$PATH
+export PATH=$PATH:~/.fzf/bin
+
+# FZF
+source ~/.fzf/shell/key-bindings.bash
+source ~/.fzf/shell/completion.bash
 
 # Bash completions
 include () {

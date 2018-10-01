@@ -5,6 +5,7 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 BREW := $(shell command -v brew 2> /dev/null)
 NVIM := $(shell command -v nvim 2> /dev/null)
 CTAGS := $(shell command -v ctags 2> /dev/null)
+FZF_DIR := ~/.fzf
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
@@ -23,6 +24,12 @@ ifndef CTAGS
 else
 	@echo "λ  Found Ctags: ${CTAGS}"
 endif
+#---------------------------------------------------------------------------
+install-fzf:
+	if [ ! -d $(FZF_DIR) ]; then \
+		git clone --depth 1 https://github.com/junegunn/fzf.git $(FZF_DIR); \
+	fi
+	$(FZF_DIR)/install --bin
 #---------------------------------------------------------------------------
 install-symlinks:
 	@mkdir -p ~/.config
@@ -60,6 +67,7 @@ install-symlinks:
 repair:
 	@echo "λ  Removing Symlinks"
 	@mkdir -p ~/.config
+	@mkdir -p ~/.config/oni
 	@mkdir -p ~/.local
 	@sh -c "[ -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
 	@sh -c "[ -L ~/.bash_profile ] || rm ~/.bash_profile;"
@@ -80,5 +88,5 @@ repair:
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: print-environment install-ctags install-symlinks
+install: print-environment install-ctags install-fzf install-symlinks
 #---------------------------------------------------------------------------
