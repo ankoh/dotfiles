@@ -135,6 +135,9 @@ nnoremap <leader>ln :lne<CR>
 nnoremap <leader>lp :lp<CR>
 nnoremap <leader>lc :lcl<CR>
 
+" FCF ctrl-p mode
+nnoremap <C-P> :Files<CR>
+
 " Special characters
 set invlist
 " set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
