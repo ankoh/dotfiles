@@ -5,29 +5,31 @@ Plug 'valloric/youcompleteme'               " autocompletion
 Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
 Plug 'lyuts/vim-rtags'                      " rtags support
 Plug 'rhysd/vim-clang-format'               " clang format
-Plug 'scrooloose/nerdtree'                  " NERD tree
-Plug 'Raimondi/delimitMate'                 " NERD tree
-Plug 'itchyny/lightline.vim'                " status bar
-Plug 'ap/vim-buftabline'                    " tab line
-Plug 'Xuyuanp/nerdtree-git-plugin'          " git status in NERDTree
+Plug 'scrooloose/nerdtree'                  " NERDTree
+Plug 'Xuyuanp/nerdtree-git-plugin'          " NERDTree git status
+Plug 'Raimondi/delimitMate'                 " autocompletion for quotes
+Plug 'itchyny/lightline.vim'                " bottom status bar
+Plug 'ap/vim-buftabline'                    " top tab line with buffers
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
-Plug 'majutsushi/tagbar'                    " tagbar
-Plug 'tpope/vim-fugitive'                   " git support
-Plug 'airblade/vim-gitgutter'               " git support
-Plug 'justinmk/vim-syntax-extra'            " bison, flex, c
-Plug 'vim-utils/vim-man'                    " man pages
+Plug 'majutsushi/tagbar'                    " tagbar for ctags
+Plug 'tpope/vim-fugitive'                   " git plugin
+Plug 'airblade/vim-gitgutter'               " git in sidebar
+Plug 'justinmk/vim-syntax-extra'            " bison, flex, c syntax
 Plug 'fatih/vim-go'                         " go support
-Plug 'keith/swift.vim'                      " swift support
-Plug 'jalvesaq/nvim-r'                      " r support
 Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'Chiel92/vim-autoformat'               " autoformat things
-Plug 'arcticicestudio/nord-vim'             " nord theme
 Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
 Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
+Plug 'arcticicestudio/nord-vim'             " nord theme
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+
+" Not needed atm
+" Plug 'vim-utils/vim-man'                    " man pages
+" Plug 'keith/swift.vim'                      " swift support
+" Plug 'jalvesaq/nvim-r'                      " r support
 
 call plug#end()
 
