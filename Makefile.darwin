@@ -35,7 +35,6 @@ install-symlinks:
 	@mkdir -p ~/.config
 	@mkdir -p ~/.config/oni
 	@mkdir -p ~/.local
-	@sh -c "[ ! -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
 	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
@@ -52,7 +51,6 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
 	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}bash/profile.symlink ~/.profile
-	@ln -sf ${MAKEFILE_DIR}bash/xmodmap.symlink ~/.Xmodmap
 	@ln -sf ${MAKEFILE_DIR}other/ctags.conf ~/.ctags
 	@ln -sf ${MAKEFILE_DIR}other/gitconfig.conf ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}other/npmrc.conf ~/.npmrc
@@ -69,7 +67,6 @@ repair:
 	@mkdir -p ~/.config
 	@mkdir -p ~/.config/oni
 	@mkdir -p ~/.local
-	@sh -c "[ -L ~/.Xmodmap ] || rm ~/.Xmodmap;"
 	@sh -c "[ -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ -L ~/.config/nvim ] || rm ~/.config/nvim;"
