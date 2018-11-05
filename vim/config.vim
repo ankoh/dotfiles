@@ -162,7 +162,10 @@ nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>gi :YcmCompleter GoToImprecise<CR>
 
 " Spellchecking
+set spell spelllang=en_us
 autocmd BufRead, BufNewFile *.tex setlocal spell
+autocmd BufRead, BufNewFile *.txt setlocal spell
+nnoremap <F5> :setlocal spell! spelllang=en_us<CR>
 
 " Builds
 nnoremap <F7> :! set -x; test -d build && cd build && make -j16 && test -x tester && ./tester<CR>
