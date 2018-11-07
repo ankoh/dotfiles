@@ -11,7 +11,6 @@ Plug 'Raimondi/delimitMate'                 " autocompletion for quotes
 Plug 'itchyny/lightline.vim'                " bottom status bar
 Plug 'ap/vim-buftabline'                    " top tab line with buffers
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
-Plug 'majutsushi/tagbar'                    " tagbar for ctags
 Plug 'tpope/vim-fugitive'                   " git plugin
 Plug 'airblade/vim-gitgutter'               " git in sidebar
 Plug 'justinmk/vim-syntax-extra'            " bison, flex, c syntax
@@ -135,8 +134,15 @@ nnoremap <leader>ln :lne<CR>
 nnoremap <leader>lp :lp<CR>
 nnoremap <leader>lc :lcl<CR>
 
-" FCF ctrl-p mode
+" FZF ctrl-p mode
 nnoremap <C-P> :Files<CR>
+
+" FZF ctags
+let g:fzf_tags_command = 'ctags -f ./$(for DIR in .git bin; do if test -d $DIR; then echo $DIR; break; fi done;)/tags -R'
+set tags+=./.git/tags
+set tags+=./bin/tags
+nnoremap <leader>ft :Tags<CR>
+nnoremap <leader>fbt :BTags<CR>
 
 " Special characters
 set invlist
@@ -195,24 +201,6 @@ nnoremap <leader>m :NERDTreeToggle<CR>
 let g:buffergator_suppress_keymaps = 1
 let g:buffergator_autoexpand_on_split = 0
 nnoremap <leader>b :BuffergatorToggle<CR>
-
-" CTag Tagbar
-nnoremap <leader>ct :TagbarToggle<CR>
-
-" CTag typescript support
-let g:tagbar_type_typescript = {
-  \ 'ctagstype': 'typescript',
-  \ 'kinds': [
-    \ 'c:classes',
-    \ 'n:modules',
-    \ 'f:functions',
-    \ 'v:variables',
-    \ 'v:varlambdas',
-    \ 'm:members',
-    \ 'i:interfaces',
-    \ 'e:enums',
-  \ ]
-\ }
 
 " R nvim
 let g:R_nvim_wd = 1
