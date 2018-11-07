@@ -55,9 +55,9 @@ set softtabstop=4          " edit as if the tabs are 4 characters wide
 set shiftwidth=4           " number of spaces to use for indent and unindent
 set shiftround             " round indent to a multiple of 'shiftwidth'
 " set mouse=c                " disable the mouse in vim to prevent clicks
-if has('mouse')
-   set mouse=a            " mouse support (e.g. copy selected without mouse)
-endif
+" if has('mouse')
+"    set mouse=a            " mouse support (e.g. copy selected without mouse)
+" endif
 set backspace=indent,eol,start " backspace problem
 set ttyfast                " faster redrawing
 set lazyredraw             " draw lazy
