@@ -154,12 +154,12 @@ let g:LanguageClient_serverCommands = {
     \   'cpp': [
     \       '~/.local/bin/cquery',
     \       '--log-file=/tmp/cq.log',
-    \       '--init={"cacheDirectory":"/tmp/cache"}'
+    \       '--init={"cacheDirectory":"/tmp/cqcache"}'
     \   ],
     \   'c': [
     \       '~/.local/bin/cquery',
     \       '--log-file=/tmp/cq.log',
-    \       '--init={"cacheDirectory":"/tmp/cache"}'
+    \       '--init={"cacheDirectory":"/tmp/cqcache"}'
     \   ]
     \ }
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
