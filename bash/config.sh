@@ -29,6 +29,7 @@ export NPM_PACKAGES=$HOME/.npm_packages
 export NODE_PATH=$NPM_PACKAGES/lib/node_modules:$NODE_PATH
 
 # Paths
+export PATH=/usr/lib/icecc/bin:$PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
