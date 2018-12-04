@@ -3,9 +3,11 @@ MAKEFILE_PATH := $(abspath $(lastword ${MAKEFILE_LIST}))
 MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
-NVIM := $(shell command -v nvim 2> /dev/null)
-CTAGS := $(shell command -v ctags 2> /dev/null)
 FZF_DIR := ~/.fzf
+CQUERY_REPO_DIR := ~/.cq/repo
+CQUERY_BUILD_DIR := ~/.cq/build
+CQUERY_CACHE_DIR := ~/.cq/cache
+CQUERY_INSTALL_PREFIX := ~/.local
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
@@ -18,12 +20,14 @@ else
 	@echo "λ  Found Homebrew: ${BREW}"
 endif
 #---------------------------------------------------------------------------
-install-ctags: install-brew
-ifndef CTAGS
-	brew install ctags
-else
-	@echo "λ  Found Ctags: ${CTAGS}"
-endif
+install-cquery:
+	if [ ! -d $(CQUERY_REPO_DIR) ]; then \
+		git clone --recurse-submodules --depth 1 https://github.com/cquery-project/cquery.git $(CQUERY_REPO_DIR); \
+	fi
+	@mkdir -p $(CQUERY_BUILD_DIR) $(CQUERY_CACHE_DIR) $(CQUERY_INSTALL_PREFIX)
+	cd $(CQUERY_BUILD_DIR) && cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(CQUERY_INSTALL_PREFIX) $(CQUERY_REPO_DIR)
+	cd $(CQUERY_BUILD_DIR) && ninja
+	cd $(CQUERY_BUILD_DIR) && ninja install
 #---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
@@ -85,5 +89,5 @@ repair:
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: print-environment install-ctags install-fzf install-symlinks
+install: print-environment install-cquery install-fzf install-symlinks
 #---------------------------------------------------------------------------

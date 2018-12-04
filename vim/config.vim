@@ -1,22 +1,27 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'embear/vim-localvimrc'                " local vim configurations
-Plug 'valloric/youcompleteme'               " autocompletion
-Plug 'rdnetto/ycm-generator', { 'branch': 'stable'} " ycm generator
-Plug 'lyuts/vim-rtags'                      " rtags support
+if has('nvim')                              " deoplete
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }                                     " languageserver
 Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'scrooloose/nerdtree'                  " NERDTree
 Plug 'Xuyuanp/nerdtree-git-plugin'          " NERDTree git status
 Plug 'Raimondi/delimitMate'                 " autocompletion for quotes
 Plug 'itchyny/lightline.vim'                " bottom status bar
 Plug 'ap/vim-buftabline'                    " top tab line with buffers
-Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'tpope/vim-fugitive'                   " git plugin
 Plug 'airblade/vim-gitgutter'               " git in sidebar
-Plug 'justinmk/vim-syntax-extra'            " bison, flex, c syntax
 Plug 'fatih/vim-go'                         " go support
 Plug 'leafgarland/typescript-vim'           " typescript syntax
-Plug 'Chiel92/vim-autoformat'               " autoformat things
 Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
 Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
 Plug 'arcticicestudio/nord-vim'             " nord theme
@@ -24,11 +29,6 @@ Plug 'arcticicestudio/nord-vim'             " nord theme
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-
-" Not needed atm
-" Plug 'vim-utils/vim-man'                    " man pages
-" Plug 'keith/swift.vim'                      " swift support
-" Plug 'jalvesaq/nvim-r'                      " r support
 
 call plug#end()
 
@@ -42,8 +42,7 @@ call plug#end()
 let mapleader = ','
 let g:mapleader = ','
 
-" YCM hates C-c
-" https://github.com/Valloric/YouCompleteMe/blob/master/README.md
+" JK instead of enter
 inoremap jk <Esc>
 
 set history=1000           " change history to 1000
@@ -137,13 +136,6 @@ nnoremap <leader>lc :lcl<CR>
 " FZF ctrl-p mode
 nnoremap <C-P> :Files<CR>
 
-" FZF ctags
-let g:fzf_tags_command = 'ctags -f ./$(for DIR in .git bin; do if test -d $DIR; then echo $DIR; break; fi done;)/tags -R'
-set tags+=./.git/tags
-set tags+=./bin/tags
-nnoremap <leader>ft :Tags<CR>
-nnoremap <leader>fbt :BTags<CR>
-
 " Special characters
 set invlist
 " set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
@@ -156,16 +148,24 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
 
-" YCM
-let g:ycm_confirm_extra_conf=0                          " silently use .ycm_extra_conf.py
-let g:ycm_auto_trigger=1                                " use auto trigger
-let g:ycm_autoclose_preview_window_after_insertion=1    " hide the preview window after insertion
+" Language server
+let g:LanguageClient_serverCommands = {
+    \   'python': ['/usr/local/bin/pyls'],
+    \   'cpp': [
+    \       '~/.local/bin/cquery',
+    \       '--log-file=/tmp/cq.log',
+    \       '--init={"cacheDirectory":"~/.cq/cache"}'
+    \   ]
+    \ }
 
-nnoremap <leader>gh :YcmCompleter GoToInclude<CR>
-nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gt :YcmCompleter GoTo<CR>
-nnoremap <leader>gi :YcmCompleter GoToImprecise<CR>
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
+" LanguageClient
+nnoremap <leader>gh :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <leader>gi :call LanguageClient#textDocument_implementation()<CR>
+nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
 
 " Spellchecking
 autocmd BufRead, BufNewFile *.tex setlocal spell spelllang=en_us
@@ -176,13 +176,6 @@ nnoremap <F5> :setlocal spell! spelllang=en_us<CR>
 nnoremap <F7> :! set -x; test -d build && cd build && make -j16 && test -x tester && ./tester<CR>
 nnoremap <F8> :! set -x; DEBUG=1 make -j16 && test -x bin/debug/tester && ./bin/debug/tester<CR>
 nnoremap <F9> :! set -x; make -j16 && test -x bin/tester && ./bin/tester<CR>
-
-" YCM TSX
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
-autocmd BufEnter *.tsx set filetype=typescript
 
 " Local Vimrc
 let g:localvimrc_ask = 0
