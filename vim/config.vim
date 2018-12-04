@@ -148,7 +148,7 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
 
-" Language server
+" LanguageClient
 let g:LanguageClient_serverCommands = {
     \   'python': ['/usr/local/bin/pyls'],
     \   'cpp': [
@@ -162,6 +162,13 @@ let g:LanguageClient_serverCommands = {
     \       '--init={"cacheDirectory":"/tmp/cache"}'
     \   ]
     \ }
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
+nnoremap <leader>gh :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <leader>gi :call LanguageClient#textDocument_implementation()<CR>
+nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
+nnoremap <leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
+nnoremap <F5> :call LanguageClient#textDocument_rename()<CR>
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -174,21 +181,9 @@ inoremap <silent><expr> <TAB>
         \ <SID>check_back_space() ? "\<TAB>" :
         \ deoplete#manual_complete()
 
-" LanguageClient
-nnoremap <leader>gh :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <leader>gi :call LanguageClient#textDocument_implementation()<CR>
-nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
-
 " Spellchecking
 autocmd BufRead, BufNewFile *.tex setlocal spell spelllang=en_us
 autocmd BufRead, BufNewFile *.txt setlocal spell spelllang=en_us
-nnoremap <F5> :setlocal spell! spelllang=en_us<CR>
-
-" Builds
-nnoremap <F7> :! set -x; test -d build && cd build && make -j16 && test -x tester && ./tester<CR>
-nnoremap <F8> :! set -x; DEBUG=1 make -j16 && test -x bin/debug/tester && ./bin/debug/tester<CR>
-nnoremap <F9> :! set -x; make -j16 && test -x bin/tester && ./bin/tester<CR>
 
 " Local Vimrc
 let g:localvimrc_ask = 0
