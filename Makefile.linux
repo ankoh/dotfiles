@@ -4,9 +4,9 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
+CQUERY_VERSION := v20180718
 CQUERY_REPO_DIR := ~/.cq/repo
 CQUERY_BUILD_DIR := ~/.cq/build
-CQUERY_CACHE_DIR := ~/.cq/cache
 CQUERY_INSTALL_PREFIX := ~/.local
 #---------------------------------------------------------------------------
 print-environment:
@@ -14,10 +14,11 @@ print-environment:
 	@echo "λ  MAKEFILE_DIR: ${MAKEFILE_DIR}"
 #---------------------------------------------------------------------------
 install-cquery:
-	if [ ! -d $(CQUERY_REPO_DIR) ]; then \
-		git clone --recurse-submodules --depth 1 https://github.com/cquery-project/cquery.git $(CQUERY_REPO_DIR); \
-	fi
-	@mkdir -p $(CQUERY_BUILD_DIR) $(CQUERY_CACHE_DIR) $(CQUERY_INSTALL_PREFIX)
+	rm -rf $(CQUERY_REPO_DIR) $(CQUERY_BUILD_DIR)
+	git clone https://github.com/cquery-project/cquery.git $(CQUERY_REPO_DIR)
+	cd $(CQUERY_REPO_DIR) && git checkout $(CQUERY_VERSION)
+	cd $(CQUERY_REPO_DIR) && git submodule update --init --recursive
+	mkdir -p $(CQUERY_BUILD_DIR) $(CQUERY_INSTALL_PREFIX)
 	cd $(CQUERY_BUILD_DIR) && cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(CQUERY_INSTALL_PREFIX) $(CQUERY_REPO_DIR)
 	cd $(CQUERY_BUILD_DIR) && ninja
 	cd $(CQUERY_BUILD_DIR) && ninja install
