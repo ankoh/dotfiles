@@ -20,7 +20,16 @@ else
 	@echo "λ  Found Homebrew: ${BREW}"
 endif
 #---------------------------------------------------------------------------
-install-ccls:
+install-fzf:
+	if [ ! -d $(FZF_DIR) ]; then \
+		git clone --depth 1 https://github.com/junegunn/fzf.git $(FZF_DIR); \
+	fi
+	$(FZF_DIR)/install --bin
+#---------------------------------------------------------------------------
+install-ls:
+	pip3 install neovim
+#---------------------------------------------------------------------------
+install-ls-cc:
 	rm -rf $(CCLS_REPO_DIR) $(CCLS_BUILD_DIR)
 	git clone --recursive https://github.com/MaskRay/ccls $(CCLS_REPO_DIR)
 	cd $(CCLS_REPO_DIR) && git checkout $(CCLS_VERSION)
@@ -30,11 +39,14 @@ install-ccls:
 	cd $(CCLS_BUILD_DIR) && ninja
 	cd $(CCLS_BUILD_DIR) && ninja install
 #---------------------------------------------------------------------------
-install-fzf:
-	if [ ! -d $(FZF_DIR) ]; then \
-		git clone --depth 1 https://github.com/junegunn/fzf.git $(FZF_DIR); \
-	fi
-	$(FZF_DIR)/install --bin
+install-ls-go:
+	go get -u github.com/sourcegraph/go-langserver
+#---------------------------------------------------------------------------
+install-ls-py:
+	pip3 install python-language-server
+#---------------------------------------------------------------------------
+install-ls-ts:
+	npm i -g javascript-typescript-langserver
 #---------------------------------------------------------------------------
 install-symlinks:
 	@mkdir -p ~/.config
@@ -90,5 +102,5 @@ repair:
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: print-environment install-ccls install-fzf install-symlinks
+install: print-environment install-fzf install-symlinks
 #---------------------------------------------------------------------------

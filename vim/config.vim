@@ -150,7 +150,10 @@ endif
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
-    \   'python': ['/usr/local/bin/pyls'],
+    \   'python': ['pyls'],
+    \   'go': ['go-langserver'],
+    \   'typescript': ['javascript-typescript-stdio'],
+    \   'javascript': ['javascript-typescript-stdio'],
     \   'cpp': [
     \       '~/.local/bin/ccls',
     \       '--log-file=/tmp/ccls.log',
@@ -160,7 +163,7 @@ let g:LanguageClient_serverCommands = {
     \       '~/.local/bin/ccls',
     \       '--log-file=/tmp/ccls.log',
     \       '--init={"cacheDirectory":"/tmp/ccls"}'
-    \   ]
+    \   ],
     \ }
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 nnoremap <leader>gh :call LanguageClient#textDocument_typeDefinition()<CR>
