@@ -166,11 +166,11 @@ let g:LanguageClient_serverCommands = {
     \   ],
     \ }
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
-nnoremap <leader>gh :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <leader>gi :call LanguageClient#textDocument_implementation()<CR>
 nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
+nnoremap <leader>gH :call LanguageClient#findLocations({'method':'$ccls/inheritance','flat':v:true,'level':3,'derived':v:true})<cr>
+nnoremap <leader>gc :call LanguageClient#findLocations({'method':'$ccls/call'})<cr>
 nnoremap <F5> :call LanguageClient#textDocument_rename()<CR>
 
 " Deoplete
