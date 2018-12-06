@@ -152,14 +152,14 @@ endif
 let g:LanguageClient_serverCommands = {
     \   'python': ['/usr/local/bin/pyls'],
     \   'cpp': [
-    \       '~/.local/bin/cquery',
-    \       '--log-file=/tmp/cq.log',
-    \       '--init={"cacheDirectory":"/tmp/cqcache"}'
+    \       '~/.local/bin/ccls',
+    \       '--log-file=/tmp/ccls.log',
+    \       '--init={"cacheDirectory":"/tmp/ccls"}'
     \   ],
     \   'c': [
-    \       '~/.local/bin/cquery',
-    \       '--log-file=/tmp/cq.log',
-    \       '--init={"cacheDirectory":"/tmp/cqcache"}'
+    \       '~/.local/bin/ccls',
+    \       '--log-file=/tmp/ccls.log',
+    \       '--init={"cacheDirectory":"/tmp/ccls"}'
     \   ]
     \ }
 set formatexpr=LanguageClient_textDocument_rangeFormatting()

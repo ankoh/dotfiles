@@ -4,24 +4,24 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
-CQUERY_VERSION := 0c5f55c
-CQUERY_REPO_DIR := ~/.cq/repo
-CQUERY_BUILD_DIR := ~/.cq/build
-CQUERY_INSTALL_PREFIX := ~/.local
+CCLS_VERSION := 79a33f7
+CCLS_REPO_DIR := ~/.ccls/repo
+CCLS_BUILD_DIR := ~/.ccls/build
+CCLS_INSTALL_PREFIX := ~/.local
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
 	@echo "λ  MAKEFILE_DIR: ${MAKEFILE_DIR}"
 #---------------------------------------------------------------------------
-install-cquery:
-	rm -rf $(CQUERY_REPO_DIR) $(CQUERY_BUILD_DIR)
-	git clone https://github.com/cquery-project/cquery.git $(CQUERY_REPO_DIR)
-	cd $(CQUERY_REPO_DIR) && git checkout $(CQUERY_VERSION)
-	cd $(CQUERY_REPO_DIR) && git submodule update --init --recursive
-	mkdir -p $(CQUERY_BUILD_DIR) $(CQUERY_INSTALL_PREFIX)
-	cd $(CQUERY_BUILD_DIR) && cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(CQUERY_INSTALL_PREFIX) $(CQUERY_REPO_DIR)
-	cd $(CQUERY_BUILD_DIR) && ninja
-	cd $(CQUERY_BUILD_DIR) && ninja install
+install-ccls:
+	rm -rf $(CCLS_REPO_DIR) $(CCLS_BUILD_DIR)
+	git clone --recursive https://github.com/MaskRay/ccls $(CCLS_REPO_DIR)
+	cd $(CCLS_REPO_DIR) && git checkout $(CCLS_VERSION)
+	cd $(CCLS_REPO_DIR) && git submodule update --init --recursive
+	mkdir -p $(CCLS_BUILD_DIR) $(CCLS_INSTALL_PREFIX)
+	cd $(CCLS_BUILD_DIR) && cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(CCLS_INSTALL_PREFIX) $(CCLS_REPO_DIR)
+	cd $(CCLS_BUILD_DIR) && ninja
+	cd $(CCLS_BUILD_DIR) && ninja install
 #---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
@@ -77,5 +77,5 @@ repair:
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: print-environment install-cquery install-fzf install-symlinks
+install: print-environment install-ccls install-fzf install-symlinks
 #---------------------------------------------------------------------------
