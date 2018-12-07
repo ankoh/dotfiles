@@ -20,8 +20,6 @@ Plug 'itchyny/lightline.vim'                " bottom status bar
 Plug 'ap/vim-buftabline'                    " top tab line with buffers
 Plug 'tpope/vim-fugitive'                   " git plugin
 Plug 'airblade/vim-gitgutter'               " git in sidebar
-Plug 'fatih/vim-go'                         " go support
-Plug 'leafgarland/typescript-vim'           " typescript syntax
 Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
 Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
 Plug 'arcticicestudio/nord-vim'             " nord theme
