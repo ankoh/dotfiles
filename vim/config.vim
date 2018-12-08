@@ -164,6 +164,7 @@ let g:LanguageClient_serverCommands = {
     \       '--init={"cacheDirectory":"/tmp/ccls"}'
     \   ],
     \ }
+let g:LanguageClient_autoStart = 1
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
