@@ -71,6 +71,7 @@ set scrolloff=3            " lines of text around cursor
 set cmdheight=1            " command bar height
 set title                  " set terminal title
 set nocompatible           " not compatible with vi
+set noswapfile             " disable swap files
 set autoread               " detect when a file is changed
 set colorcolumn=121        " line width
 set ignorecase             " case insensitive searching
