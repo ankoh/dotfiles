@@ -48,6 +48,10 @@ install-ls-py:
 install-ls-ts:
 	npm i -g javascript-typescript-langserver
 #---------------------------------------------------------------------------
+install-rust:
+	curl https://sh.rustup.rs -sSf | sh
+	rustup component add rls-preview rust-analysis rust-src
+#---------------------------------------------------------------------------
 install-symlinks:
 	@mkdir -p ~/.config
 	@mkdir -p ~/.config/oni
