@@ -151,7 +151,7 @@ endif
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rustup', 'run', 'stable', 'rls'],
     \   'python': ['pyls'],
-    \   'go': ['go-langserver'],
+    \   'go': ['golsp'],
     \   'typescript': ['javascript-typescript-stdio'],
     \   'javascript': ['javascript-typescript-stdio'],
     \   'cpp': [
