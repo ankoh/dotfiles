@@ -23,6 +23,7 @@ Plug 'airblade/vim-gitgutter'               " git in sidebar
 Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
 Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
 Plug 'arcticicestudio/nord-vim'             " nord theme
+Plug 'leafgarland/typescript-vim'           " typescript syntax highlighting
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
