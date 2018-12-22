@@ -50,7 +50,7 @@ install-ls-ts:
 #---------------------------------------------------------------------------
 install-rust:
 	curl https://sh.rustup.rs -sSf | sh
-	rustup component add rls-preview rust-analysis rust-src
+	rustup component add rls-preview rust-analysis rust-src rustfmt
 #---------------------------------------------------------------------------
 install-symlinks:
 	@mkdir -p ~/.config
