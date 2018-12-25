@@ -27,7 +27,7 @@ export GOBIN=$GOPATH/bin
 export GEM_HOME=$HOME/.gem
 export NPM_PACKAGES=$HOME/.npm_packages
 export NODE_PATH=$NPM_PACKAGES/lib/node_modules:$NODE_PATH
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+export RUST_SRC_PATH="$(~/.cargo/bin/rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Paths
 export PATH=/usr/lib/icecc/bin:$PATH
