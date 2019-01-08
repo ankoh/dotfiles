@@ -25,6 +25,7 @@ Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
 Plug 'arcticicestudio/nord-vim'             " nord theme
 Plug 'leafgarland/typescript-vim'           " typescript syntax highlighting
 Plug 'rust-lang/rust.vim'                   " rustfmt
+Plug 'jalvesaq/nvim-r'                      " r plugin
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
