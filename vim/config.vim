@@ -26,6 +26,7 @@ Plug 'arcticicestudio/nord-vim'             " nord theme
 Plug 'leafgarland/typescript-vim'           " typescript syntax highlighting
 Plug 'rust-lang/rust.vim'                   " rustfmt
 Plug 'jalvesaq/nvim-r'                      " r plugin
+Plug 'yggdroot/indentline'                  " indentation guides
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
@@ -89,7 +90,6 @@ set synmaxcol=256          " limit syntax highlighting to 256 chars"
 set encoding=utf8
 set number                 " show line numbers
 set cursorline             " highlight cursor line
-" set relativenumber         " show relative line numbers (DEADLY performance-wise)
 set wrap                   " turn on line wrapping
 set showbreak=…            " show ellipsis at breaking
 set autoindent             " automatically set indent of new line
