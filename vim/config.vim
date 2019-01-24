@@ -204,11 +204,6 @@ let g:NERDTreeWinSize = 40
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 
-" Buffergator
-let g:buffergator_suppress_keymaps = 1
-let g:buffergator_autoexpand_on_split = 0
-nnoremap <leader>b :BuffergatorToggle<CR>
-
 " R nvim
 let g:R_nvim_wd = 1
 
