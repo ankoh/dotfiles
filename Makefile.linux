@@ -16,6 +16,8 @@ print-environment:
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
 		git clone --depth 1 https://github.com/junegunn/fzf.git $(FZF_DIR); \
+	else \
+		cd $(FZF_DIR) && git pull --ff-only origin master; \
 	fi
 	$(FZF_DIR)/install --bin
 #---------------------------------------------------------------------------
