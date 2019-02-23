@@ -27,6 +27,7 @@ Plug 'leafgarland/typescript-vim'           " typescript syntax highlighting
 Plug 'rust-lang/rust.vim'                   " rustfmt
 Plug 'jalvesaq/nvim-r'                      " r plugin
 Plug 'yggdroot/indentline'                  " indentation guides
+Plug 'fatih/vim-go'                         " go support
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
@@ -154,7 +155,6 @@ endif
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rustup', 'run', 'stable', 'rls'],
     \   'python': ['pyls'],
-    \   'go': ['golsp'],
     \   'typescript': ['javascript-typescript-stdio'],
     \   'javascript': ['javascript-typescript-stdio'],
     \   'cpp': [
