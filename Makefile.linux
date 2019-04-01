@@ -4,10 +4,12 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
-CCLS_VERSION := 3810fb0
+CCLS_VERSION := 64f9dbdc7a3e52ee2116f1f65afb818f20b8fadc
 CCLS_REPO_DIR := ~/.ccls/repo
 CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
+LLVM_PREFIX_PATH := /usr/lib/llvm-7
+LLVM_INCLUDE_DIR := /usr/lib/llvm-7/include
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
@@ -27,7 +29,15 @@ install-ls-cc:
 	cd $(CCLS_REPO_DIR) && git checkout $(CCLS_VERSION)
 	cd $(CCLS_REPO_DIR) && git submodule update --init --recursive
 	mkdir -p $(CCLS_BUILD_DIR) $(CCLS_INSTALL_PREFIX)
-	cd $(CCLS_BUILD_DIR) && cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(CCLS_INSTALL_PREFIX) $(CCLS_REPO_DIR)
+	cd $(CCLS_BUILD_DIR) && \
+		cmake \
+			-GNinja \
+			-DCMAKE_CXX_COMPILER=clang++ \
+			-DCMAKE_BUILD_TYPE=Release \
+			-DCMAKE_PREFIX_PATH=$(LLVM_PREFIX_PATH) \
+    		-DLLVM_INCLUDE_DIR=$(LLVM_INCLUDE_DIR) \
+			-DCMAKE_INSTALL_PREFIX=$(CCLS_INSTALL_PREFIX) \
+			$(CCLS_REPO_DIR)
 	cd $(CCLS_BUILD_DIR) && ninja
 	cd $(CCLS_BUILD_DIR) && ninja install
 #---------------------------------------------------------------------------

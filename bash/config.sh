@@ -30,7 +30,7 @@ export NODE_PATH=$NPM_PACKAGES/lib/node_modules:$NODE_PATH
 export RUST_SRC_PATH="$(~/.cargo/bin/rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Paths
-export PATH=/usr/lib/icecc/bin:$PATH
+# export PATH=/usr/lib/icecc/bin:$PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
