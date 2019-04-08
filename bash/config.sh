@@ -34,6 +34,7 @@ export RUST_SRC_PATH="$(~/.cargo/bin/rustc --print sysroot)/lib/rustlib/src/rust
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.flutter/bin:$PATH
 export PATH=$DOTFILES/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$GOBIN:$PATH
