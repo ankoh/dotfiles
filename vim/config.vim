@@ -28,6 +28,8 @@ Plug 'rust-lang/rust.vim'                   " rustfmt
 Plug 'jalvesaq/nvim-r'                      " r plugin
 Plug 'yggdroot/indentline'                  " indentation guides
 Plug 'fatih/vim-go'                         " go support
+Plug 'dart-lang/dart-vim-plugin'            " dart syntax highlighting
+Plug 'thosakwe/vim-flutter'                 " flutter commands
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
@@ -157,6 +159,7 @@ let g:LanguageClient_serverCommands = {
     \   'python': ['pyls'],
     \   'typescript': ['javascript-typescript-stdio'],
     \   'javascript': ['javascript-typescript-stdio'],
+    \   'dart': ['dart_language_server'],
     \   'cpp': [
     \       '~/.local/bin/ccls',
     \       '--log-file=/tmp/ccls.log',
