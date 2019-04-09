@@ -29,7 +29,6 @@ Plug 'jalvesaq/nvim-r'                      " r plugin
 Plug 'yggdroot/indentline'                  " indentation guides
 Plug 'fatih/vim-go'                         " go support
 Plug 'dart-lang/dart-vim-plugin'            " dart syntax highlighting
-Plug 'thosakwe/vim-flutter'                 " flutter commands
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
