@@ -144,3 +144,21 @@ function rchyper() {
             && cd ../hyper && make -j${cpus}
     fi
 }
+
+# Remove something from the path
+rpath() {
+    for path in "$@";do
+        PATH="$(echo "$PATH" |sed -e "s#\(^\|:\)$(echo "$path" |sed -e 's/[^^]/[&]/g' -e 's/\^/\\^/g')\(:\|/\{0,1\}$\)#\1\2#" -e 's#:\+#:#g' -e 's#^:\|:$##g')"
+    done
+    echo "$PATH"
+}
+
+# Disable ICECC
+icecc_disable() {
+    export PATH="$(rpath /usr/lib/icecc/bin)"
+}
+
+# Enable ICECC
+icecc_enable() {
+    export PATH="/usr/lib/icecc/bin:$PATH"
+}
