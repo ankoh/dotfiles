@@ -162,16 +162,20 @@ let g:LanguageClient_serverCommands = {
     \   'dart': ['dart_language_server'],
     \   'cpp': [
     \       '~/.local/bin/ccls',
+    \       "-v=2", 
     \       '--log-file=/tmp/ccls.log',
-    \       '--init={"cacheDirectory":"/tmp/ccls"}'
+    \       '--init={"cache":{"directory":"/tmp/ccls"}}'
     \   ],
     \   'c': [
     \       '~/.local/bin/ccls',
+    \       "-v=2", 
     \       '--log-file=/tmp/ccls.log',
-    \       '--init={"cacheDirectory":"/tmp/ccls"}'
+    \       '--init={"cache":{"directory":"/tmp/ccls"}}'
     \   ],
     \ }
+"    \       '--init={"cache":{"directory":"/tmp/ccls"},"highlight":{"lsRanges":true}}'
 let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_loggingFile = "/tmp/languageclient-neovim.log"
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
