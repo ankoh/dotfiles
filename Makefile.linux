@@ -72,12 +72,14 @@ install-symlinks:
 	@sh -c "[ ! -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
+	@sh -c "[ ! -L ~/.alacritty ] || rm ~/.alacritty;"
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
 	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}other/gitconfig.conf ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}other/npmrc.conf ~/.npmrc
 	@ln -sf ${MAKEFILE_DIR}other/oni.tsx ~/.config/oni/config.tsx
 	@ln -sf ${MAKEFILE_DIR}other/tmux.conf ~/.tmux.conf
+	@ln -sf ${MAKEFILE_DIR}other/alacritty.yml ~/.alacritty.yml
 	@ln -sf ${MAKEFILE_DIR}tmux ~/.tmux
 	@ln -sf ${MAKEFILE_DIR}vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}vim ~/.vim
@@ -100,6 +102,7 @@ repair:
 	@sh -c "[ -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@sh -c "[ -L ~/.vim ] || rm ~/.vim;"
 	@sh -c "[ -L ~/.vimrc ] || rm ~/.vimrc;"
+	@sh -c "[ -L ~/.alacritty ] || rm ~/.alacritty;"
 	@echo "λ  Restoring default vim"
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
