@@ -2,8 +2,6 @@
     "window.zoomLevel": 1,
     "workbench.activityBar.visible": true,
 
-    "git.autofetch": true,
-
     "vim.easymotion": true,
     "vim.sneak": true,
     "vim.incsearch": true,
