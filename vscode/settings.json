@@ -72,4 +72,5 @@
         },
     ],
     "workbench.colorTheme": "Default Light+",
+    "editor.wordWrap": "on",
 }
