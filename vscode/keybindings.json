@@ -8,6 +8,15 @@
         "command": "-workbench.action.quickOpen"
     },
     {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminalFocus"
+    },
+    {
         "key": "ctrl+h",
         "command": "workbench.action.navigateLeft"
     },
