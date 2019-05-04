@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "workbench.activityBar.visible": true,
 
     "vim.easymotion": true,
@@ -71,9 +71,9 @@
             "commands": ["editor.action.outdentLines"]
         },
     ],
-    "workbench.colorTheme": "Default Light+",
     "editor.wordWrap": "on",
     "cmake.configureOnOpen": true,
-    "editor.formatOnSave": true,
     "editor.codeLens": false,
+    "workbench.colorTheme": "GitHub Plus",
+    "editor.renderWhitespace": "boundary",
 }
