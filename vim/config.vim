@@ -29,12 +29,16 @@ Plug 'jalvesaq/nvim-r'                      " r plugin
 Plug 'yggdroot/indentline'                  " indentation guides
 Plug 'fatih/vim-go'                         " go support
 Plug 'dart-lang/dart-vim-plugin'            " dart syntax highlighting
+Plug 'elzr/vim-json'                        " WTF hidden json quotes
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
+
+" WTF hidden json quotes (ctd)
+let g:vim_json_syntax_conceal = 0
 
 " Learn it the hard way
 " noremap <Up> <NOP>
