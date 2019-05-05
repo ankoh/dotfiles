@@ -68,4 +68,7 @@
     "editor.codeLens": false,
     "editor.renderWhitespace": "boundary",
     "workbench.colorTheme": "Default Light+",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
 }

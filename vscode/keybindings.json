@@ -87,5 +87,9 @@
     {
         "key": "ctrl+n",
         "command": "workbench.action.toggleSidebarVisibility",
+    },
+    {
+        "key": "ctrl+space",
+        "command": "workbench.action.showCommands",
     }
 ]
