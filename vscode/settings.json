@@ -19,8 +19,8 @@
             "commands": ["workbench.action.closeFile"]
         },
         {
-            "before": ["<leader>", "t"],
-            "commands": ["workbench.action.terminal.focus"]
+            "before": ["<leader>", "f"],
+            "commands": ["workbench.action.gotoSymbol"]
         },
         {
             "before": ["<leader>", "w", "v"],
@@ -66,6 +66,6 @@
     "editor.wordWrap": "on",
     "cmake.configureOnOpen": true,
     "editor.codeLens": false,
-    "workbench.colorTheme": "GitHub Plus",
     "editor.renderWhitespace": "boundary",
+    "workbench.colorTheme": "Default Light+",
 }
