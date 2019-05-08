@@ -72,9 +72,8 @@
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.currentLine.enabled": false,
     "gitlens.statusBar.enabled": false,
-
-    "workbench.colorTheme": "Default Light+",
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
+    "workbench.colorTheme": "Monokai Pro",
 }
