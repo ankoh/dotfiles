@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 2,
+    "window.zoomLevel": 1,
     "workbench.activityBar.visible": true,
 
     "vim.easymotion": true,
@@ -67,6 +67,12 @@
     "cmake.configureOnOpen": true,
     "editor.codeLens": false,
     "editor.renderWhitespace": "boundary",
+
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.statusBar.enabled": false,
+
     "workbench.colorTheme": "Default Light+",
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"

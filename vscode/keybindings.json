@@ -34,7 +34,7 @@
     },
     {
         "key": "ctrl+o",
-        "command": "workbench.action.navigateToLastEditLocation"
+        "command": "workbench.action.navigateBack"
     },
     {
         "key": "shift+cmd+right",
