@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 2,
     "workbench.activityBar.visible": true,
 
     "vim.easymotion": true,
@@ -75,5 +75,5 @@
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    "workbench.colorTheme": "Monokai Pro",
+    "workbench.colorTheme": "Default Light+",
 }

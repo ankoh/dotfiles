@@ -39,6 +39,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.fluttersdk/bin:$PATH
 export PATH=$HOME/.pub-cache/bin:$PATH
+export PATH=$HOME/.fluttersdk/.pub-cache/bin:$PATH
 export PATH=$DOTFILES/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$GOBIN:$PATH
