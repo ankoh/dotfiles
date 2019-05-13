@@ -68,10 +68,6 @@
     "editor.codeLens": false,
     "editor.renderWhitespace": "boundary",
 
-    "gitlens.codeLens.recentChange.enabled": false,
-    "gitlens.codeLens.authors.enabled": false,
-    "gitlens.currentLine.enabled": false,
-    "gitlens.statusBar.enabled": false,
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
