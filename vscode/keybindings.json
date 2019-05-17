@@ -33,10 +33,6 @@
         "command": "workbench.action.navigateDown"
     },
     {
-        "key": "ctrl+o",
-        "command": "workbench.action.navigateBack"
-    },
-    {
         "key": "shift+cmd+right",
         "command": "workbench.action.nextEditor"
     },
