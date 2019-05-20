@@ -64,9 +64,11 @@
         },
     ],
     "editor.wordWrap": "on",
-    "cmake.configureOnOpen": true,
+    "editor.rulers": [80, 120],
     "editor.codeLens": false,
     "editor.renderWhitespace": "boundary",
+
+    "cmake.configureOnOpen": true,
 
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
@@ -79,4 +81,5 @@
     "workbench.colorTheme": "Default Light+",
     "latex-workshop.view.pdf.viewer": "tab",
     "cSpell.language": ",de",
+    "extensions.ignoreRecommendations": false,
 }
