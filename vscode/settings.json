@@ -69,6 +69,7 @@
     "editor.renderWhitespace": "boundary",
 
     "cmake.configureOnOpen": true,
+    "cmake.buildDirectory" : "${workspaceRoot}/build/${buildType}",
 
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
