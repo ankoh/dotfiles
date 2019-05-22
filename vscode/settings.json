@@ -68,6 +68,9 @@
     "editor.codeLens": false,
     "editor.renderWhitespace": "boundary",
 
+    "testExplorer.codeLens": true,
+    "testExplorer.showOnRun": true,
+
     "cmake.configureOnOpen": true,
     "cmake.buildDirectory" : "${workspaceRoot}/build/${buildType}",
 
@@ -82,4 +85,5 @@
     "workbench.colorTheme": "Default Light+",
     "latex-workshop.view.pdf.viewer": "tab",
     "extensions.ignoreRecommendations": false,
+    "git.autofetch": true,
 }
