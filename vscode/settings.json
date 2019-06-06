@@ -83,6 +83,8 @@
         "editor.defaultFormatter": "xaver.clang-format"
     },
     "workbench.colorTheme": "Default Light+",
+    "zenMode.centerLayout": false,
+
     "latex-workshop.view.pdf.viewer": "tab",
     "extensions.ignoreRecommendations": false,
     "git.autofetch": true,
