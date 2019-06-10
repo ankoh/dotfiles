@@ -106,6 +106,13 @@ set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they
 set wildignore+=.so,.swp,.zip,.o,.d,.dwo,.make,.a,link.txt,depend.internal,CXX.includecache,CMakeCache.txt
 set clipboard=unnamed      " use system clipboard
 
+" Color scheme
+" We use a truecolor scheme (!).
+" Won't work in the the default mac terminal...
+set termguicolors
+colorscheme monokai_pro
+
+
 " Paste mode
 set pastetoggle=<F3>
 
@@ -229,12 +236,3 @@ let g:R_nvim_wd = 1
 " Clang-Format
 " let g:clang_format#command = '~/.local/bin/clang-format'
 let g:clang_format#detect_style_file = 1
-
-" Nord theme
-" The comments are barely readable with the default nord theme.
-augroup nord-overrides
-    autocmd!
-    autocmd ColorScheme nord highlight Comment ctermfg=13 guifg='#EBCB8B'
-augroup END
-set termguicolors
-colorscheme monokai_pro
