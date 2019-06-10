@@ -63,12 +63,10 @@ install-rust:
 #---------------------------------------------------------------------------
 install-symlinks:
 	@mkdir -p ~/.config
-	@mkdir -p ~/.config/oni
 	@mkdir -p ~/.local
 	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
-	@sh -c "[ ! -L ~/.config/oni/config.tsx ] || rm ~/.config/oni/config.tsx;"
 	@sh -c "[ ! -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
 	@sh -c "[ ! -L ~/.npmrc ] || rm ~/.npmrc;"
@@ -81,7 +79,6 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}other/gitconfig.conf ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}other/npmrc.conf ~/.npmrc
-	@ln -sf ${MAKEFILE_DIR}other/oni.tsx ~/.config/oni/config.tsx
 	@ln -sf ${MAKEFILE_DIR}other/tmux.conf ~/.tmux.conf
 	@ln -sf ${MAKEFILE_DIR}other/alacritty.yml ~/.alacritty.yml
 	@ln -sf ${MAKEFILE_DIR}tmux ~/.tmux
@@ -107,7 +104,6 @@ repair:
 	@sh -c "[ -L ~/.bash_profile ] || rm -r ~/.bash_profile;"
 	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ -L ~/.config/nvim ] || rm ~/.config/nvim;"
-	@sh -c "[ -L ~/.config/oni/config.tsx ] || rm ~/.config/oni/config.tsx;"
 	@sh -c "[ -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
 	@sh -c "[ -L ~/.npmrc ] || rm ~/.npmrc;"

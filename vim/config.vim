@@ -30,6 +30,7 @@ Plug 'yggdroot/indentline'                  " indentation guides
 Plug 'fatih/vim-go'                         " go support
 Plug 'dart-lang/dart-vim-plugin'            " dart syntax highlighting
 Plug 'elzr/vim-json'                        " WTF hidden json quotes
+Plug 'edkolev/tmuxline.vim'                 " tmux line
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
