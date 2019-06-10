@@ -207,7 +207,15 @@ let g:localvimrc_ask = 0
 
 let g:lightline = {
     \ 'colorscheme': 'nord',
-    \  }
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'languageclient', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head',
+    \   'languageclient': 'LanguageClient_statusLine'
+    \ },
+    \ }
 
 " NERDtree
 let g:NERDTreeShowHidden = 1
@@ -223,6 +231,7 @@ let g:R_nvim_wd = 1
 let g:clang_format#detect_style_file = 1
 
 " Nord theme
+" The comments are barely readable with the default nord theme.
 augroup nord-overrides
     autocmd!
     autocmd ColorScheme nord highlight Comment ctermfg=13 guifg='#EBCB8B'
