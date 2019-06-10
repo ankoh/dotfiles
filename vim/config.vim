@@ -206,7 +206,7 @@ autocmd BufRead, BufNewFile *.txt setlocal spell spelllang=en_us
 let g:localvimrc_ask = 0
 
 let g:lightline = {
-    \ 'colorscheme': 'nord',
+    \ 'colorscheme': 'powerline',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'languageclient', 'readonly', 'filename', 'modified' ] ]
@@ -236,4 +236,5 @@ augroup nord-overrides
     autocmd!
     autocmd ColorScheme nord highlight Comment ctermfg=13 guifg='#EBCB8B'
 augroup END
-colorscheme nord
+set termguicolors
+colorscheme monokai_pro
