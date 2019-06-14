@@ -197,6 +197,19 @@ nnoremap <F5> :call LanguageClient#textDocument_rename()<CR>
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#ignore_sources = {}
+let g:deoplete#ignore_sources._ = ['buffer', 'around']
+let g:deoplete#sources = {}
+call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
+call deoplete#custom#option('sources', {
+    \ 'rust': ['LanguageClient'],
+    \ 'python': ['LanguageClient'],
+    \ 'typescript': ['LanguageClient'],
+    \ 'javascript': ['LanguageClient'],
+    \ 'dart': ['LanguageClient'],
+    \ 'cpp': ['LanguageClient'],
+    \ 'c': ['LanguageClient'],
+\})
 function! s:check_back_space() abort "{{{
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~ '\s'
