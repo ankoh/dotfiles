@@ -10,17 +10,6 @@ function colours() {
     done
 }
 
-# Create a new directory and enter it
-function md() {
-    mkdir -p "$@" && cd "$@"
-}
-
-
-# History
-function hist() {
-    history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
-}
-
 # Find shorthand
 function f() {
     find . -name "$1"
@@ -69,6 +58,11 @@ function extract() {
     fi
 }
 
+# Reset date of last commit
+function git-fix-date() {
+    git commit --amend --reset-author --no-edit
+}
+
 # Docker cleanup
 function docker-cleanup() {
    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
@@ -88,7 +82,7 @@ function find-fat-things() {
 
 # Dump clang record layouts
 function dump-record-layout() {
-    clang++ -std=c++14 -Xclang -fdump-record-layouts $1
+    clang++ -std=c++17 -Xclang -fdump-record-layouts $1
 }
 
 # Clean old kernels
@@ -130,19 +124,6 @@ function llvm-grep() {
             printf "\r[   EMPTY ] %s\n" "${lib}"
         fi
     done
-}
-
-# Recompile hyper
-function rchyper() {
-    local debug=0;
-    local cpus=`getconf _NPROCESSORS_ONLN`
-    if [ ! -z "$1" ]; then
-        cd ../dbcore && DEBUG=1 make -j${cpus} \
-            && cd ../hyper && DEBUG=1 make -j${cpus}
-    else
-        cd ../dbcore && make -j${cpus} \
-            && cd ../hyper && make -j${cpus}
-    fi
 }
 
 # Remove something from the path
