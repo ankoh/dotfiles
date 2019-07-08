@@ -152,6 +152,8 @@ nnoremap <leader>lc :lcl<CR>
 
 " FZF ctrl-p mode
 nnoremap <C-P> :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))<CR>
+" Fzf buffer lines
+nnoremap <leader>bl :BLines<CR>
 
 " Special characters
 set invlist
