@@ -170,8 +170,7 @@ endif
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rustup', 'run', 'stable', 'rls'],
     \   'python': ['pyls'],
-    \   'typescript': ['javascript-typescript-stdio'],
-    \   'javascript': ['javascript-typescript-stdio'],
+    \   'typescript': ['typescript-language-server', '--stdio'],
     \   'dart': ['dart_language_server'],
     \   'cpp': [
     \       '~/.local/bin/ccls',
@@ -206,7 +205,6 @@ call deoplete#custom#option('sources', {
     \ 'rust': ['LanguageClient'],
     \ 'python': ['LanguageClient'],
     \ 'typescript': ['LanguageClient'],
-    \ 'javascript': ['LanguageClient'],
     \ 'dart': ['LanguageClient'],
     \ 'cpp': ['LanguageClient'],
     \ 'c': ['LanguageClient'],

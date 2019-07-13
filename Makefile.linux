@@ -52,7 +52,7 @@ install-ls-py:
 	pip3 install python-language-server
 #---------------------------------------------------------------------------
 install-ls-ts:
-	npm i -g javascript-typescript-langserver
+	npm i -g typescript-language-server
 #---------------------------------------------------------------------------
 install-ls-dart:
 	pub global activate dart_language_server
