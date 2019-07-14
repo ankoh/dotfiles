@@ -29,8 +29,6 @@ export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export GEM_HOME=$HOME/.gem
-export NPM_PACKAGES=$HOME/.npm_packages
-export NODE_PATH=$NPM_PACKAGES/lib/node_modules:$NODE_PATH
 export RUST_SRC_PATH="$(~/.cargo/bin/rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Paths
@@ -46,6 +44,11 @@ export PATH=$GOBIN:$PATH
 export PATH=$NPM_PACKAGES/bin:$PATH
 export PATH=$GEM_HOME/bin:$PATH
 export PATH=$PATH:~/.fzf/bin
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # FZF
 if [ -t 1 ]; then
