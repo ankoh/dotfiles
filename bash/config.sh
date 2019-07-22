@@ -48,8 +48,10 @@ export PATH=$GEM_HOME/bin:$PATH
 export PATH=$PATH:~/.fzf/bin
 
 # FZF
-source ~/.fzf/shell/key-bindings.bash
-source ~/.fzf/shell/completion.bash
+if [ -t 1 ]; then
+    source ~/.fzf/shell/key-bindings.bash
+    source ~/.fzf/shell/completion.bash
+fi
 
 # Bash completions
 include () {
