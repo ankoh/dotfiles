@@ -68,7 +68,7 @@ set shiftround             " round indent to a multiple of 'shiftwidth'
 set backspace=indent,eol,start " backspace problem
 set ttyfast                " faster redrawing
 " set lazyredraw             " draw lazy (leads to rendering artifacts in alacritty)
-set relativenumber         " relative line numbering
+" set relativenumber         " relative line numbering
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set laststatus=2           " show the satus line all the time
