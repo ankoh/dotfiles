@@ -22,7 +22,6 @@ Plug 'tpope/vim-fugitive'                   " git plugin
 Plug 'airblade/vim-gitgutter'               " git in sidebar
 Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
 Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
-Plug 'leafgarland/typescript-vim'           " typescript syntax highlighting
 Plug 'rust-lang/rust.vim'                   " rustfmt
 Plug 'jalvesaq/nvim-r'                      " r plugin
 Plug 'yggdroot/indentline'                  " indentation guides
@@ -30,6 +29,7 @@ Plug 'fatih/vim-go'                         " go support
 Plug 'dart-lang/dart-vim-plugin'            " dart syntax highlighting
 Plug 'elzr/vim-json'                        " WTF hidden json quotes
 Plug 'edkolev/tmuxline.vim'                 " tmux line
+Plug 'HerringtonDarkholme/yats.vim'         " typescript
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
@@ -171,6 +171,7 @@ let g:LanguageClient_serverCommands = {
     \   'rust': ['rustup', 'run', 'stable', 'rls'],
     \   'python': ['pyls'],
     \   'typescript': ['typescript-language-server', '--stdio'],
+    \   'typescript.tsx': ['typescript-language-server', '--stdio'],
     \   'dart': ['dart_language_server'],
     \   'cpp': [
     \       '~/.local/bin/ccls',
@@ -205,6 +206,7 @@ call deoplete#custom#option('sources', {
     \ 'rust': ['LanguageClient'],
     \ 'python': ['LanguageClient'],
     \ 'typescript': ['LanguageClient'],
+    \ 'typescript.tsx': ['LanguageClient'],
     \ 'dart': ['LanguageClient'],
     \ 'cpp': ['LanguageClient'],
     \ 'c': ['LanguageClient'],
