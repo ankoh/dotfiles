@@ -14,7 +14,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }                                     " languageserver
 Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'scrooloose/nerdtree'                  " NERDTree
-Plug 'Xuyuanp/nerdtree-git-plugin'          " NERDTree git status
 Plug 'Raimondi/delimitMate'                 " autocompletion for quotes
 Plug 'itchyny/lightline.vim'                " bottom status bar
 Plug 'ap/vim-buftabline'                    " top tab line with buffers
