@@ -36,6 +36,9 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+" Open R in tmux split
+let g:R_source = '~/.dotfiles/vim/tmux_split.vim'
+
 " WTF hidden json quotes (ctd)
 let g:vim_json_syntax_conceal = 0
 
