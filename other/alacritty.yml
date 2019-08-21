@@ -1,5 +1,9 @@
 # Colors (Monokai Pro)
 colors:
+  cursor:
+    text: '0x000000'
+    cursor: '0xffffff'
+
   # Default colors
   primary:
     background: '0x2D2A2E'
