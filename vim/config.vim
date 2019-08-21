@@ -29,6 +29,7 @@ Plug 'dart-lang/dart-vim-plugin'            " dart syntax highlighting
 Plug 'elzr/vim-json'                        " WTF hidden json quotes
 Plug 'edkolev/tmuxline.vim'                 " tmux line
 Plug 'HerringtonDarkholme/yats.vim'         " typescript
+Plug 'majutsushi/tagbar'                    " tag bar
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
@@ -246,6 +247,9 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 40 
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
+
+" Tagbar
+nnoremap <leader>ct :TagbarToggle<CR>
 
 " R nvim
 let g:R_nvim_wd = 1
