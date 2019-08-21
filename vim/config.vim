@@ -30,6 +30,7 @@ Plug 'elzr/vim-json'                        " WTF hidden json quotes
 Plug 'edkolev/tmuxline.vim'                 " tmux line
 Plug 'HerringtonDarkholme/yats.vim'         " typescript
 Plug 'majutsushi/tagbar'                    " tag bar
+Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
