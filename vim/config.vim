@@ -2,14 +2,20 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'embear/vim-localvimrc'                " local vim configurations
 if has('nvim')                              " deoplete
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', {
+        \ 'commit': '02e48af3b995579a56ecafcda80fc6993ec4b3cf',
+        \ 'do': ':UpdateRemotePlugins',
+        \ }
 else
-    Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/deoplete.nvim', {
+        \ 'commit': '02e48af3b995579a56ecafcda80fc6993ec4b3cf',
+        \ 'do': ':UpdateRemotePlugins',
+        \ }
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
+    \ 'commit': '4fd272b0dbf96d7a4fd5d9d840780638f514aa7c',
     \ 'do': 'bash install.sh',
     \ }                                     " languageserver
 Plug 'rhysd/vim-clang-format'               " clang format
@@ -192,7 +198,6 @@ let g:LanguageClient_serverCommands = {
     \ }
 "    \       '--init={"cache":{"directory":"/tmp/ccls"},"highlight":{"lsRanges":true}}'
 let g:LanguageClient_autoStart = 1
-" let g:LanguageClient_loggingFile = "/tmp/languageclient-neovim.log"
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
@@ -223,7 +228,6 @@ inoremap <silent><expr> <TAB>
         \ pumvisible() ? "\<C-n>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ deoplete#manual_complete()
-set completeopt-=preview
 
 " Spellchecking
 autocmd BufRead, BufNewFile *.tex setlocal spell spelllang=en_us
