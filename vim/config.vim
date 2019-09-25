@@ -223,6 +223,7 @@ inoremap <silent><expr> <TAB>
         \ pumvisible() ? "\<C-n>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ deoplete#manual_complete()
+set completeopt-=preview
 
 " Spellchecking
 autocmd BufRead, BufNewFile *.tex setlocal spell spelllang=en_us
