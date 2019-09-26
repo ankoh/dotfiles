@@ -30,6 +30,7 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export GEM_HOME=$HOME/.gem
 export RUST_SRC_PATH="$(~/.cargo/bin/rustc --print sysroot)/lib/rustlib/src/rust/src"
+export NPM_PACKAGES=$HOME/.npm_packages
 
 # Paths
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
