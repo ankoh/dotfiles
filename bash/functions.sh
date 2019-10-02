@@ -111,10 +111,10 @@ function clean-kernels () {
 # Find llvm component
 function llvm-grep() {
     if [ -z "$1" ] || [ -z "$2" ]; then
-        printf "Usage: llvm-component <version> <symbol>\n"
+        printf "Usage: llvm-component <config-path> <symbol>\n"
         return 1;
     fi
-    for lib in $(llvm-config-$1 --libfiles); do
+    for lib in $($1 --libfiles); do
         printf "[ RUNNING ] %s" "${lib}"
         local symbols=$(nm -gC ${lib} | grep "$2" | grep -v " U ")
         if [ ! -z "${symbols}" ]; then
@@ -127,7 +127,7 @@ function llvm-grep() {
 }
 
 # Remove something from the path
-rpath() {
+function rpath() {
     for path in "$@";do
         PATH="$(echo "$PATH" |sed -e "s#\(^\|:\)$(echo "$path" |sed -e 's/[^^]/[&]/g' -e 's/\^/\\^/g')\(:\|/\{0,1\}$\)#\1\2#" -e 's#:\+#:#g' -e 's#^:\|:$##g')"
     done
@@ -143,3 +143,4 @@ icecc_disable() {
 icecc_enable() {
     export PATH="/usr/lib/icecc/bin:$PATH"
 }
+
