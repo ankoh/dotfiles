@@ -15,7 +15,7 @@ else
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'commit': '4fd272b0dbf96d7a4fd5d9d840780638f514aa7c',
+    \ 'commit': 'ec4af74',
     \ 'do': 'bash install.sh',
     \ }                                     " languageserver
 Plug 'rhysd/vim-clang-format'               " clang format
