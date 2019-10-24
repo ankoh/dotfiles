@@ -264,3 +264,14 @@ let g:R_nvim_wd = 1
 " Clang-Format
 " let g:clang_format#command = '~/.local/bin/clang-format'
 let g:clang_format#detect_style_file = 1
+
+" Command for git grep
+" - fzf#vim#grep(command, with_column, [options], [fullscreen])
+command! -bang -nargs=* Gitgrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+command! -bang -nargs=* Gitgrepi
+  \ call fzf#vim#grep(
+  \   'git grep -i --line-number '.shellescape(<q-args>), 0,
+  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
