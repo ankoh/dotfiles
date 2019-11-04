@@ -35,6 +35,7 @@ Plug 'edkolev/tmuxline.vim'                 " tmux line
 Plug 'HerringtonDarkholme/yats.vim'         " typescript
 Plug 'majutsushi/tagbar'                    " tag bar
 Plug 'terryma/vim-multiple-cursors'         " multiple cursors
+Plug 'rhysd/vim-grammarous'                 " grammar checks
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
@@ -173,6 +174,17 @@ nnoremap <leader>ic :set list!<CR>
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
+
+" Grammarous
+nmap <leader>ss :GrammarousCheck<CR>
+nmap <leader>ssen :GrammarousCheck --lang=en<CR>
+nmap <leader>ssde :GrammarousCheck --lang=de<CR>
+nmap <leader>sn <Plug>(grammarous-move-to-next-error)
+nmap <leader>sj <Plug>(grammarous-move-to-next-error)
+nmap <leader>sp <Plug>(grammarous-move-to-previous-error)
+nmap <leader>sk <Plug>(grammarous-move-to-previous-error)
+nmap <leader>si <Plug>(grammarous-remove-error)
+nmap <leader>sr <Plug>(grammarous-reset)
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
