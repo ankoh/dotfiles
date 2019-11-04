@@ -20,7 +20,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }                                     " languageserver
 Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'scrooloose/nerdtree'                  " NERDTree
-Plug 'Raimondi/delimitMate'                 " autocompletion for quotes
 Plug 'itchyny/lightline.vim'                " bottom status bar
 Plug 'ap/vim-buftabline'                    " top tab line with buffers
 Plug 'tpope/vim-fugitive'                   " git plugin
@@ -29,7 +28,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
 Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
 Plug 'rust-lang/rust.vim'                   " rustfmt
 Plug 'jalvesaq/nvim-r'                      " r plugin
-Plug 'yggdroot/indentline'                  " indentation guides
 Plug 'fatih/vim-go'                         " go support
 Plug 'dart-lang/dart-vim-plugin'            " dart syntax highlighting
 Plug 'elzr/vim-json'                        " WTF hidden json quotes
