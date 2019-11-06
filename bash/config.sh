@@ -29,7 +29,6 @@ export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export GEM_HOME=$HOME/.gem
-export RUST_SRC_PATH="$(~/.cargo/bin/rustc --print sysroot)/lib/rustlib/src/rust/src"
 export NPM_PACKAGES=$HOME/.npm_packages
 
 # Paths
@@ -51,15 +50,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# FZF
-if [ -t 1 ]; then
-    source ~/.fzf/shell/key-bindings.bash
-    source ~/.fzf/shell/completion.bash
-fi
-
-# Bash completions
 include () {
     [[ -f "$1" ]] && source "$1"
 }
+
+# FZF
+include ~/.fzf/shell/key-bindings.bash
+include ~/.fzf/shell/completion.bash
+
+# Bash completions
 include /usr/share/bash-completion/bash_completion
 include /usr/local/etc/bash_completion
