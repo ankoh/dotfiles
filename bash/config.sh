@@ -1,3 +1,6 @@
+# Terminal
+export TERM=xterm
+
 # Language
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
