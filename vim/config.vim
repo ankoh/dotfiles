@@ -215,6 +215,33 @@ nnoremap <leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <leader>gh :call LanguageClient#findLocations({'method':'$ccls/inheritance','flat':v:true,'level':3,'derived':v:true})<cr>
 nnoremap <F5> :call LanguageClient#textDocument_rename()<CR>
 
+" LSP status indicator
+augroup LanguageClient_callbacks
+    au!
+    au User LanguageClientStarted call LSPUpdateStatus(1)
+    au User LanguageClientStopped call LSPUpdateStatus(0)
+    au User LanguageClientDiagnosticsChanged call LSPUpdateStatus(1)
+augroup END
+function! LSPDiagnosticsCount(type) abort
+    let lsp_bufnr = bufnr('%')
+    let lsp_qflist = getqflist()
+    return len(filter(lsp_qflist, {index, dict -> dict['bufnr'] == lsp_bufnr && dict['type'] == a:type}))
+endfunction
+function! LSPUpdateStatus(status) abort
+    let g:lsp_warnings = LSPDiagnosticsCount('W')
+    let g:lsp_errors = LSPDiagnosticsCount('E')
+    call lightline#update()
+endfunction
+function! LightlineLSPOK() abort
+    return (g:lsp_warnings + g:lsp_errors) == 0 ? '✓' : ''
+endfunction
+function! LightlineLSPWarnings() abort
+    return g:lsp_warnings > 0 ? printf('%d ▲', g:lsp_warnings) : ''
+endfunction
+function! LightlineLSPErrors() abort
+    return g:lsp_errors > 0 ? printf('%d ✗', g:lsp_errors) : ''
+endfunction
+
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#ignore_sources = {}
@@ -250,12 +277,21 @@ let g:localvimrc_ask = 0
 let g:lightline = {
     \ 'colorscheme': 'powerline',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'languageclient', 'readonly', 'filename', 'modified' ] ]
+    \   'left': [[ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ]],
+    \   'right': [['lineinfo'], ['percent'], ['lsp_ok', 'lsp_warnings', 'lsp_errors']],
     \ },
     \ 'component_function': {
     \   'gitbranch': 'fugitive#head',
-    \   'languageclient': 'LanguageClient_statusLine'
+    \ },
+    \ 'component_expand': {
+    \   'lsp_warnings': 'LightlineLSPWarnings',
+    \   'lsp_errors': 'LightlineLSPErrors',
+    \   'lsp_ok': 'LightlineLSPOK',
+    \ },
+    \ 'component_type': {
+    \   'lsp_warnings': 'warning',
+    \   'lsp_errors': 'error',
+    \   'lsp_ok': 'ok',
     \ },
     \ }
 
