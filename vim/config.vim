@@ -105,7 +105,7 @@ syntax on                  " switch syntax highlighting on
 set synmaxcol=256          " limit syntax highlighting to 256 chars"
 set encoding=utf8
 set number                 " show line numbers
-" set cursorline             " highlight cursor line
+set cursorline             " highlight cursor line
 set wrap                   " turn on line wrapping
 set showbreak=…            " show ellipsis at breaking
 set autoindent             " automatically set indent of new line
