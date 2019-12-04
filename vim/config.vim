@@ -36,6 +36,7 @@ Plug 'HerringtonDarkholme/yats.vim'         " typescript
 Plug 'majutsushi/tagbar'                    " tag bar
 Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
+Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
@@ -160,8 +161,6 @@ nnoremap <leader>lc :lcl<CR>
 
 " FZF ctrl-p mode
 nnoremap <C-P> :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))<CR>
-" Fzf buffer lines
-nnoremap <leader>bl :BLines<CR>
 
 " Special characters
 set invlist
