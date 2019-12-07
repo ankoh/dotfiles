@@ -2,20 +2,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'embear/vim-localvimrc'                " local vim configurations
 if has('nvim')                              " deoplete
-    Plug 'Shougo/deoplete.nvim', {
-        \ 'commit': '02e48af3b995579a56ecafcda80fc6993ec4b3cf',
-        \ 'do': ':UpdateRemotePlugins',
-        \ }
+    Plug 'Shougo/deoplete.nvim'
 else
-    Plug 'Shougo/deoplete.nvim', {
-        \ 'commit': '02e48af3b995579a56ecafcda80fc6993ec4b3cf',
-        \ 'do': ':UpdateRemotePlugins',
-        \ }
+    Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'commit': 'ec4af74',
+    \ 'commit': '1ffab7e',
     \ 'do': 'bash install.sh',
     \ }                                     " languageserver
 Plug 'rhysd/vim-clang-format'               " clang format
