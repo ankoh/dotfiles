@@ -191,6 +191,7 @@ let g:LanguageClient_serverCommands = {
     \   'python': ['pyls'],
     \   'typescript': ['typescript-language-server', '--stdio'],
     \   'typescript.tsx': ['typescript-language-server', '--stdio'],
+    \   'typescriptreact': ['typescript-language-server', '--stdio'],
     \   'dart': ['dart_language_server'],
     \   'cpp': [
     \       '~/.local/bin/ccls',
@@ -252,6 +253,7 @@ call deoplete#custom#option('sources', {
     \ 'python': ['LanguageClient'],
     \ 'typescript': ['LanguageClient'],
     \ 'typescript.tsx': ['LanguageClient'],
+    \ 'typescriptreact': ['LanguageClient'],
     \ 'dart': ['LanguageClient'],
     \ 'cpp': ['LanguageClient'],
     \ 'c': ['LanguageClient'],
