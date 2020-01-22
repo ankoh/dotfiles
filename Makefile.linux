@@ -10,6 +10,10 @@ CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
 LLVM_PREFIX_PATH := /usr/lib/llvm-7
 LLVM_INCLUDE_DIR := /usr/lib/llvm-7/include
+VSCODE_SETTINGS := (\
+	"${HOME}/.config/Code/User/settings.json")
+VSCODE_KEYBINGINDS := (\
+	"${HOME}/.config/Code/User/keybindings.json")
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
@@ -72,6 +76,7 @@ install-symlinks:
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
 	@sh -c "[ ! -L ~/.alacritty ] || rm ~/.alacritty;"
+<<<<<<< HEAD
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.zshrc
 	@ln -sf ${MAKEFILE_DIR}/other/gitconfig.conf ~/.gitconfig
@@ -83,6 +88,16 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}/vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}/vim/gui.vim ~/.gvimrc
 	@ln -sf ${MAKEFILE_DIR}/vim/init.vim ~/.vimrc
+	@for FILE in ${VSCODE_SETTINGS}; do \
+		mkdir -p $(dir "$${FILE}"); \
+		sh -c "[ ! -L \"$${FILE}\" ] || rm \"$${FILE}\";"; \
+		ln -sf ${MAKEFILE_DIR}vscode/settings.json "$${FILE}"; \
+	done
+	@for FILE in ${VSCODE_KEYBINGINDS}; do \
+		mkdir -p $(dir "$${FILE}"); \
+		sh -c "[ ! -L \"$${FILE}\" ] || rm \"$${FILE}\";"; \
+		ln -sf ${MAKEFILE_DIR}vscode/keybindings.json "$${FILE}"; \
+	done
 #---------------------------------------------------------------------------
 repair:
 	@mkdir -p ~/.config
@@ -100,6 +115,14 @@ repair:
 	@sh -c "[ -L ~/.vim ] || rm ~/.vim;"
 	@sh -c "[ -L ~/.vimrc ] || rm ~/.vimrc;"
 	@sh -c "[ -L ~/.alacritty ] || rm ~/.alacritty;"
+	@for FILE in ${VSCODE_SETTINGS}; do \
+		mkdir -p $(dir "$${FILE}"); \
+		sh -c "[ ! -L \"$${FILE}\" ] || rm \"$${FILE}\";"; \
+	done
+	@for FILE in ${VSCODE_KEYBINGINDS}; do \
+		mkdir -p $(dir "$${FILE}"); \
+		sh -c "[ ! -L \"$${FILE}\" ] || rm \"$${FILE}\";"; \
+	done
 	@echo "λ  Restoring default vim"
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
