@@ -9,11 +9,6 @@ CCLS_VERSION := 3865a0944739fff23fdaa53ec287d315f4be6edb
 CCLS_REPO_DIR := ~/.ccls/repo
 CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
-VSCODE_SETTINGS := \
-	"${HOME}/Library/Application Support/Code/User/settings.json" \
-VSCODE_KEYBINGINDS := (\
-	"${HOME}/Library/Application Support/Code/User/keybindings.json" \
-	"${HOME}/Library/Application Support/Code - Insiders/User/keybindings.json"
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "MAKEFILE_PATH: ${MAKEFILE_PATH}"
