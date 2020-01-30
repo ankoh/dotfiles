@@ -62,6 +62,7 @@ install-symlinks:
 	@mkdir -p ~/.local
 	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
+	@sh -c "[ ! -L ~/.zshrc ] || rm ~/.zshrc;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
 	@sh -c "[ ! -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
@@ -74,6 +75,7 @@ install-symlinks:
 	@sh -c "[ ! -L ~/.alacritty ] || rm ~/.alacritty;"
 	@ln -sf ${MAKEFILE_DIR}bash/bash_profile.symlink ~/.bash_profile
 	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.bashrc
+	@ln -sf ${MAKEFILE_DIR}bash/bashrc.symlink ~/.zshrc
 	@ln -sf ${MAKEFILE_DIR}bash/profile.symlink ~/.profile
 	@ln -sf ${MAKEFILE_DIR}other/gitconfig.conf ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}other/npmrc.conf ~/.npmrc
@@ -91,6 +93,7 @@ repair:
 	@mkdir -p ~/.local
 	@sh -c "[ -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
+	@sh -c "[ -L ~/.zshrc ] || rm ~/.zshrc;"
 	@sh -c "[ -L ~/.config/nvim ] || rm ~/.config/nvim;"
 	@sh -c "[ -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
