@@ -1,3 +1,4 @@
+.PHONY: reset-symlinks
 #---------------------------------------------------------------------------
 MAKEFILE_PATH := $(abspath $(lastword ${MAKEFILE_LIST}))
 MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
@@ -10,14 +11,10 @@ CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
 LLVM_PREFIX_PATH := /usr/lib/llvm-7
 LLVM_INCLUDE_DIR := /usr/lib/llvm-7/include
-VSCODE_SETTINGS := (\
-	"${HOME}/.config/Code/User/settings.json")
-VSCODE_KEYBINGINDS := (\
-	"${HOME}/.config/Code/User/keybindings.json")
 #---------------------------------------------------------------------------
 print-environment:
-	@echo "λ  MAKEFILE_PATH: ${MAKEFILE_PATH}"
-	@echo "λ  MAKEFILE_DIR: ${MAKEFILE_DIR}"
+	@echo "MAKEFILE_PATH: ${MAKEFILE_PATH}"
+	@echo "MAKEFILE_DIR: ${MAKEFILE_DIR}"
 #---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
@@ -61,9 +58,12 @@ install-rust:
 	curl https://sh.rustup.rs -sSf | sh
 	rustup component add rls-preview rust-analysis rust-src rustfmt
 #---------------------------------------------------------------------------
-install-symlinks:
+create-directories:
 	@mkdir -p ~/.config
 	@mkdir -p ~/.local
+	@mkdir -p ~/.config/Code/User
+#---------------------------------------------------------------------------
+reset-symlinks: create-directories
 	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ ! -L ~/.zshrc ] || rm ~/.zshrc;"
@@ -76,7 +76,10 @@ install-symlinks:
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
 	@sh -c "[ ! -L ~/.alacritty ] || rm ~/.alacritty;"
-<<<<<<< HEAD
+	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/.config/Code/User/settings.json;";
+	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/.config/Code/User/keybindings.json;";
+#---------------------------------------------------------------------------
+install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.zshrc
 	@ln -sf ${MAKEFILE_DIR}/other/gitconfig.conf ~/.gitconfig
@@ -88,42 +91,10 @@ install-symlinks:
 	@ln -sf ${MAKEFILE_DIR}/vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}/vim/gui.vim ~/.gvimrc
 	@ln -sf ${MAKEFILE_DIR}/vim/init.vim ~/.vimrc
-	@for FILE in ${VSCODE_SETTINGS}; do \
-		mkdir -p $(dir "$${FILE}"); \
-		sh -c "[ ! -L \"$${FILE}\" ] || rm \"$${FILE}\";"; \
-		ln -sf ${MAKEFILE_DIR}vscode/settings.json "$${FILE}"; \
-	done
-	@for FILE in ${VSCODE_KEYBINGINDS}; do \
-		mkdir -p $(dir "$${FILE}"); \
-		sh -c "[ ! -L \"$${FILE}\" ] || rm \"$${FILE}\";"; \
-		ln -sf ${MAKEFILE_DIR}vscode/keybindings.json "$${FILE}"; \
-	done
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json;
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json;
 #---------------------------------------------------------------------------
-repair:
-	@mkdir -p ~/.config
-	@mkdir -p ~/.local
-	@sh -c "[ -L ~/.bash_profile ] || rm -r ~/.bash_profile;"
-	@sh -c "[ -L ~/.bashrc ] || rm ~/.bashrc;"
-	@sh -c "[ -L ~/.zshrc ] || rm ~/.zshrc;"
-	@sh -c "[ -L ~/.config/nvim ] || rm ~/.config/nvim;"
-	@sh -c "[ -L ~/.gitconfig ] || rm ~/.gitconfig;"
-	@sh -c "[ -L ~/.gvimrc ] || rm ~/.gvimrc;"
-	@sh -c "[ -L ~/.npmrc ] || rm ~/.npmrc;"
-	@sh -c "[ -L ~/.tigrc ] || rm ~/.tigrc;"
-	@sh -c "[ -L ~/.tmux ] || rm ~/.tmux;"
-	@sh -c "[ -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
-	@sh -c "[ -L ~/.vim ] || rm ~/.vim;"
-	@sh -c "[ -L ~/.vimrc ] || rm ~/.vimrc;"
-	@sh -c "[ -L ~/.alacritty ] || rm ~/.alacritty;"
-	@for FILE in ${VSCODE_SETTINGS}; do \
-		mkdir -p $(dir "$${FILE}"); \
-		sh -c "[ ! -L \"$${FILE}\" ] || rm \"$${FILE}\";"; \
-	done
-	@for FILE in ${VSCODE_KEYBINGINDS}; do \
-		mkdir -p $(dir "$${FILE}"); \
-		sh -c "[ ! -L \"$${FILE}\" ] || rm \"$${FILE}\";"; \
-	done
-	@echo "λ  Restoring default vim"
+repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
