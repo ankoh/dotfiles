@@ -11,10 +11,6 @@ CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
 LLVM_PREFIX_PATH := /usr/lib/llvm-9/lib/cmake
 #---------------------------------------------------------------------------
-print-environment:
-	@echo "MAKEFILE_PATH: ${MAKEFILE_PATH}"
-	@echo "MAKEFILE_DIR: ${MAKEFILE_DIR}"
-#---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
 		git clone --depth 1 https://github.com/junegunn/fzf.git $(FZF_DIR); \
@@ -95,5 +91,5 @@ repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: print-environment install-fzf install-symlinks
+install: install-fzf install-symlinks
 #---------------------------------------------------------------------------
