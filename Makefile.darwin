@@ -9,6 +9,7 @@ CCLS_VERSION := 3865a0944739fff23fdaa53ec287d315f4be6edb
 CCLS_REPO_DIR := ~/.ccls/repo
 CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
+LLVM_PREFIX_PATH := /usr/local/Cellar/llvm/9.0.1/lib/cmake
 #---------------------------------------------------------------------------
 print-environment:
 	@echo "MAKEFILE_PATH: ${MAKEFILE_PATH}"
@@ -38,7 +39,12 @@ install-ls-cc:
 	cd $(CCLS_REPO_DIR) && git checkout $(CCLS_VERSION)
 	cd $(CCLS_REPO_DIR) && git submodule update --init --recursive
 	mkdir -p $(CCLS_BUILD_DIR) $(CCLS_INSTALL_PREFIX)
-	cd $(CCLS_BUILD_DIR) && cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(CCLS_INSTALL_PREFIX) $(CCLS_REPO_DIR)
+	cd $(CCLS_BUILD_DIR) && cmake \
+		-GNinja \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=$(CCLS_INSTALL_PREFIX) \
+		-DCMAKE_PREFIX_PATH=$(LLVM_PREFIX_PATH) \
+		$(CCLS_REPO_DIR)
 	cd $(CCLS_BUILD_DIR) && ninja
 	cd $(CCLS_BUILD_DIR) && ninja install
 #---------------------------------------------------------------------------
