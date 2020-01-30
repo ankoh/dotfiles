@@ -82,7 +82,7 @@
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Monokai",
     "zenMode.centerLayout": false,
 
     "latex-workshop.view.pdf.viewer": "tab",
