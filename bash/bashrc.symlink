@@ -1,8 +1,0 @@
-# Dotfiles
-export DOTFILES=$HOME/.dotfiles
-export BASHCONF=$DOTFILES/bash
-
-# Source all configurations
-source $BASHCONF/config.sh
-source $BASHCONF/aliases.sh
-source $BASHCONF/functions.sh
