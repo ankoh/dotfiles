@@ -111,7 +111,7 @@ function clean-kernels () {
 # Find llvm component
 function llvm-grep() {
     if [ -z "$1" ] || [ -z "$2" ]; then
-        printf "Usage: llvm-component <config-path> <symbol>\n"
+        printf "Usage: llvm-grep <llvm-config> <symbol>\n"
         return 1;
     fi
     for lib in $($1 --libfiles); do
