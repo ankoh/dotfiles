@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Extract archives - use: extract <file>
 # Credits to http://dotfiles.org/~pseup/.bashrc
 function extract() {
