@@ -17,6 +17,11 @@ RUN apt-get update -qq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Configure SSH server
+RUN mkdir /var/run/sshd \
+    && sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config \
+    && sed -i 's/session\s*required\s*pam_loginuid.so/session optional pam_loginuid.so/g' /etc/pam.d/sshd
+
 # Switch to user kohn
 RUN useradd -ms /bin/bash kohn
 USER kohn
@@ -29,12 +34,22 @@ RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 # Install dotfiles
 COPY --chown=kohn:kohn . /home/kohn/.dotfiles/
 RUN cd .dotfiles \
-    && make install-symlinks
-#    && source ../.bashrc \
-#    && make install-ls-cc install-ls-py install-ls-rs
+    && make install-symlinks \
+    && source ../.bashrc \
+    && make install-ls-cc install-ls-py install-ls-rs
 
 # Setup neovim
 RUN source .bashrc \
     && pip install neovim \
     && pip3 install neovim \
     && nvim --headless +UpdateRemotePlugins +PlugInstall +qall!
+
+# Setup SSH key
+RUN mkdir -p .ssh \
+    && cat .dotfiles/caravan/caravan.pub > .ssh/authorized_keys \
+    && chmod 600 .ssh/authorized_keys
+
+# Configure SSH daemon
+USER root
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
