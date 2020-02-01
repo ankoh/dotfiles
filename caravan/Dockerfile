@@ -27,17 +27,14 @@ SHELL ["/bin/bash", "-c"]
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 
 # Install dotfiles
-RUN git clone https://github.com/ankoh/dotfiles .dotfiles \
-    && cd .dotfiles \
-    && git checkout f94efbc60ae1788192d8eed49eae52aec9de8325 \
-    && make install-symlinks install-fzf
-
-# Install language servers
-RUN cd .dotfiles && make install-ls-cc
-RUN cd .dotfiles && make install-ls-py
-RUN source .bashrc && cd .dotfiles && make install-ls-rs
+COPY --chown=kohn:kohn . /home/kohn/.dotfiles/
+RUN cd .dotfiles \
+    && make install-symlinks
+#    && source ../.bashrc \
+#    && make install-ls-cc install-ls-py install-ls-rs
 
 # Setup neovim
-RUN pip install neovim \
+RUN source .bashrc \
+    && pip install neovim \
     && pip3 install neovim \
     && nvim --headless +UpdateRemotePlugins +PlugInstall +qall!
