@@ -41,9 +41,9 @@ RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 COPY --chown=caravan:caravan . /home/caravan/.dotfiles/
 RUN cd .dotfiles \
     && make install-symlinks \
-    && chmod +x ./caravan/entrypoint.sh \
     && source ../.bashrc \
-    && make install-ls-cc install-ls-py install-ls-rs
+    && make install-fzf install-ls-cc install-ls-py install-ls-rs \
+    && chmod +x ./caravan/entrypoint.sh
 
 # Setup neovim
 RUN source .bashrc \
