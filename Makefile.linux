@@ -35,7 +35,7 @@ install-ls-cc:
 	cd $(CCLS_BUILD_DIR) && ninja install
 #---------------------------------------------------------------------------
 install-ls-go:
-	go get -u golang.org/x/tools/cmd/golsp
+	go get -u golang.org/x/tools/gopls
 #---------------------------------------------------------------------------
 install-ls-py:
 	pip3 install python-language-server
