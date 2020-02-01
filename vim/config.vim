@@ -193,18 +193,8 @@ let g:LanguageClient_serverCommands = {
     \   'typescript.tsx': ['typescript-language-server', '--stdio'],
     \   'typescriptreact': ['typescript-language-server', '--stdio'],
     \   'dart': ['dart_language_server'],
-    \   'cpp': [
-    \       '~/.local/bin/ccls',
-    \       "-v=2", 
-    \       '--log-file=/tmp/ccls.log',
-    \       '--init={"cache":{"directory":"/tmp/ccls"}}'
-    \   ],
-    \   'c': [
-    \       '~/.local/bin/ccls',
-    \       "-v=2", 
-    \       '--log-file=/tmp/ccls.log',
-    \       '--init={"cache":{"directory":"/tmp/ccls"}}'
-    \   ],
+    \   'cpp': ['~/.local/bin/ccls'],
+    \   'c': ['~/.local/bin/ccls'],
     \ }
 "    \       '--init={"cache":{"directory":"/tmp/ccls"},"highlight":{"lsRanges":true}}'
 let g:LanguageClient_autoStart = 1
