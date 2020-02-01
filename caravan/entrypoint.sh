@@ -1,11 +1,13 @@
 #!/bin/bash
 
-AUTHORIZED_KEYS="/home/caravan/.ssh/authorized_keys"
+SSH_DIR="/home/caravan/.ssh"
+AUTHORIZED_KEYS="${SSH_DIR}/authorized_keys"
 
 echo "[ RUN ] Configure ${AUTHORIZED_KEYS}"
-mkdir -p /home/caravan/.ssh
+mkdir -p ${SSH_DIR}
 echo "${CARAVAN_PUBLIC_KEY}" > ${AUTHORIZED_KEYS}
-chown caravan:caravan ${AUTHORIZED_KEYS}
+chown -R caravan:caravan ${SSH_DIR}
+chmod 700 ${SSH_DIR}
 chmod 600 ${AUTHORIZED_KEYS}
 echo "[ OK  ] Configure ${AUTHORIZED_KEYS}"
 

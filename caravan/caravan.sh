@@ -17,8 +17,8 @@ function caravan_setup() {
     CARAVAN_MOUNT="$(pwd)"
     CARAVAN_PUB="$(cat ${CARAVAN_PUBLIC_KEY})"
     docker run -d -p 22 --name "$1" \
-        -v "${CARAVAN_MOUNT}:/home/kohn/mount:delegated" \
-        -e CARAVAN_PUBLIC_KEY="${CARAVAN_PUB}"
+        -v "${CARAVAN_MOUNT}:/home/caravan/mount:delegated" \
+        -e CARAVAN_PUBLIC_KEY="${CARAVAN_PUB}" \
         ankoh/caravan:latest
 }
 
@@ -27,6 +27,7 @@ function caravan_enter() {
         echo "Usage: caravan_enter <name>"
         return
     fi
+    set -x
     CARAVAN_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "22/tcp") 0).HostPort }}' "$1")
     ssh -i ${CARAVAN_PRIVATE_KEY} -p ${CARAVAN_PORT} 127.0.0.1
 }
