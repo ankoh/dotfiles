@@ -1,11 +1,12 @@
 #!/bin/bash
 
-CARAVAN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-CARAVAN_PRIVATE_KEY=${CARAVAN_DIR}/key/caravan
-CARAVAN_PUBLIC_KEY=${CARAVAN_DIR}/key/caravan.pub
+CARAVAN_DIR=~/.caravan
+CARAVAN_PRIVATE_KEY=${CARAVAN_DIR}/caravan
+CARAVAN_PUBLIC_KEY=${CARAVAN_DIR}/caravan.pub
 
 function caravan_keygen() {
-    ssh-keygen -t ed25519 -f ${CARAVAN_PRIVATE_KEY}
+    mkdir -p ${CARAVAN_DIR}
+    ssh-keygen -t ed25519 -f ${CARAVAN_PRIVATE_KEY} -N ""
 }
 
 function caravan_setup() {

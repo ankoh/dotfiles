@@ -67,5 +67,5 @@ elif [ -n "$ZSH_VERSION" ]; then
 fi
 
 include $SHELLCONF/aliases.sh
-include $SHELLCONF/caravan.sh
 include $SHELLCONF/functions.sh
+include $DOTFILES/caravan/caravan.sh
