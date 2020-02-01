@@ -247,6 +247,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources._ = ['buffer', 'around']
 let g:deoplete#sources = {}
+call deoplete#custom#_init()
 call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
 call deoplete#custom#option('sources', {
     \ 'rust': ['LanguageClient'],
