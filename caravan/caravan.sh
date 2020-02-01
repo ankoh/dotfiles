@@ -29,7 +29,7 @@ function caravan_enter() {
     fi
     set -x
     CARAVAN_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "22/tcp") 0).HostPort }}' "$1")
-    ssh -i ${CARAVAN_PRIVATE_KEY} -p ${CARAVAN_PORT} 127.0.0.1
+    ssh -i ${CARAVAN_PRIVATE_KEY} -p ${CARAVAN_PORT} caravan@127.0.0.1
 }
 
 function caravan_destroy() {
