@@ -1,13 +1,22 @@
-# Rrint available colors and their numbers
-function colours() {
-    for i in {0..255}; do
-        printf "\x1b[38;5;${i}m colour${i}"
-        if (( $i % 5 == 0 )); then
-            printf "\n"
-        else
-            printf "\t"
-        fi
-    done
+# Setup a caravan
+function setup_caravan() {
+    if [ -z "$1" ]; then
+        echo "Usage: setup_caravan <name>"
+    fi
+    docker run -d \
+        --name "$1" \
+        -v "$(pwd):/home/kohn/mount:delegated" \
+        ankoh/caravan:latest
+}
+
+# Enter a caravan
+function enter_caravan() {
+    
+}
+
+# Destroy a caravan
+function enter_caravan() {
+    
 }
 
 # Extract archives - use: extract <file>
@@ -37,11 +46,6 @@ function extract() {
 # Find fat
 function find-fat-things() {
     du -ahx / | sort -rh | head -100
-}
-
-# Dump clang record layouts
-function dump-record-layout() {
-    clang++ -std=c++17 -Xclang -fdump-record-layouts $1
 }
 
 # Find llvm component
