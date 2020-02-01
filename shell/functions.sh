@@ -1,24 +1,3 @@
-# Setup a caravan
-function setup_caravan() {
-    if [ -z "$1" ]; then
-        echo "Usage: setup_caravan <name>"
-    fi
-    docker run -d \
-        --name "$1" \
-        -v "$(pwd):/home/kohn/mount:delegated" \
-        ankoh/caravan:latest
-}
-
-# Enter a caravan
-function enter_caravan() {
-    
-}
-
-# Destroy a caravan
-function enter_caravan() {
-    
-}
-
 # Extract archives - use: extract <file>
 # Credits to http://dotfiles.org/~pseup/.bashrc
 function extract() {
