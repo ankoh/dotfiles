@@ -28,19 +28,20 @@ RUN mkdir /var/run/sshd \
     && sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config \
     && sed -i 's/session\s*required\s*pam_loginuid.so/session optional pam_loginuid.so/g' /etc/pam.d/sshd
 
-# Switch to user kohn
-RUN useradd -ms /bin/bash kohn
-USER kohn
-WORKDIR /home/kohn
+# Switch to caravan user
+RUN useradd -ms /bin/bash caravan
+USER caravan
+WORKDIR /home/caravan
 SHELL ["/bin/bash", "-c"]
 
 # Install rust
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 
 # Install dotfiles
-COPY --chown=kohn:kohn . /home/kohn/.dotfiles/
+COPY --chown=caravan:caravan . /home/caravan/.dotfiles/
 RUN cd .dotfiles \
     && make install-symlinks \
+    && chmod +x ./caravan/entrypoint.sh \
     && source ../.bashrc \
     && make install-ls-cc install-ls-py install-ls-rs
 
@@ -50,12 +51,8 @@ RUN source .bashrc \
     && pip3 install neovim \
     && nvim --headless +UpdateRemotePlugins +PlugInstall +qall!
 
-# Setup SSH key
-RUN mkdir -p .ssh \
-    && cat .dotfiles/caravan/caravan.pub > .ssh/authorized_keys \
-    && chmod 600 .ssh/authorized_keys
-
 # Configure SSH daemon
 USER root
 EXPOSE 22
+ENTRYPOINT ["/home/caravan/.dotfiles/caravan/entrypoint.sh"]
 CMD ["/usr/sbin/sshd", "-D"]
