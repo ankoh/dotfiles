@@ -26,8 +26,8 @@ install-fzf:
 	fi
 	$(FZF_DIR)/install --bin
 #---------------------------------------------------------------------------
-install-ls:
-	pip3 install neovim
+install-rust:
+	curl https://sh.rustup.rs -sSf | bash -s -- -y
 #---------------------------------------------------------------------------
 install-ls-cc:
 	rm -rf $(CCLS_REPO_DIR) $(CCLS_BUILD_DIR)
@@ -56,8 +56,7 @@ install-ls-ts:
 install-ls-dart:
 	pub global activate dart_language_server
 #---------------------------------------------------------------------------
-install-rust:
-	curl https://sh.rustup.rs -sSf | bash -s -- -y
+install-ls-rs:
 	rustup component add rls-preview rust-analysis rust-src rustfmt
 #---------------------------------------------------------------------------
 create-directories:
