@@ -3,7 +3,7 @@
 # SSH on a host with forwarded SSH agent
 function fwdssh() {
     set -x
-    ssh-add -L | grep "$1" | ssh -i /dev/stdin "$2"
+    ssh-add -L | grep "$1" | ssh -i /dev/stdin "${@:2}"
     set +x
 }
 
