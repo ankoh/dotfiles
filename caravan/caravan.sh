@@ -9,22 +9,28 @@ function caravan_keygen() {
     ssh-keygen -t ed25519 -f ${CARAVAN_PRIVATE_KEY} -N ""
 }
 
-function caravan_setup() {
+function caravan_run() {
     if [ -z "$1" ]; then
-        echo "Usage: caravan_setup <name>"
+        echo "Usage: caravan_run <name>"
         return
     fi
     CARAVAN_MOUNT="$(pwd)"
     CARAVAN_PUB="$(cat ${CARAVAN_PUBLIC_KEY})"
-    docker run -d -p 22 --name "$1" \
-        -v "${CARAVAN_MOUNT}:/home/caravan/mount:delegated" \
-        -e CARAVAN_PUBLIC_KEY="${CARAVAN_PUB}" \
-        ankoh/caravan:latest
+    echo "Create caravan image"
+    CARAVAN_IMAGE=$( \
+        docker run -d -p 22 --name "$1" \
+            -v "${CARAVAN_MOUNT}:/home/caravan/mount:delegated" \
+            -e CARAVAN_PUBLIC_KEY="${CARAVAN_PUB}" \
+            ankoh/caravan:latest \
+    )
+    echo "Setup SSH forwarding"
+    git -C ~/.ssh archive --format tar HEAD | docker cp - ${CARAVAN_IMAGE}:/home/caravan/.ssh/
+    docker exec --user root -it ${CARAVAN_IMAGE} chown -R caravan:caravan /home/caravan/.ssh
 }
 
-function caravan_enter() {
+function caravan_exec() {
     if [ -z "$1" ]; then
-        echo "Usage: caravan_enter <name>"
+        echo "Usage: caravan_exec <name>"
         return
     fi
     CARAVAN_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "22/tcp") 0).HostPort }}' "$1")
@@ -37,21 +43,13 @@ function caravan_enter() {
         caravan@127.0.0.1
 }
 
-function caravan_destroy() {
+function caravan_rm() {
     if [ -z "$1" ]; then
-        echo "Usage: caravan_destroy <name>"
+        echo "Usage: caravan_rm <name>"
         return
     fi
     docker stop "$1" || true
     docker rm -vf "$1" || true
-}
-
-function caravan_stop() {
-    if [ -z "$1" ]; then
-        echo "Usage: caravan_stop <name>"
-        return
-    fi
-    docker stop "$1" || true
 }
 
 function caravan_start() {
@@ -60,4 +58,12 @@ function caravan_start() {
         return
     fi
     docker start "$1" || true
+}
+
+function caravan_stop() {
+    if [ -z "$1" ]; then
+        echo "Usage: caravan_stop <name>"
+        return
+    fi
+    docker stop "$1" || true
 }
