@@ -16,16 +16,18 @@ function caravan_run() {
     fi
     CARAVAN_MOUNT="$(pwd)"
     CARAVAN_PUB="$(cat ${CARAVAN_PUBLIC_KEY})"
+    echo "Create caravan volume"
+    docker volume create --name caravan
     echo "Create caravan image"
     CARAVAN_IMAGE=$( \
         docker run -d -p 22 --name "$1" \
-            -v "${CARAVAN_MOUNT}:/home/caravan/mount:delegated" \
+            -v "caravan:/home/caravan/volume" \
             -e CARAVAN_PUBLIC_KEY="${CARAVAN_PUB}" \
             ankoh/caravan:latest \
     )
     echo "Setup SSH forwarding"
     git -C ~/.ssh archive --format tar HEAD | docker cp - ${CARAVAN_IMAGE}:/home/caravan/.ssh/
-    docker exec --user root -it ${CARAVAN_IMAGE} chown -R caravan:caravan /home/caravan/.ssh
+    docker exec --user root -it ${CARAVAN_IMAGE} chown -R caravan:caravan /home/caravan/.ssh /home/caravan/volume
 }
 
 function caravan_exec() {
