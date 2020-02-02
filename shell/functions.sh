@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# SSH on a host with forwarded SSH agent
+function fwdssh() {
+    set -x
+    ssh-add -L | grep "$1" | ssh -i /dev/stdin "$2"
+    set +x
+}
+
 # Extract archives - use: extract <file>
 # Credits to http://dotfiles.org/~pseup/.bashrc
 function extract() {
