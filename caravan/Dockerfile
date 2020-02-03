@@ -29,7 +29,8 @@ RUN mkdir /var/run/sshd \
     && sed -i 's/session\s*required\s*pam_loginuid.so/session optional pam_loginuid.so/g' /etc/pam.d/sshd
 
 # Switch to caravan user
-RUN useradd -ms /bin/bash caravan
+RUN useradd -ms /bin/bash caravan \
+    && usermod -aG sudo caravan
 USER caravan
 WORKDIR /home/caravan
 SHELL ["/bin/bash", "-c"]
