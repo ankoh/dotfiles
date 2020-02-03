@@ -45,11 +45,12 @@ RUN cd .dotfiles \
     && make install-fzf install-ls-cc install-ls-py install-ls-rs \
     && chmod +x ./caravan/entrypoint.sh
 
-# Setup neovim
+# Setup neovim & tmux
 RUN source .bashrc \
     && pip install neovim \
     && pip3 install neovim \
-    && nvim --headless +UpdateRemotePlugins +PlugInstall +qall!
+    && nvim --headless +UpdateRemotePlugins +PlugInstall +qall! \
+    && ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # Configure SSH daemon
 USER root
