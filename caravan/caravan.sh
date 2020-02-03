@@ -30,9 +30,9 @@ function caravan_run() {
     docker exec --user root -it ${CARAVAN_IMAGE} chown -R caravan:caravan /home/caravan/.ssh /home/caravan/volume
 }
 
-function caravan_exec() {
+function caravan_enter() {
     if [ -z "$1" ]; then
-        echo "Usage: caravan_exec <name>"
+        echo "Usage: caravan_enter <name>"
         return
     fi
     CARAVAN_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "22/tcp") 0).HostPort }}' "$1")
