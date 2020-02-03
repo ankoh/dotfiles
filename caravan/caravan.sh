@@ -10,17 +10,13 @@ function caravan_keygen() {
 }
 
 function caravan_run() {
-    if [ -z "$1" ]; then
-        echo "Usage: caravan_run <name>"
-        return
-    fi
     CARAVAN_MOUNT="$(pwd)"
     CARAVAN_PUB="$(cat ${CARAVAN_PUBLIC_KEY})"
     echo "Create caravan volume"
     docker volume create --name caravan
     echo "Create caravan image"
     CARAVAN_IMAGE=$( \
-        docker run -d -p 22 --name "$1" \
+        docker run -d -p 22 --name caravan \
             -v "caravan:/home/caravan/volume" \
             -e CARAVAN_PUBLIC_KEY="${CARAVAN_PUB}" \
             ankoh/caravan:latest \
@@ -31,11 +27,7 @@ function caravan_run() {
 }
 
 function caravan_enter() {
-    if [ -z "$1" ]; then
-        echo "Usage: caravan_enter <name>"
-        return
-    fi
-    CARAVAN_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "22/tcp") 0).HostPort }}' "$1")
+    CARAVAN_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "22/tcp") 0).HostPort }}' caravan)
     ssh-add ${CARAVAN_PRIVATE_KEY}
     ssh -A \
         -o StrictHostKeyChecking=no \
@@ -46,26 +38,14 @@ function caravan_enter() {
 }
 
 function caravan_rm() {
-    if [ -z "$1" ]; then
-        echo "Usage: caravan_rm <name>"
-        return
-    fi
-    docker stop "$1" || true
-    docker rm -vf "$1" || true
+    docker stop caravan || true
+    docker rm -vf caravan || true
 }
 
 function caravan_start() {
-    if [ -z "$1" ]; then
-        echo "Usage: caravan_start <name>"
-        return
-    fi
-    docker start "$1" || true
+    docker start caravan || true
 }
 
 function caravan_stop() {
-    if [ -z "$1" ]; then
-        echo "Usage: caravan_stop <name>"
-        return
-    fi
-    docker stop "$1" || true
+    docker stop caravan || true
 }
