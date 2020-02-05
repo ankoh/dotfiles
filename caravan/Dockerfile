@@ -3,7 +3,7 @@ FROM ubuntu:19.10
 # Install core packages
 RUN apt-get update -qq \
     && apt-get install -y \
-        openssh-server tmux neovim git curl locales tig \
+        openssh-server tmux neovim git curl locales tig exuberant-ctags \
         build-essential binutils make cmake clang clang-format lld ninja-build ccache bison \
         python-pip python3-pip \
         htop golang \
