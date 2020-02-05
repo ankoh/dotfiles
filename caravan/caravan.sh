@@ -9,21 +9,24 @@ function caravan_keygen() {
     ssh-keygen -t ed25519 -f ${CARAVAN_PRIVATE_KEY} -N ""
 }
 
-function caravan_run() {
+function caravan_up() {
     CARAVAN_MOUNT="$(pwd)"
     CARAVAN_PUB="$(cat ${CARAVAN_PUBLIC_KEY})"
-    echo "Create caravan volume"
+    echo "[ RUN ] Create caravan volume"
     docker volume create --name caravan
-    echo "Create caravan image"
+    echo "[ OK  ] Create caravan volume"
+    echo "[ RUN ] Create caravan image"
     CARAVAN_IMAGE=$( \
         docker run -d -p 22 --name caravan \
             -v "caravan:/home/caravan/volume" \
             -e CARAVAN_PUBLIC_KEY="${CARAVAN_PUB}" \
             ankoh/caravan:latest \
     )
-    echo "Setup SSH forwarding"
+    echo "[ OK  ] Create caravan image"
+    echo "[ RUN ] Setup SSH forwarding"
     git -C ~/.ssh archive --format tar HEAD | docker cp - ${CARAVAN_IMAGE}:/home/caravan/.ssh/
     docker exec --user root -it ${CARAVAN_IMAGE} chown -R caravan:caravan /home/caravan/.ssh /home/caravan/volume
+    echo "[ OK  ] Setup SSH forwarding"
 }
 
 function caravan_enter() {
