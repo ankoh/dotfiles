@@ -160,7 +160,8 @@ nnoremap <leader>lp :lp<CR>
 nnoremap <leader>lc :lcl<CR>
 
 " FZF ctrl-p mode
-nnoremap <C-P> :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))<CR>
+" nnoremap <C-P> :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))<CR>
+nnoremap <C-P> :Files<CR>
 
 " Special characters
 set invlist
