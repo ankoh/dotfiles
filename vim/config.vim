@@ -117,9 +117,11 @@ set wildignore+=.so,.swp,.zip,.o,.d,.dwo,.make,.a,link.txt,depend.internal,CXX.i
 set clipboard=unnamed      " use system clipboard
 
 " Color scheme
-" We use a truecolor scheme (!).
-" Won't work in the the default mac terminal...
-"set termguicolors
+" Neovim supports truecolor schemes (!).
+" However, this has the unpleasant side effect that some terminals are barely usable (e.g. Terminal.app).
+" set termguicolors
+"
+" For now, we can just replace the 256 color palette with the gruvbox-palette on shell init.
 colorscheme gruvbox
 
 
