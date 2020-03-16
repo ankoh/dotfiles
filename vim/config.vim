@@ -119,8 +119,8 @@ set clipboard=unnamed      " use system clipboard
 " Color scheme
 " We use a truecolor scheme (!).
 " Won't work in the the default mac terminal...
-set termguicolors
-colorscheme monokai_pro
+"set termguicolors
+colorscheme gruvbox
 
 
 " Paste mode

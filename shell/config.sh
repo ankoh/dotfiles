@@ -69,3 +69,9 @@ fi
 include $SHELLCONF/aliases.sh
 include $SHELLCONF/functions.sh
 include $DOTFILES/caravan/caravan.sh
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    source $SHELLCONF/colors/gruvbox_256palette_osx.sh
+else
+    source $SHELLCONF/colors/gruvbox_256palette.sh
+fi
