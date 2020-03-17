@@ -57,7 +57,7 @@ let g:vim_json_syntax_conceal = 0
 let mapleader = ','
 let g:mapleader = ','
 
-" JK instead of enter
+" JK instead of escape
 inoremap jk <Esc>
 
 set history=1000           " change history to 1000
