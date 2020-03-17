@@ -173,8 +173,8 @@ set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
 nnoremap <leader>ic :set list!<CR>
 
 " Window splits
-nnoremap <leader>f  za<CR>
-nnoremap <leader>uf zR<CR>
+nnoremap <leader>f za<CR>
+nnoremap <leader>F zR<CR>
 
 " Grammarous
 nmap <leader>ss :GrammarousCheck<CR>
