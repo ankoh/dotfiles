@@ -121,7 +121,6 @@ set clipboard=unnamed      " use system clipboard
 " For now, we can just replace the 256 color palette with the gruvbox-palette on shell init.
 colorscheme gruvbox
 
-
 " Paste mode
 set pastetoggle=<F3>
 
@@ -277,9 +276,6 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 40 
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
-
-" Tagbar
-nnoremap <leader>ct :TagbarToggle<CR>
 
 " R nvim
 let g:R_nvim_wd = 1
