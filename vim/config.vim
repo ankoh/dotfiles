@@ -28,11 +28,9 @@ Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
 Plug 'rust-lang/rust.vim'                   " rustfmt
 Plug 'jalvesaq/nvim-r'                      " r plugin
 Plug 'fatih/vim-go'                         " go support
-Plug 'dart-lang/dart-vim-plugin'            " dart syntax highlighting
 Plug 'elzr/vim-json'                        " WTF hidden json quotes
 Plug 'edkolev/tmuxline.vim'                 " tmux line
 Plug 'HerringtonDarkholme/yats.vim'         " typescript
-Plug 'majutsushi/tagbar'                    " tag bar
 Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
