@@ -57,10 +57,15 @@ let g:vim_json_syntax_conceal = 0
 let mapleader = ','
 let g:mapleader = ','
 
+" Terminal
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
 " JK instead of escape
 inoremap jk <Esc>
 
-set history=1000           " change history to 1000
+syntax on                  " switch syntax highlighting on
+set history=10000          " change history to 10000
 set textwidth=0
 set expandtab              " insert spaces rather than tab for <Tab>
 set smarttab               " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
@@ -74,13 +79,13 @@ set shiftround             " round indent to a multiple of 'shiftwidth'
 " endif
 set backspace=indent,eol,start " backspace problem
 set ttyfast                " faster redrawing
-" set lazyredraw             " draw lazy (leads to rendering artifacts in alacritty)
+set lazyredraw             " draw lazy (leads to rendering artifacts in alacritty)
 " set relativenumber         " relative line numbering
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set laststatus=2           " show the satus line all the time
 set hidden                 " buffers vs tabs
-set foldmethod=syntax      " fold based on indent
+set foldmethod=syntax      " fold based on syntax highlighting
 set foldnestmax=10         " deepest fold is 10 levels
 set nofoldenable           " don't fold by default
 set foldlevel=1            " 1 fold opened by default
@@ -99,7 +104,6 @@ set incsearch              " set incremental search, like modern browsers
 set magic                  " set magic on, for regex
 set showmatch              " show matching braces
 set mat=2                  " how many tenths of a second to blink
-syntax on                  " switch syntax highlighting on
 set synmaxcol=1024         " limit syntax highlighting to 1024 chars
 set encoding=utf8
 set number                 " show line numbers
@@ -168,10 +172,9 @@ set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
 " set showbreak=↪
 nnoremap <leader>ic :set list!<CR>
 
-" Terminal
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
-endif
+" Window splits
+nnoremap <leader>f  za<CR>
+nnoremap <leader>uf zR<CR>
 
 " Grammarous
 nmap <leader>ss :GrammarousCheck<CR>
