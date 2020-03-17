@@ -21,7 +21,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'scrooloose/nerdtree'                  " NERDTree
 Plug 'itchyny/lightline.vim'                " bottom status bar
-Plug 'ap/vim-buftabline'                    " top tab line with buffers
 Plug 'tpope/vim-fugitive'                   " git plugin
 Plug 'airblade/vim-gitgutter'               " git in sidebar
 Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
