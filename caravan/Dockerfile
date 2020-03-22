@@ -14,6 +14,7 @@ RUN apt-get update -qq \
 RUN apt-get update -qq \
     && apt-get install -y \
         llvm-9 libasan5 libboost-all-dev libc6-dev libclang-9-dev libjemalloc-dev libssl-dev libtinfo-dev \
+        libpthread-stubs0-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
