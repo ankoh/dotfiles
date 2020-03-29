@@ -65,6 +65,7 @@ reset-symlinks: create-directories
 	@sh -c "[ ! -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
 	@sh -c "[ ! -L ~/.npmrc ] || rm ~/.npmrc;"
+	@sh -c "[ ! -L ~/.nvmrc ] || rm ~/.nvmrc;"
 	@sh -c "[ ! -L ~/.tmux ] || rm -r ~/.tmux;"
 	@sh -c "[ ! -L ~/.tmux.conf ] || rm ~/.tmux.conf;"
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
@@ -78,6 +79,7 @@ install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.zshrc
 	@ln -sf ${MAKEFILE_DIR}/other/gitconfig.conf ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}/other/npmrc.conf ~/.npmrc
+	@ln -sf ${MAKEFILE_DIR}/other/nvmrc.conf ~/.nvmrc
 	@ln -sf ${MAKEFILE_DIR}/other/alacritty.yml ~/.alacritty.yml
 	@ln -sf ${MAKEFILE_DIR}/tmux ~/.tmux
 	@ln -sf ${MAKEFILE_DIR}/tmux/tmux.conf ~/.tmux.conf
