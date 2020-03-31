@@ -107,8 +107,8 @@ set mat=2                  " how many tenths of a second to blink
 set synmaxcol=1024         " limit syntax highlighting to 1024 chars
 set encoding=utf8
 set number                 " show line numbers
-" set cursorline             " highlight cursor line
-set wrap                   " turn on line wrapping
+set cursorline             " highlight cursor line
+set nowrap                 " turn on line wrapping
 set showbreak=…            " show ellipsis at breaking
 set autoindent             " automatically set indent of new line
 set smartindent            " use smarter indentation based on file type
