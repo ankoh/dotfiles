@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Do while the return code is 0
+function do-while-0() {
+    while [ $? -eq 0 ]; do !!; done
+}
+
 # SSH on a host with forwarded SSH agent
 function fwdssh() {
     set -x
