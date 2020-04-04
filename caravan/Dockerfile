@@ -3,10 +3,12 @@ FROM ubuntu:19.10
 # Install core packages
 RUN apt-get update -qq \
     && apt-get install -y \
-        openssh-server tmux neovim git curl locales tig exuberant-ctags \
+        sudo openssh-server tmux neovim git curl locales tig exuberant-ctags \
         build-essential binutils make cmake clang clang-format lld ninja-build ccache bison gdb lldb \
+        linux-tools-common linux-tools-generic \
         python-pip python3-pip \
         htop golang \
+    && ln -fs /usr/lib/linux-tools/*/perf /usr/bin/perf \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -17,6 +19,12 @@ RUN apt-get update -qq \
         libpthread-stubs0-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Install rr debugger
+RUN cd /tmp \
+    && curl -L -o rr.deb https://github.com/mozilla/rr/releases/download/5.3.0/rr-5.3.0-Linux-x86_64.deb \
+    && dpkg -i rr.deb \
+    && rm -rf rr.deb
 
 # Configure locale
 RUN locale-gen en_US.UTF-8 \

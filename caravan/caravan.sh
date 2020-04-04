@@ -17,7 +17,9 @@ function caravan_up() {
     echo "[ OK  ] Create caravan volume"
     echo "[ RUN ] Create caravan image"
     CARAVAN_IMAGE=$( \
-        docker run -d -p 22 --name caravan \
+        docker run -d -p 22 \
+            --name caravan \
+            --cap-add SYS_ADMIN \
             -v "caravan:/home/caravan/volume" \
             -e CARAVAN_PUBLIC_KEY="${CARAVAN_PUB}" \
             ankoh/caravan:latest \

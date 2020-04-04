@@ -10,7 +10,8 @@ chown -R caravan:caravan ${SSH_DIR}
 chmod 700 ${SSH_DIR}
 chmod 600 ${AUTHORIZED_KEYS}
 echo "[ OK  ] Configure ${AUTHORIZED_KEYS}"
-
 echo "${CARAVAN_PUBLIC_KEY}"
+
+echo kernel.perf_event_paranoid=1 > /etc/sysctl.conf
 
 exec "$@"
