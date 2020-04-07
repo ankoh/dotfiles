@@ -45,33 +45,33 @@ export PATH=$PATH:~/.fzf/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# Interactive shell?
+if [ ! -z "$PS1" ]; then
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-if [ -n "$BASH_VERSION" ]; then
+    if [ -n "$BASH_VERSION" ]; then
+        include $HOME/.fzf/shell/key-bindings.bash
+        include $HOME/.fzf/shell/completion.bash
 
-    include $HOME/.fzf/shell/key-bindings.bash
-    include $HOME/.fzf/shell/completion.bash
+        if [ "`id -u`" -eq 0 ]; then
+            PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
+        else
+            PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
+        fi
 
-    if [ "`id -u`" -eq 0 ]; then
-        PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
-    else
-        PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
+    elif [ -n "$ZSH_VERSION" ]; then
+        include $HOME/.fzf/shell/key-bindings.zsh
+        include $HOME/.fzf/shell/completion.zsh
     fi
 
-elif [ -n "$ZSH_VERSION" ]; then
-
-    include $HOME/.fzf/shell/key-bindings.zsh
-    include $HOME/.fzf/shell/completion.zsh
-
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        source $SHELLCONF/colors/gruvbox_256palette_osx.sh
+    else
+        source $SHELLCONF/colors/gruvbox_256palette.sh
+    fi
 fi
 
 include $SHELLCONF/aliases.sh
 include $SHELLCONF/functions.sh
 include $DOTFILES/caravan/caravan.sh
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    source $SHELLCONF/colors/gruvbox_256palette_osx.sh
-else
-    source $SHELLCONF/colors/gruvbox_256palette.sh
-fi
