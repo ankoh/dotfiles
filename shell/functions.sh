@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Fix ssh-agent
+fixssh() {
+    eval $(tmux show-env | sed -n 's/^\(SSH_[^=]*\)=\(.*\)/export \1="\2"/p')
+}
+
 # SSH on a host with forwarded SSH agent
 function fwdssh() {
     set -x
