@@ -81,8 +81,8 @@ set backspace=indent,eol,start " backspace problem
 " set ttyfast                " faster redrawing
 " set lazyredraw             " draw lazy (leads to rendering artifacts in alacritty)
 " set relativenumber         " relative line numbering
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=/tmp
+set directory=/tmp
 set laststatus=2           " show the satus line all the time
 set hidden                 " buffers vs tabs
 set foldmethod=syntax      " fold based on syntax highlighting
