@@ -8,6 +8,7 @@ RUN apt-get update -qq \
         linux-tools-common linux-tools-generic \
         python-pip python3-pip \
         htop golang \
+        unzip \
     && ln -fs /usr/lib/linux-tools/*/perf /usr/bin/perf \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
