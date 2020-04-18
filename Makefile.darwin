@@ -61,7 +61,9 @@ install-ls-rs:
 #---------------------------------------------------------------------------
 create-directories:
 	@mkdir -p ~/.config
-	@mkdir -p ~/.local
+	@mkdir -p ~/.local/bin
+	@mkdir -p ~/.local/include
+	@mkdir -p ~/.local/lib
 	@mkdir -p ~/.config/Code/User
 #---------------------------------------------------------------------------
 reset-symlinks: create-directories
