@@ -30,6 +30,7 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export GEM_HOME=$HOME/.gem
 export NPM_PACKAGES=$HOME/.npm_packages
+export PYENV_ROOT=$HOME/.pyenv
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -42,6 +43,7 @@ export PATH=$GOBIN:$PATH
 export PATH=$NPM_PACKAGES/bin:$PATH
 export PATH=$GEM_HOME/bin:$PATH
 export PATH=$PATH:~/.fzf/bin
+export PATH=$PYENV_ROOT/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
