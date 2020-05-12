@@ -48,6 +48,8 @@ export PATH=$PYENV_ROOT/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+bindkey "^A" vi-beginning-of-line
+
 # Interactive shell?
 if [ ! -z "$PS1" ]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
