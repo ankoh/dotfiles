@@ -5,6 +5,7 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
+DP_DIR := ~/.displayplacer
 CCLS_VERSION := c5acf62060f32f79b4647fd63c05e6b1a9135e6f
 CCLS_REPO_DIR := ~/.ccls/repo
 CCLS_BUILD_DIR := ~/.ccls/build
@@ -25,6 +26,14 @@ install-fzf:
 		cd $(FZF_DIR) && git pull --ff-only origin master; \
 	fi
 	$(FZF_DIR)/install --bin
+#---------------------------------------------------------------------------
+install-displayplacer:
+	if [ ! -d $(DP_DIR) ]; then \
+		git clone --depth 1 https://github.com/ankoh/displayplacer $(DP_DIR); \
+	else \
+		cd $(DP_DIR) && git pull --ff-only origin master; \
+	fi
+	cd $(DP_DIR) && make displayplacer
 #---------------------------------------------------------------------------
 install-rust:
 	curl https://sh.rustup.rs -sSf | bash -s -- -y

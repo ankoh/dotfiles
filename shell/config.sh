@@ -43,6 +43,7 @@ export PATH=$GOBIN:$PATH
 export PATH=$NPM_PACKAGES/bin:$PATH
 export PATH=$GEM_HOME/bin:$PATH
 export PATH=$PATH:~/.fzf/bin
+export PATH=$PATH:~/.displayplacer
 export PATH=$PYENV_ROOT/bin:$PATH
 
 # Load pyenv
@@ -83,5 +84,6 @@ if [ ! -z "$PS1" ]; then
 fi
 
 include $SHELLCONF/aliases.sh
+include $SHELLCONF/displays.sh
 include $SHELLCONF/functions.sh
 include $DOTFILES/caravan/caravan.sh
