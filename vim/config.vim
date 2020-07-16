@@ -3,19 +3,19 @@ call plug#begin('~/.vim/plugged')
 Plug 'embear/vim-localvimrc'                " local vim configurations
 if has('nvim')                              " deoplete
     Plug 'Shougo/deoplete.nvim', {
-        \ 'commit': '02e48af3b995579a56ecafcda80fc6993ec4b3cf',
+        \ 'commit': '88210f81935a33a456a17e344f04ca0ad6f97543',
         \ 'do': ':UpdateRemotePlugins',
         \ }
 else
     Plug 'Shougo/deoplete.nvim', {
-        \ 'commit': '02e48af3b995579a56ecafcda80fc6993ec4b3cf',
+        \ 'commit': '88210f81935a33a456a17e344f04ca0ad6f97543',
         \ 'do': ':UpdateRemotePlugins',
         \ }
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'commit': 'ec4af74',
+    \ 'commit': '0e5c9546bfddbaa2b01e5056389c25aefc8bf989',
     \ 'do': 'bash install.sh',
     \ }                                     " languageserver
 Plug 'rhysd/vim-clang-format'               " clang format
