@@ -1,12 +1,12 @@
-FROM ubuntu:19.10
+FROM ubuntu:20.04
 
 # Install core packages
 RUN apt-get update -qq \
-    && apt-get install -y \
+    && DEBIAN_FRONTEND="noninteractive" apt-get install -y \
         sudo openssh-server tmux neovim git curl locales tig exuberant-ctags \
-        build-essential binutils make cmake clang clang-format lld ninja-build ccache bison gdb lldb \
+        build-essential binutils make cmake clang clang-9 clang-format lld ninja-build ccache bison gdb lldb \
         linux-tools-common linux-tools-generic \
-        python-pip python3-pip \
+        python3-pip \
         htop golang \
         unzip \
     && ln -fs /usr/lib/linux-tools/*/perf /usr/bin/perf \
@@ -16,16 +16,16 @@ RUN apt-get update -qq \
 # Install dev packages
 RUN apt-get update -qq \
     && apt-get install -y \
-        llvm-9 libasan5 libboost-all-dev libc6-dev libclang-9-dev libjemalloc-dev libssl-dev libtinfo-dev \
+        llvm-9 llvm-10 libasan5 libboost-all-dev libc6-dev libclang-9-dev libclang-10-dev libjemalloc-dev libssl-dev libtinfo-dev \
         libpthread-stubs0-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Install rr debugger
-RUN cd /tmp \
-    && curl -L -o rr.deb https://github.com/mozilla/rr/releases/download/5.3.0/rr-5.3.0-Linux-x86_64.deb \
-    && dpkg -i rr.deb \
-    && rm -rf rr.deb
+# RUN cd /tmp \
+#     && curl -L -o rr.deb https://github.com/mozilla/rr/releases/download/5.3.0/rr-5.3.0-Linux-x86_64.deb \
+#     && dpkg -i rr.deb \
+#     && rm -rf rr.deb
 
 # Configure locale
 RUN locale-gen en_US.UTF-8 \
@@ -58,7 +58,6 @@ RUN cd .dotfiles \
 
 # Setup neovim & tmux
 RUN source .bashrc \
-    && pip install neovim \
     && pip3 install neovim \
     && nvim --headless +UpdateRemotePlugins +PlugInstall +qall! \
     && ~/.tmux/plugins/tpm/scripts/install_plugins.sh

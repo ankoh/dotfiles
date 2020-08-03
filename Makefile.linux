@@ -9,7 +9,7 @@ CCLS_VERSION := 99f0b402a7584f92de12f0af164ad7e0c772fcd2
 CCLS_REPO_DIR := ~/.ccls/repo
 CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
-LLVM_PREFIX_PATH := /usr/lib/llvm-9/lib/cmake
+LLVM_PREFIX_PATH := /usr/lib/llvm-10/lib/cmake
 #---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
