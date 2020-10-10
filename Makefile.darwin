@@ -11,6 +11,7 @@ CCLS_REPO_DIR := ~/.ccls/repo
 CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
 LLVM_PREFIX_PATH := /usr/local/Cellar/llvm/10.0.0_3/lib/cmake
+NVM_VERSION=v0.36.0
 #---------------------------------------------------------------------------
 install-brew:
 ifndef BREW
@@ -18,6 +19,12 @@ ifndef BREW
 else
 	@echo "Found Homebrew: ${BREW}"
 endif
+#---------------------------------------------------------------------------
+install-nvm:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
+#---------------------------------------------------------------------------
+install-pyenv:
+	curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 #---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
