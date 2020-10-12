@@ -205,6 +205,7 @@ nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
 nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <leader>gh :call LanguageClient#findLocations({'method':'$ccls/inheritance','flat':v:true,'level':3,'derived':v:true})<cr>
+nnoremap <leader>gf :call LanguageClient#textDocument_formatting()<CR>
 nnoremap <F5> :call LanguageClient#textDocument_rename()<CR>
 
 " LSP status indicator
