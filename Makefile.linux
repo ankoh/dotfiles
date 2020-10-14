@@ -57,7 +57,10 @@ install-ls-dart:
 	pub global activate dart_language_server
 #---------------------------------------------------------------------------
 install-ls-rs:
-	rustup component add rls-preview rust-analysis rust-src rustfmt
+	rustup component add rust-src rustfmt && \
+	mkdir -p ~/.local/bin/ && \
+	curl -L -o ~/.local/bin/rust-analyzer https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-linux && \
+	chmod +x ~/.local/bin/rust-analyzer
 #---------------------------------------------------------------------------
 create-directories:
 	@mkdir -p ~/.config

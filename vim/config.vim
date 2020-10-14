@@ -189,7 +189,7 @@ nmap <leader>sr <Plug>(grammarous-reset)
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
-    \   'rust': ['rustup', 'run', 'stable', 'rls'],
+    \   'rust': ['rust-analyzer'],
     \   'python': ['pyls'],
     \   'typescript': ['typescript-language-server', '--stdio'],
     \   'typescript.tsx': ['typescript-language-server', '--stdio'],
