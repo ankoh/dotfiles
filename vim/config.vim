@@ -188,6 +188,7 @@ nmap <leader>si <Plug>(grammarous-remove-error)
 nmap <leader>sr <Plug>(grammarous-reset)
 
 " LanguageClient
+autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rust-analyzer'],
     \   'python': ['pyls'],
