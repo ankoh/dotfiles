@@ -11,7 +11,7 @@ CCLS_VERSION := 99f0b402a7584f92de12f0af164ad7e0c772fcd2
 CCLS_REPO_DIR := ~/.ccls/repo
 CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
-LLVM_PREFIX_PATH := /usr/local/Cellar/llvm/10.0.0_3/lib/cmake
+LLVM_PREFIX_PATH := /usr/local/Cellar/llvm/10.0.1_2/lib/cmake
 NVM_VERSION=v0.36.0
 #---------------------------------------------------------------------------
 install-brew:
