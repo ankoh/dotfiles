@@ -299,3 +299,8 @@ command! -bang -nargs=* Gitgrepi
   \ call fzf#vim#grep(
   \   'git grep -i --line-number '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
+" Disable syntax highlighting for bison and flex
+autocmd! bufreadpost *.y set syntax=off
+autocmd! bufreadpost *.yh set syntax=off
+autocmd! bufreadpost *.l set syntax=off
