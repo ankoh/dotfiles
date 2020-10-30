@@ -34,6 +34,7 @@ Plug 'HerringtonDarkholme/yats.vim'         " typescript
 Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
+Plug 'Yggdroot/indentLine'                  " indentation
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
