@@ -203,11 +203,12 @@ let g:LanguageClient_serverCommands = {
 "    \       '--init={"cache":{"directory":"/tmp/ccls"},"highlight":{"lsRanges":true}}'
 let g:LanguageClient_autoStart = 1
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
-nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>gf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>gh :call LanguageClient#textDocument_hover()<cr>
+nnoremap <leader>gi :call LanguageClient#findLocations({'method':'$ccls/inheritance','flat':v:true,'level':3,'derived':v:true})<cr>
 nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
-nnoremap <leader>gh :call LanguageClient#findLocations({'method':'$ccls/inheritance','flat':v:true,'level':3,'derived':v:true})<cr>
-nnoremap <leader>gf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
 nnoremap <F5> :call LanguageClient#textDocument_rename()<CR>
 
 " LSP status indicator
