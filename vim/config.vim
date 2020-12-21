@@ -34,6 +34,11 @@ Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'Yggdroot/indentLine'                  " indentation
+Plug 'prettier/vim-prettier', {
+    \ 'do': 'npm install',
+    \ 'branch': 'release/0.x',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
+    \ }                                     " formatter for the web
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'
@@ -289,6 +294,9 @@ let g:R_nvim_wd = 1
 " Clang-Format
 " let g:clang_format#command = '~/.local/bin/clang-format'
 let g:clang_format#detect_style_file = 1
+
+" Don't autoformat
+let g:prettier#autoformat = 0
 
 " Command for git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
