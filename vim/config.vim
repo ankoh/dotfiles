@@ -34,6 +34,7 @@ Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'Yggdroot/indentLine'                  " indentation
+Plug 'leafgarland/typescript-vim'           " typescript
 Plug 'prettier/vim-prettier', {
     \ 'do': 'npm install',
     \ 'branch': 'release/0.x',
