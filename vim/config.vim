@@ -2,15 +2,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'embear/vim-localvimrc'                " local vim configurations
 if has('nvim')                              " deoplete
-    Plug 'Shougo/deoplete.nvim', {
-        \ 'commit': '88210f81935a33a456a17e344f04ca0ad6f97543',
-        \ 'do': ':UpdateRemotePlugins',
-        \ }
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+    Plug 'Shougo/denite.nvim'
 else
-    Plug 'Shougo/deoplete.nvim', {
-        \ 'commit': '88210f81935a33a456a17e344f04ca0ad6f97543',
-        \ 'do': ':UpdateRemotePlugins',
-        \ }
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+    Plug 'Shougo/denite.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -34,7 +30,7 @@ Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'Yggdroot/indentLine'                  " indentation
-Plug 'leafgarland/typescript-vim'           " typescript
+Plug 'HerringtonDarkholme/yats.vim'         " typescript syntax
 Plug 'prettier/vim-prettier', {
     \ 'do': 'npm install',
     \ 'branch': 'release/0.x',
@@ -194,17 +190,20 @@ nmap <leader>si <Plug>(grammarous-remove-error)
 nmap <leader>sr <Plug>(grammarous-reset)
 
 " LanguageClient
-autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rust-analyzer'],
     \   'python': ['pyls'],
-    \   'typescript': ['typescript-language-server', '--stdio'],
-    \   'typescript.tsx': ['typescript-language-server', '--stdio'],
-    \   'typescriptreact': ['typescript-language-server', '--stdio'],
     \   'dart': ['dart_language_server'],
     \   'cpp': ['~/.local/bin/ccls'],
     \   'c': ['~/.local/bin/ccls'],
+    \   'typescript': ['typescript-language-server', '--stdio'],
+    \   'typescript.tsx': ['typescript-language-server', '--stdio'],
+    \   'typescriptreact': ['typescript-language-server', '--stdio'],
     \ }
+"    \   'typescript': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
+"    \   'typescript.tsx': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
+"    \   'typescriptreact': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
 "    \       '--init={"cache":{"directory":"/tmp/ccls"},"highlight":{"lsRanges":true}}'
 let g:LanguageClient_autoStart = 1
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
