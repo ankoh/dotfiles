@@ -11,9 +11,9 @@ else
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'commit': '0e5c9546bfddbaa2b01e5056389c25aefc8bf989',
+    \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ }                                     " languageserver
+    \ }                                     " languageclient
 Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'scrooloose/nerdtree'                  " NERDTree
 Plug 'itchyny/lightline.vim'                " bottom status bar
@@ -190,7 +190,7 @@ nmap <leader>si <Plug>(grammarous-remove-error)
 nmap <leader>sr <Plug>(grammarous-reset)
 
 " LanguageClient
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rust-analyzer'],
     \   'python': ['pyls'],
