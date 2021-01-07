@@ -31,6 +31,8 @@ Plug 'rhysd/vim-grammarous'                 " grammar checks
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'Yggdroot/indentLine'                  " indentation
 Plug 'HerringtonDarkholme/yats.vim'         " typescript syntax
+Plug 'shougo/vimproc.vim', {'do' : 'make'}  " tsuquyomi dependency
+Plug 'quramy/tsuquyomi'                     " typescript language servers are meh
 Plug 'prettier/vim-prettier', {
     \ 'do': 'npm install',
     \ 'branch': 'release/0.x',
@@ -190,21 +192,13 @@ nmap <leader>si <Plug>(grammarous-remove-error)
 nmap <leader>sr <Plug>(grammarous-reset)
 
 " LanguageClient
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rust-analyzer'],
     \   'python': ['pyls'],
     \   'dart': ['dart_language_server'],
     \   'cpp': ['~/.local/bin/ccls'],
     \   'c': ['~/.local/bin/ccls'],
-    \   'typescript': ['typescript-language-server', '--stdio'],
-    \   'typescript.tsx': ['typescript-language-server', '--stdio'],
-    \   'typescriptreact': ['typescript-language-server', '--stdio'],
     \ }
-"    \   'typescript': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
-"    \   'typescript.tsx': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
-"    \   'typescriptreact': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
-"    \       '--init={"cache":{"directory":"/tmp/ccls"},"highlight":{"lsRanges":true}}'
 let g:LanguageClient_autoStart = 1
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 nnoremap <leader>gf :call LanguageClient#textDocument_formatting()<CR>
@@ -287,6 +281,13 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 40 
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
+
+" tsuquyomi bindings
+let g:tsuquyomi_completion_detail = 1
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType typescriptreact setlocal completeopt+=menu,preview
+autocmd FileType typescript,typescriptreact nnoremap <buffer> <leader>gt :TsuDefinition<CR>
 
 " R nvim
 let g:R_nvim_wd = 1
