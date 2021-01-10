@@ -4,7 +4,7 @@ FROM ubuntu:20.10
 RUN apt-get update -qq \
     && DEBIAN_FRONTEND="noninteractive" apt-get install -y \
         sudo openssh-server tmux neovim git curl locales tig exuberant-ctags \
-        build-essential binutils make cmake clang clang-9 clang-format lld ninja-build ccache bison gdb lldb \
+        build-essential binutils make cmake clang clang-format lld ninja-build ccache bison gdb lldb \
         linux-tools-common linux-tools-generic \
         python3-pip \
         htop golang \
@@ -16,7 +16,7 @@ RUN apt-get update -qq \
 # Install dev packages
 RUN apt-get update -qq \
     && apt-get install -y \
-        llvm-9 llvm-10 llvm-11 libasan5 libboost-all-dev libc6-dev libclang-9-dev libclang-10-dev libclang-11-dev libjemalloc-dev libssl-dev libtinfo-dev \
+        llvm-11 libasan5 libboost-all-dev libc6-dev libclang-11-dev libjemalloc-dev libssl-dev libtinfo-dev \
         libpthread-stubs0-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
