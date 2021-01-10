@@ -44,7 +44,7 @@ function caravan_enter() {
 
 function caravan_rm() {
     docker stop caravan || true
-    docker rm -vf caravan || true
+    docker rm -f caravan || true
 }
 
 function caravan_start() {
