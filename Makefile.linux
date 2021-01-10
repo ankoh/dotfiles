@@ -5,7 +5,7 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
-CCLS_VERSION := 87ddcc443fe5f0941efd068aebd7b24d45d01945
+CCLS_VERSION := 40145807d56af48b042e8afce819f23a0d8b7058
 CCLS_REPO_DIR := ~/.ccls/repo
 CCLS_BUILD_DIR := ~/.ccls/build
 CCLS_INSTALL_PREFIX := ~/.local
