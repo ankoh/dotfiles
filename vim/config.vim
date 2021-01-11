@@ -14,6 +14,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }                                     " languageclient
+Plug 'jackguo380/vim-lsp-cxx-highlight'     " semantic highlighting c++
 Plug 'rhysd/vim-clang-format'               " clang format
 Plug 'scrooloose/nerdtree'                  " NERDTree
 Plug 'itchyny/lightline.vim'                " bottom status bar
@@ -189,23 +190,31 @@ nmap <leader>sk <Plug>(grammarous-move-to-previous-error)
 nmap <leader>si <Plug>(grammarous-remove-error)
 nmap <leader>sr <Plug>(grammarous-reset)
 
+" CCLS command
+let s:ccls_settings = {
+    \ 'highlight': { 'lsRanges' : v:true },
+    \ }
+let s:ccls_command = ['~/.local/bin/ccls', '-init=' . json_encode(s:ccls_settings)]
+let s:tsls_command = ['typescript-language-server', '--stdio']
+
 " LanguageClient
-autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_useVirtualText = "Diagnostics"
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rust-analyzer'],
     \   'python': ['pyls'],
     \   'dart': ['dart_language_server'],
-    \   'cpp': ['~/.local/bin/ccls'],
-    \   'c': ['~/.local/bin/ccls'],
-    \   'typescript': ['typescript-language-server', '--stdio'],
-    \   'typescript.tsx': ['typescript-language-server', '--stdio'],
-    \   'typescriptreact': ['typescript-language-server', '--stdio'],
+    \   'cpp': s:ccls_command,
+    \   'c': s:ccls_command,
+    \   'typescript': s:tsls_command,
+    \   'typescript.tsx': s:tsls_command,
+    \   'typescriptreact': s:tsls_command
     \ }
 "    \   'typescript': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
 "    \   'typescript.tsx': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
 "    \   'typescriptreact': ['typescript-language-server', '--stdio', '--tsserver-log-file=/tmp/tsls.log', '--tsserver-log-verbosity=normal'],
 "    \       '--init={"cache":{"directory":"/tmp/ccls"},"highlight":{"lsRanges":true}}'
-let g:LanguageClient_autoStart = 1
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 nnoremap <leader>gf :call LanguageClient#textDocument_formatting()<CR>
 nnoremap <leader>gh :call LanguageClient#textDocument_hover()<cr>
