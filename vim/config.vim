@@ -200,6 +200,9 @@ let s:tsls_command = ['typescript-language-server', '--stdio']
 " LanguageClient
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_useVirtualText = "Diagnostics"
+let g:LanguageClient_diagnosticsEnable = 1
+let g:LanguageClient_diagnosticsList = "Quickfix"
+let g:LanguageClient_diagnosticsMaxSeverity = "Hint"
 let g:LanguageClient_serverCommands = {
     \   'rust': ['rust-analyzer'],
     \   'python': ['pyls'],
