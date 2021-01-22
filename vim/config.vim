@@ -30,7 +30,6 @@ Plug 'edkolev/tmuxline.vim'                 " tmux line
 Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
-Plug 'Yggdroot/indentLine'                  " indentation
 Plug 'lervag/vimtex'                        " latex plugin
 Plug 'HerringtonDarkholme/yats.vim'         " typescript syntax
 Plug 'shougo/vimproc.vim', {'do' : 'make'}  " tsuquyomi dependency
@@ -50,8 +49,10 @@ call plug#end()
 " Open R in tmux split
 let g:R_source = '~/.dotfiles/vim/tmux_split.vim'
 
-" WTF hidden json quotes (ctd)
-let g:vim_json_syntax_conceal = 0
+" I really don't like conceal.
+" Indentline breaks with this setting so i'll just stop using it.
+" But hidden JSON quotes and Tex Math-mode symbols drive me crazy.
+set conceallevel=0
 
 " Learn it the hard way
 " noremap <Up> <NOP>
