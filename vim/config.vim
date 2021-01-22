@@ -31,6 +31,7 @@ Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
 Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
 Plug 'Yggdroot/indentLine'                  " indentation
+Plug 'lervag/vimtex'                        " latex plugin
 Plug 'HerringtonDarkholme/yats.vim'         " typescript syntax
 Plug 'shougo/vimproc.vim', {'do' : 'make'}  " tsuquyomi dependency
 Plug 'quramy/tsuquyomi'                     " typescript language servers are meh
