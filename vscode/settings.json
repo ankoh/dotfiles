@@ -78,6 +78,7 @@
     "editor.wordWrap": "on",
     "editor.rulers": [120],
     "editor.codeLens": false,
+    "editor.tabCompletion": "on",
 
     "testExplorer.codeLens": true,
     "testExplorer.showOnRun": true,
@@ -93,10 +94,12 @@
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    "workbench.colorTheme": "Default Light+",
     "zenMode.centerLayout": false,
 
     "latex-workshop.view.pdf.viewer": "tab",
     "extensions.ignoreRecommendations": false,
-    "git.autofetch": true
+    "git.autofetch": true,
+
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "workbench.colorTheme": "Monokai Pro"
 }
