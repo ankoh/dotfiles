@@ -84,7 +84,7 @@
     "testExplorer.showOnRun": true,
 
     "cmake.configureOnOpen": true,
-    "cmake.buildDirectory" : "${workspaceRoot}/build/${buildType}",
+    "cmake.buildDirectory" : "${workspaceFolder}/build/${buildType}",
 
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
@@ -101,5 +101,6 @@
     "git.autofetch": true,
 
     "workbench.iconTheme": "Monokai Pro Icons",
+    "clangd.checkUpdates": true,
     "workbench.colorTheme": "Monokai Pro"
 }
