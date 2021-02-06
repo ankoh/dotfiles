@@ -17,7 +17,7 @@ function caravan_up() {
     echo "[ OK  ] Create caravan volume"
     echo "[ RUN ] Create caravan image"
     CARAVAN_IMAGE=$( \
-        docker run -d -p 22 \
+        docker run -d -p 55000:22 \
             --name caravan \
             --cap-add SYS_ADMIN \
             -v "caravan:/home/caravan/volume" \
