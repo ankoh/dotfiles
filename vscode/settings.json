@@ -61,7 +61,7 @@
         {
             "before": ["<"],
             "commands": ["editor.action.outdentLines"]
-        },
+        }
     ],
     "editor.wordWrap": "on",
     "editor.rulers": [80, 120],
@@ -82,10 +82,10 @@
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "Default Light+",
     "zenMode.centerLayout": false,
 
     "latex-workshop.view.pdf.viewer": "tab",
     "extensions.ignoreRecommendations": false,
-    "git.autofetch": true,
+    "git.autofetch": true
 }

@@ -79,6 +79,9 @@ install-ls-rs:
 	curl -L -o ~/.local/bin/rust-analyzer https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-mac && \
 	chmod +x ~/.local/bin/rust-analyzer
 #---------------------------------------------------------------------------
+fix-keyrepeat:
+	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+#---------------------------------------------------------------------------
 create-directories:
 	@mkdir -p ~/.config
 	@mkdir -p ~/.local/bin
@@ -100,7 +103,9 @@ reset-symlinks: create-directories
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
 	@sh -c "[ ! -L ~/.alacritty ] || rm ~/.alacritty;"
 	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/.config/Code/User/settings.json;";
+	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/Library/Application\ Support/Code/User/settings.json;";
 	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/.config/Code/User/keybindings.json;";
+	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/Library/Application\ Support/Code/User/keybindings.json;";
 #---------------------------------------------------------------------------
 install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.bashrc
@@ -115,7 +120,9 @@ install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/vim/gui.vim ~/.gvimrc
 	@ln -sf ${MAKEFILE_DIR}/vim/init.vim ~/.vimrc
 	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json;
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json;
 	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json;
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json;
 #---------------------------------------------------------------------------
 repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
