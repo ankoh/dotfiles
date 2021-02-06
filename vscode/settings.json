@@ -53,6 +53,10 @@
         {
             "before": ["<leader>", "t", "h"],
             "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["<leader>", "m"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
         }
     ],
     "vim.insertModeKeyBindings": [
@@ -72,7 +76,7 @@
         }
     ],
     "editor.wordWrap": "on",
-    "editor.rulers": [80, 120],
+    "editor.rulers": [120],
     "editor.codeLens": false,
 
     "testExplorer.codeLens": true,
