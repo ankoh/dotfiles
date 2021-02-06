@@ -16,7 +16,7 @@
         },
         {
             "before": [":", "q"],
-            "commands": ["workbench.action.closeFile"]
+            "commands": ["workbench.action.closeActiveEditor"]
         },
         {
             "before": ["<leader>", "f"],
@@ -29,6 +29,14 @@
         {
             "before": ["<leader>", "w", "s"],
             "commands": ["workbench.action.splitEditorDown"]
+        },
+        {
+            "before": ["<leader>", "w", "-"],
+            "commands": ["workbench.action.splitEditorDown"]
+        },
+        {
+            "before": ["<leader>", "w", "|"],
+            "commands": ["workbench.action.splitEditorRight"]
         },
         {
             "before": ["<leader>", "g", "t"],
@@ -66,7 +74,6 @@
     "editor.wordWrap": "on",
     "editor.rulers": [80, 120],
     "editor.codeLens": false,
-    "editor.renderWhitespace": "boundary",
 
     "testExplorer.codeLens": true,
     "testExplorer.showOnRun": true,
