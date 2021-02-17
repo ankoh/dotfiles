@@ -1,5 +1,4 @@
 {
-    "window.zoomLevel": 1,
     "workbench.activityBar.visible": true,
 
     "vim.easymotion": true,
@@ -110,5 +109,7 @@
     },
     "testMate.cpp.log.logSentry": "disable_3",
     "workbench.colorTheme": "Monokai Night",
-    "workbench.editor.showTabs": false
+    "workbench.editor.showTabs": false,
+    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false
 }
