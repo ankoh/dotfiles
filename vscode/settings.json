@@ -102,5 +102,13 @@
 
     "workbench.iconTheme": "Monokai Pro Icons",
     "clangd.checkUpdates": true,
-    "workbench.colorTheme": "Monokai Pro"
+    "testMate.cpp.log.userId": "9bcfb1130f437ee66a79fcb268db85d063f42010",
+    "clangd.path": "/Users/andre/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/11.0.0/clangd_11.0.0/bin/clangd",
+    "clangd.onConfigChanged": "restart",
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "testMate.cpp.log.logSentry": "disable_3",
+    "workbench.colorTheme": "Monokai Night",
+    "workbench.editor.showTabs": false
 }
