@@ -10,14 +10,6 @@
     "vim.leader": ",",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [":", "w"],
-            "commands": ["workbench.action.files.save"]
-        },
-        {
-            "before": [":", "q"],
-            "commands": ["workbench.action.closeActiveEditor"]
-        },
-        {
             "before": ["<leader>", "f"],
             "commands": ["workbench.action.gotoSymbol"]
         },
@@ -36,6 +28,10 @@
         {
             "before": ["<leader>", "w", "|"],
             "commands": ["workbench.action.splitEditorRight"]
+        },
+        {
+            "before": ["<leader>", "w", "j"],
+            "commands": ["workbench.action.joinAllGroups"]
         },
         {
             "before": ["<leader>", "g", "t"],
@@ -108,8 +104,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "testMate.cpp.log.logSentry": "disable_3",
-    "workbench.colorTheme": "Monokai Night",
     "workbench.editor.showTabs": false,
-    "window.zoomLevel": 1,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Monokai Pro"
 }
