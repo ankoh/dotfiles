@@ -33,6 +33,7 @@ export NPM_PACKAGES=$HOME/.npm_packages
 export PYENV_ROOT=$HOME/.pyenv
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.fluttersdk/bin:$PATH
@@ -87,3 +88,4 @@ include $SHELLCONF/aliases.sh
 include $SHELLCONF/displays.sh
 include $SHELLCONF/functions.sh
 include $DOTFILES/caravan/caravan.sh
+source "$HOME/.cargo/env"
