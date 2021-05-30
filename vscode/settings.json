@@ -92,19 +92,43 @@
     "zenMode.centerLayout": false,
 
     "latex-workshop.view.pdf.viewer": "tab",
-    "extensions.ignoreRecommendations": false,
+    "extensions.ignoreRecommendations": true,
     "git.autofetch": true,
 
     "workbench.iconTheme": "Monokai Pro Icons",
     "clangd.checkUpdates": true,
     "testMate.cpp.log.userId": "9bcfb1130f437ee66a79fcb268db85d063f42010",
-    "clangd.path": "/Users/andre/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/11.0.0/clangd_11.0.0/bin/clangd",
+    "clangd.path": "/home/andre/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.0/clangd_12.0.0/bin/clangd",
     "clangd.onConfigChanged": "restart",
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "testMate.cpp.log.logSentry": "disable_3",
-    "workbench.editor.showTabs": false,
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Monokai Pro"
+    "workbench.colorTheme": "Monokai Pro",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "redhat.telemetry.enabled": false,
+    "workbench.editor.showTabs": false
 }
