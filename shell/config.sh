@@ -89,3 +89,5 @@ include $SHELLCONF/displays.sh
 include $SHELLCONF/functions.sh
 include $DOTFILES/caravan/caravan.sh
 source "$HOME/.cargo/env"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

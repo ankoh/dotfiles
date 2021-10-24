@@ -39,6 +39,8 @@ Plug 'prettier/vim-prettier', {
     \ 'branch': 'release/0.x',
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
     \ }                                     " formatter for the web
+Plug 'godlygeek/tabular'                    " Vim-markdown
+Plug 'plasticboy/vim-markdown'              " Vim-markdown
 
 " TEST: FZF instead of CTRLP
 Plug '~/.fzf'

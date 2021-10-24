@@ -98,7 +98,7 @@
     "workbench.iconTheme": "Monokai Pro Icons",
     "clangd.checkUpdates": true,
     "testMate.cpp.log.userId": "9bcfb1130f437ee66a79fcb268db85d063f42010",
-    "clangd.path": "/home/andre/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.0/clangd_12.0.0/bin/clangd",
+    "clangd.path": "/home/andre/.config/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/13.0.0/clangd_13.0.0/bin/clangd",
     "clangd.onConfigChanged": "restart",
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -123,12 +123,17 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "typescript.updateImportsOnFileMove.enabled": "never",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "redhat.telemetry.enabled": false,
-    "workbench.editor.showTabs": false
+    "workbench.editor.showTabs": false,
+    "editor.tabSize": 4,
+    "editor.cursorStyle": "line",
+    "editor.insertSpaces": true,
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "explorer.confirmDelete": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "window.zoomLevel": 2
 }
