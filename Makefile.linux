@@ -1,17 +1,11 @@
-.PHONY: reset-symlinks
-#---------------------------------------------------------------------------
+.PHONY: reset-symlinks #---------------------------------------------------------------------------
 MAKEFILE_PATH := $(abspath $(lastword ${MAKEFILE_LIST}))
 MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
-RUST_ANALYZER_VERSION := 2021-05-17
-CCLS_VERSION := 40145807d56af48b042e8afce819f23a0d8b7058
-CCLS_REPO_DIR := ~/.ccls/repo
-CCLS_BUILD_DIR := ~/.ccls/build
-CCLS_INSTALL_PREFIX := ~/.local
-LLVM_PREFIX_PATH := /usr/lib/llvm-10/lib/cmake
-NVM_VERSION=v0.36.0
+RUST_ANALYZER_VERSION := 2022-10-03
+NVM_VERSION=v0.39.1
 #---------------------------------------------------------------------------
 install-nvm:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
@@ -29,21 +23,6 @@ install-fzf:
 #---------------------------------------------------------------------------
 install-rust:
 	curl https://sh.rustup.rs -sSf | bash -s -- -y
-#---------------------------------------------------------------------------
-install-ls-cc:
-	rm -rf $(CCLS_REPO_DIR) $(CCLS_BUILD_DIR)
-	git clone --recursive https://github.com/MaskRay/ccls $(CCLS_REPO_DIR)
-	cd $(CCLS_REPO_DIR) && git checkout $(CCLS_VERSION)
-	cd $(CCLS_REPO_DIR) && git submodule update --init --recursive
-	mkdir -p $(CCLS_BUILD_DIR) $(CCLS_INSTALL_PREFIX)
-	cd $(CCLS_BUILD_DIR) && cmake \
-		-GNinja \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_PREFIX_PATH=$(LLVM_PREFIX_PATH) \
-		-DCMAKE_INSTALL_PREFIX=$(CCLS_INSTALL_PREFIX) \
-		$(CCLS_REPO_DIR)
-	cd $(CCLS_BUILD_DIR) && ninja
-	cd $(CCLS_BUILD_DIR) && ninja install
 #---------------------------------------------------------------------------
 install-ls-go:
 	go get -u golang.org/x/tools/gopls

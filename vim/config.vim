@@ -196,11 +196,6 @@ nmap <leader>sk <Plug>(grammarous-move-to-previous-error)
 nmap <leader>si <Plug>(grammarous-remove-error)
 nmap <leader>sr <Plug>(grammarous-reset)
 
-" CCLS command
-let s:ccls_settings = {
-    \ 'highlight': { 'lsRanges' : v:true },
-    \ }
-let s:ccls_command = ['~/.local/bin/ccls', '-init=' . json_encode(s:ccls_settings)]
 let s:tsls_command = ['typescript-language-server', '--stdio']
 
 " LanguageClient
@@ -213,8 +208,8 @@ let g:LanguageClient_serverCommands = {
     \   'rust': ['rust-analyzer'],
     \   'python': ['pyls'],
     \   'dart': ['dart_language_server'],
-    \   'cpp': s:ccls_command,
-    \   'c': s:ccls_command
+    \   'cpp': ['clangd'],
+    \   'c': ['clangd']
     \ }
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 set formatexpr=LanguageClient_textDocument_rangeFormatting()

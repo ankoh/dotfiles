@@ -6,17 +6,12 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
 DP_DIR := ~/.displayplacer
-RUST_ANALYZER_VERSION := 2021-05-17
-CCLS_VERSION := 40145807d56af48b042e8afce819f23a0d8b7058
-CCLS_REPO_DIR := ~/.ccls/repo
-CCLS_BUILD_DIR := ~/.ccls/build
-CCLS_INSTALL_PREFIX := ~/.local
-LLVM_PREFIX_PATH := /usr/local/Cellar/llvm/11.0.0/lib/cmake
-NVM_VERSION=v0.36.0
+RUST_ANALYZER_VERSION := 2022-10-03
+NVM_VERSION=v0.39.1
 #---------------------------------------------------------------------------
 install-brew:
 ifndef BREW
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 else
 	@echo "Found Homebrew: ${BREW}"
 endif
@@ -46,21 +41,6 @@ install-displayplacer:
 install-rust:
 	curl https://sh.rustup.rs -sSf | bash -s -- -y
 #---------------------------------------------------------------------------
-install-ls-cc:
-	rm -rf $(CCLS_REPO_DIR) $(CCLS_BUILD_DIR)
-	git clone --recursive https://github.com/MaskRay/ccls $(CCLS_REPO_DIR)
-	cd $(CCLS_REPO_DIR) && git checkout $(CCLS_VERSION)
-	cd $(CCLS_REPO_DIR) && git submodule update --init --recursive
-	mkdir -p $(CCLS_BUILD_DIR) $(CCLS_INSTALL_PREFIX)
-	cd $(CCLS_BUILD_DIR) && cmake \
-		-GNinja \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=$(CCLS_INSTALL_PREFIX) \
-		-DCMAKE_PREFIX_PATH=$(LLVM_PREFIX_PATH) \
-		$(CCLS_REPO_DIR)
-	cd $(CCLS_BUILD_DIR) && ninja
-	cd $(CCLS_BUILD_DIR) && ninja install
-#---------------------------------------------------------------------------
 install-ls-go:
 	go get -u golang.org/x/tools/gopls
 #---------------------------------------------------------------------------
@@ -88,6 +68,7 @@ create-directories:
 	@mkdir -p ~/.local/include
 	@mkdir -p ~/.local/lib
 	@mkdir -p ~/.config/Code/User
+	@mkdir -p ~/Library/Application\ Support/Code/User
 #---------------------------------------------------------------------------
 reset-symlinks: create-directories
 	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
@@ -102,10 +83,10 @@ reset-symlinks: create-directories
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
 	@sh -c "[ ! -L ~/.alacritty ] || rm ~/.alacritty;"
-	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/.config/Code/User/settings.json;";
-	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/Library/Application\ Support/Code/User/settings.json;";
-	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/.config/Code/User/keybindings.json;";
-	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/Library/Application\ Support/Code/User/keybindings.json;";
+	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/.config/Code/User/settings.json;"
+	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/Library/Application\ Support/Code/User/settings.json;"
+	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/.config/Code/User/keybindings.json;"
+	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/Library/Application\ Support/Code/User/keybindings.json;"
 #---------------------------------------------------------------------------
 install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.bashrc
@@ -119,10 +100,10 @@ install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/vim ~/.vim
 	@ln -sf ${MAKEFILE_DIR}/vim/gui.vim ~/.gvimrc
 	@ln -sf ${MAKEFILE_DIR}/vim/init.vim ~/.vimrc
-	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json;
-	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json;
-	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json;
-	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json;
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 #---------------------------------------------------------------------------
 repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200

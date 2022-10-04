@@ -47,6 +47,8 @@ export PATH=$PATH:~/.fzf/bin
 export PATH=$PATH:~/.displayplacer
 export PATH=$PYENV_ROOT/bin:$PATH
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Load pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
@@ -87,7 +89,7 @@ fi
 include $SHELLCONF/aliases.sh
 include $SHELLCONF/displays.sh
 include $SHELLCONF/functions.sh
-include $DOTFILES/caravan/caravan.sh
 source "$HOME/.cargo/env"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+. "$HOME/.cargo/env"
