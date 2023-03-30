@@ -25,7 +25,7 @@ Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
 Plug 'rust-lang/rust.vim'                   " rustfmt
 Plug 'jalvesaq/nvim-r'                      " r plugin
 Plug 'fatih/vim-go'                         " go support
-Plug 'elzr/vim-json'                        " WTF hidden json quotes
+" Plug 'elzr/vim-json'                        " WTF hidden json quotes
 Plug 'edkolev/tmuxline.vim'                 " tmux line
 Plug 'terryma/vim-multiple-cursors'         " multiple cursors
 Plug 'rhysd/vim-grammarous'                 " grammar checks
@@ -215,7 +215,6 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 nnoremap <leader>gf :call LanguageClient#textDocument_formatting()<CR>
 nnoremap <leader>gh :call LanguageClient#textDocument_hover()<cr>
-nnoremap <leader>gi :call LanguageClient#findLocations({'method':'$ccls/inheritance','flat':v:true,'level':3,'derived':v:true})<cr>
 nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
