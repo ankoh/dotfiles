@@ -127,12 +127,8 @@ set wildignore+=.so,.swp,.zip,.o,.d,.dwo,.make,.a,link.txt,depend.internal,CXX.i
 set clipboard=unnamed      " use system clipboard
 
 " Color scheme
-" Neovim supports truecolor schemes (!).
-" However, this has the unpleasant side effect that some terminals are barely usable (e.g. Terminal.app).
-" set termguicolors
-"
-" For now, we can just replace the 256 color palette with the gruvbox-palette on shell init.
-colorscheme monokai
+colorscheme onedark
+" colorscheme sonokai
 
 " Paste mode
 set pastetoggle=<F3>
