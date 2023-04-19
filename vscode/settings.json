@@ -153,15 +153,18 @@
     "editor.lineNumbers": "on",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "redhat.telemetry.enabled": false,
-    "clangd.path": "/Users/andre.kohn/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
+    "clangd.path": "/usr/bin/clangd",
     "clang-format.executable": "/usr/bin/clang-format",
     "editor.minimap.enabled": false,
-    "window.zoomLevel": 1,
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "files.insertFinalNewline": true,
     "[python]": {
         "editor.formatOnType": true
-    }
+    },
+    "clangd.arguments": [
+        "-j=8"
+    ],
+    "window.zoomLevel": 1
 }

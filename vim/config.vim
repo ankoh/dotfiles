@@ -132,7 +132,7 @@ set clipboard=unnamed      " use system clipboard
 " set termguicolors
 "
 " For now, we can just replace the 256 color palette with the gruvbox-palette on shell init.
-colorscheme gruvbox
+colorscheme monokai
 
 " Paste mode
 set pastetoggle=<F3>
