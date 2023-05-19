@@ -7,6 +7,15 @@ BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
 RUST_ANALYZER_VERSION := 2022-10-03
 NVM_VERSION=v0.39.1
+NPIPERELAY_VERSION=v0.1.0
+#---------------------------------------------------------------------------
+install-wslssh:
+	sudo apt install socat
+	mkdir -p ~/.1password
+	mkdir -p ~/.local/bin
+	curl -L -o ~/npiperelay.zip https://github.com/jstarks/npiperelay/releases/download/${NPIPERELAY_VERSION}/npiperelay_windows_amd64.zip
+	unzip -d ~/.local/bin ~/npiperelay.zip 'npiperelay.exe'
+	cp ./other/wslssh.sh ~/.local/bin/wslssh.sh
 #---------------------------------------------------------------------------
 install-nvm:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
@@ -86,5 +95,5 @@ repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: install-fzf install-symlinks
+install: install-fzf install-symlinks install-wslssh
 #---------------------------------------------------------------------------
