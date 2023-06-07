@@ -14,8 +14,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export HISTFILE=~/.bash_history
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export REPORTTIME=10
 export EDITOR='vim'
 
@@ -31,6 +31,7 @@ export GOBIN=$GOPATH/bin
 export GEM_HOME=$HOME/.gem
 export NPM_PACKAGES=$HOME/.npm_packages
 export PYENV_ROOT=$HOME/.pyenv
+export NVM_DIR="$HOME/.nvm"
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/usr/local/go/bin:$PATH
@@ -47,6 +48,11 @@ export PATH=$PATH:~/.fzf/bin
 export PATH=$PATH:~/.displayplacer
 export PATH=$PYENV_ROOT/bin:$PATH
 
+export PATH=$HOME/.yarn/bin:$PATH
+export PATH=$HOME/.config/yarn/global/node_modules/.bin:$PATH
+
+source "$HOME/.cargo/env"
+
 if command -v /opt/homebrew/bin/brew 1>/dev/null 2>&1; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
@@ -56,12 +62,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
-# Load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
 # Interactive shell?
 if [ ! -z "$PS1" ]; then
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
     if [ -n "$BASH_VERSION" ]; then
@@ -86,12 +90,8 @@ if [ ! -z "$PS1" ]; then
     else
         source $SHELLCONF/colors/gruvbox_256palette.sh
     fi
+
+    include $SHELLCONF/aliases.sh
+    include $SHELLCONF/displays.sh
+    include $SHELLCONF/functions.sh
 fi
-
-include $SHELLCONF/aliases.sh
-include $SHELLCONF/displays.sh
-include $SHELLCONF/functions.sh
-source "$HOME/.cargo/env"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-. "$HOME/.cargo/env"
