@@ -44,3 +44,13 @@ set smartindent            " use smarter indentation based on file type
 set laststatus=2           " always show status bar
 set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
 set clipboard=unnamedplus  " use system clipboard (vscode)
+
+nnoremap <leader>ws <Cmd>call VSCodeCall('workbench.action.splitEditorDown')<CR>
+nnoremap <leader>wv <Cmd>call VSCodeCall('workbench.action.splitEditorRight')<CR>
+nnoremap <leader>wj <Cmd>call VSCodeCall('workbench.action.joinAllGroups')<CR>
+
+nnoremap <leader>f <Cmd>call VSCodeCall('workbench.action.gotoSymbol')<CR>
+nnoremap <leader>gt <Cmd>call VSCodeCall('editor.action.goToDeclaration')<CR>
+nnoremap <leader>gr <Cmd>call VSCodeCall('editor.action.referenceSearch.trigger')<CR>
+nnoremap <leader>m <Cmd>call VSCodeCall('workbench.action.toggleSidebarVisibility')<CR>
+
