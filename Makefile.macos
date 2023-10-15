@@ -30,35 +30,6 @@ install-fzf:
 	fi
 	$(FZF_DIR)/install --bin
 #---------------------------------------------------------------------------
-install-displayplacer:
-	if [ ! -d $(DP_DIR) ]; then \
-		git clone --depth 1 https://github.com/ankoh/displayplacer $(DP_DIR); \
-	else \
-		cd $(DP_DIR) && git pull --ff-only origin master; \
-	fi
-	cd $(DP_DIR) && make displayplacer
-#---------------------------------------------------------------------------
-install-rust:
-	curl https://sh.rustup.rs -sSf | bash -s -- -y
-#---------------------------------------------------------------------------
-install-ls-go:
-	go get -u golang.org/x/tools/gopls
-#---------------------------------------------------------------------------
-install-ls-py:
-	pip3 install python-language-server
-#---------------------------------------------------------------------------
-install-ls-ts:
-	npm i -g typescript-language-server
-#---------------------------------------------------------------------------
-install-ls-dart:
-	pub global activate dart_language_server
-#---------------------------------------------------------------------------
-install-ls-rs:
-	rustup component add rust-src rustfmt && \
-	mkdir -p ~/.local/bin/ && \
-	curl -L -o ~/.local/bin/rust-analyzer https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-mac && \
-	chmod +x ~/.local/bin/rust-analyzer
-#---------------------------------------------------------------------------
 fix-keyrepeat:
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 #---------------------------------------------------------------------------
@@ -93,12 +64,8 @@ install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.zshrc
 	@ln -sf ${MAKEFILE_DIR}/other/gitconfig.conf ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}/other/nvmrc.conf ~/.nvmrc
-	@ln -sf ${MAKEFILE_DIR}/other/alacritty.yml ~/.alacritty.yml
-	@ln -sf ${MAKEFILE_DIR}/tmux ~/.tmux
-	@ln -sf ${MAKEFILE_DIR}/tmux/tmux.conf ~/.tmux.conf
 	@ln -sf ${MAKEFILE_DIR}/vim ~/.config/nvim
 	@ln -sf ${MAKEFILE_DIR}/vim ~/.vim
-	@ln -sf ${MAKEFILE_DIR}/vim/gui.vim ~/.gvimrc
 	@ln -sf ${MAKEFILE_DIR}/vim/init.vim ~/.vimrc
 	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json
 	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json

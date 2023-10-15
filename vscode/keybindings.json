@@ -1,5 +1,17 @@
 [
     {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "j"
+    },
+    {
+        "key": "k",
+        "command": "vscode-neovim.compositeEscape2",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "k"
+    },
+    {
         "key": "ctrl+p",
         "command": "workbench.action.quickOpen"
     },

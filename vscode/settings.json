@@ -1,170 +1,171 @@
 {
-    "workbench.activityBar.visible": true,
+  "workbench.activityBar.visible": true,
 
-    "vim.easymotion": true,
-    "vim.sneak": true,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.leader": ",",
-    "vim.normalModeKeyBindingsNonRecursive": [
-            {
-                "before": ["u"],
-                "after": [],
-                "commands": [
-                    {
-                        "command": "undo",
-                        "args": []
-                    }
-                ]
-            },
-            {
-                "before": ["<C-r>"],
-                "after": [],
-                "commands": [
-                    {
-                        "command": "redo",
-                        "args": []
-                    }
-            ]
-        },
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
 
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.leader": ",",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["u"],
+      "after": [],
+      "commands": [
         {
-            "before": ["<leader>", "f"],
-            "commands": ["workbench.action.gotoSymbol"]
-        },
-        {
-            "before": ["<leader>", "w", "v"],
-            "commands": ["workbench.action.splitEditorRight"]
-        },
-        {
-            "before": ["<leader>", "w", "s"],
-            "commands": ["workbench.action.splitEditorDown"]
-        },
-        {
-            "before": ["<leader>", "w", "-"],
-            "commands": ["workbench.action.splitEditorDown"]
-        },
-        {
-            "before": ["<leader>", "w", "|"],
-            "commands": ["workbench.action.splitEditorRight"]
-        },
-        {
-            "before": ["<leader>", "w", "j"],
-            "commands": ["workbench.action.joinAllGroups"]
-        },
-        {
-            "before": ["<leader>", "g", "t"],
-            "commands": ["editor.action.goToDeclaration"]
-        },
-        {
-            "before": ["<leader>", "g", "r"],
-            "commands": ["editor.action.referenceSearch.trigger"]
-        },
-        {
-            "before": ["<leader>", "t", "l"],
-            "commands": ["workbench.action.nextEditor"]
-        },
-        {
-            "before": ["<leader>", "t", "h"],
-            "commands": ["workbench.action.previousEditor"]
-        },
-        {
-            "before": ["<leader>", "m"],
-            "commands": ["workbench.action.toggleSidebarVisibility"]
+          "command": "undo",
+          "args": []
         }
-    ],
-    "vim.insertModeKeyBindings": [
+      ]
+    },
+    {
+      "before": ["<C-r>"],
+      "after": [],
+      "commands": [
         {
-            "before": ["j", "k"],
-            "after": ["<Esc>"]
+          "command": "redo",
+          "args": []
         }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [">"],
-            "commands": ["editor.action.indentLines"]
-        },
-        {
-            "before": ["<"],
-            "commands": ["editor.action.outdentLines"]
-        }
-    ],
-    "editor.wordWrap": "off",
-    "editor.rulers": [120],
-    "editor.codeLens": false,
-    "editor.tabCompletion": "on",
+      ]
+    },
 
-    "testExplorer.codeLens": true,
-    "testExplorer.showOnRun": true,
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    {
+      "before": ["<leader>", "w", "v"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "w", "s"],
+      "commands": ["workbench.action.splitEditorDown"]
+    },
+    {
+      "before": ["<leader>", "w", "-"],
+      "commands": ["workbench.action.splitEditorDown"]
+    },
+    {
+      "before": ["<leader>", "w", "|"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "w", "j"],
+      "commands": ["workbench.action.joinAllGroups"]
+    },
+    {
+      "before": ["<leader>", "g", "t"],
+      "commands": ["editor.action.goToDeclaration"]
+    },
+    {
+      "before": ["<leader>", "g", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
+    },
+    {
+      "before": ["<leader>", "t", "l"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<leader>", "t", "h"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "m"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "editor.wordWrap": "off",
+  "editor.rulers": [120],
+  "editor.codeLens": false,
+  "editor.tabCompletion": "on",
 
-    "cmake.configureOnOpen": true,
-    "cmake.buildDirectory" : "${workspaceFolder}/build/${buildType}",
+  "testExplorer.codeLens": true,
+  "testExplorer.showOnRun": true,
 
-    "gitlens.codeLens.recentChange.enabled": false,
-    "gitlens.codeLens.authors.enabled": false,
-    "gitlens.currentLine.enabled": false,
-    "gitlens.statusBar.enabled": false,
+  "cmake.configureOnOpen": true,
+  "cmake.buildDirectory": "${workspaceFolder}/build/${buildType}",
 
-    "[cpp]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
-    },
-    "zenMode.centerLayout": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.statusBar.enabled": false,
 
-    "latex-workshop.view.pdf.viewer": "tab",
-    "extensions.ignoreRecommendations": true,
-    "git.autofetch": true,
+  "[cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "zenMode.centerLayout": false,
 
-    "workbench.iconTheme": "Monokai Pro Icons",
-    "clangd.checkUpdates": false,
-    "testMate.cpp.log.userId": "9bcfb1130f437ee66a79fcb268db85d063f42010",
-    "clangd.onConfigChanged": "restart",
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "testMate.cpp.log.logSentry": "disable_3",
-    "workbench.editor.showTabs": false,
-    "workbench.colorTheme": "Monokai Pro",
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "terminal.integrated.shell.osx": "/bin/zsh",
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "workbench.welcomePage.hiddenCategories": [
-        "Setup",
-        "Beginner"
-    ],
-    "ltex.additionalRules.motherTongue": "de-DE",
-    "editor.tabSize": 4,
-    "editor.cursorStyle": "line",
-    "editor.insertSpaces": true,
-    "editor.lineNumbers": "on",
-    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-    "redhat.telemetry.enabled": false,
-    "clangd.path": "/usr/bin/clangd",
-    "clang-format.executable": "/usr/bin/clang-format",
-    "editor.minimap.enabled": false,
-    "[css]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "files.insertFinalNewline": true,
-    "[python]": {
-        "editor.formatOnType": true
-    },
-    "clangd.arguments": [
-        "-j=8"
-    ],
-    "window.zoomLevel": 1
+  "latex-workshop.view.pdf.viewer": "tab",
+  "extensions.ignoreRecommendations": true,
+  "git.autofetch": true,
+
+  "workbench.iconTheme": "Monokai Pro Icons",
+  "clangd.checkUpdates": false,
+  "testMate.cpp.log.userId": "9bcfb1130f437ee66a79fcb268db85d063f42010",
+  "clangd.onConfigChanged": "restart",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "testMate.cpp.log.logSentry": "disable_3",
+  "workbench.editor.showTabs": true,
+  "workbench.colorTheme": "Monokai Pro",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
+  },
+  "workbench.welcomePage.hiddenCategories": ["Setup", "Beginner"],
+  "ltex.additionalRules.motherTongue": "de-DE",
+  "editor.tabSize": 4,
+  "editor.cursorStyle": "line",
+  "editor.insertSpaces": true,
+  "editor.lineNumbers": "on",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "redhat.telemetry.enabled": false,
+  "clangd.path": "/usr/bin/clangd",
+  "clang-format.executable": "/usr/bin/clang-format",
+  "editor.minimap.enabled": false,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.insertFinalNewline": true,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "window.zoomLevel": 1,
+  "editor.renderWhitespace": "none",
+  "diffEditor.renderSideBySide": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.commandCenter": false
 }

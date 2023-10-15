@@ -1,60 +1,15 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'embear/vim-localvimrc'                " local vim configurations
-if has('nvim')                              " deoplete
-    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-    Plug 'Shougo/denite.nvim'
-else
-    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-    Plug 'Shougo/denite.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }                                     " languageclient
-Plug 'jackguo380/vim-lsp-cxx-highlight'     " semantic highlighting c++
-Plug 'rhysd/vim-clang-format'               " clang format
-Plug 'scrooloose/nerdtree'                  " NERDTree
-Plug 'itchyny/lightline.vim'                " bottom status bar
-Plug 'tpope/vim-fugitive'                   " git plugin
-Plug 'airblade/vim-gitgutter'               " git in sidebar
-Plug 'tmux-plugins/vim-tmux-focus-events'   " tmux focus events
-Plug 'roxma/vim-tmux-clipboard'             " tmux clipboard
-Plug 'rust-lang/rust.vim'                   " rustfmt
-Plug 'jalvesaq/nvim-r'                      " r plugin
-Plug 'fatih/vim-go'                         " go support
-" Plug 'elzr/vim-json'                        " WTF hidden json quotes
-Plug 'edkolev/tmuxline.vim'                 " tmux line
-Plug 'terryma/vim-multiple-cursors'         " multiple cursors
-Plug 'rhysd/vim-grammarous'                 " grammar checks
-Plug 'jeetsukumaran/vim-buffergator'        " buffer manager
-Plug 'lervag/vimtex'                        " latex plugin
-Plug 'HerringtonDarkholme/yats.vim'         " typescript syntax
-Plug 'shougo/vimproc.vim', {'do' : 'make'}  " tsuquyomi dependency
-Plug 'quramy/tsuquyomi'                     " typescript language servers are meh
-Plug 'prettier/vim-prettier', {
-    \ 'do': 'npm install',
-    \ 'branch': 'release/0.x',
-    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
-    \ }                                     " formatter for the web
-Plug 'godlygeek/tabular'                    " Vim-markdown
-Plug 'plasticboy/vim-markdown'              " Vim-markdown
+" Disable most plugins when running as vscode backend
+if exists('g:vscode')
 
-" TEST: FZF instead of CTRLP
-Plug '~/.fzf'
+else
+Plug 'scrooloose/nerdtree'                  " NERDTree
+Plug '~/.fzf'                               " FZF instead of CTRLP
 Plug 'junegunn/fzf.vim'
+endif
 
 call plug#end()
-
-" Open R in tmux split
-let g:R_source = '~/.dotfiles/vim/tmux_split.vim'
-
-" I really don't like conceal.
-" Indentline breaks with this setting so i'll just stop using it.
-" But hidden JSON quotes and Tex Math-mode symbols drive me crazy.
-set conceallevel=0
 
 " Learn it the hard way
 " noremap <Up> <NOP>
@@ -70,6 +25,7 @@ let g:mapleader = ','
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
+
 " JK instead of escape
 inoremap jk <Esc>
 
@@ -128,7 +84,6 @@ set clipboard=unnamed      " use system clipboard
 
 " Color scheme
 colorscheme onedark
-" colorscheme sonokai
 
 " Paste mode
 set pastetoggle=<F3>
@@ -167,8 +122,8 @@ nnoremap <leader>lp :lp<CR>
 nnoremap <leader>lc :lcl<CR>
 
 " FZF ctrl-p mode
-nnoremap <C-P> :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))<CR>
-"nnoremap <C-P> :Files<CR>
+" nnoremap <C-P> :call fzf#run(fzf#wrap({'source': 'git ls-files --exclude-standard --others --cached'}))<CR>
+nnoremap <C-P> :Files<CR>
 
 " Special characters
 set invlist
@@ -181,141 +136,14 @@ nnoremap <leader>ic :set list!<CR>
 nnoremap <leader>f za<CR>
 nnoremap <leader>F zR<CR>
 
-" Grammarous
-nmap <leader>ss :GrammarousCheck<CR>
-nmap <leader>ssen :GrammarousCheck --lang=en<CR>
-nmap <leader>ssde :GrammarousCheck --lang=de<CR>
-nmap <leader>sn <Plug>(grammarous-move-to-next-error)
-nmap <leader>sj <Plug>(grammarous-move-to-next-error)
-nmap <leader>sp <Plug>(grammarous-move-to-previous-error)
-nmap <leader>sk <Plug>(grammarous-move-to-previous-error)
-nmap <leader>si <Plug>(grammarous-remove-error)
-nmap <leader>sr <Plug>(grammarous-reset)
-
-let s:tsls_command = ['typescript-language-server', '--stdio']
-
-" LanguageClient
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_useVirtualText = "Diagnostics"
-let g:LanguageClient_diagnosticsEnable = 1
-let g:LanguageClient_diagnosticsList = "Quickfix"
-let g:LanguageClient_diagnosticsMaxSeverity = "Hint"
-let g:LanguageClient_serverCommands = {
-    \   'rust': ['rust-analyzer'],
-    \   'python': ['pyls'],
-    \   'dart': ['dart_language_server'],
-    \   'cpp': ['clangd'],
-    \   'c': ['clangd']
-    \ }
-autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
-set formatexpr=LanguageClient_textDocument_rangeFormatting()
-nnoremap <leader>gf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>gh :call LanguageClient#textDocument_hover()<cr>
-nnoremap <leader>gr :call LanguageClient#textDocument_references()<CR>
-nnoremap <leader>gs :call LanguageClient#textDocument_documentSymbol()<CR>
-nnoremap <leader>gt :call LanguageClient#textDocument_definition()<CR>
-nnoremap <F5> :call LanguageClient#textDocument_rename()<CR>
-
-" LSP status indicator
-augroup LanguageClient_callbacks
-    au!
-    au User LanguageClientStarted call LSPUpdateStatus(1)
-    au User LanguageClientStopped call LSPUpdateStatus(0)
-    au User LanguageClientDiagnosticsChanged call LSPUpdateStatus(1)
-augroup END
-function! LSPDiagnosticsCount(type) abort
-    let lsp_bufnr = bufnr('%')
-    let lsp_qflist = getqflist()
-    return len(filter(lsp_qflist, {index, dict -> dict['bufnr'] == lsp_bufnr && dict['type'] == a:type}))
-endfunction
-function! LSPUpdateStatus(status) abort
-    let g:lsp_warnings = LSPDiagnosticsCount('W')
-    let g:lsp_errors = LSPDiagnosticsCount('E')
-    call lightline#update()
-endfunction
-function! LightlineLSPOK() abort
-    return (g:lsp_warnings + g:lsp_errors) == 0 ? '✓' : ''
-endfunction
-function! LightlineLSPWarnings() abort
-    return g:lsp_warnings > 0 ? printf('%d ▲', g:lsp_warnings) : ''
-endfunction
-function! LightlineLSPErrors() abort
-    return g:lsp_errors > 0 ? printf('%d ✗', g:lsp_errors) : ''
-endfunction
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ deoplete#manual_complete()
-set completeopt-=preview
-
-" Spellchecking
-autocmd BufRead, BufNewFile *.tex setlocal spell spelllang=en_us
-autocmd BufRead, BufNewFile *.txt setlocal spell spelllang=en_us
-
-" Local Vimrc
-let g:localvimrc_ask = 0
-
-let g:lightline = {
-    \ 'colorscheme': 'powerline',
-    \ 'active': {
-    \   'left': [[ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ]],
-    \   'right': [['lineinfo'], ['percent'], ['lsp_ok', 'lsp_warnings', 'lsp_errors']],
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'fugitive#head',
-    \ },
-    \ 'component_expand': {
-    \   'lsp_warnings': 'LightlineLSPWarnings',
-    \   'lsp_errors': 'LightlineLSPErrors',
-    \   'lsp_ok': 'LightlineLSPOK',
-    \ },
-    \ 'component_type': {
-    \   'lsp_warnings': 'warning',
-    \   'lsp_errors': 'error',
-    \   'lsp_ok': 'ok',
-    \ },
-    \ }
-
 " NERDtree
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinSize = 40 
 nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 
-" tsuquyomi bindings
-let g:tsuquyomi_completion_detail = 1
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
-autocmd FileType typescript setlocal completeopt+=menu,preview
-autocmd FileType typescriptreact setlocal completeopt+=menu,preview
-autocmd FileType typescript,typescriptreact nnoremap <buffer> <leader>gt :TsuDefinition<CR>
-
 " R nvim
 let g:R_nvim_wd = 1
-
-" Clang-Format
-" let g:clang_format#command = '~/.local/bin/clang-format'
-let g:clang_format#detect_style_file = 1
-
-" Don't autoformat
-let g:prettier#autoformat = 0
-
-" Command for git grep
-" - fzf#vim#grep(command, with_column, [options], [fullscreen])
-command! -bang -nargs=* Gitgrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number '.shellescape(<q-args>), 0,
-  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
-command! -bang -nargs=* Gitgrepi
-  \ call fzf#vim#grep(
-  \   'git grep -i --line-number '.shellescape(<q-args>), 0,
-  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
 
 " Disable syntax highlighting for bison and flex
 autocmd! bufreadpost *.y set syntax=off

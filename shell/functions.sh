@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Stash known hosts
+function stash_known() {
+    cp ~/.ssh/known_hosts ~/.ssh/known_hosts_tmp
+}
+# Pop known hosts
+function pop_known() {
+    cp ~/.ssh/known_hosts_tmp ~/.ssh/known_hosts
+}
+
 # Do while the return code is 0
 function repeat() {
     while [ $? -eq 0 ]; do eval $(history | tail -2 | head -n 1 | cut -c8-999); done
