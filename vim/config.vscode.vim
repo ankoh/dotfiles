@@ -43,3 +43,4 @@ set autoindent             " automatically set indent of new line
 set smartindent            " use smarter indentation based on file type
 set laststatus=2           " always show status bar
 set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
+set clipboard=unnamedplus  " use system clipboard (vscode)
