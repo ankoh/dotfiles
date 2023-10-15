@@ -99,5 +99,3 @@ if [ ! -z "$PS1" ]; then
     include $SHELLCONF/displays.sh
     include $SHELLCONF/functions.sh
 fi
-. "$HOME/.cargo/env"
-export JAVA_HOME=$(/usr/libexec/java_home)
