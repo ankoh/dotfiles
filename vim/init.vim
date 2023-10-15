@@ -4,7 +4,12 @@
 " Credits go to StackOverflow:
 " http://stackoverflow.com/questions/4976776/how-to-get-path-to-the-current-vimscript-being-executed
 let s:dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-let s:config = s:dir.'/config.vim'
+
+if exists('g:vscode')
+    let s:config = s:dir.'/config.vscode.vim'
+else
+    let s:config = s:dir.'/config.shell.vim'
+endif
 
 " Select python host program
 let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')

@@ -1,14 +1,7 @@
 call plug#begin('~/.vim/plugged')
-
-" Disable most plugins when running as vscode backend
-if exists('g:vscode')
-
-else
 Plug 'scrooloose/nerdtree'                  " NERDTree
 Plug '~/.fzf'                               " FZF instead of CTRLP
 Plug 'junegunn/fzf.vim'
-endif
-
 call plug#end()
 
 " Learn it the hard way
@@ -107,10 +100,6 @@ nnoremap <leader>w- :exe "resize " . (winheight(0) * 8/10)<CR>
 nnoremap <leader>wv  :vsplit<CR>
 nnoremap <leader>w< :exe "vertical resize " . (winwidth(0) * 12/10)<CR>
 nnoremap <leader>w> :exe "vertical resize " . (winwidth(0) * 8/10)<CR>
-
-" Buffer tab line
-nnoremap <leader>tl :bnext<CR>
-nnoremap <leader>th :bprev<CR>
 
 " Fix TMUX+NVIM C-H bug
 " https://github.com/neovim/neovim/issues/2048
