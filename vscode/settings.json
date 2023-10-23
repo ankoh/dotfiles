@@ -77,5 +77,5 @@
   "editor.renderWhitespace": "none",
   "diffEditor.renderSideBySide": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "window.commandCenter": false
+  "window.commandCenter": false,
 }
