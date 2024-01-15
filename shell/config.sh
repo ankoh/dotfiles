@@ -51,6 +51,7 @@ export PATH=$GEM_HOME/bin:$PATH
 export PATH=$PATH:~/.fzf/bin
 export PATH=$PATH:~/.displayplacer
 export PATH=$PYENV_ROOT/bin:$PATH
+export PATH=$PATH:/opt/homebrew/opt/libpq/bin
 
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/.config/yarn/global/node_modules/.bin:$PATH
