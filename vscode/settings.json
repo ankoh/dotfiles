@@ -1,6 +1,4 @@
 {
-  "workbench.activityBar.visible": true,
-
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
@@ -22,7 +20,7 @@
   "gitlens.statusBar.enabled": false,
 
   "[cpp]": {
-    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    "editor.defaultFormatter": "xaver.clang-format"
   },
   "zenMode.centerLayout": false,
 
@@ -30,7 +28,7 @@
   "extensions.ignoreRecommendations": true,
   "git.autofetch": true,
 
-  "workbench.iconTheme": "Monokai Pro Icons",
+  "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
   "clangd.checkUpdates": false,
   "testMate.cpp.log.userId": "9bcfb1130f437ee66a79fcb268db85d063f42010",
   "clangd.onConfigChanged": "restart",
@@ -38,8 +36,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "testMate.cpp.log.logSentry": "disable_3",
-  "workbench.editor.showTabs": true,
-  "workbench.colorTheme": "Monokai Pro",
+  "workbench.editor.showTabs": "multiple",
+  "workbench.colorTheme": "Monokai Pro (Filter Machine)",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -51,7 +49,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.json-language-features",
     "editor.formatOnSave": false
   },
   "workbench.welcomePage.hiddenCategories": ["Setup", "Beginner"],
@@ -62,8 +60,8 @@
   "editor.lineNumbers": "on",
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "redhat.telemetry.enabled": false,
-  "clangd.path": "/usr/bin/clangd",
-  "clang-format.executable": "/usr/bin/clang-format",
+  "clangd.path": "/Users/andre.kohn/Repositories/hyper-db/bazel-hyper-db/external/clang_darwin/bin/clangd",
+  "clang-format.executable": "",
   "editor.minimap.enabled": false,
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -78,4 +76,5 @@
   "diffEditor.renderSideBySide": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.commandCenter": false,
+  "editor.fontSize": 11
 }

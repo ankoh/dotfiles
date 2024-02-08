@@ -22,6 +22,10 @@ endif
 " JK instead of escape
 inoremap jk <Esc>
 
+" Color scheme
+set background=dark
+colorscheme paramount
+
 syntax on                  " switch syntax highlighting on
 set history=10000          " change history to 10000
 set textwidth=0
@@ -74,9 +78,6 @@ set laststatus=2           " always show status bar
 set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they're set to ^
 set wildignore+=.so,.swp,.zip,.o,.d,.dwo,.make,.a,link.txt,depend.internal,CXX.includecache,CMakeCache.txt
 set clipboard=unnamed      " use system clipboard
-
-" Color scheme
-colorscheme onedark
 
 " Paste mode
 set pastetoggle=<F3>

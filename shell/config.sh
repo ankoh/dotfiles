@@ -104,3 +104,7 @@ if [ ! -z "$PS1" ]; then
     include $SHELLCONF/displays.sh
     include $SHELLCONF/functions.sh
 fi
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/andre.kohn/Repositories/sqlynx/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/andre.kohn/Repositories/sqlynx/node_modules/tabtab/.completions/electron-forge.zsh
