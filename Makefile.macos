@@ -5,9 +5,7 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
-DP_DIR := ~/.displayplacer
-RUST_ANALYZER_VERSION := 2022-10-03
-NVM_VERSION=v0.39.1
+NERDFONTS_VERSION=v3.1.1
 #---------------------------------------------------------------------------
 install-brew:
 ifndef BREW
@@ -16,11 +14,12 @@ else
 	@echo "Found Homebrew: ${BREW}"
 endif
 #---------------------------------------------------------------------------
-install-nvm:
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
-#---------------------------------------------------------------------------
-install-pyenv:
-	curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+install-fonts:
+	mkdir -p ~/.dotfiles/fonts/archives ~/.dotfiles/fonts/unpacked ~/Library/Fonts
+	curl -sSL -o ~/.dotfiles/fonts/archives/hack.${NERDFONTS_VERSION}.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/${NERDFONTS_VERSION}/Hack.tar.xz
+	tar -xJf ~/.dotfiles/fonts/archives/hack.${NERDFONTS_VERSION}.tar.xz -C ~/.dotfiles/fonts/unpacked
+	cp ~/.dotfiles/fonts/unpacked/*.ttf ~/Library/Fonts
+
 #---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
@@ -38,14 +37,14 @@ create-directories:
 	@mkdir -p ~/.local/bin
 	@mkdir -p ~/.local/include
 	@mkdir -p ~/.local/lib
-	@mkdir -p ~/.config/Code/User
-	@mkdir -p ~/Library/Application\ Support/Code/User
+	@mkdir -p ~/.local/share/nvim/undo
 #---------------------------------------------------------------------------
 reset-symlinks: create-directories
 	@sh -c "[ ! -L ~/.bash_profile ] || rm ~/.bash_profile;"
 	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ ! -L ~/.zshrc ] || rm ~/.zshrc;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
+	@sh -c "[ ! -L ~/.config/tmux ] || rm -r ~/.config/tmux;"
 	@sh -c "[ ! -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
 	@sh -c "[ ! -L ~/.nvmrc ] || rm ~/.nvmrc;"
@@ -54,23 +53,14 @@ reset-symlinks: create-directories
 	@sh -c "[ ! -L ~/.vim ] || rm -r ~/.vim;"
 	@sh -c "[ ! -L ~/.vimrc ] || rm ~/.vimrc;"
 	@sh -c "[ ! -L ~/.alacritty ] || rm ~/.alacritty;"
-	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/.config/Code/User/settings.json;"
-	@sh -c "[ ! -L ~/.config/Code/User/settings.json ] || rm ~/Library/Application\ Support/Code/User/settings.json;"
-	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/.config/Code/User/keybindings.json;"
-	@sh -c "[ ! -L ~/.config/Code/User/keybindings.json ] || rm ~/Library/Application\ Support/Code/User/keybindings.json;"
 #---------------------------------------------------------------------------
 install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.zshrc
+	@ln -sf ${MAKEFILE_DIR}/nvim ~/.config/nvim
+	@ln -sf ${MAKEFILE_DIR}/tmux ~/.config/tmux
 	@ln -sf ${MAKEFILE_DIR}/other/gitconfig.conf ~/.gitconfig
-	@ln -sf ${MAKEFILE_DIR}/other/nvmrc.conf ~/.nvmrc
-	@ln -sf ${MAKEFILE_DIR}/vim ~/.config/nvim
-	@ln -sf ${MAKEFILE_DIR}/vim ~/.vim
-	@ln -sf ${MAKEFILE_DIR}/vim/init.vim ~/.vimrc
-	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json
-	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json
-	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+	@ln -sf ${MAKEFILE_DIR}/other/alacritty.toml ~/.alacritty.toml
 #---------------------------------------------------------------------------
 repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200

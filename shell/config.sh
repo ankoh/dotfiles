@@ -94,17 +94,7 @@ if [ ! -z "$PS1" ]; then
         include $HOME/.fzf/shell/completion.zsh
     fi
 
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        source $SHELLCONF/colors/gruvbox_256palette_osx.sh
-    else
-        source $SHELLCONF/colors/gruvbox_256palette.sh
-    fi
-
     include $SHELLCONF/aliases.sh
     include $SHELLCONF/displays.sh
     include $SHELLCONF/functions.sh
 fi
-
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/andre.kohn/Repositories/sqlynx/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/andre.kohn/Repositories/sqlynx/node_modules/tabtab/.completions/electron-forge.zsh
