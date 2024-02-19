@@ -33,10 +33,6 @@ export NPM_PACKAGES=$HOME/.npm_packages
 export PYENV_ROOT=$HOME/.pyenv
 export NVM_DIR="$HOME/.nvm"
 
-if command -v /usr/libexec/java_home 1>/dev/null 2>&1; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
-fi
-
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
