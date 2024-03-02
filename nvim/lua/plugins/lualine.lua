@@ -16,7 +16,6 @@ return { {
     },
     config = function(_)
         local lualine = require("lualine")
-        local lsp = require("lsp-progress")
         local config = {
             options = {
                 theme = "catppuccin",

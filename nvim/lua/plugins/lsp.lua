@@ -64,7 +64,6 @@ return { {
             dockerls = {},
             bashls = {},
             vimls = {},
-            yamlls = {},
             clangd = {},
             rust_analyzer = {}
         },
