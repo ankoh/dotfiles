@@ -16,10 +16,11 @@ autocmd("TextYankPost", {
 })
 
 -- Remove whitespace on save
-autocmd("BufWritePre", {
-    pattern = "",
-    command = ":%s/\\s\\+$//e"
-})
+-- This is cool, but also inflates the diffs quite a bit sometimes
+-- autocmd("BufWritePre", {
+--     pattern = "",
+--     command = ":%s/\\s\\+$//e"
+-- })
 
 -- Auto format on save using the attached (optionally filtered) language servere clients
 -- https://neovim.io/doc/user/lsp.html#vim.lsp.buf.format()
