@@ -63,14 +63,16 @@ autocmd('LspAttach', {
         end
 
         -- Highlight references
-        vim.api.nvim_create_autocmd("CursorHold", {
-            callback = vim.lsp.buf.document_highlight,
-            buffer = ev.buf,
-        })
-        vim.api.nvim_create_autocmd("CursorMoved", {
-            callback = vim.lsp.buf.clear_references,
-            buffer = ev.buf,
-        })
+        if client.supports_method("textDocument/documentHighlight") then
+            vim.api.nvim_create_autocmd("CursorHold", {
+                callback = vim.lsp.buf.document_highlight,
+                buffer = ev.buf,
+            })
+            vim.api.nvim_create_autocmd("CursorMoved", {
+                callback = vim.lsp.buf.clear_references,
+                buffer = ev.buf,
+            })
+        end
         if client.supports_method("textDocument/codeLens") then
             vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
                 callback = vim.lsp.codelens.refresh,
