@@ -6,11 +6,36 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
-        ft = { "scala", "sbt", "java" },
-        opts = function()
+        config = function()
             local metals_config = require("metals").bare_config()
+            metals_config.init_options.statusBarProvider = "on"
+            metals_config.settings = {
+                showImplicitArguments = true,
+                showImplicitConversionsAndClasses = true,
+                showInferredType = true,
+                superMethodLensesEnabled = true,
+            }
+            local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+
             metals_config.on_attach = function(client, bufnr)
-                map("n", "gD", vim.lsp.buf.definition)
+                vim.api.nvim_create_autocmd("CursorHold", {
+                    callback = vim.lsp.buf.document_highlight,
+                    buffer = bufnr,
+                    group = nvim_metals_group,
+                })
+                vim.api.nvim_create_autocmd("CursorMoved", {
+                    callback = vim.lsp.buf.clear_references,
+                    buffer = bufnr,
+                    group = nvim_metals_group,
+                })
+                vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+                    callback = vim.lsp.codelens.refresh,
+                    buffer = bufnr,
+                    group = nvim_metals_group,
+                })
+
+                local map = vim.keymap.set
+                map("n", "gD", vim.lsp.buf.declaration)
                 map("n", "gd", vim.lsp.buf.definition)
                 map("n", "K", vim.lsp.buf.hover)
                 map("n", "gi", vim.lsp.buf.implementation)
@@ -34,13 +59,10 @@ return {
                 end)
                 map("n", "<leader>d", vim.diagnostic.setloclist)
             end
+            metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            return metals_config
-        end,
-        config = function(self, metals_config)
-            local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = self.ft,
+                pattern = { "scala", "sbt", "java" },
                 callback = function()
                     require("metals").initialize_or_attach(metals_config)
                 end,

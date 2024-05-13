@@ -19,9 +19,10 @@ return { {
             update_root = false
         },
         view = {
-            width = 40,
-            side = "left",
-            preserve_window_proportions = true
+            adaptive_size = true,
+            side = "left"
+            -- width = 40,
+            -- preserve_window_proportions = true
         },
         filesystem_watchers = {
             enable = false

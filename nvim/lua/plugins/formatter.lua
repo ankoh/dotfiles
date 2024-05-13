@@ -38,6 +38,14 @@ return { {
                     stdin = true
                 }
             end },
+            scala = {
+                function()
+                    return {
+                        exe = "scalafmt",
+                        args = { "--stdout" },
+                        stdin = true
+                    }
+                end },
             rust = { -- Rustfmt
                 function()
                     return {
