@@ -52,8 +52,8 @@ nnoremap <leader>f :find<CR>
 
 " NERDTree mappings
 inoremap jk <Esc>
-nnoremap <leader>n :NERDTreeFind<CR>
-nnoremap <leader>m :NERDTreeFocus<CR>
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>m :NERDTreeToggle<CR>
 
 " Window navigation
 nnoremap <C-J> <C-W><C-J>
