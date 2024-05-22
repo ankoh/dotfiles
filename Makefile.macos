@@ -61,6 +61,10 @@ install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/tmux ~/.config/tmux
 	@ln -sf ${MAKEFILE_DIR}/other/gitconfig.conf ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}/other/alacritty.toml ~/.alacritty.toml
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 #---------------------------------------------------------------------------
 repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
