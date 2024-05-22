@@ -107,6 +107,26 @@
             "before": [
                 "<leader>",
                 "g",
+                "D"
+            ],
+            "commands": [
+                "editor.action.goToDeclaration"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.goToDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
                 "r"
             ],
             "commands": [

@@ -31,6 +31,8 @@ install-fzf:
 #---------------------------------------------------------------------------
 fix-keyrepeat:
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+	defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
+	defaults write com.jetbrains.intellij.ce ApplePressAndHoldEnabled -bool false
 #---------------------------------------------------------------------------
 create-directories:
 	@mkdir -p ~/.config
@@ -61,6 +63,7 @@ install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/tmux ~/.config/tmux
 	@ln -sf ${MAKEFILE_DIR}/other/gitconfig.conf ~/.gitconfig
 	@ln -sf ${MAKEFILE_DIR}/other/alacritty.toml ~/.alacritty.toml
+	@ln -sf ${MAKEFILE_DIR}/jetbrains/ideavimrc ~/.ideavimrc
 	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json
 	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json
