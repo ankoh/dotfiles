@@ -46,13 +46,17 @@ set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they
 let mapleader = ','
 let g:mapleader = ','
 
+" You can find a list of action names here:
+" https://centic9.github.io/IntelliJ-Action-IDs/
+
 " Fuzzy finder
 nnoremap <C-P> :find<CR>
-nnoremap <leader>f :find<CR>
+nnoremap <leader>ff :find<CR>
+nnoremap <leader>ft :action TextSearchAction<CR>
 
 " NERDTree mappings
 inoremap jk <Esc>
-nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>n :NERDTreeFind<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 
 " Window navigation
@@ -74,3 +78,11 @@ nnoremap <leader>w> :exe "vertical resize " . (winwidth(0) * 8/10)<CR>
 " Gotos
 nnoremap <leader>gd :action GotoImplementation<CR>
 nnoremap <leader>gD :action GotoDeclaration<CR>
+nnoremap <leader>gr :action FindUsages<CR>
+
+" Rename element
+nnoremap <leader>rn :action RenameElement<CR>
+
+" Terminal
+nmap <C-t> :action ActivateTerminalToolWindow<CR>
+nmap <Leader>t :action ActivateTerminalToolWindow<CR>
