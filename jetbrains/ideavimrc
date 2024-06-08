@@ -46,6 +46,9 @@ set fillchars+=stl:\ ,stlnc:\-      " If stl and stlnc have the same values they
 let mapleader = ','
 let g:mapleader = ','
 
+" System clipboard
+set clipboard+=unnamed
+
 " You can find a list of action names here:
 " https://centic9.github.io/IntelliJ-Action-IDs/
 
