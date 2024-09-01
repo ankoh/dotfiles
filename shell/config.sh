@@ -94,3 +94,5 @@ if [ ! -z "$PS1" ]; then
     include $SHELLCONF/displays.sh
     include $SHELLCONF/functions.sh
 fi
+
+bindkey -e
