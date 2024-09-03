@@ -79,8 +79,8 @@ nnoremap <leader>w< :exe "vertical resize " . (winwidth(0) * 12/10)<CR>
 nnoremap <leader>w> :exe "vertical resize " . (winwidth(0) * 8/10)<CR>
 
 " Gotos
-nnoremap <leader>gd :action GotoImplementation<CR>
-nnoremap <leader>gD :action GotoDeclaration<CR>
+nnoremap <leader>gD :action GotoImplementation<CR>
+nnoremap <leader>gd :action GotoDeclaration<CR>
 nnoremap <leader>gr :action FindUsages<CR>
 
 " Rename element
