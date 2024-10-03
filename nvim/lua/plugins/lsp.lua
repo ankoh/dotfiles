@@ -63,8 +63,11 @@ return { {
             dockerls = {},
             bashls = {},
             vimls = {},
-            clangd = {},
-            rust_analyzer = {}
+            clangd = {
+                filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
+            },
+            rust_analyzer = {},
+            buf = {}
         },
         -- You can do any additional lsp server setup here
         -- return true if you don"t want this server to be setup with lspconfig
