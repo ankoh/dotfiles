@@ -96,3 +96,4 @@ if [ ! -z "$PS1" ]; then
 fi
 
 bindkey -e
+. "$HOME/.cargo/env"
