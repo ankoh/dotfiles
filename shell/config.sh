@@ -1,6 +1,6 @@
 #!/bin/bash
 
-include () {
+include() {
     [[ -f "$1" ]] && source "$1"
 }
 
@@ -52,6 +52,11 @@ export PATH=$PATH:/opt/homebrew/opt/libpq/bin
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/.config/yarn/global/node_modules/.bin:$PATH
 
+if [ -d $HOME/JDK/ ]; then
+    export JAVA_HOME=$HOME/JDK
+    export PATH=$JAVA_HOME/bin:$PATH
+fi
+
 source "$HOME/.cargo/env"
 
 if command -v /opt/homebrew/bin/brew 1>/dev/null 2>&1; then
@@ -77,7 +82,7 @@ if [ ! -z "$PS1" ]; then
         include $HOME/.fzf/shell/key-bindings.bash
         include $HOME/.fzf/shell/completion.bash
 
-        if [ "`id -u`" -eq 0 ]; then
+        if [ "$(id -u)" -eq 0 ]; then
             PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1;31m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
         else
             PS1="\[\033[m\]|\[\033[1;35m\]\t\[\033[m\]|\[\e[1m\]\u\[\e[1;36m\]\[\033[m\]@\[\e[1;36m\]\h\[\033[m\]:\[\e[0m\]\[\e[1;32m\][\W]> \[\e[0m\]"
