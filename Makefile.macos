@@ -21,6 +21,10 @@ install-fonts:
 	cp ~/.dotfiles/fonts/unpacked/*.ttf ~/Library/Fonts
 
 #---------------------------------------------------------------------------
+create-venv:
+	rm -rf ~/.venv
+	python3 -m venv ~/.venv
+#---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
 		git clone --depth 1 https://github.com/junegunn/fzf.git $(FZF_DIR); \

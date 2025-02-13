@@ -57,16 +57,12 @@ if [ -d $HOME/JDK/ ]; then
     export PATH=$JAVA_HOME/bin:$PATH
 fi
 
-source "$HOME/.cargo/env"
-
 if command -v /opt/homebrew/bin/brew 1>/dev/null 2>&1; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Load pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
+source "$HOME/.cargo/env"
+source "$HOME/.venv/bin/activate"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
