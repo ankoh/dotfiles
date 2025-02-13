@@ -32,6 +32,7 @@ export GEM_HOME=$HOME/.gem
 export NPM_PACKAGES=$HOME/.npm_packages
 export PYENV_ROOT=$HOME/.pyenv
 export NVM_DIR="$HOME/.nvm"
+export VIRTUAL_ENV="$HOME/.venv"
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/usr/local/go/bin:$PATH
