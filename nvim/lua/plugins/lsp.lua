@@ -67,7 +67,13 @@ return { {
                 filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
             },
             rust_analyzer = {},
-            buf = {}
+            jdtls = {
+                settings = {
+                    referencesCodeLens = {
+                        enabled = false,
+                    },
+                }
+            }
         },
         -- You can do any additional lsp server setup here
         -- return true if you don"t want this server to be setup with lspconfig
@@ -119,10 +125,6 @@ return { {
         })
         require("mason-lspconfig").setup_handlers({ setup })
     end
-}, {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
 }, {
     -- load luasnips + cmp related in insert mode only
     "hrsh7th/nvim-cmp",

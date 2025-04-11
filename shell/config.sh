@@ -34,6 +34,8 @@ export PYENV_ROOT=$HOME/.pyenv
 export NVM_DIR="$HOME/.nvm"
 export VIRTUAL_ENV="$HOME/.venv"
 
+export GPG_TTY=$(tty)
+
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -49,14 +51,11 @@ export PATH=$PATH:~/.fzf/bin
 export PATH=$PATH:~/.displayplacer
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$PATH:/opt/homebrew/opt/libpq/bin
+export PATH=/opt/homebrew/opt/llvm/bin:$PATH
+export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
 
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/.config/yarn/global/node_modules/.bin:$PATH
-
-if [ -d $HOME/JDK/ ]; then
-    export JAVA_HOME=$HOME/JDK
-    export PATH=$JAVA_HOME/bin:$PATH
-fi
 
 if command -v /opt/homebrew/bin/brew 1>/dev/null 2>&1; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
