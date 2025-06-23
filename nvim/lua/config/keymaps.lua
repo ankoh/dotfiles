@@ -75,3 +75,39 @@ keymap("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 keymap("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 keymap("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
 keymap("n", "<leader>gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+
+-- ============================
+-- Indentation Quick Toggle
+-- ============================
+
+-- Function to set indentation for current buffer
+local function set_indentation(size)
+    vim.bo.expandtab = true
+    vim.bo.tabstop = size
+    vim.bo.shiftwidth = size
+    vim.bo.softtabstop = size
+    vim.notify("Indentation set to " .. size .. " spaces", vim.log.levels.INFO)
+end
+
+-- Function to set tab indentation
+local function set_tab_indentation()
+    vim.bo.expandtab = false
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.softtabstop = 4
+    vim.notify("Indentation set to tabs (4-width)", vim.log.levels.INFO)
+end
+
+-- Function to show current indentation settings
+local function show_indentation()
+    local expandtab = vim.bo.expandtab and "spaces" or "tabs"
+    local size = vim.bo.shiftwidth
+    vim.notify("Current indentation: " .. expandtab .. " (" .. size .. ")", vim.log.levels.INFO)
+end
+
+-- Indentation toggle keymaps
+keymap("n", "<leader>i2", function() set_indentation(2) end, { desc = "Set 2-space indentation" })
+keymap("n", "<leader>i3", function() set_indentation(3) end, { desc = "Set 3-space indentation" })
+keymap("n", "<leader>i4", function() set_indentation(4) end, { desc = "Set 4-space indentation" })
+keymap("n", "<leader>it", set_tab_indentation, { desc = "Set tab indentation" })
+keymap("n", "<leader>is", show_indentation, { desc = "Show current indentation" })

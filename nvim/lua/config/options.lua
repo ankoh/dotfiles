@@ -23,8 +23,8 @@ opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 -- ============================
 -- Indentation
 -- ============================
-local indent = 4
 
+local indent = 4
 opt.autoindent = true    -- Auto indentation
 opt.smartindent = true   -- Smart indenting
 opt.expandtab = true     -- Convert tabs to spaces
@@ -36,10 +36,11 @@ opt.shiftround = true    -- Round indent to multiple of shiftwidth
 -- ============================
 -- Search Settings
 -- ============================
-opt.hlsearch = true     -- Highlight search matches
-opt.ignorecase = true   -- Ignore case in search
-opt.smartcase = true    -- Smart case sensitivity
-opt.wildmenu = true     -- Enhanced command line completion
+
+opt.hlsearch = true   -- Highlight search matches
+opt.ignorecase = true -- Ignore case in search
+opt.smartcase = true  -- Smart case sensitivity
+opt.wildmenu = true   -- Enhanced command line completion
 opt.wildignore:append({ "*/node_modules/*", "*/.git/*", "*/vendor/*" })
 
 -- ============================
@@ -77,19 +78,19 @@ opt.writebackup = false -- Don't backup before overwriting
 
 -- Persistent undo
 local undodir = vim.fn.stdpath("data") .. "/undo"
-opt.undofile = true      -- Enable persistent undo
-opt.undodir = undodir    -- Undo directory
-opt.undolevels = 1000    -- Max undo changes
-opt.undoreload = 10000   -- Max lines to save for undo
+opt.undofile = true    -- Enable persistent undo
+opt.undodir = undodir  -- Undo directory
+opt.undolevels = 1000  -- Max undo changes
+opt.undoreload = 10000 -- Max lines to save for undo
 
 -- ============================
 -- Performance
 -- ============================
-opt.history = 100        -- Command history size
-opt.updatetime = 100     -- Faster completion (default: 4000ms)
-opt.timeoutlen = 1000    -- Time to wait for mapped sequence
-opt.ttimeoutlen = 10     -- Time to wait for key codes
-opt.redrawtime = 1500    -- Time to wait for redraw
+opt.history = 100     -- Command history size
+opt.updatetime = 100  -- Faster completion (default: 4000ms)
+opt.timeoutlen = 1000 -- Time to wait for mapped sequence
+opt.ttimeoutlen = 10  -- Time to wait for key codes
+opt.redrawtime = 1500 -- Time to wait for redraw
 
 -- ============================
 -- Completion
