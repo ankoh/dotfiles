@@ -67,62 +67,13 @@ return { {
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
       },
       rust_analyzer = {},
-      jdtls = {
-        -- Use default cmd from mason-lspconfig, let it handle the complexity
-        single_file_support = true,
-        settings = {
-          java = {
-            signatureHelp = { enabled = true },
-            semanticHighlighting = {
-              enabled = true
-            },
-            referencesCodeLens = {
-              enabled = false,
-            },
-            completion = {
-              includeDecompiledSources = true,
-            },
-            contentProvider = {
-              preferred = "fernflower",
-            },
-            sources = {
-              organizeImports = {
-                starThreshold = 9999,
-                staticStarThreshold = 9999,
-              },
-            },
-            eclipse = {
-              downloadSources = true,
-            },
-            maven = {
-              downloadSources = true,
-            },
-            gradle = {
-              downloadSources = true,
-            },
-            configuration = {
-              updateBuildConfiguration = "interactive",
-            },
-            import = {
-              maven = {
-                enabled = true,
-              },
-              gradle = {
-                enabled = true,
-              },
-            },
-          },
-        },
-        init_options = {
-          extendedClientCapabilities = {
-            semanticHighlightingSupport = true,
-          },
-        },
-      }
+      jdtls = {},
     },
     -- You can do any additional lsp server setup here
     -- return true if you don"t want this server to be setup with lspconfig
     setup = {
+      -- Exclude jdtls from mason-lspconfig setup since we'll use nvim-jdtls
+      jdtls = function() return true end,
       ["*"] = function(server, _) end,
     }
   },
