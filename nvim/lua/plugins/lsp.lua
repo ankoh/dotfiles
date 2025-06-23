@@ -69,10 +69,20 @@ return { {
             rust_analyzer = {},
             jdtls = {
                 settings = {
-                    referencesCodeLens = {
-                        enabled = false,
+                    java = {
+                        semanticHighlighting = {
+                            enabled = true
+                        },
+                        referencesCodeLens = {
+                            enabled = false,
+                        },
                     },
-                }
+                },
+                init_options = {
+                    extendedClientCapabilities = {
+                        semanticHighlightingSupport = true,
+                    },
+                },
             }
         },
         -- You can do any additional lsp server setup here
@@ -84,6 +94,21 @@ return { {
     config = function(_, opts)
         local servers = opts.servers
         local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+        
+        -- Enable semantic tokens capability
+        capabilities.textDocument.semanticTokens = {
+            dynamicRegistration = false,
+            tokenTypes = {
+                "namespace", "type", "class", "enum", "interface", "struct", "typeParameter", "parameter",
+                "variable", "property", "enumMember", "event", "function", "method", "macro", "keyword",
+                "modifier", "comment", "string", "number", "regexp", "operator"
+            },
+            tokenModifiers = {
+                "declaration", "definition", "readonly", "static", "deprecated", "abstract", "async",
+                "modification", "documentation", "defaultLibrary"
+            },
+            formats = { "relative" }
+        }
 
         local function setup(server)
             local server_opts = vim.tbl_deep_extend("force", {
