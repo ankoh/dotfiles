@@ -84,7 +84,7 @@ vim.opt.updatetime = 1500
 -- remember N lines in history
 opt.history = 100    -- keep 100 lines of history
 opt.redrawtime = 1500
-opt.timeoutlen = 250 -- time to wait for a mapped sequence to complete (in milliseconds)
+opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 opt.ttimeoutlen = 10
 opt.updatetime = 100 -- signify default updatetime 4000ms is not good for async update
 

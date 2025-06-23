@@ -42,3 +42,9 @@ vim.keymap.set("n", "<leader>mf", ":NvimTreeFindFile<CR>", {}) -- search file
 -- Terminal
 vim.keymap.set("n", "<leader>tt", ":NeotermToggle<CR>", {})
 -- vim.keymap.set("n", "<leader>tx", ":NeotermExit<CR>", {})
+
+-- LSP keybindings (alternative to buffer-local ones)
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
+vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
