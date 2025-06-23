@@ -26,7 +26,21 @@ autocmd("BufWritePre", {
         if vim.bo.filetype == "java" then
             return
         end
-        vim.lsp.buf.format({ async = false })
+        
+        -- Check if there are active LSP clients that support formatting
+        local clients = vim.lsp.get_clients({ bufnr = 0 })
+        local has_formatter = false
+        
+        for _, client in pairs(clients) do
+            if client.supports_method("textDocument/formatting") then
+                has_formatter = true
+                break
+            end
+        end
+        
+        if has_formatter then
+            vim.lsp.buf.format({ async = false })
+        end
     end
 })
 
@@ -128,27 +142,45 @@ autocmd("LspAttach", {
         -- ============================
 
         -- Document highlighting
-        if client.supports_method("textDocument/documentHighlight") then
+        if client and client.supports_method and client.supports_method("textDocument/documentHighlight") then
             local highlight_group = augroup("LspDocumentHighlight", { clear = false })
             autocmd({ "CursorHold", "CursorHoldI" }, {
                 buffer = bufnr,
                 group = highlight_group,
-                callback = vim.lsp.buf.document_highlight,
+                callback = function()
+                    -- Check if client is still active before calling
+                    local current_clients = vim.lsp.get_clients({ bufnr = bufnr })
+                    if #current_clients > 0 then
+                        vim.lsp.buf.document_highlight()
+                    end
+                end,
             })
             autocmd({ "CursorMoved", "CursorMovedI" }, {
                 buffer = bufnr,
                 group = highlight_group,
-                callback = vim.lsp.buf.clear_references,
+                callback = function()
+                    -- Check if client is still active before calling
+                    local current_clients = vim.lsp.get_clients({ bufnr = bufnr })
+                    if #current_clients > 0 then
+                        vim.lsp.buf.clear_references()
+                    end
+                end,
             })
         end
 
         -- Code lens
-        if client.supports_method("textDocument/codeLens") then
+        if client and client.supports_method and client.supports_method("textDocument/codeLens") then
             local codelens_group = augroup("LspCodeLens", { clear = false })
             autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
                 buffer = bufnr,
                 group = codelens_group,
-                callback = vim.lsp.codelens.refresh,
+                callback = function()
+                    -- Check if client is still active before calling
+                    local current_clients = vim.lsp.get_clients({ bufnr = bufnr })
+                    if #current_clients > 0 then
+                        vim.lsp.codelens.refresh()
+                    end
+                end,
             })
         end
 
