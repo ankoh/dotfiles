@@ -22,6 +22,10 @@ autocmd("TextYankPost", {
 autocmd("BufWritePre", {
     desc = "Auto format on save",
     callback = function()
+        -- Skip formatting for Java files
+        if vim.bo.filetype == "java" then
+            return
+        end
         vim.lsp.buf.format({ async = false })
     end
 })
