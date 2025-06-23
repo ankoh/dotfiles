@@ -1,50 +1,77 @@
+-- Keymaps configuration
+-- Use `:help vim.keymap.set()` for more info
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+-- Leader key is set in config/init.lua
+
+-- ============================
+-- General Keymaps
+-- ============================
+
 -- Reload configuration without restart nvim
-vim.keymap.set("n", "<leader>r", ":so %<CR>", {})
+keymap("n", "<leader>r", ":so %<CR>", opts)
 
 -- Leave insert mode with jk
-vim.keymap.set("i", "jk", "<Esc>", {})
+keymap("i", "jk", "<Esc>", opts)
 
--- Fast qutting and saving
-vim.keymap.set("n", "<leader>q", ":qa!<CR>", {})
-vim.keymap.set("n", "<leader>s", ":w<CR>", {})
+-- Fast quitting and saving
+keymap("n", "<leader>q", ":qa!<CR>", opts)
+keymap("n", "<leader>s", ":w<CR>", opts)
 
--- Windows
-vim.keymap.set("n", "<leader>w", "<C-W>", {})
-vim.keymap.set("n", "<C-J>", "<C-w>j", {})
-vim.keymap.set("n", "<C-K>", "<C-w>k", {})
-vim.keymap.set("n", "<C-L>", "<C-w>l", {})
-vim.keymap.set("n", "<C-H>", "<C-w>h", {})
-vim.keymap.set("n", "<leader>wh", "<C-w>h", {})
-vim.keymap.set("n", "<leader>wj", "<C-w>j", {})
-vim.keymap.set("n", "<leader>wk", "<C-w>k", {})
-vim.keymap.set("n", "<leader>wl", "<C-w>l", {})
-vim.keymap.set("n", "<leader>ws", ":split<CR>", {})
-vim.keymap.set("n", "<leader>w+", ":exe \"resize \" . (winheight(0) * 12/10)<CR>", {})
-vim.keymap.set("n", "<leader>w-", ":exe \"resize \" . (winheight(0) * 8/10)<CR>", {})
-vim.keymap.set("n", "<leader>wv", ":vsplit<CR>", {})
-vim.keymap.set("n", "<leader>w<", ":exe \"vertical resize \" . (winwidth(0) * 12/10)<CR>", {})
-vim.keymap.set("n", "<leader>w>", ":exe \"vertical resize \" . (winwidth(0) * 8/10)<CR>", {})
+-- ============================
+-- Window Management
+-- ============================
 
--- Telescope
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>ft", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+-- Window navigation (Ctrl + hjkl)
+keymap("n", "<C-H>", "<C-w>h", opts)
+keymap("n", "<C-J>", "<C-w>j", opts)
+keymap("n", "<C-K>", "<C-w>k", opts)
+keymap("n", "<C-L>", "<C-w>l", opts)
 
--- NvimTree
-vim.keymap.set("n", "<leader>m", ":NvimTreeToggle<CR>", {})    -- open/close
-vim.keymap.set("n", "<leader>m", ":NvimTreeToggle<CR>", {})    -- open/close
-vim.keymap.set("n", "<leader>mr", ":NvimTreeRefresh<CR>", {})  -- refresh
-vim.keymap.set("n", "<leader>mf", ":NvimTreeFindFile<CR>", {}) -- search file
+-- Window management with leader
+keymap("n", "<leader>w", "<C-W>", opts)
+keymap("n", "<leader>wh", "<C-w>h", opts)
+keymap("n", "<leader>wj", "<C-w>j", opts)
+keymap("n", "<leader>wk", "<C-w>k", opts)
+keymap("n", "<leader>wl", "<C-w>l", opts)
+
+-- Window splits
+keymap("n", "<leader>ws", ":split<CR>", opts)
+keymap("n", "<leader>wv", ":vsplit<CR>", opts)
+
+-- Window resizing
+keymap("n", "<leader>w+", ":exe \"resize \" . (winheight(0) * 12/10)<CR>", opts)
+keymap("n", "<leader>w-", ":exe \"resize \" . (winheight(0) * 8/10)<CR>", opts)
+keymap("n", "<leader>w<", ":exe \"vertical resize \" . (winwidth(0) * 12/10)<CR>", opts)
+keymap("n", "<leader>w>", ":exe \"vertical resize \" . (winwidth(0) * 8/10)<CR>", opts)
+
+-- ============================
+-- Plugin Keymaps
+-- ============================
+
+-- Telescope (fuzzy finder)
+keymap("n", "<leader>ff", function() require("telescope.builtin").find_files() end, { desc = "Find files" })
+keymap("n", "<leader>fg", function() require("telescope.builtin").live_grep() end, { desc = "Live grep" })
+keymap("n", "<leader>ft", function() require("telescope.builtin").live_grep() end, { desc = "Live grep (text)" })
+keymap("n", "<leader>fb", function() require("telescope.builtin").buffers() end, { desc = "Find buffers" })
+keymap("n", "<leader>fh", function() require("telescope.builtin").help_tags() end, { desc = "Help tags" })
+
+-- NvimTree (file explorer)
+keymap("n", "<leader>m", ":NvimTreeToggle<CR>", { desc = "Toggle file tree" })
+keymap("n", "<leader>mr", ":NvimTreeRefresh<CR>", { desc = "Refresh file tree" })
+keymap("n", "<leader>mf", ":NvimTreeFindFile<CR>", { desc = "Find file in tree" })
 
 -- Terminal
-vim.keymap.set("n", "<leader>tt", ":NeotermToggle<CR>", {})
--- vim.keymap.set("n", "<leader>tx", ":NeotermExit<CR>", {})
+keymap("n", "<leader>tt", ":NeotermToggle<CR>", { desc = "Toggle terminal" })
 
--- LSP keybindings (alternative to buffer-local ones)
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
-vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+-- ============================
+-- LSP Keymaps (Global - buffer-local ones are in autocmds.lua)
+-- ============================
+-- Note: These are fallbacks. Buffer-local keymaps are set when LSP attaches
+
+keymap("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+keymap("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+keymap("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
+keymap("n", "<leader>gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })

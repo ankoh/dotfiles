@@ -1,119 +1,159 @@
 -- Define autocommands with Lua APIs
 
-local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
--- General settings
+-- ============================
+-- General Autocommands
+-- ============================
 
 -- Highlight on yank
 autocmd("TextYankPost", {
+    desc = "Highlight when yanking text",
     callback = function()
         vim.highlight.on_yank({
             higroup = "IncSearch",
-            timeout = "1000"
+            timeout = 1000
         })
     end
 })
 
--- Remove whitespace on save
--- This is cool, but also inflates the diffs quite a bit sometimes
--- autocmd("BufWritePre", {
---     pattern = "",
---     command = ":%s/\\s\\+$//e"
--- })
-
--- Auto format on save using the attached (optionally filtered) language servere clients
--- https://neovim.io/doc/user/lsp.html#vim.lsp.buf.format()
+-- Auto format on save using LSP
 autocmd("BufWritePre", {
-    pattern = "",
-    command = ":silent lua vim.lsp.buf.format()"
-})
-
--- Don"t auto commenting new lines
-autocmd("BufEnter", {
-    pattern = "",
-    command = "set fo-=c fo-=r fo-=o"
-})
-
-autocmd("Filetype", {
-    pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua" },
-    command = "setlocal shiftwidth=4 tabstop=4"
-})
-
--- Set colorcolumn
-autocmd("Filetype", {
-    pattern = { "python", "rst", "c", "cpp" },
-    command = "set colorcolumn=80"
-})
-
-autocmd("Filetype", {
-    pattern = { "gitcommit", "markdown", "text" },
+    desc = "Auto format on save",
     callback = function()
-        vim.opt_local.wrap = true
-        vim.opt_local.spell = true
+        vim.lsp.buf.format({ async = false })
     end
 })
 
-autocmd('LspAttach', {
-    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-    callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client == nil then
-            return
-        end
+-- Don't auto comment new lines
+autocmd("BufEnter", {
+    desc = "Disable auto comment on new lines",
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+    end
+})
 
-        -- Highlight references
+-- ============================
+-- Filetype-specific Settings
+-- ============================
+
+-- Set indentation for specific filetypes
+autocmd("Filetype", {
+    pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua" },
+    desc = "Set indentation for web/config files",
+    callback = function()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+    end
+})
+
+-- Set colorcolumn for specific filetypes
+autocmd("Filetype", {
+    pattern = { "python", "rust", "c", "cpp", "java" },
+    desc = "Set colorcolumn for programming languages",
+    callback = function()
+        vim.opt_local.colorcolumn = "80"
+    end
+})
+
+-- Enable wrap and spell for text files
+autocmd("Filetype", {
+    pattern = { "gitcommit", "markdown", "text", "tex" },
+    desc = "Enable wrap and spell for text files",
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+        vim.opt_local.linebreak = true
+    end
+})
+
+-- ============================
+-- LSP Autocommands
+-- ============================
+
+autocmd("LspAttach", {
+    group = augroup("UserLspConfig", { clear = true }),
+    desc = "Configure LSP keybindings and features when LSP attaches",
+    callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if not client then return end
+
+        local bufnr = event.buf
+        local opts = { buffer = bufnr, noremap = true, silent = true }
+
+        -- ============================
+        -- LSP Navigation Keymaps
+        -- ============================
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("error", opts, { desc = "Go to definition" }))
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("error", opts, { desc = "Go to declaration" }))
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("error", opts, { desc = "Go to references" }))
+        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, vim.tbl_extend("error", opts, { desc = "Go to type definition" }))
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("error", opts, { desc = "Go to implementation" }))
+
+        -- ============================
+        -- LSP Information Keymaps
+        -- ============================
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("error", opts, { desc = "Show hover information" }))
+        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, vim.tbl_extend("error", opts, { desc = "Show signature help" }))
+
+        -- ============================
+        -- LSP Action Keymaps
+        -- ============================
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("error", opts, { desc = "Rename symbol" }))
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("error", opts, { desc = "Code actions" }))
+        vim.keymap.set("n", "<leader>f", function()
+            vim.lsp.buf.format({ async = true })
+        end, vim.tbl_extend("error", opts, { desc = "Format buffer" }))
+
+        -- ============================
+        -- Diagnostic Keymaps
+        -- ============================
+        vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, vim.tbl_extend("error", opts, { desc = "Show buffer diagnostics" }))
+        vim.keymap.set("n", "<leader>aa", vim.diagnostic.setqflist, vim.tbl_extend("error", opts, { desc = "Show all diagnostics" }))
+        vim.keymap.set("n", "<leader>ae", function()
+            vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+        end, vim.tbl_extend("error", opts, { desc = "Show errors in quickfix" }))
+        vim.keymap.set("n", "<leader>aw", function()
+            vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.WARN })
+        end, vim.tbl_extend("error", opts, { desc = "Show warnings in quickfix" }))
+
+        -- ============================
+        -- LSP Features
+        -- ============================
+
+        -- Document highlighting
         if client.supports_method("textDocument/documentHighlight") then
-            vim.api.nvim_create_autocmd("CursorHold", {
+            local highlight_group = augroup("LspDocumentHighlight", { clear = false })
+            autocmd({ "CursorHold", "CursorHoldI" }, {
+                buffer = bufnr,
+                group = highlight_group,
                 callback = vim.lsp.buf.document_highlight,
-                buffer = ev.buf,
             })
-            vim.api.nvim_create_autocmd("CursorMoved", {
+            autocmd({ "CursorMoved", "CursorMovedI" }, {
+                buffer = bufnr,
+                group = highlight_group,
                 callback = vim.lsp.buf.clear_references,
-                buffer = ev.buf,
             })
         end
+
+        -- Code lens
         if client.supports_method("textDocument/codeLens") then
-            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+            local codelens_group = augroup("LspCodeLens", { clear = false })
+            autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+                buffer = bufnr,
+                group = codelens_group,
                 callback = vim.lsp.codelens.refresh,
-                buffer = ev.buf,
             })
         end
 
-
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf, noremap = true }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', '<leader>d', vim.diagnostic.setloclist)
-        vim.keymap.set('n', '<leader>aa', vim.diagnostic.setqflist)
-        vim.keymap.set('n', '<leader>ae', function()
-            vim.diagnostic.setqflist({ severity = "E" })
-        end)
-        vim.keymap.set('n', '<leader>aw', function()
-            vim.diagnostic.setqflist({ severity = "W" })
-        end)
-        vim.keymap.set('n', '<leader>f', function()
-            vim.lsp.buf.format { async = true }
-        end, opts)
-        -- vim.keymap.set('v', '<leader>f', vim.lsp.buf.range_formatting)
-
-        -- Enable inlay hints if the server supports them
-        -- if client.server_capabilities.inlayHintProvider then
-        --     vim.lsp.buf.inlay_hint(ev.buf, true)
-        -- end
-
-        -- clangd-specific key bindings
+        -- ============================
+        -- Language-specific Keymaps
+        -- ============================
         if client.name == "clangd" then
-            vim.keymap.set('n', 'g<Tab>', "<cmd>ClangdSwitchSourceHeader<CR>")
+            vim.keymap.set("n", "g<Tab>", "<cmd>ClangdSwitchSourceHeader<CR>", 
+                vim.tbl_extend("error", opts, { desc = "Switch source/header" }))
         end
     end
 })

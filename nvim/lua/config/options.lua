@@ -1,48 +1,65 @@
 -- General Neovim settings and configuration
 
-local cmd = vim.cmd
--- Set options (global/buffer/windows-scoped)
 local opt = vim.opt
--- Global variables
 local g = vim.g
-local s = vim.s
-local indent = 4
 
+-- ============================
+-- Leader Key
+-- ============================
 g.mapleader = ","
 
-cmd([[
-	filetype plugin indent on
-]])
+-- ============================
+-- General Settings
+-- ============================
+vim.cmd.filetype("plugin indent on")
 
-opt.backspace = { "eol", "start", "indent" } -- allow backspacing over everything in insert mode
-opt.clipboard = "unnamedplus"                -- allow neovim to access the system clipboard
-vim.opt.fileencoding = "utf-8"               -- the encoding written to a file
-opt.encoding = "utf-8"                       -- the encoding
-opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+opt.clipboard = "unnamedplus" -- Use system clipboard
+opt.mouse = "a"               -- Enable mouse support
 opt.syntax = "enable"
+opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 
--- indention
-opt.autoindent = true    -- auto indentation
-opt.expandtab = true     -- convert tabs to spaces
-opt.shiftwidth = indent  -- the number of spaces inserted for each indentation
-opt.smartindent = true   -- make indenting smarter
-opt.softtabstop = indent -- when hitting <BS>, pretend like a tab is removed, even if spaces
-opt.tabstop = indent     -- insert 2 spaces for a tab
-opt.shiftround = true    -- use multiple of shiftwidth when indenting with "<" and ">"
+-- ============================
+-- Indentation
+-- ============================
+local indent = 4
 
--- search
-opt.hlsearch = true   -- highlight all matches on previous search pattern
-opt.ignorecase = true -- ignore case in search patterns
-opt.smartcase = true  -- smart case
-opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*" }
-opt.wildmenu = true   -- make tab completion for files/buffers act like bash
+opt.autoindent = true    -- Auto indentation
+opt.smartindent = true   -- Smart indenting
+opt.expandtab = true     -- Convert tabs to spaces
+opt.tabstop = indent     -- Number of spaces for a tab
+opt.softtabstop = indent -- Backspace removes tab-width spaces
+opt.shiftwidth = indent  -- Number of spaces for indentation
+opt.shiftround = true    -- Round indent to multiple of shiftwidth
 
--- ui
-opt.cursorline = true -- highlight the current line
-opt.laststatus = 2    -- only the last window will always have a status line
--- opt.lazyredraw = true -- don"t update the display while executing macros -- noice complains about this
+-- ============================
+-- Search Settings
+-- ============================
+opt.hlsearch = true     -- Highlight search matches
+opt.ignorecase = true   -- Ignore case in search
+opt.smartcase = true    -- Smart case sensitivity
+opt.wildmenu = true     -- Enhanced command line completion
+opt.wildignore:append({ "*/node_modules/*", "*/.git/*", "*/vendor/*" })
+
+-- ============================
+-- UI/UX Settings
+-- ============================
+opt.termguicolors = true -- Enable 24-bit RGB colors
+opt.number = true        -- Show line numbers
+opt.cursorline = true    -- Highlight current line
+opt.signcolumn = "yes"   -- Always show sign column
+opt.laststatus = 2       -- Always show status line
+opt.showmode = false     -- Don't show mode (handled by statusline)
+opt.cmdheight = 0        -- Hide command line when not used
+opt.scrolloff = 18       -- Keep lines above/below cursor
+opt.sidescrolloff = 3    -- Keep columns left/right of cursor
+opt.splitbelow = true    -- Open horizontal splits below
+opt.splitright = true    -- Open vertical splits right
+opt.wrap = true          -- Wrap long lines
+
+-- List characters for whitespace visualization
 opt.list = true
--- You can also add "space" or "eol", but I feel it"s quite annoying
 opt.listchars = {
     tab = "┊ ",
     trail = "·",
@@ -51,68 +68,58 @@ opt.listchars = {
     nbsp = "×"
 }
 
--- Hide cmd line
-opt.cmdheight = 0      -- more space in the neovim command line for displaying messages
+-- ============================
+-- File Handling
+-- ============================
+opt.backup = false      -- Don't create backup files
+opt.swapfile = false    -- Don't create swap files
+opt.writebackup = false -- Don't backup before overwriting
 
-opt.mouse = "a"        -- allow the mouse to be used in neovim
-opt.number = true      -- set numbered lines
-opt.scrolloff = 18     -- minimal number of screen lines to keep above and below the cursor
-opt.sidescrolloff = 3  -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
-opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
-opt.splitbelow = true  -- open new split below
-opt.splitright = true  -- open new split to the right
-opt.wrap = true        -- display a long line
-
--- backups
-opt.backup = false      -- create a backup file
-opt.swapfile = false    -- creates a swapfile
-opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-
--- autocomplete
-opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
-opt.shortmess = opt.shortmess + {
-    c = true
-} -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
-
--- By the way, -- INSERT -- is unnecessary anymore because the mode information is displayed in the statusline.
-opt.showmode = false
-
--- trigger `CursorHold` events after 1.5 seconds
-vim.opt.updatetime = 1500
-
--- perfomance
--- remember N lines in history
-opt.history = 100    -- keep 100 lines of history
-opt.redrawtime = 1500
-opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
-opt.ttimeoutlen = 10
-opt.updatetime = 100 -- signify default updatetime 4000ms is not good for async update
-
--- theme
-opt.termguicolors = true -- enable 24-bit RGB colors
-
--- persistent undo
--- Don"t forget to create folder $HOME/.local/share/nvim/undo
+-- Persistent undo
 local undodir = vim.fn.stdpath("data") .. "/undo"
-opt.undofile = true -- enable persistent undo
-opt.undodir = undodir
-opt.undolevels = 1000
-opt.undoreload = 10000
+opt.undofile = true      -- Enable persistent undo
+opt.undodir = undodir    -- Undo directory
+opt.undolevels = 1000    -- Max undo changes
+opt.undoreload = 10000   -- Max lines to save for undo
 
--- fold
+-- ============================
+-- Performance
+-- ============================
+opt.history = 100        -- Command history size
+opt.updatetime = 100     -- Faster completion (default: 4000ms)
+opt.timeoutlen = 1000    -- Time to wait for mapped sequence
+opt.ttimeoutlen = 10     -- Time to wait for key codes
+opt.redrawtime = 1500    -- Time to wait for redraw
+
+-- ============================
+-- Completion
+-- ============================
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.shortmess:append({ c = true }) -- Don't show completion messages
+
+-- ============================
+-- Folding
+-- ============================
 opt.foldmethod = "marker"
 opt.foldlevel = 99
 
--- Disable builtin plugins
-local disabled_built_ins = { "2html_plugin", "getscript", "getscriptPlugin", "gzip", "logipat", "netrw", "netrwPlugin",
-    "netrwSettings", "netrwFileHandlers", "matchit", "tar", "tarPlugin", "rrhelper",
-    "spellfile_plugin", "vimball", "vimballPlugin", "zip", "zipPlugin", "tutor", "rplugin",
-    "synmenu", "optwin", "compiler", "bugreport", "ftplugin" }
+-- ============================
+-- Disable Built-in Plugins
+-- ============================
+local disabled_built_ins = {
+    "2html_plugin", "getscript", "getscriptPlugin", "gzip", "logipat",
+    "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers",
+    "matchit", "tar", "tarPlugin", "rrhelper", "spellfile_plugin",
+    "vimball", "vimballPlugin", "zip", "zipPlugin", "tutor", "rplugin",
+    "synmenu", "optwin", "compiler", "bugreport", "ftplugin"
+}
 
 for _, plugin in pairs(disabled_built_ins) do
     g["loaded_" .. plugin] = 1
 end
 
+-- ============================
 -- Colorscheme
+-- ============================
 vim.o.background = "dark"
-cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin")
