@@ -69,90 +69,17 @@ return { {
       rust_analyzer = {},
       jdtls = {},
     },
-    -- You can do any additional lsp server setup here
-    -- return true if you don"t want this server to be setup with lspconfig
-    setup = {
-      -- Exclude jdtls from mason-lspconfig setup since we'll use nvim-jdtls
-      jdtls = function() return true end,
-      ["*"] = function(server, _) end,
-    }
   },
   config = function(_, opts)
-    local servers = opts.servers
-
-    -- Safely get capabilities
-    local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    local capabilities
-    if ok then
-      capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-    else
-      capabilities = vim.lsp.protocol.make_client_capabilities()
-    end
-
-    -- Enable semantic tokens capability
-    capabilities.textDocument.semanticTokens = {
-      dynamicRegistration = false,
-      tokenTypes = {
-        "namespace", "type", "class", "enum", "interface", "struct", "typeParameter", "parameter",
-        "variable", "property", "enumMember", "event", "function", "method", "macro", "keyword",
-        "modifier", "comment", "string", "number", "regexp", "operator"
-      },
-      tokenModifiers = {
-        "declaration", "definition", "readonly", "static", "deprecated", "abstract", "async",
-        "modification", "documentation", "defaultLibrary"
-      },
-      formats = { "relative" }
-    }
-
-    local function setup(server)
-      local server_opts = vim.tbl_deep_extend("force", {
-        capabilities = vim.deepcopy(capabilities)
-      }, servers[server] or {})
-
-      if opts.setup[server] then
-        if opts.setup[server](server, server_opts) then
-          return
-        end
-      elseif opts.setup["*"] then
-        if opts.setup["*"](server, server_opts) then
-          return
-        end
-      end
-
-      -- Add error handling for lspconfig setup
-      local ok_setup, err = pcall(function()
-        require("lspconfig")[server].setup(server_opts)
-      end)
-
-      if not ok_setup then
-        vim.notify("Failed to setup LSP server " .. server .. ": " .. tostring(err), vim.log.levels.ERROR)
-      end
-    end
-
     -- Ensure mason is set up first
     require("mason").setup()
-
-    local mlsp = require("mason-lspconfig")
-    local available = mlsp.get_available_servers()
-
-    local ensure_installed = {} ---@type string[]
-    for server, server_opts in pairs(servers) do
-      if server_opts then
-        server_opts = server_opts == true and {} or server_opts
-        -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-        if server_opts.mason == false or not vim.tbl_contains(available, server) then
-          setup(server)
-        else
-          ensure_installed[#ensure_installed + 1] = server
-        end
-      end
-    end
-
+    -- Mason-LSPConfig v2.0+ setup
     require("mason-lspconfig").setup({
-      ensure_installed = ensure_installed,
-      automatic_installation = true
+      ensure_installed = vim.tbl_keys(opts.servers),
+      automatic_installation = {
+        jdtls = false,
+      },
     })
-    require("mason-lspconfig").setup_handlers({ setup })
   end
 }, {
   -- load luasnips + cmp related in insert mode only

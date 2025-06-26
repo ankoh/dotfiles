@@ -23,9 +23,7 @@ return {
 
     -- Configuration for jdtls
     local function setup_jdtls()
-      local mason_registry = require("mason-registry")
-      local jdtls_pkg = mason_registry.get_package("jdtls")
-      local jdtls_path = jdtls_pkg:get_install_path()
+      local jdtls_path = vim.fn.expand("$MASON/packages/jdtls")
 
       local jar_patterns = {
         jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar",
@@ -63,16 +61,21 @@ return {
               downloadSources = true,
             },
             configuration = {
-              updateBuildConfiguration = "interactive",
+              updateBuildConfiguration = "automatic",
             },
             maven = {
               downloadSources = true,
             },
             implementationsCodeLens = {
-              enabled = true,
+              enabled = false,
             },
             referencesCodeLens = {
               enabled = false,
+            },
+            inlayHints = {
+              parameterNames = {
+                enabled = "none",
+              },
             },
             references = {
               includeDecompiledSources = true,
