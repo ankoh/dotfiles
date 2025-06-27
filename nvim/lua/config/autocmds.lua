@@ -168,8 +168,8 @@ autocmd("LspAttach", {
             })
         end
 
-        -- Code lens
-        if client and client.supports_method and client.supports_method("textDocument/codeLens") then
+        -- Code lens (skip for jdtls as it has its own configuration)
+        if client and client.supports_method and client.supports_method("textDocument/codeLens") and client.name ~= "jdtls" then
             local codelens_group = augroup("LspCodeLens", { clear = false })
             autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
                 buffer = bufnr,
