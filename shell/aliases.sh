@@ -16,6 +16,8 @@ alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -h -c'
 
+alias todo='nvim ${HOME}/.dotfiles/todo.md'
+
 if [ -d $HOME/JDK/ ]; then
     alias onejdk='set -x;export JAVA_HOME=$HOME/JDK;export PATH=$JAVA_HOME/bin:$PATH;set +x'
 else
