@@ -26,18 +26,18 @@ autocmd("BufWritePre", {
         if vim.bo.filetype == "java" then
             return
         end
-        
+
         -- Check if there are active LSP clients that support formatting
         local clients = vim.lsp.get_clients({ bufnr = 0 })
         local has_formatter = false
-        
+
         for _, client in pairs(clients) do
             if client.supports_method("textDocument/formatting") then
                 has_formatter = true
                 break
             end
         end
-        
+
         if has_formatter then
             vim.lsp.buf.format({ async = false })
         end
@@ -55,17 +55,6 @@ autocmd("BufEnter", {
 -- ============================
 -- Filetype-specific Settings
 -- ============================
-
--- Set indentation for specific filetypes
-autocmd("Filetype", {
-    pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua" },
-    desc = "Set indentation for web/config files",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-        vim.opt_local.softtabstop = 2
-    end
-})
 
 -- Set colorcolumn for specific filetypes
 autocmd("Filetype", {
@@ -107,20 +96,24 @@ autocmd("LspAttach", {
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("error", opts, { desc = "Go to definition" }))
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("error", opts, { desc = "Go to declaration" }))
         vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("error", opts, { desc = "Go to references" }))
-        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, vim.tbl_extend("error", opts, { desc = "Go to type definition" }))
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("error", opts, { desc = "Go to implementation" }))
+        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition,
+            vim.tbl_extend("error", opts, { desc = "Go to type definition" }))
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
+            vim.tbl_extend("error", opts, { desc = "Go to implementation" }))
 
         -- ============================
         -- LSP Information Keymaps
         -- ============================
         vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("error", opts, { desc = "Show hover information" }))
-        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, vim.tbl_extend("error", opts, { desc = "Show signature help" }))
+        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help,
+            vim.tbl_extend("error", opts, { desc = "Show signature help" }))
 
         -- ============================
         -- LSP Action Keymaps
         -- ============================
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("error", opts, { desc = "Rename symbol" }))
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("error", opts, { desc = "Code actions" }))
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action,
+            vim.tbl_extend("error", opts, { desc = "Code actions" }))
         vim.keymap.set("n", "<leader>f", function()
             vim.lsp.buf.format({ async = true })
         end, vim.tbl_extend("error", opts, { desc = "Format buffer" }))
@@ -128,8 +121,10 @@ autocmd("LspAttach", {
         -- ============================
         -- Diagnostic Keymaps
         -- ============================
-        vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, vim.tbl_extend("error", opts, { desc = "Show buffer diagnostics" }))
-        vim.keymap.set("n", "<leader>aa", vim.diagnostic.setqflist, vim.tbl_extend("error", opts, { desc = "Show all diagnostics" }))
+        vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist,
+            vim.tbl_extend("error", opts, { desc = "Show buffer diagnostics" }))
+        vim.keymap.set("n", "<leader>aa", vim.diagnostic.setqflist,
+            vim.tbl_extend("error", opts, { desc = "Show all diagnostics" }))
         vim.keymap.set("n", "<leader>ae", function()
             vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
         end, vim.tbl_extend("error", opts, { desc = "Show errors in quickfix" }))
@@ -141,17 +136,24 @@ autocmd("LspAttach", {
         -- LSP Features
         -- ============================
 
-        -- Document highlighting
+        -- Document highlighting (with throttling to prevent hangs)
         if client and client.supports_method and client.supports_method("textDocument/documentHighlight") then
             local highlight_group = augroup("LspDocumentHighlight", { clear = false })
+            local last_highlight_time = 0
+            local highlight_debounce = 200 -- 200ms debounce
+
             autocmd({ "CursorHold", "CursorHoldI" }, {
                 buffer = bufnr,
                 group = highlight_group,
                 callback = function()
-                    -- Check if client is still active before calling
-                    local current_clients = vim.lsp.get_clients({ bufnr = bufnr })
-                    if #current_clients > 0 then
-                        vim.lsp.buf.document_highlight()
+                    local now = vim.loop.hrtime() / 1000000 -- Convert to milliseconds
+                    if now - last_highlight_time > highlight_debounce then
+                        last_highlight_time = now
+                        -- Check if client is still active before calling
+                        local current_clients = vim.lsp.get_clients({ bufnr = bufnr })
+                        if #current_clients > 0 then
+                            vim.lsp.buf.document_highlight()
+                        end
                     end
                 end,
             })
@@ -188,7 +190,7 @@ autocmd("LspAttach", {
         -- Language-specific Keymaps
         -- ============================
         if client.name == "clangd" then
-            vim.keymap.set("n", "g<Tab>", "<cmd>ClangdSwitchSourceHeader<CR>", 
+            vim.keymap.set("n", "g<Tab>", "<cmd>ClangdSwitchSourceHeader<CR>",
                 vim.tbl_extend("error", opts, { desc = "Switch source/header" }))
         end
     end

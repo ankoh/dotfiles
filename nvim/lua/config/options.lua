@@ -87,7 +87,7 @@ opt.undoreload = 10000 -- Max lines to save for undo
 -- Performance
 -- ============================
 opt.history = 100     -- Command history size
-opt.updatetime = 100  -- Faster completion (default: 4000ms)
+opt.updatetime = 250  -- Balanced update time (was 100, now 250ms)
 opt.timeoutlen = 1000 -- Time to wait for mapped sequence
 opt.ttimeoutlen = 10  -- Time to wait for key codes
 opt.redrawtime = 1500 -- Time to wait for redraw

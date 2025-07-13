@@ -4,7 +4,7 @@ return { {
 	-- Autopairs
 	"windwp/nvim-autopairs",
 	opts = {
-		check_ts = true,
+		check_ts = false,  -- Disable treesitter check to prevent hangs
 		ts_config = {
 			lua = { "string" }, -- it will not add a pair on that treesitter node
 			javascript = { "template_string" },
@@ -17,7 +17,11 @@ return { {
 		-- Don"t add pairs if the next char is alphanumeric
 		ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
 		fast_wrap = {},
-		disable_filetype = { "TelescopePrompt", "vim" }
+		disable_filetype = { "TelescopePrompt", "vim", "markdown", "text" },
+		
+		-- Disable on large files
+		disable_in_macro = true,
+		disable_in_visualblock = true,
 	},
 	config = function(_, opts)
 		local npairs = require("nvim-autopairs")

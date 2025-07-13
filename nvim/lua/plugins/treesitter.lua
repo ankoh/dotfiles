@@ -45,7 +45,9 @@ return { {
         },
         refactor = {
             highlight_definitions = {
-                enable = true
+                enable = true,
+                -- Clear on cursor move to prevent accumulation
+                clear_on_cursor_move = true,
             },
             highlight_current_scope = {
                 enable = false

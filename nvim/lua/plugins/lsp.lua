@@ -91,7 +91,10 @@ return { {
     dependencies = "rafamadriz/friendly-snippets",
     opts = {
       history = true,
-      updateevents = "TextChanged,TextChangedI"
+      updateevents = "TextChanged,TextChangedI",
+      -- Prevent potential loops
+      region_check_events = "InsertEnter",
+      delete_check_events = "InsertLeave"
     },
     config = function(_, opts)
       require("luasnip").config.set_config(opts)
@@ -189,11 +192,14 @@ return { {
         end, { "i", "s" })
       },
       sources = { {
-        name = "nvim_lsp"
+        name = "nvim_lsp",
+        max_item_count = 20,  -- Limit items to prevent hangs
       }, {
-        name = "luasnip"
+        name = "luasnip",
+        max_item_count = 10,
       }, {
         name = "buffer",
+        max_item_count = 10,
         option = {
           -- Avoid accidentally running on big files
           get_bufnrs = function()
@@ -206,9 +212,11 @@ return { {
           end
         }
       }, {
-        name = "nvim_lua"
+        name = "nvim_lua",
+        max_item_count = 15,
       }, {
-        name = "path"
+        name = "path",
+        max_item_count = 10,
       } }
     }
 
