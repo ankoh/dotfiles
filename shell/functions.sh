@@ -1,5 +1,26 @@
 #!/bin/bash
 
+function byohcerts() {
+    CDP_CONTROL_POD="$(kubectl get pods --no-headers --namespace cdp -o 'custom-columns=:metadata.name' | grep cdp-control | head -n 1)"
+    echo "-------------------------------------------"
+    echo "CDP_CONTROL_POD=${CDP_CONTROL_POD}"
+
+    mkdir -p /tmp/byoh
+    rm -f /tmp/byoh/client.pem
+    rm -f /tmp/byoh/client-key.pem
+    rm -f /tmp/byoh/cacerts.pem
+
+
+    echo "Fetching Client Public Key"
+    kubectl cp -n cdp $CDP_CONTROL_POD:/etc/identity/client/certificates/client.pem /tmp/byoh/client.pem
+
+    echo "Fetching Client Private Key"
+    kubectl cp -n cdp $CDP_CONTROL_POD:/etc/identity/client/keys/client-key.pem /tmp/byoh/client-key.pem
+
+    echo "Fetching CA Certificates"
+    kubectl cp -n cdp $CDP_CONTROL_POD:/etc/identity/ca/cacerts.pem /tmp/byoh/cacerts.pem
+}
+
 # Stash known hosts
 function stash_known() {
     cp ~/.ssh/known_hosts ~/.ssh/known_hosts_tmp
