@@ -66,6 +66,13 @@ keymap("n", "<leader>mf", ":NvimTreeFindFile<CR>", { desc = "Find file in tree" 
 -- Terminal
 keymap("n", "<leader>tt", ":NeotermToggle<CR>", { desc = "Toggle terminal" })
 
+-- Git Diffview
+keymap("n", "<leader>gv", ":DiffviewOpen<CR>", { desc = "Open diffview" })
+keymap("n", "<leader>gc", ":DiffviewClose<CR>", { desc = "Close diffview" })
+keymap("n", "<leader>gh", ":DiffviewFileHistory<CR>", { desc = "File history" })
+keymap("n", "<leader>gH", ":DiffviewFileHistory %<CR>", { desc = "Current file history" })
+keymap("n", "<leader>gR", ":DiffviewRefresh<CR>", { desc = "Refresh diffview" })
+
 -- ============================
 -- LSP Keymaps (Global - buffer-local ones are in autocmds.lua)
 -- ============================
