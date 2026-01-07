@@ -67,6 +67,7 @@ return { {
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
       },
       rust_analyzer = {},
+      ts_ls = {},
       jdtls = {},
     },
   },
