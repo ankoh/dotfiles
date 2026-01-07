@@ -120,7 +120,26 @@
                 "d"
             ],
             "commands": [
-                "editor.action.goToDefinition"
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.quickTextSearch"
             ]
         },
         {
