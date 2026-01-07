@@ -21,12 +21,7 @@
     },
     {
         "key": "ctrl+t",
-        "command": "workbench.action.terminal.focus"
-    },
-    {
-        "key": "ctrl+t",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminalFocus"
+        "command": "workbench.action.terminal.toggleTerminal"
     },
     {
         "key": "ctrl+h",
