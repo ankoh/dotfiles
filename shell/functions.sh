@@ -1,5 +1,14 @@
 #!/bin/bash
 
+function hyperdshell() {
+    set -x
+    docker run \
+        --platform linux/amd64 \
+        -it --rm \
+        docker.repo.local.sfdc.net/sfci/gec/hyper-db-emu/hyper-db/hyperd:release-cdp-2025.80.0 \
+        /opt/hyper/bin/hyperd shell --log_config=
+}
+
 function byohcerts() {
     CDP_CONTROL_POD="$(kubectl get pods --no-headers --namespace cdp -o 'custom-columns=:metadata.name' | grep cdp-control | head -n 1)"
     echo "-------------------------------------------"

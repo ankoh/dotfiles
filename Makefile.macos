@@ -35,9 +35,9 @@ install-fzf:
 #---------------------------------------------------------------------------
 fix-keyrepeat:
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+	defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false
 	defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 	defaults write com.jetbrains.intellij.ce ApplePressAndHoldEnabled -bool false
-	defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false
 #---------------------------------------------------------------------------
 create-directories:
 	@mkdir -p ~/.config
@@ -73,6 +73,9 @@ install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json
 	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+	@mkdir -p ~/Library/Application\ Support/Cursor/User
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 #---------------------------------------------------------------------------
 repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
@@ -80,4 +83,15 @@ repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
 install: install-fzf install-symlinks
+#---------------------------------------------------------------------------
+export-extensions-cursor:
+	@cursor --list-extensions > ${MAKEFILE_DIR}/vscode/extensions.txt
+	@echo "Exported $$(wc -l < ${MAKEFILE_DIR}/vscode/extensions.txt | tr -d ' ') extensions to vscode/extensions.txt"
+#---------------------------------------------------------------------------
+install-extensions:
+	@echo "Installing extensions to VS Code..."
+	@cat ${MAKEFILE_DIR}/vscode/extensions.txt | grep -v '^#' | grep -v '^$$' | xargs -L 1 code --install-extension --force 2>/dev/null || true
+	@echo "Installing extensions to Cursor..."
+	@cat ${MAKEFILE_DIR}/vscode/extensions.txt | grep -v '^#' | grep -v '^$$' | xargs -L 1 cursor --install-extension --force 2>/dev/null || true
+	@echo "Done!"
 #---------------------------------------------------------------------------

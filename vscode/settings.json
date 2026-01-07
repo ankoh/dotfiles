@@ -100,7 +100,7 @@
                 "t"
             ],
             "commands": [
-                "editor.action.goToDeclaration"
+                "editor.action.revealDeclaration"
             ]
         },
         {
@@ -110,7 +110,7 @@
                 "D"
             ],
             "commands": [
-                "editor.action.goToDeclaration"
+                "editor.action.revealDeclaration"
             ]
         },
         {
