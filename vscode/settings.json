@@ -190,6 +190,15 @@
             "commands": [
                 "workbench.action.toggleSidebarVisibility"
             ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.focusAuxiliaryBar"
+            ]
         }
     ],
     "vim.insertModeKeyBindings": [
