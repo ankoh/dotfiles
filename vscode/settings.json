@@ -245,7 +245,11 @@
     "gitlens.currentLine.enabled": false,
     "gitlens.statusBar.enabled": false,
     "[cpp]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.semanticHighlighting.enabled": true
+    },
+    "[c]": {
+        "editor.semanticHighlighting.enabled": true
     },
     "zenMode.centerLayout": false,
     "latex-workshop.view.pdf.viewer": "tab",
@@ -289,6 +293,7 @@
     "clangd.path": "/usr/bin/clangd",
     "clang-format.executable": "/usr/bin/clang-format",
     "editor.minimap.enabled": false,
+    "editor.semanticHighlighting.enabled": true,
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -306,5 +311,10 @@
         "**/.bloop": true,
         "**/.metals": true,
         "**/.ammonite": true
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "rust-analyzer.semanticHighlighting.comments.enable": false,
+    "remote.SSH.remotePlatform": {
+        "salesforce-wsw2": "linux"
     }
 }
