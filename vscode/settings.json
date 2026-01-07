@@ -136,6 +136,16 @@
             "before": [
                 "<leader>",
                 "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
                 "t"
             ],
             "commands": [
