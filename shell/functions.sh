@@ -41,7 +41,7 @@ function pop_known() {
 
 # Do while the return code is 0
 function repeat() {
-    while [ $? -eq 0 ]; do eval $(history | tail -2 | head -n 1 | cut -c8-999); done
+    while [ $? -eq 0 ]; do eval "$(history | tail -2 | head -n 1 | cut -c8-999)"; done
 }
 # Fix ssh-agent
 fixssh() {

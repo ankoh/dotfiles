@@ -76,6 +76,8 @@ install-symlinks: reset-symlinks
 	@mkdir -p ~/Library/Application\ Support/Cursor/User
 	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
 	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/Library/Application\ Support/Windsurf/User/settings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/Library/Application\ Support/Windsurf/User/keybindings.json
 #---------------------------------------------------------------------------
 repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
@@ -93,5 +95,7 @@ install-extensions:
 	@cat ${MAKEFILE_DIR}/vscode/extensions.txt | grep -v '^#' | grep -v '^$$' | xargs -L 1 code --install-extension --force 2>/dev/null || true
 	@echo "Installing extensions to Cursor..."
 	@cat ${MAKEFILE_DIR}/vscode/extensions.txt | grep -v '^#' | grep -v '^$$' | xargs -L 1 cursor --install-extension --force 2>/dev/null || true
+	@echo "Installing extensions to Windsurf..."
+	@cat ${MAKEFILE_DIR}/vscode/extensions.txt | grep -v '^#' | grep -v '^$$' | xargs -L 1 surf --install-extension --force 2>/dev/null || true
 	@echo "Done!"
 #---------------------------------------------------------------------------

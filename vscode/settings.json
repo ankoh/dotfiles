@@ -1,7 +1,4 @@
 {
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
     "vim.easymotion": true,
     "vim.sneak": true,
     "vim.incsearch": true,
@@ -316,5 +313,7 @@
     "rust-analyzer.semanticHighlighting.comments.enable": false,
     "remote.SSH.remotePlatform": {
         "salesforce-wsw2": "linux"
-    }
+    },
+    "git.blame.editorDecoration.enabled": true,
+    "remote.autoForwardPortsSource": "hybrid"
 }
