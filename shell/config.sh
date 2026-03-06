@@ -72,6 +72,13 @@ fi
 if [ ! -z "$PS1" ]; then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+    # Symlink current node/npm/npx so GUI apps (Cursor/VS Code TypeScript LSP) can find them
+    if command -v node &>/dev/null && [ -w /usr/local/bin ] 2>/dev/null; then
+        ln -sf "$(command -v node)" /usr/local/bin/node
+        ln -sf "$(command -v npm)" /usr/local/bin/npm
+        ln -sf "$(command -v npx)" /usr/local/bin/npx
+    fi
+
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
     if [ -n "$BASH_VERSION" ]; then

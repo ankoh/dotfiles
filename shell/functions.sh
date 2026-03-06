@@ -30,6 +30,27 @@ function byohcerts() {
     kubectl cp -n cdp $CDP_CONTROL_POD:/etc/identity/ca/cacerts.pem /tmp/byoh/cacerts.pem
 }
 
+function hypercerts() {
+    CDP_CONTROL_POD="$(kubectl get pods --no-headers --namespace hyperdb -o 'custom-columns=:metadata.name' | grep hyper | head -n 1)"
+    echo "-------------------------------------------"
+    echo "CDP_CONTROL_POD=${CDP_CONTROL_POD}"
+
+    mkdir -p /tmp/hypermtls
+    rm -f /tmp/hypermtls/client.pem
+    rm -f /tmp/hypermtls/client-key.pem
+    rm -f /tmp/hypermtls/cacerts.pem
+
+
+    echo "Fetching Client Public Key"
+    kubectl cp -n hyperdb $CDP_CONTROL_POD:/etc/identity/client/certificates/client.pem /tmp/hypermtls/client.pem
+
+    echo "Fetching Client Private Key"
+    kubectl cp -n hyperdb $CDP_CONTROL_POD:/etc/identity/client/keys/client-key.pem /tmp/hypermtls/client-key.pem
+
+    echo "Fetching CA Certificates"
+    kubectl cp -n hyperdb $CDP_CONTROL_POD:/etc/identity/ca/cacerts.pem /tmp/hypermtls/cacerts.pem
+}
+
 # Stash known hosts
 function stash_known() {
     cp ~/.ssh/known_hosts ~/.ssh/known_hosts_tmp

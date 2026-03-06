@@ -315,5 +315,6 @@
         "salesforce-wsw2": "linux"
     },
     "git.blame.editorDecoration.enabled": true,
-    "remote.autoForwardPortsSource": "hybrid"
+    "remote.autoForwardPortsSource": "hybrid",
+    "salesforce-internal-dx.claudeCodeMarketplaceConfigured": true
 }
