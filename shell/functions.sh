@@ -30,6 +30,7 @@ function byohcerts() {
     kubectl cp -n cdp $CDP_CONTROL_POD:/etc/identity/ca/cacerts.pem /tmp/byoh/cacerts.pem
 }
 
+
 function hypercerts() {
     CDP_CONTROL_POD="$(kubectl get pods --no-headers --namespace hyperdb -o 'custom-columns=:metadata.name' | grep hyper | head -n 1)"
     echo "-------------------------------------------"

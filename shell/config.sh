@@ -33,6 +33,9 @@ export NPM_PACKAGES=$HOME/.npm_packages
 export PYENV_ROOT=$HOME/.pyenv
 export NVM_DIR="$HOME/.nvm"
 export VIRTUAL_ENV="$HOME/.venv"
+export PNPM_HOME="/Users/andre.kohn/Library/pnpm"
+export NODE_EXTRA_CA_CERTS="$HOME/.config/nexus-npm/npm-sfdc-certs.pem"
+export VOLTA_HOME="$HOME/.volta"
 
 export GPG_TTY=$(tty)
 
@@ -51,6 +54,7 @@ export PATH=$PATH:~/.fzf/bin
 export PATH=$PATH:~/.displayplacer
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$PATH:/opt/homebrew/opt/libpq/bin
+export PATH=$VOLTA_HOME/bin:$PATH
 export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
 
@@ -70,16 +74,12 @@ fi
 
 # Interactive shell?
 if [ ! -z "$PS1" ]; then
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
     # Symlink current node/npm/npx so GUI apps (Cursor/VS Code TypeScript LSP) can find them
     if command -v node &>/dev/null && [ -w /usr/local/bin ] 2>/dev/null; then
         ln -sf "$(command -v node)" /usr/local/bin/node
         ln -sf "$(command -v npm)" /usr/local/bin/npm
         ln -sf "$(command -v npx)" /usr/local/bin/npx
     fi
-
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
     if [ -n "$BASH_VERSION" ]; then
         include $HOME/.fzf/shell/key-bindings.bash
@@ -98,6 +98,17 @@ if [ ! -z "$PS1" ]; then
         include $HOME/.fzf/shell/completion.zsh
     fi
 
+    # Lazy nvm
+    lazy_nvm() {
+        unset -f nvm node npm npx
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    }
+    nvm() { lazy_nvm; nvm "$@"; }
+    node() { lazy_nvm; node "$@"; }
+    npm() { lazy_nvm; npm "$@"; }
+    npx() { lazy_nvm; npx "$@"; }
+
     include $SHELLCONF/aliases.sh
     include $SHELLCONF/displays.sh
     include $SHELLCONF/functions.sh
@@ -105,6 +116,22 @@ fi
 
 bindkey -e
 . "$HOME/.cargo/env"
+
+# pnpm
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+# devbar-managed-start
+export NODE_EXTRA_CA_CERTS="$HOME/.devbar/certs/corporate-ca-bundle.pem"
+# devbar-managed-end
+
+# >>> aisuite >>>
+export NODE_EXTRA_CA_CERTS="/Users/andre.kohn/.aisuite/conf/npm-sfdc-certs.pem"
+export PATH="$PATH:/Users/andre.kohn/.aisuite/bin:/Users/andre.kohn/.aisuite/bin/aliases"
+# <<< aisuite <<<
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

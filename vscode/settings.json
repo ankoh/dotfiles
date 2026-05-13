@@ -316,5 +316,7 @@
     },
     "git.blame.editorDecoration.enabled": true,
     "remote.autoForwardPortsSource": "hybrid",
-    "salesforce-internal-dx.claudeCodeMarketplaceConfigured": true
+    "salesforce-internal-dx.claudeCodeMarketplaceConfigured": true,
+    "terminal.integrated.showCommandHint": false,
+    "typescript.experimental.useTsgo": true
 }
