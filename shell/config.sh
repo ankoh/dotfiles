@@ -109,6 +109,9 @@ if [ ! -z "$PS1" ]; then
     npm() { lazy_nvm; npm "$@"; }
     npx() { lazy_nvm; npx "$@"; }
 
+    # Eagerly add nvm default bin to PATH so globally-linked CLIs (e.g. moncloud) are found
+    export PATH="$NVM_DIR/versions/node/$(cat "$NVM_DIR/alias/default")/bin:$PATH"
+
     include $SHELLCONF/aliases.sh
     include $SHELLCONF/displays.sh
     include $SHELLCONF/functions.sh
