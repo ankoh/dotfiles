@@ -65,8 +65,8 @@ if command -v /opt/homebrew/bin/brew 1>/dev/null 2>&1; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-source "$HOME/.cargo/env"
-source "$HOME/.venv/bin/activate"
+include "$HOME/.cargo/env"
+include "$HOME/.venv/bin/activate"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
@@ -110,15 +110,19 @@ if [ ! -z "$PS1" ]; then
     npx() { lazy_nvm; npx "$@"; }
 
     # Eagerly add nvm default bin to PATH so globally-linked CLIs (e.g. moncloud) are found
-    export PATH="$NVM_DIR/versions/node/$(cat "$NVM_DIR/alias/default")/bin:$PATH"
+    if [ -r "$NVM_DIR/alias/default" ]; then
+        export PATH="$NVM_DIR/versions/node/$(cat "$NVM_DIR/alias/default")/bin:$PATH"
+    fi
 
     include $SHELLCONF/aliases.sh
     include $SHELLCONF/displays.sh
     include $SHELLCONF/functions.sh
 fi
 
-bindkey -e
-. "$HOME/.cargo/env"
+if [ -n "$ZSH_VERSION" ]; then
+    bindkey -e
+fi
+include "$HOME/.cargo/env"
 
 # pnpm
 case ":$PATH:" in
