@@ -14,7 +14,7 @@ install-wslssh:
 	mkdir -p ~/.1password
 	mkdir -p ~/.local/bin
 	curl -L -o ~/npiperelay.zip https://github.com/jstarks/npiperelay/releases/download/${NPIPERELAY_VERSION}/npiperelay_windows_amd64.zip
-	unzip -d ~/.local/bin ~/npiperelay.zip 'npiperelay.exe'
+	unzip -o -d ~/.local/bin ~/npiperelay.zip 'npiperelay.exe'
 	cp ./other/wslssh.sh ~/.local/bin/wslssh.sh
 #---------------------------------------------------------------------------
 install-nvm:
