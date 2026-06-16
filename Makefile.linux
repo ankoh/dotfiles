@@ -36,6 +36,7 @@ create-directories:
 	@mkdir -p ~/.local/bin
 	@mkdir -p ~/.local/include
 	@mkdir -p ~/.local/lib
+	@mkdir -p ~/.local/share/nvim/undo
 	@mkdir -p ~/.config/Code/User
 #---------------------------------------------------------------------------
 reset-symlinks: create-directories
@@ -43,6 +44,7 @@ reset-symlinks: create-directories
 	@sh -c "[ ! -L ~/.bashrc ] || rm ~/.bashrc;"
 	@sh -c "[ ! -L ~/.zshrc ] || rm ~/.zshrc;"
 	@sh -c "[ ! -L ~/.config/nvim ] || rm -r ~/.config/nvim;"
+	@sh -c "[ ! -L ~/.config/tmux ] || rm -r ~/.config/tmux;"
 	@sh -c "[ ! -L ~/.gitconfig ] || rm ~/.gitconfig;"
 	@sh -c "[ ! -L ~/.gvimrc ] || rm ~/.gvimrc;"
 	@sh -c "[ ! -L ~/.nvmrc ] || rm ~/.nvmrc;"
@@ -57,14 +59,19 @@ reset-symlinks: create-directories
 install-symlinks: reset-symlinks
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.bashrc
 	@ln -sf ${MAKEFILE_DIR}/shell/config.sh ~/.zshrc
+	@ln -sf ${MAKEFILE_DIR}/nvim ~/.config/nvim
+	@ln -sf ${MAKEFILE_DIR}/tmux ~/.config/tmux
 	@ln -sf ${MAKEFILE_DIR}/other/gitconfig.conf ~/.gitconfig
-	@ln -sf ${MAKEFILE_DIR}/other/nvmrc.conf ~/.nvmrc
-	@ln -sf ${MAKEFILE_DIR}/vim ~/.config/nvim
-	@ln -sf ${MAKEFILE_DIR}/vim ~/.vim
-	@ln -sf ${MAKEFILE_DIR}/vim/init.vim ~/.vimrc
+	@ln -sf ${MAKEFILE_DIR}/other/alacritty.toml ~/.alacritty.toml
 	@ln -sf ${MAKEFILE_DIR}/jetbrains/ideavimrc ~/.ideavimrc
 	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Code/User/settings.json
 	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Code/User/keybindings.json
+	@mkdir -p ~/.config/Cursor/User
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Cursor/User/settings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Cursor/User/keybindings.json
+	@mkdir -p ~/.config/Windsurf/User
+	@ln -sf ${MAKEFILE_DIR}/vscode/settings.json ~/.config/Windsurf/User/settings.json
+	@ln -sf ${MAKEFILE_DIR}/vscode/keybindings.json ~/.config/Windsurf/User/keybindings.json
 #---------------------------------------------------------------------------
 repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim.basic 200
