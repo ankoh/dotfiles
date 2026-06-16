@@ -5,6 +5,7 @@ MAKEFILE_DIR := $(dir ${MAKEFILE_PATH})
 #---------------------------------------------------------------------------
 BREW := $(shell command -v brew 2> /dev/null)
 FZF_DIR := ~/.fzf
+TPM_DIR := ~/.config/tmux/plugins/tpm
 RUST_ANALYZER_VERSION := 2022-10-03
 NVM_VERSION=v0.39.1
 NPIPERELAY_VERSION=v0.1.0
@@ -23,6 +24,23 @@ install-nvm:
 install-pyenv:
 	curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 #---------------------------------------------------------------------------
+install-deps: install-fzf
+	sudo apt-get update
+	sudo apt-get install -y fd-find ripgrep cmake
+	@mkdir -p ~/.local/bin
+	@ln -sf "$$(command -v fdfind)" ~/.local/bin/fd
+#---------------------------------------------------------------------------
+# macOS forwards LC_CTYPE=UTF-8 over SSH, which is not a valid locale name on
+# Linux, so bash warns "cannot change locale (UTF-8)" at login. Generate a real
+# locale and pin a valid LC_ALL in /etc/environment (read by pam_env before the
+# shell starts); LC_ALL takes precedence over the forwarded LC_CTYPE.
+fix-locale:
+	sudo apt-get install -y locales
+	sudo locale-gen en_US.UTF-8
+	sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+	grep -q '^LANG=' /etc/environment || echo 'LANG=en_US.UTF-8' | sudo tee -a /etc/environment
+	grep -q '^LC_ALL=' /etc/environment || echo 'LC_ALL=en_US.UTF-8' | sudo tee -a /etc/environment
+#---------------------------------------------------------------------------
 install-fzf:
 	if [ ! -d $(FZF_DIR) ]; then \
 		git clone --depth 1 https://github.com/junegunn/fzf.git $(FZF_DIR); \
@@ -30,6 +48,19 @@ install-fzf:
 		cd $(FZF_DIR) && git pull --ff-only origin master; \
 	fi
 	$(FZF_DIR)/install --bin
+#---------------------------------------------------------------------------
+install-tmux-plugins: install-symlinks
+	if [ ! -d $(TPM_DIR) ]; then \
+		git clone --depth 1 https://github.com/tmux-plugins/tpm $(TPM_DIR); \
+	else \
+		cd $(TPM_DIR) && git pull --ff-only origin master; \
+	fi
+	# install_plugins reads TMUX_PLUGIN_MANAGER_PATH from the tmux server env,
+	# which is only set once the config is sourced. Start a throwaway server on
+	# a private socket so the tpm `run` line sets it, install, then tear down.
+	tmux -L tpm_install new-session -d \; \
+		run-shell $(TPM_DIR)/bin/install_plugins \; \
+		kill-server
 #---------------------------------------------------------------------------
 create-directories:
 	@mkdir -p ~/.config
@@ -78,5 +109,5 @@ repair: reset-symlinks
 	@sudo update-alternatives --install /usr/bin/vim vim /usr/bin/vim.basic 200
 	@sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 200
 #---------------------------------------------------------------------------
-install: install-fzf install-symlinks install-wslssh
+install: install-deps fix-locale install-symlinks install-tmux-plugins install-wslssh
 #---------------------------------------------------------------------------

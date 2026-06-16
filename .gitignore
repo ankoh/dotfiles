@@ -3,4 +3,7 @@
 /fonts
 /tmux/resurrect/
 
+# TPM-managed tmux plugins (installed via `prefix + I`), not vendored
+/tmux/plugins/
+
 /todo.md
