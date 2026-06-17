@@ -144,6 +144,16 @@ export NODE_EXTRA_CA_CERTS="/Users/andre.kohn/.aisuite/conf/npm-sfdc-certs.pem"
 export PATH="$PATH:/Users/andre.kohn/.aisuite/bin:/Users/andre.kohn/.aisuite/bin/aliases"
 # <<< aisuite <<<
 
+# The aisuite/devbar/nexus installer blocks above each export NODE_EXTRA_CA_CERTS
+# with a machine-specific, sometimes macOS-absolute path (e.g. /Users/.../.aisuite).
+# This same config.sh is symlinked onto the Linux devbox, where that path does not
+# exist, so node warns: "ignoring extra certs ... load failed". Drop the var when
+# it points at a missing file so node falls back to its built-in CA bundle. Kept
+# outside the managed blocks so re-running those installers doesn't clobber it.
+if [ -n "${NODE_EXTRA_CA_CERTS:-}" ] && [ ! -f "$NODE_EXTRA_CA_CERTS" ]; then
+    unset NODE_EXTRA_CA_CERTS
+fi
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
