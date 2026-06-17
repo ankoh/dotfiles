@@ -50,7 +50,12 @@ export PATH=$HOME/bin:$PATH
 export PATH=$GOBIN:$PATH
 export PATH=$NPM_PACKAGES/bin:$PATH
 export PATH=$GEM_HOME/bin:$PATH
-export PATH=$PATH:~/.fzf/bin
+# Prepend (not append) so our own fzf (~/.fzf/bin, installed via `make
+# install-fzf`) shadows any system fzf (e.g. apt's /usr/bin/fzf on Linux
+# devboxes, often an old 0.60). The bundled shell integration binds modern
+# actions like `toggle-raw` (fzf >= 0.66) in the CTRL-R widget; running an
+# older system binary instead fails with "unknown action: toggle-raw".
+export PATH=~/.fzf/bin:$PATH
 export PATH=$PATH:~/.displayplacer
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$PATH:/opt/homebrew/opt/libpq/bin
