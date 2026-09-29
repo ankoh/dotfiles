@@ -18,7 +18,7 @@ return { {
         local lualine = require("lualine")
         local config = {
             options = {
-                theme = "catppuccin",
+                theme = "catppuccin-nvim",
 
                 icons_enabled = true,
                 component_separators = { left = '', right = '' },

@@ -3,6 +3,7 @@
 return { {
     -- Treesitter interface
     "nvim-treesitter/nvim-treesitter",
+    branch = "master", -- main is the Neovim 0.12+ rewrite
     version = false, -- last release is way too old and doesn"t work on Windows
     build = ":TSUpdate",
     dependencies = { {
@@ -27,7 +28,7 @@ return { {
     } },
     opts = {
         -- A list of parser names, or "all"
-        ensure_installed = { "go", "python", "dockerfile", "json", "yaml", "markdown", "html", "scss", "css", "vim", "cpp", "rust", "typescript", "tsx", "javascript" },
+        ensure_installed = { "go", "python", "dockerfile", "json", "yaml", "markdown", "html", "scss", "css", "vim", "lua", "cpp", "rust", "typescript", "tsx", "javascript" },
 
         highlight = {
             enable = true,
