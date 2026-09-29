@@ -139,10 +139,24 @@ esac
 export NODE_EXTRA_CA_CERTS="$HOME/.devbar/certs/corporate-ca-bundle.pem"
 # devbar-managed-end
 
+# mr-cli shell completion
+export PATH="$HOME/Repositories/hyper-devtools/mr-cli:$PATH"
+if [ -n "$ZSH_VERSION" ] && command -v mr-cli.py >/dev/null 2>&1; then
+    eval "$( _MR_CLI_PY_COMPLETE=zsh_source mr-cli.py )"
+fi
+
 # >>> aisuite >>>
-export NODE_EXTRA_CA_CERTS="/Users/andre.kohn/.aisuite/conf/npm-sfdc-certs.pem"
-export PATH="$PATH:/Users/andre.kohn/.aisuite/bin:/Users/andre.kohn/.aisuite/bin/aliases"
+export NODE_EXTRA_CA_CERTS="$HOME/.aisuite/conf/npm-sfdc-certs.pem"
+export PATH="$PATH:$HOME/.aisuite/bin:$HOME/.aisuite/bin/aliases"
 # <<< aisuite <<<
+
+# >>> mhtc-telemetry >>>
+export PATH="$HOME/.mh-telemetry-collector-aisuite/telemetry/opencode-shim:$PATH"
+# <<< mhtc-telemetry <<<
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
+
 
 # The aisuite/devbar/nexus installer blocks above each export NODE_EXTRA_CA_CERTS
 # with a machine-specific, sometimes macOS-absolute path (e.g. /Users/.../.aisuite).
@@ -158,6 +172,3 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# opencode
-export PATH=/home/andre.kohn/.opencode/bin:$PATH

@@ -3,7 +3,7 @@
 
 return {
   "axkirillov/unified.nvim",
-  cmd = { "Unified", "DiffUnified" },
+  cmd = "Unified",
   init = function()
     -- Alias so the command shows up when prefix-searching ":Diff…"
     vim.api.nvim_create_user_command("DiffUnified", function(cmd)

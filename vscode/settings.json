@@ -318,5 +318,6 @@
     "remote.autoForwardPortsSource": "hybrid",
     "salesforce-internal-dx.claudeCodeMarketplaceConfigured": true,
     "terminal.integrated.showCommandHint": false,
-    "typescript.experimental.useTsgo": true
+    "typescript.experimental.useTsgo": true,
+    "windsurf.allowCascadeAccessGitignoreFiles": true
 }

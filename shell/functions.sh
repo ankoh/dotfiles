@@ -65,9 +65,31 @@ function pop_known() {
 function repeat() {
     while [ $? -eq 0 ]; do eval "$(history | tail -2 | head -n 1 | cut -c8-999)"; done
 }
-# Fix ssh-agent
+# Refresh this pane from the agent socket captured by the latest tmux client.
 fixssh() {
-    eval $(tmux show-env | sed -n 's/^\(SSH_[^=]*\)=\(.*\)/export \1="\2"/p')
+    if [ -z "${TMUX:-}" ]; then
+        echo "fixssh: not running inside tmux" >&2
+        return 1
+    fi
+
+    local socket
+    socket="$(tmux show-environment SSH_AUTH_SOCK 2>/dev/null)" || {
+        echo "fixssh: tmux has no SSH_AUTH_SOCK; reconnect with agent forwarding" >&2
+        return 1
+    }
+    socket="${socket#SSH_AUTH_SOCK=}"
+    if [ -z "${socket}" ] || [ ! -S "${socket}" ]; then
+        echo "fixssh: tmux SSH_AUTH_SOCK is not a live socket: ${socket:-<empty>}" >&2
+        return 1
+    fi
+
+    export SSH_AUTH_SOCK="${socket}"
+    if ssh-add -l >/dev/null 2>&1; then
+        echo "SSH agent refreshed: ${SSH_AUTH_SOCK}"
+    else
+        echo "fixssh: socket refreshed, but the agent has no available identities" >&2
+        return 1
+    fi
 }
 
 # SSH on a host with forwarded SSH agent
